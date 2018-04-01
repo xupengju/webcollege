@@ -1,0 +1,43 @@
+.tcenter {
+  text-align: center;
+}
+.fWeight {
+  font-weight: 900;
+}
+.overH {
+  overflow: hidden;
+}
+.personBox {
+  width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  line-height: 40px;
+}
+.personBox p {
+  height: 40px;
+}
+.personBox span {
+  float: left;
+  width: 300px;
+  font-size: 20px;
+}
+.personBox b {
+  float: left;
+  width: 300px;
+  font-weight: normal;
+}
+.personBox .btn {
+  width: 86px;
+  height: 30px;
+  background: #395b94;
+  color: #fff;
+  position: relative;
+  left: 504px;
+  text-align: center;
+  line-height: 30px;
+}
+table {
+  margin: 20px auto;
+  border: #b5b5b5;
+  color: #000;
+}

@@ -1,0 +1,117 @@
+@import 'base.less';
+.center {
+    .mAuto(0)
+}
+.banner {
+    .getWandH(100%,78%);
+    background: url("../img/banner.jpg") center no-repeat;
+    background-size: 100% 100%;
+}
+.banner img {
+    .w(100%);
+    .banner;
+}
+.news {
+    .getWandH(1000px,280px);
+    background: @whiteColor;
+    .mAll(20px,auto,0,auto);
+    border-top: 3px solid @blueColor;
+}
+.news .img1 {
+    .fl();
+    .mAll(30px,0,0,20px);
+    .getWandH(400px,220px);
+}
+.news .rightBox {
+    .w(500px);
+    .fl();
+    .ml(40px);
+    .mt(10px);
+    
+}
+.news .rightBox .title {
+    border-left: 5px solid @blueColor;
+    padding-left: 20px;
+    font-weight: 100;
+}
+.news .rightBox .title span {
+    .fr();
+    position: relative;
+    .fontSize(14px);
+}
+.news .rightBox .jiao {
+    border-left: 5px solid #7f7f7f;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+    position: absolute;
+    left: 32px;
+    top: 4px;
+}
+.news .rightBox .figure {
+    .mt(20px)
+}
+.news .rightBox .figure img {
+    .getWandH(106px,106px);
+    .fl()
+}
+.news .rightBox .figure div {
+    display: inline-block;
+    .w(370px);
+    .ml(14px);
+}
+.news .rightBox .figure p {
+    .fontSize(12px);
+    line-height: 30px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    .overH;
+}
+.news .rightBox ul {
+    .mt(10)
+}
+.news .rightBox ul li {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px dotted #ccc;
+}
+.news .rightBox ul p {
+    .fl();
+}
+.news .rightBox ul span {
+    .fr()
+}
+.footer1 {
+    height: 280px;
+    background: #fff;
+    border-top: 3px solid @blueColor;
+    .mTwo(30px,0)
+}
+.footer1 .t {
+  
+    .getWandH(165px,30px);
+    background: @blueColor;
+    .mAuto(0);
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 30px;
+}
+.footer1 ul li {
+    .mTwo(20px,0)
+}
+.footer1 ul li img {
+   
+    .getWandH(230px,140px)
+}
+.footer1 ul li p {
+    display: -webkit-box;
+    line-height: 28px;
+    .w(230px);
+    .fontSize(12px);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    .overH;
+}
+.swiper-container {
+    .w(90%)
+}

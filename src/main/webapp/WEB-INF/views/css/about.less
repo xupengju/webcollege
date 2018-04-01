@@ -1,0 +1,282 @@
+@import 'base.less';
+.content {
+    @{w}: 1000px;
+    min-height: 100px;
+    .mAuto(0);
+    .overH;
+    min-height: 65%;
+}
+.content .leftNav {
+    @{w}: 250px;
+    .fl();
+    border: 1px solid #ccc;
+    .tcenter;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.content .leftNav li {
+    min-height: 45px;
+    border-top: 1px solid #ccc;
+    @{lh}: 45px;
+    color: @whiteColor;
+    background: #999;
+}
+.content .leftNav li p {
+    background: #adbad1;
+    border-bottom: 1px solid @whiteColor;
+    display: none;
+}
+.content .leftNav li p a {
+    display: block;
+    color: @whiteColor;
+}
+.content .leftNav li p:last-child {
+    border: none;
+}
+//.content .leftNav li p:first-of-type{background: #7a90b6;}
+.content .leftNav .btnBlue {
+    background: @blueColor;
+}
+.rightBox {
+    @{w}: 730px;
+    padding: 0 10px;
+    .fr();
+    display: inline;
+    .overH;
+    box-shadow: -1px 0 5px 1px #333333;
+}
+.rightBox .gain {
+    padding: 0 50px;
+    .fontSize(20px);
+    .overH;
+    @{h}: 40px;
+}
+.rightBox .gain a {
+   
+    .fl();
+}
+.rightBox .gain span {
+    .fr();
+}
+.rightBox img {
+   
+    .getWandH(100%,250px);
+    
+}
+.ri2 {
+    display: none;
+}
+.ri3 {
+   
+    .ri2
+}
+.ri4 {
+   .ri2;
+}
+.ri5 {
+   .ri2;
+}
+.rri1 {
+    .ri2;
+}
+.rri2 {
+   .ri2;
+}
+.twoContent0 {
+   .ri2;
+}
+.twoContent1 {
+    .ri2;
+}
+.twoContent2 {
+   .ri2;
+}
+//.swi1{@{w}: 100%;@{h}: 250px;}
+//.swi1 img{@{w}: 100%;@{h}: 250px;}
+.word {
+    padding: 40px;
+  
+    .fontSize(12px);
+    @{lh}: 20px;
+    font-weight: 900;
+}
+/*分页器样式*/
+.page_div {
+    .fontSize(15px);
+    font-family: "microsoft yahei";
+    color: #666666;
+    
+    .mAll(20px,10px,20px,0);
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+/*
+ * 页数按钮样式
+ */
+.page_div {
+    .tcenter;
+   
+    .mTwo(50px,0);
+    .mAll(20px,10px,20px,0);
+}
+.page_div a {
+    min-width: 30px;
+    @{h}: 28px;
+    border: 1px solid #d2d2d2!important;
+    border-radius: 5px;
+    .tcenter;
+  
+    .mTwo(0,4px);
+    cursor: pointer;
+    @{lh}: 28px;
+    color: #666666;
+   
+    .fontSize(13px);
+    display: inline-block;
+}
+#firstPage,
+#lastPage {
+    @{w}: 50px;
+    color: @blackColor;
+    font-weight: 900;
+    border: 1px solid @blackColor!important;
+}
+#prePage,
+#nextPage {
+    @{w}: 25px;
+    color: @blackColor;
+    border: 1px solid @blackColor!important;
+}
+.page_div .current {
+    background-color: @blackColor;
+    border-color: @blackColor;
+    color: @whiteColor;
+}
+.totalPages {
+    .mTwo(0,10px);
+}
+.totalPages span,
+.totalSize span {
+    color: #0073A9;
+    .mTwo(0,5px)
+}
+.detailAboutContent {
+    @{w}: 900px;
+    .mAuto(0);
+}
+.detailAboutContent img {
+    .getWandH(100%,400px)
+}
+.back1 {
+    .getWandH(50px,20px);
+    background: #0073A9;
+    display: inline-block;
+    .fr();
+    color: @whiteColor;
+    .fontSize(12px);
+    @{lh}: 20px;
+}
+.ml512 {
+    .ml(512px)
+}
+.teacher {
+    width: 100%;
+    .overH;
+}
+.teacher li {
+    .fl();
+    width: 46%;
+    .overH;
+    .mTwo(30px,2%)
+}
+.teacher li img {
+    .getWandH(44%,200px);
+    .fl();
+    .mTwo(0,4%);
+}
+.teacher li .word1 {
+    .getWandH(48%,200px);
+    .fl();
+    .fontSize(12px)
+}
+.teacher li h3 {
+    line-height: 30px;
+}
+.studentYe .searchP {
+    height: 30px;
+    
+    .tcenter
+}
+.studentYe .searchP div:nth-of-type(1) {
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+}
+.studentYe input {
+    display: inline-block;
+    .getWandH(150px,25px);
+    .ml(20px);
+}
+.searchBtn {
+    padding: 0 20px;
+    background: @blueColor;
+    height: 29px;
+    color: @whiteColor;
+    line-height: 29px;
+    .ml(20px);
+    display: inline-block;
+}
+.ratingForm {
+    width: 730px;
+    background: @whiteColor;
+    min-height: 100px;
+    .mAuto(30px);
+    padding: 20px 0;
+}
+.ratingForm table {
+    .mAuto(0)
+}
+.ratingForm th {
+    background: @blueColor;
+    color: @whiteColor;
+    height: 50px;
+    border-right: 1px solid @whiteColor;
+}
+.ratingForm th:last-child {
+    border: none;
+}
+.ratingForm td {
+    height: 30px;
+    color: @blueColor;
+    border-right: 1px solid @blueColor;
+}
+.ratingForm td:last-child {
+    border: none;
+}
+.ratingForm tr:nth-of-type(odd) {
+    background: #f7f7f7;
+}
+.ratingForm tr:nth-of-type(even) {
+    background: #adbad1;
+}
+.downloadBtn {
+    .getWandH(86px,30px);
+    background: #395b94;
+    color: @whiteColor;
+    .tcenter;
+    .mt(50px);
+    line-height: 30px;
+    .mAuto(20px)
+}
+.newBox{width: 40%;height: 200px;float: left;
+margin: 20px 4%;cursor: pointer;
+text-align: center;line-height:60px;
+font-size: 20px;color: @blueColor;font-weight: 900;}
+.newBox img{width: 50%;height: auto;display: block;margin: 0 auto;}
+.schoolList{overflow: hidden;}
+.schoolList li{float: left;width: 33%;box-sizing: border-box;padding: 10px;
+    text-align: center;line-height: 20px;height:200px;position: relative;margin: 20px 0;
+    font-size: 12px;}
+.schoolList li img{width: 80%;height: auto;max-height:140px;display: block;
+    position: absolute;margin: auto;left: 0;top: 0;bottom: 0;right: 0;}
+.schoolList li p{margin-top: 160px;}

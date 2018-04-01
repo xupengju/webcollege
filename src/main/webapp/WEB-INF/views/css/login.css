@@ -1,0 +1,92 @@
+.tcenter {
+  text-align: center;
+}
+.fWeight {
+  font-weight: 900;
+}
+.overH {
+  overflow: hidden;
+}
+body,
+html {
+  height: 100%;
+  background: url("../img/loginBg.png") no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.content {
+  height: 300px;
+  position: absolute;
+  background: url("../img/shadow.png") center no-repeat;
+  background-size: 250px cover;
+  margin: auto;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  min-width: 1500px;
+}
+.content img {
+  position: absolute;
+}
+.content .logo {
+  left: 20%;
+  top: 124px;
+}
+.content .shadow {
+  width: 100%;
+  height: 300px;
+}
+.formList {
+  width: 400px;
+  height: 336px;
+  background: url("../img/tu2.png") no-repeat;
+  background-size: 100% 336px;
+  position: absolute;
+  right: 25%;
+  top: 8px;
+  color: #fff;
+}
+.formList p {
+  height: 40px;
+  margin-left: 130px;
+}
+.formList p:first-child {
+  margin-top: 60px;
+}
+.formList p input {
+  width: 170px;
+  height: 25px;
+}
+.formList p:nth-of-type(3) {
+  position: relative;
+}
+.formList p:nth-of-type(3) input {
+  width: 80px;
+}
+.formList p span {
+  width: 80px;
+  height: 25px;
+  background: url("../img/code.jpg");
+  position: absolute;
+  left: 150px;
+  top: 1px;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 5px;
+}
+.formList p span b {
+  display: inline-block;
+}
+.formList .btn {
+  width: 169px;
+  height: 40px;
+  background: url("../img/btnBg.png") no-repeat;
+  left: 175px;
+  position: absolute;
+  display: block;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  bottom: 60px;
+}

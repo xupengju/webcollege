@@ -1,0 +1,79 @@
+@import 'base.less';
+body,
+html {
+    height: 100%;
+    background: url("../img/loginBg.png") no-repeat;
+    background-size: cover;
+    .overH;
+}
+.content {
+    height: 300px;
+    position: absolute;
+    background: url("../img/shadow.png") center no-repeat;
+    background-size: 250px cover;
+    margin: auto;
+    .w(100%);
+    top: 0;
+    bottom: 0;
+    min-width: 1500px;
+}
+.content img {
+    position: absolute;
+}
+.content .logo {
+    left: 20%;
+    top: 124px;
+}
+.content .shadow {
+    .getWandH(100%,300px)
+}
+.formList {
+    .getWandH(400px,336px);
+    background: url("../img/tu2.png") no-repeat;
+    background-size: 100% 336px;
+    position: absolute;
+    right: 25%;
+    top: 8px;
+    color: #fff;
+}
+.formList p {
+    height: 40px;
+    .ml(130px)
+}
+.formList p:first-child {
+    .mt(60px)
+}
+.formList p input {
+    .getWandH(170px,25px);
+}
+.formList p:nth-of-type(3) {
+    position: relative;
+}
+.formList p:nth-of-type(3) input {
+    .w(80px)
+}
+.formList p span {
+    .getWandH(80px,25px);
+    background: url("../img/code.jpg");
+    position: absolute;
+    left: 150px;
+    top: 1px;
+    .fontSize(20px);
+    .fWeight;
+    .tcenter;
+    letter-spacing: 5px;
+}
+.formList p span b {
+    display: inline-block;
+}
+.formList .btn {
+    .getWandH(169px,40px);
+    background: url("../img/btnBg.png") no-repeat;
+    left: 175px;
+    position: absolute;
+    display: block;
+    color: #fff;
+    .tcenter;
+    line-height: 20px;
+    bottom: 60px;
+}
