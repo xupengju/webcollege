@@ -56,7 +56,6 @@ if($ind){
 	a($(".leftNav li").eq($ind),parseInt($ind)+1)
 }
 $(".leftNav li p").click(function(event){
-	
 	event.stopPropagation()
 	$(".content .rightBox").hide()
 	var $in=$(this).index()+1;
@@ -64,4 +63,20 @@ $(".leftNav li p").click(function(event){
 	var parentIndex=$(this).parent().index()
 	$(".twoContent"+parentIndex).show().siblings(".co").hide()
 	$(".twoContent"+parentIndex).find(".rightBox").eq($in-1).show()
+})
+$(".newBox").eq(0).click(function(){
+	window.location.href="TeachingResourcesVideo.html"
+})
+$(".newBox").eq(1).click(function(){
+	window.location.href="TeachingResourcesImg.html"
+})
+$(".newBox").eq(2).click(function(){
+	window.location.href="TeachingResourcesTeach.html"
+})
+$(".newBox").eq(3).click(function(){
+	window.location.href="TeachingResourcesLink.html"
+})
+//返回
+$(".back1").click(function(){
+	window.history.back()
 })

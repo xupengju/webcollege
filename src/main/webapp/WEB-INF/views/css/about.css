@@ -166,14 +166,15 @@
   height: 400px;
 }
 .back1 {
-  width: 50px;
-  height: 20px;
+  width: 70px;
+  height: 30px;
   background: #0073A9;
   display: inline-block;
   float: right;
   color: #fff;
   font-size: 12px;
-  line-height: 20px;
+  line-height: 30px;
+  cursor: pointer;
 }
 .ml512 {
   margin-left: 512px;
@@ -318,3 +319,21 @@
 .schoolList li p {
   margin-top: 160px;
 }
+.dtr{overflow: hidden;text-align: center;min-height: 400px;}
+.dtr li{
+	float: left;
+	width: 25%;
+	box-sizing: border-box;
+	padding: 0 10px;
+}
+.dtr li img{
+	width: 100%;
+	height: 150px;
+}
+.dtr li a{display: block;color: #333;height: 50px;line-height: 50px;
+	width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.socialDetail{min-height: 400px;}
+.socialDetail table{background: #fff;}
+.socialDetail tr:first-child{margin-top: 30px;height: 50px;background: #395b94;
+color: #fff;}
+.socialDetail table tr{height: 40px;}

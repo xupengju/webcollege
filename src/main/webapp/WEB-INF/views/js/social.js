@@ -49,3 +49,11 @@ $(".leftNav li p").click(function(event){
 	$(".twoContent"+parentIndex).show().siblings(".co").hide()
 	$(".twoContent"+parentIndex).find(".rightBox").eq($in-1).show()
 })
+
+$(".schoolList li").click(function(){
+	window.location.href="socialDetail.html"
+})
+
+$(".back1").click(function(){
+	window.history.back()
+})
