@@ -22,7 +22,7 @@
 			</div>
 		</header>
 		<nav>
-			<a href="index.html">网站首页</a>
+			<a href="index.jsp">网站首页</a>
 			<a><div class="aboutBtn">关于我们</div>
 				<div class="navTwo aboutA">
 					<div>学校介绍</div>

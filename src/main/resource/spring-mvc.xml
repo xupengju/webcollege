@@ -12,7 +12,7 @@
 
     <!-- 自动扫描  @Controller-->
     <context:component-scan base-package="com.college.controller"/>
-
+    <mvc:annotation-driven />
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
     <bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -47,4 +47,7 @@
         <!-- 内存中的最大值 -->
         <property name="maxInMemorySize" value="4096"/>
     </bean>
+
+    <mvc:default-servlet-handler />
+    <mvc:resources mapping="/styles/**" location="/css/"/>
 </beans>

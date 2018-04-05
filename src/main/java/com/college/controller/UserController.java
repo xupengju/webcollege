@@ -7,6 +7,7 @@ import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/login")
+    public ModelAndView login(ServerHttpRequest request) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        return mv;
+    }
 
     @RequestMapping(value = "/list")
     @ResponseBody
@@ -45,7 +52,7 @@ public class UserController {
     @ResponseBody
     public Map<String, Object> studentList() {
         Map<String, Object> params = Maps.newHashMap();
-        params.put("rolename","Student");
+        params.put("rolename", "Student");
         List<User> students = userService.searchStudent(params);
         Map<String, Object> resultMap = Maps.newHashMap();
         logger.info("UserController --> UserController --> students :{}", students);
