@@ -1,123 +1,142 @@
 package com.college.entity;
 
 import java.io.Serializable;
-import java.util.Date;
-
-/**
- * @author Milo on 2018/3/24.
- * @description
- */
 public class User implements Serializable {
 
-    private Integer id;
+	//alias
+	public static final String TABLE_ALIAS = "User";
+	public static final String ALIAS_ID = "id";
+	public static final String ALIAS_USERNAME = "userName";
+	public static final String ALIAS_PASSWORD = "password";
+	public static final String ALIAS_SALT = "salt";
+	public static final String ALIAS_REALNAME = "realName";
+	public static final String ALIAS_IDCARD = "idCard";
+	public static final String ALIAS_ADMINISTRATOR = "administrator";
+	public static final String ALIAS_STATUS = "status";
+	public static final String ALIAS_CREATETIME = "createTime";
+	public static final String ALIAS_UPDATETIME = "updateTime";
+	//maxId
+	public static final String ALIAS_MAXID = "maxId";
 
-    private String username;
+	/**
+	 * 
+	 */
+	private Integer id;
+	/**
+	 * 用户名
+	 */
+	private String userName;
+	/**
+	 * 密码
+	 */
+	private String password;
+	/**
+	 * 
+	 */
+	private String salt;
+	/**
+	 * 真实姓名
+	 */
+	private String realName;
+	/**
+	 * 身份 ID
+	 */
+	private String idCard;
+	/**
+	 * 0: 普通  1:管理
+	 */
+	private boolean administrator;
+	/**
+	 * 0: 正常 1:删除
+	 */
+	private boolean status;
+	/**
+	 * 创建时间
+	 */
+	private java.util.Date createTime;
+	/**
+	 * 更新时间
+	 */
+	private java.util.Date updateTime;
+	//maxId
+	private Integer maxId;
 
-    private String realname;
+	public Integer getId() {
+		return this.id;
+	}
+	
+	public void setId(Integer value) {
+		this.id = value;
+	}
+	public String getUserName() {
+		return this.userName;
+	}
+	
+	public void setUserName(String value) {
+		this.userName = value;
+	}
+	public String getPassword() {
+		return this.password;
+	}
+	
+	public void setPassword(String value) {
+		this.password = value;
+	}
+	public String getSalt() {
+		return this.salt;
+	}
+	
+	public void setSalt(String value) {
+		this.salt = value;
+	}
+	public String getRealName() {
+		return this.realName;
+	}
+	
+	public void setRealName(String value) {
+		this.realName = value;
+	}
+	public String getIdCard() {
+		return this.idCard;
+	}
+	
+	public void setIdCard(String value) {
+		this.idCard = value;
+	}
+	public boolean getAdministrator() {
+		return this.administrator;
+	}
+	
+	public void setAdministrator(boolean value) {
+		this.administrator = value;
+	}
+	public boolean getStatus() {
+		return this.status;
+	}
+	
+	public void setStatus(boolean value) {
+		this.status = value;
+	}
+	public java.util.Date getCreateTime() {
+		return this.createTime;
+	}
+	
+	public void setCreateTime(java.util.Date value) {
+		this.createTime = value;
+	}
+	public java.util.Date getUpdateTime() {
+		return this.updateTime;
+	}
+	
+	public void setUpdateTime(java.util.Date value) {
+		this.updateTime = value;
+	}
 
-    private String password;
+	public Integer getMaxId() {
+		return maxId;
+	}
 
-    private String salt;
-
-    private String idcard;
-
-    private Byte adminmark;
-
-    private String rolename;
-
-    private Integer userstate;
-
-    private Date createtime;
-
-    private Date updatetime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getIdcard() {
-        return idcard;
-    }
-
-    public void setIdcard(String idcard) {
-        this.idcard = idcard;
-    }
-
-    public Byte getAdminmark() {
-        return adminmark;
-    }
-
-    public void setAdminmark(Byte adminmark) {
-        this.adminmark = adminmark;
-    }
-
-    public String getRolename() {
-        return rolename;
-    }
-
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
-    }
-
-    public Integer getUserstate() {
-        return userstate;
-    }
-
-    public void setUserstate(Integer userstate) {
-        this.userstate = userstate;
-    }
-
-    public Date getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
-
-    public Date getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
-    }
-
-    public String getRealname() {
-        return realname;
-    }
-
-    public void setRealname(String realname) {
-        this.realname = realname;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+	public void setMaxId(Integer maxId) {
+		this.maxId = maxId;
+	}
 }
-
-

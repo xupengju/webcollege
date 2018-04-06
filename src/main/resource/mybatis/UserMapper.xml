@@ -1,193 +1,242 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.college.dao.UserDao">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.college.repository.UserDao">
 
-    <resultMap id="BaseResultMap" type="com.college.entity.User">
-        <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="UserName" property="username" jdbcType="VARCHAR"/>
-        <result column="RealName" property="realname" jdbcType="VARCHAR"/>
-        <result column="Password" property="password" jdbcType="VARCHAR"/>
-        <result column="Salt" property="salt" jdbcType="VARCHAR"/>
-        <result column="IdCard" property="idcard" jdbcType="VARCHAR"/>
-        <result column="AdminMark" property="adminmark" jdbcType="TINYINT"/>
-        <result column="RoleName" property="rolename" jdbcType="VARCHAR"/>
-        <result column="UserState" property="userstate" jdbcType="TINYINT"/>
-        <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP"/>
-        <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP"/>
-    </resultMap>
+	<resultMap id="resultMap" type="com.college.entity.User">
+        <result property="id" column="id"/>
+        <result property="userName" column="userName"/>
+        <result property="password" column="password"/>
+        <result property="salt" column="salt"/>
+        <result property="realName" column="realName"/>
+        <result property="idCard" column="idCard"/>
+        <result property="administrator" column="administrator"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="createTime"/>
+        <result property="updateTime" column="updateTime"/>
+		 <result property="maxId" column="maxId"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,userName,password,salt,realName,idCard,administrator,status,createTime,updateTime
+	</sql>
+	
+	<!-- 获取单个实体bean -->
+	<select id="get" parameterType="Integer" resultType="com.college.entity.User">
+		SELECT <include refid="columns" />
+		FROM user
+		WHERE id=#{id}
+	</select>
 
-    <resultMap id="UseResultMap" type="com.college.entity.User">
-        <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="UserName" property="username" jdbcType="VARCHAR"/>
-        <result column="RealName" property="realname" jdbcType="VARCHAR"/>
-        <result column="AdminMark" property="adminmark" jdbcType="TINYINT"/>
-        <result column="RoleName" property="rolename" jdbcType="VARCHAR"/>
-        <result column="UserState" property="userstate" jdbcType="TINYINT"/>
-        <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP"/>
-        <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP"/>
-    </resultMap>
+	<!-- 新增 -->
+	<insert id="insert" parameterType="com.college.entity.User" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO user (
+        	userName,
+        	password,
+        	salt,
+        	realName,
+        	idCard,
+        	administrator,
+        	status,
+        	createTime,
+        	updateTime
+		) VALUES (
+        	#{userName},
+        	#{password},
+        	#{salt},
+        	#{realName},
+        	#{idCard},
+        	#{administrator},
+        	#{status},
+        	#{createTime},
+        	#{updateTime}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE user
+		<set>
+			<if test="userName!=null and userName!='' ">
+				userName = #{userName},
+			</if>
+			<if test="password!=null and password!='' ">
+				password = #{password},
+			</if>
+			<if test="salt!=null and salt!='' ">
+				salt = #{salt},
+			</if>
+			<if test="realName!=null and realName!='' ">
+				realName = #{realName},
+			</if>
+			<if test="idCard!=null and idCard!='' ">
+				idCard = #{idCard},
+			</if>
+			<if test="administrator!=null and administrator!='' ">
+				administrator = #{administrator},
+			</if>
+			<if test="status!=null and status!='' ">
+				status = #{status},
+			</if>
+			<if test="createTime!=null and createTime!='' ">
+				createTime = #{createTime},
+			</if>
+			<if test="updateTime!=null and updateTime!='' ">
+				updateTime = #{updateTime}
+			</if>
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Integer">
+	     DELETE FROM user WHERE id=#{id}
+	</delete>
 
-    <resultMap id="TeacherResultMap" type="com.college.entity.User">
-        <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="UserName" property="username" jdbcType="VARCHAR"/>
-        <result column="RealName" property="realname" jdbcType="VARCHAR"/>
-        <result column="IdCard" property="idcard" jdbcType="VARCHAR"/>
-        <result column="UserState" property="userstate" jdbcType="TINYINT"/>
-        <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP"/>
-        <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP"/>
-    </resultMap>
+	<!-- 查询分页列表 -->
+	<select id="searchPageList" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM user
+		<where>
+	       <if test="searchFields.userName != null and searchFields.userName != ''">
+				AND userName = #{searchFields.userName}
+			</if>
+	       <if test="searchFields.password != null and searchFields.password != ''">
+				AND password = #{searchFields.password}
+			</if>
+	       <if test="searchFields.salt != null and searchFields.salt != ''">
+				AND salt = #{searchFields.salt}
+			</if>
+	       <if test="searchFields.realName != null and searchFields.realName != ''">
+				AND realName = #{searchFields.realName}
+			</if>
+	       <if test="searchFields.idCard != null and searchFields.idCard != ''">
+				AND idCard = #{searchFields.idCard}
+			</if>
+	       <if test="searchFields.administrator != null and searchFields.administrator != ''">
+				AND administrator = #{searchFields.administrator}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
+				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+				AND updateTime = #{searchFields.updateTime}
+			</if>
+		</where>
+	</select>
+	
+	<!--条件查询分页记录总数-->
+	<select id="getTotalCount" resultType="Long">
+		SELECT count(1)
+		FROM user
+		<where>
+	       <if test="searchFields.userName != null and searchFields.userName != ''">
+				AND userName = #{searchFields.userName}
+			</if>
+	       <if test="searchFields.password != null and searchFields.password != ''">
+				AND password = #{searchFields.password}
+			</if>
+	       <if test="searchFields.salt != null and searchFields.salt != ''">
+				AND salt = #{searchFields.salt}
+			</if>
+	       <if test="searchFields.realName != null and searchFields.realName != ''">
+				AND realName = #{searchFields.realName}
+			</if>
+	       <if test="searchFields.idCard != null and searchFields.idCard != ''">
+				AND idCard = #{searchFields.idCard}
+			</if>
+	       <if test="searchFields.administrator != null and searchFields.administrator != ''">
+				AND administrator = #{searchFields.administrator}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
+				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+				AND updateTime = #{searchFields.updateTime}
+			</if>
+		</where>
+	</select>
 
-    <resultMap id="StudentResultMap" type="com.college.entity.User">
-        <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="UserName" property="username" jdbcType="VARCHAR"/>
-        <result column="RealName" property="realname" jdbcType="VARCHAR"/>
-        <result column="IdCard" property="idcard" jdbcType="VARCHAR"/>
-        <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP"/>
-        <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-        id, UserName,RealName, Password,IdCard, AdminMark, RoleName, UserState, CreateTime, UpdateTime
-    </sql>
+	<!-- 查询列表 -->
+	<select id="findListByParams" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM user
+		<where>
+	       <if test="searchFields.userName != null and searchFields.userName != ''">
+				AND userName = #{searchFields.userName}
+			</if>
+	       <if test="searchFields.password != null and searchFields.password != ''">
+				AND password = #{searchFields.password}
+			</if>
+	       <if test="searchFields.salt != null and searchFields.salt != ''">
+				AND salt = #{searchFields.salt}
+			</if>
+	       <if test="searchFields.realName != null and searchFields.realName != ''">
+				AND realName = #{searchFields.realName}
+			</if>
+	       <if test="searchFields.idCard != null and searchFields.idCard != ''">
+				AND idCard = #{searchFields.idCard}
+			</if>
+	       <if test="searchFields.administrator != null and searchFields.administrator != ''">
+				AND administrator = #{searchFields.administrator}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
+				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+				AND updateTime = #{searchFields.updateTime}
+			</if>
+		</where>
+		ORDER BY
+		createTime DESC
+	</select>
+	
+	<!-- 查询单个 -->
+	<select id="searchOne" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM user
+		<where>
+	       <if test="searchFields.userName != null and searchFields.userName != ''">
+				AND userName = #{searchFields.userName}
+			</if>
+	       <if test="searchFields.password != null and searchFields.password != ''">
+				AND password = #{searchFields.password}
+			</if>
+	       <if test="searchFields.salt != null and searchFields.salt != ''">
+				AND salt = #{searchFields.salt}
+			</if>
+	       <if test="searchFields.realName != null and searchFields.realName != ''">
+				AND realName = #{searchFields.realName}
+			</if>
+	       <if test="searchFields.idCard != null and searchFields.idCard != ''">
+				AND idCard = #{searchFields.idCard}
+			</if>
+	       <if test="searchFields.administrator != null and searchFields.administrator != ''">
+				AND administrator = #{searchFields.administrator}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
+				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+				AND updateTime = #{searchFields.updateTime}
+			</if>
+		</where>
+		limit 1
+	</select>
 
-    <sql id="Use_Column_List">
-        id, UserName,RealName ,IdCard, UserState, CreateTime, UpdateTime
-    </sql>
-
-    <sql id="Teacher_Column_List">
-        id, UserName,RealName ,IdCard, UserState, CreateTime, UpdateTime
-    </sql>
-
-    <sql id="Student_Column_List">
-        id, UserName,RealName ,IdCard, CreateTime, UpdateTime
-    </sql>
-
-
-    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Student_Column_List"/>
-        from user
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <insert id="insert" parameterType="com.college.entity.User">
-        insert into user
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
-            <if test="username != null">
-                UserName,
-            </if>
-            <if test="password != null">
-                Password,
-            </if>
-            <if test="idcard != null">
-                IdCard,
-            </if>
-            <if test="adminmark != null">
-                AdminMark,
-            </if>
-            <if test="rolename != null">
-                RoleName,
-            </if>
-            <if test="userstate != null">
-                UserState,
-            </if>
-            <if test="createtime != null">
-                CreateTime,
-            </if>
-            <if test="updatetime != null">
-                UpdateTime,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="username != null">
-                #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null">
-                #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="idcard != null">
-                #{idcard,jdbcType=VARCHAR},
-            </if>
-            <if test="adminmark != null">
-                #{adminmark,jdbcType=TINYINT},
-            </if>
-            <if test="rolename != null">
-                #{rolename,jdbcType=VARCHAR},
-            </if>
-            <if test="userstate != null">
-                #{userstate,jdbcType=TINYINT},
-            </if>
-            <if test="createtime != null">
-                #{createtime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="updatetime != null">
-                #{updatetime,jdbcType=TIMESTAMP},
-            </if>
-        </trim>
-    </insert>
-    <update id="update" parameterType="com.college.entity.User">
-        update user
-        <set>
-            <if test="username != null">
-                UserName = #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null">
-                Password = #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="idcard != null">
-                IdCard = #{idcard,jdbcType=VARCHAR},
-            </if>
-            <if test="adminmark != null">
-                AdminMark = #{adminmark,jdbcType=TINYINT},
-            </if>
-            <if test="rolename != null">
-                RoleName = #{rolename,jdbcType=VARCHAR},
-            </if>
-            <if test="userstate != null">
-                UserState = #{userstate,jdbcType=TINYINT},
-            </if>
-            <if test="createtime != null">
-                CreateTime = #{createtime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="updatetime != null">
-                UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-
-    <select id="search" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        <if test="username != null and username != ''">
-            AND UserName = #{username}
-        </if>
-        <if test="password != null and password != ''">
-            AND PassWord = #{password}
-        </if>
-    </select>
-
-    <select id="searchStudent" resultMap="StudentResultMap">
-        select
-        <include refid="Student_Column_List"/>
-        from user
-        <where>
-            <if test="searchFields.username != null and searchFields.username != ''">
-                AND UserName = #{searchFields.username}
-            </if>
-            <if test="searchFields.password != null and searchFields.password != ''">
-                AND PassWord = #{searchFields.password}
-            </if>
-            <if test="searchFields.rolename != null and searchFields.rolename != ''">
-                AND RoleName = #{searchFields.rolename}
-            </if>
-        </where>
-    </select>
-
-</mapper>
+</mapper> 

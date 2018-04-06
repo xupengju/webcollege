@@ -51,18 +51,32 @@
         <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="${maxWait}"></property>
     </bean>
-
+    <bean id="pagePlugin"
+          class="com.github.pagehelper.PageHelper">
+        <property name="properties">
+            <props>
+                <prop key="dialect">mysql</prop>
+                <prop key="pageSizeZero">true</prop>
+            </props>
+        </property>
+    </bean>
     <!-- mybatis和spring完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mybatis/*.xml"></property>
+        <property name="plugins">
+            <array>
+                <ref bean="pagePlugin"/>
+            </array>
+        </property>
     </bean>
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.college.dao"/>
+        <property name="basePackage" value="com.college.repository"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+
     </bean>
 
 
@@ -70,6 +84,8 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+
 
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <tx:annotation-driven transaction-manager="transactionManager"/>

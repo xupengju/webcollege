@@ -50,4 +50,12 @@
 
     <mvc:default-servlet-handler />
     <mvc:resources mapping="/styles/**" location="/css/"/>
+
+    <!-- OAuth拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.college.interceptor.OAuthInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
