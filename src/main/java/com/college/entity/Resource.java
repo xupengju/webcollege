@@ -1,12 +1,18 @@
 package com.college.entity;
 
 import java.io.Serializable;
-public class Biaozhun implements Serializable {
+public class Resource implements Serializable {
 
 	//alias
-	public static final String TABLE_ALIAS = "Biaozhun";
+	public static final String TABLE_ALIAS = "Resource";
 	public static final String ALIAS_ID = "id";
+	public static final String ALIAS_TEACHERNAME = "teacherName";
+	public static final String ALIAS_RESUME = "resume";
 	public static final String ALIAS_USERID = "userId";
+	public static final String ALIAS_TYPE = "type";
+	public static final String ALIAS_IMAGE = "image";
+	public static final String ALIAS_LINK = "link";
+	public static final String ALIAS_CONTENT = "content";
 	public static final String ALIAS_STATUS = "status";
 	public static final String ALIAS_CREATETIME = "createTime";
 	public static final String ALIAS_UPDATETIME = "updateTime";
@@ -18,9 +24,33 @@ public class Biaozhun implements Serializable {
 	 */
 	private Integer id;
 	/**
-	 * 用户 ID
+	 * 
+	 */
+	private String teacherName;
+	/**
+	 * 
+	 */
+	private String resume;
+	/**
+	 * 
 	 */
 	private Integer userId;
+	/**
+	 * 
+	 */
+	private Integer type;
+	/**
+	 * 
+	 */
+	private String image;
+	/**
+	 * 
+	 */
+	private String link;
+	/**
+	 * 
+	 */
+	private String content;
 	/**
 	 * 0: 正常 1:删除
 	 */
@@ -43,12 +73,54 @@ public class Biaozhun implements Serializable {
 	public void setId(Integer value) {
 		this.id = value;
 	}
+	public String getTeacherName() {
+		return this.teacherName;
+	}
+	
+	public void setTeacherName(String value) {
+		this.teacherName = value;
+	}
+	public String getResume() {
+		return this.resume;
+	}
+	
+	public void setResume(String value) {
+		this.resume = value;
+	}
 	public Integer getUserId() {
 		return this.userId;
 	}
 	
 	public void setUserId(Integer value) {
 		this.userId = value;
+	}
+	public Integer getType() {
+		return this.type;
+	}
+	
+	public void setType(Integer value) {
+		this.type = value;
+	}
+	public String getImage() {
+		return this.image;
+	}
+	
+	public void setImage(String value) {
+		this.image = value;
+	}
+	public String getLink() {
+		return this.link;
+	}
+	
+	public void setLink(String value) {
+		this.link = value;
+	}
+	public String getContent() {
+		return this.content;
+	}
+	
+	public void setContent(String value) {
+		this.content = value;
 	}
 	public Integer getStatus() {
 		return this.status;

@@ -2,74 +2,71 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="com.college.repository.AchievementDao">
+<mapper namespace="com.college.repository.NoticeDao">
 
-	<resultMap id="resultMap" type="com.college.entity.Achievement">
+	<resultMap id="resultMap" type="com.college.entity.Notice">
         <result property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="resume" column="resume"/>
-        <result property="userId" column="userId"/>
         <result property="type" column="type"/>
         <result property="image" column="image"/>
         <result property="link" column="link"/>
         <result property="content" column="content"/>
         <result property="status" column="status"/>
         <result property="createTime" column="createTime"/>
+        <result property="updateUser" column="updateUser"/>
         <result property="updateTime" column="updateTime"/>
 		 <result property="maxId" column="maxId"/>
 	</resultMap>
 	
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="columns">
-		id,title,resume,userId,type,image,link,content,status,createTime,updateTime
+		id,title,resume,type,image,link,content,status,createTime,updateUser,updateTime
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.Achievement">
+	<select id="get" parameterType="Integer" resultType="com.college.entity.Notice">
 		SELECT <include refid="columns" />
-		FROM achievement
+		FROM notice
 		WHERE id=#{id}
 	</select>
 
 	<!-- 新增 -->
-	<insert id="insert" parameterType="com.college.entity.Achievement" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO achievement (
+	<insert id="insert" parameterType="com.college.entity.Notice" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO notice (
         	title,
         	resume,
-        	userId,
         	type,
         	image,
         	link,
         	content,
         	status,
         	createTime,
+        	updateUser,
         	updateTime
 		) VALUES (
         	#{title},
         	#{resume},
-        	#{userId},
         	#{type},
         	#{image},
         	#{link},
         	#{content},
         	#{status},
         	#{createTime},
+        	#{updateUser},
         	#{updateTime}
 		)
 	</insert>
 	
 	<!-- 更新 -->
 	<update id="update" >
-        UPDATE achievement
+        UPDATE notice
 		<set>
 			<if test="title!=null and title!='' ">
 				title = #{title},
 			</if>
 			<if test="resume!=null and resume!='' ">
 				resume = #{resume},
-			</if>
-			<if test="userId!=null and userId!='' ">
-				userId = #{userId},
 			</if>
 			<if test="type!=null and type!='' ">
 				type = #{type},
@@ -89,6 +86,9 @@
 			<if test="createTime!=null and createTime!='' ">
 				createTime = #{createTime},
 			</if>
+			<if test="updateUser!=null and updateUser!='' ">
+				updateUser = #{updateUser},
+			</if>
 			<if test="updateTime!=null and updateTime!='' ">
 				updateTime = #{updateTime}
 			</if>
@@ -99,22 +99,19 @@
 	
 	<!-- 删除用户 -->
 	<delete id="delete" parameterType="Integer">
-	     DELETE FROM achievement WHERE id=#{id}
+	     DELETE FROM notice WHERE id=#{id}
 	</delete>
 
 	<!-- 查询分页列表 -->
 	<select id="searchPageList" resultMap="resultMap">
 		SELECT <include refid="columns" />
-		FROM achievement
+		FROM notice
 		<where>
 	       <if test="searchFields.title != null and searchFields.title != ''">
 				AND title = #{searchFields.title}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
-			</if>
-	       <if test="searchFields.userId != null and searchFields.userId != ''">
-				AND userId = #{searchFields.userId}
 			</if>
 	       <if test="searchFields.type != null and searchFields.type != ''">
 				AND type = #{searchFields.type}
@@ -133,6 +130,9 @@
 			</if>
 	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
 				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.updateUser != null and searchFields.updateUser != ''">
+				AND updateUser = #{searchFields.updateUser}
 			</if>
 	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
 				AND updateTime = #{searchFields.updateTime}
@@ -143,16 +143,13 @@
 	<!--条件查询分页记录总数-->
 	<select id="getTotalCount" resultType="Long">
 		SELECT count(1)
-		FROM achievement
+		FROM notice
 		<where>
 	       <if test="searchFields.title != null and searchFields.title != ''">
 				AND title = #{searchFields.title}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
-			</if>
-	       <if test="searchFields.userId != null and searchFields.userId != ''">
-				AND userId = #{searchFields.userId}
 			</if>
 	       <if test="searchFields.type != null and searchFields.type != ''">
 				AND type = #{searchFields.type}
@@ -171,6 +168,9 @@
 			</if>
 	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
 				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.updateUser != null and searchFields.updateUser != ''">
+				AND updateUser = #{searchFields.updateUser}
 			</if>
 	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
 				AND updateTime = #{searchFields.updateTime}
@@ -181,16 +181,13 @@
 	<!-- 查询列表 -->
 	<select id="findListByParams" resultMap="resultMap">
 		SELECT <include refid="columns" />
-		FROM achievement
+		FROM notice
 		<where>
 	       <if test="searchFields.title != null and searchFields.title != ''">
 				AND title = #{searchFields.title}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
-			</if>
-	       <if test="searchFields.userId != null and searchFields.userId != ''">
-				AND userId = #{searchFields.userId}
 			</if>
 	       <if test="searchFields.type != null and searchFields.type != ''">
 				AND type = #{searchFields.type}
@@ -209,6 +206,9 @@
 			</if>
 	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
 				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.updateUser != null and searchFields.updateUser != ''">
+				AND updateUser = #{searchFields.updateUser}
 			</if>
 	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
 				AND updateTime = #{searchFields.updateTime}
@@ -221,16 +221,13 @@
 	<!-- 查询单个 -->
 	<select id="searchOne" resultMap="resultMap">
 		SELECT <include refid="columns" />
-		FROM achievement
+		FROM notice
 		<where>
 	       <if test="searchFields.title != null and searchFields.title != ''">
 				AND title = #{searchFields.title}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
-			</if>
-	       <if test="searchFields.userId != null and searchFields.userId != ''">
-				AND userId = #{searchFields.userId}
 			</if>
 	       <if test="searchFields.type != null and searchFields.type != ''">
 				AND type = #{searchFields.type}
@@ -249,6 +246,9 @@
 			</if>
 	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
 				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.updateUser != null and searchFields.updateUser != ''">
+				AND updateUser = #{searchFields.updateUser}
 			</if>
 	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
 				AND updateTime = #{searchFields.updateTime}

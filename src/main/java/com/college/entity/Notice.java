@@ -1,20 +1,20 @@
 package com.college.entity;
 
 import java.io.Serializable;
-public class Achievement implements Serializable {
+public class Notice implements Serializable {
 
 	//alias
-	public static final String TABLE_ALIAS = "Achievement";
+	public static final String TABLE_ALIAS = "Notice";
 	public static final String ALIAS_ID = "id";
 	public static final String ALIAS_TITLE = "title";
 	public static final String ALIAS_RESUME = "resume";
-	public static final String ALIAS_USERID = "userId";
 	public static final String ALIAS_TYPE = "type";
 	public static final String ALIAS_IMAGE = "image";
 	public static final String ALIAS_LINK = "link";
 	public static final String ALIAS_CONTENT = "content";
 	public static final String ALIAS_STATUS = "status";
 	public static final String ALIAS_CREATETIME = "createTime";
+	public static final String ALIAS_UPDATEUSER = "updateUser";
 	public static final String ALIAS_UPDATETIME = "updateTime";
 	//maxId
 	public static final String ALIAS_MAXID = "maxId";
@@ -31,10 +31,6 @@ public class Achievement implements Serializable {
 	 * 
 	 */
 	private String resume;
-	/**
-	 * 
-	 */
-	private Integer userId;
 	/**
 	 * 
 	 */
@@ -59,6 +55,10 @@ public class Achievement implements Serializable {
 	 * 创建时间
 	 */
 	private java.util.Date createTime;
+	/**
+	 * 
+	 */
+	private String updateUser;
 	/**
 	 * 更新时间
 	 */
@@ -86,13 +86,6 @@ public class Achievement implements Serializable {
 	
 	public void setResume(String value) {
 		this.resume = value;
-	}
-	public Integer getUserId() {
-		return this.userId;
-	}
-	
-	public void setUserId(Integer value) {
-		this.userId = value;
 	}
 	public Integer getType() {
 		return this.type;
@@ -135,6 +128,13 @@ public class Achievement implements Serializable {
 	
 	public void setCreateTime(java.util.Date value) {
 		this.createTime = value;
+	}
+	public String getUpdateUser() {
+		return this.updateUser;
+	}
+	
+	public void setUpdateUser(String value) {
+		this.updateUser = value;
 	}
 	public java.util.Date getUpdateTime() {
 		return this.updateTime;

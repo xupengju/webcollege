@@ -1,14 +1,15 @@
 package com.college.entity;
 
 import java.io.Serializable;
-public class Achievement implements Serializable {
+public class Teacher implements Serializable {
 
 	//alias
-	public static final String TABLE_ALIAS = "Achievement";
+	public static final String TABLE_ALIAS = "Teacher";
 	public static final String ALIAS_ID = "id";
-	public static final String ALIAS_TITLE = "title";
+	public static final String ALIAS_TEACHERNAME = "teacherName";
 	public static final String ALIAS_RESUME = "resume";
 	public static final String ALIAS_USERID = "userId";
+	public static final String ALIAS_ACADEMICTITLE = "academicTitle";
 	public static final String ALIAS_TYPE = "type";
 	public static final String ALIAS_IMAGE = "image";
 	public static final String ALIAS_LINK = "link";
@@ -26,7 +27,7 @@ public class Achievement implements Serializable {
 	/**
 	 * 
 	 */
-	private String title;
+	private String teacherName;
 	/**
 	 * 
 	 */
@@ -35,6 +36,10 @@ public class Achievement implements Serializable {
 	 * 
 	 */
 	private Integer userId;
+	/**
+	 * 
+	 */
+	private String academicTitle;
 	/**
 	 * 
 	 */
@@ -73,12 +78,12 @@ public class Achievement implements Serializable {
 	public void setId(Integer value) {
 		this.id = value;
 	}
-	public String getTitle() {
-		return this.title;
+	public String getTeacherName() {
+		return this.teacherName;
 	}
 	
-	public void setTitle(String value) {
-		this.title = value;
+	public void setTeacherName(String value) {
+		this.teacherName = value;
 	}
 	public String getResume() {
 		return this.resume;
@@ -93,6 +98,13 @@ public class Achievement implements Serializable {
 	
 	public void setUserId(Integer value) {
 		this.userId = value;
+	}
+	public String getAcademicTitle() {
+		return this.academicTitle;
+	}
+	
+	public void setAcademicTitle(String value) {
+		this.academicTitle = value;
 	}
 	public Integer getType() {
 		return this.type;

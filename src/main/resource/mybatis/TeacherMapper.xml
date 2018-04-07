@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="com.college.repository.AchievementDao">
+<mapper namespace="com.college.repository.TeacherDao">
 
-	<resultMap id="resultMap" type="com.college.entity.Achievement">
+	<resultMap id="resultMap" type="com.college.entity.Teacher">
         <result property="id" column="id"/>
-        <result property="title" column="title"/>
+        <result property="teacherName" column="teacherName"/>
         <result property="resume" column="resume"/>
         <result property="userId" column="userId"/>
+        <result property="academicTitle" column="academicTitle"/>
         <result property="type" column="type"/>
         <result property="image" column="image"/>
         <result property="link" column="link"/>
@@ -21,22 +22,23 @@
 	
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="columns">
-		id,title,resume,userId,type,image,link,content,status,createTime,updateTime
+		id,teacherName,resume,userId,academicTitle,type,image,link,content,status,createTime,updateTime
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.Achievement">
+	<select id="get" parameterType="Integer" resultType="com.college.entity.Teacher">
 		SELECT <include refid="columns" />
-		FROM achievement
+		FROM teacher
 		WHERE id=#{id}
 	</select>
 
 	<!-- 新增 -->
-	<insert id="insert" parameterType="com.college.entity.Achievement" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO achievement (
-        	title,
+	<insert id="insert" parameterType="com.college.entity.Teacher" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO teacher (
+        	teacherName,
         	resume,
         	userId,
+        	academicTitle,
         	type,
         	image,
         	link,
@@ -45,9 +47,10 @@
         	createTime,
         	updateTime
 		) VALUES (
-        	#{title},
+        	#{teacherName},
         	#{resume},
         	#{userId},
+        	#{academicTitle},
         	#{type},
         	#{image},
         	#{link},
@@ -60,16 +63,19 @@
 	
 	<!-- 更新 -->
 	<update id="update" >
-        UPDATE achievement
+        UPDATE teacher
 		<set>
-			<if test="title!=null and title!='' ">
-				title = #{title},
+			<if test="teacherName!=null and teacherName!='' ">
+				teacherName = #{teacherName},
 			</if>
 			<if test="resume!=null and resume!='' ">
 				resume = #{resume},
 			</if>
 			<if test="userId!=null and userId!='' ">
 				userId = #{userId},
+			</if>
+			<if test="academicTitle!=null and academicTitle!='' ">
+				academicTitle = #{academicTitle},
 			</if>
 			<if test="type!=null and type!='' ">
 				type = #{type},
@@ -99,22 +105,25 @@
 	
 	<!-- 删除用户 -->
 	<delete id="delete" parameterType="Integer">
-	     DELETE FROM achievement WHERE id=#{id}
+	     DELETE FROM teacher WHERE id=#{id}
 	</delete>
 
 	<!-- 查询分页列表 -->
 	<select id="searchPageList" resultMap="resultMap">
 		SELECT <include refid="columns" />
-		FROM achievement
+		FROM teacher
 		<where>
-	       <if test="searchFields.title != null and searchFields.title != ''">
-				AND title = #{searchFields.title}
+	       <if test="searchFields.teacherName != null and searchFields.teacherName != ''">
+				AND teacherName = #{searchFields.teacherName}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
 			</if>
 	       <if test="searchFields.userId != null and searchFields.userId != ''">
 				AND userId = #{searchFields.userId}
+			</if>
+	       <if test="searchFields.academicTitle != null and searchFields.academicTitle != ''">
+				AND academicTitle = #{searchFields.academicTitle}
 			</if>
 	       <if test="searchFields.type != null and searchFields.type != ''">
 				AND type = #{searchFields.type}
@@ -143,16 +152,19 @@
 	<!--条件查询分页记录总数-->
 	<select id="getTotalCount" resultType="Long">
 		SELECT count(1)
-		FROM achievement
+		FROM teacher
 		<where>
-	       <if test="searchFields.title != null and searchFields.title != ''">
-				AND title = #{searchFields.title}
+	       <if test="searchFields.teacherName != null and searchFields.teacherName != ''">
+				AND teacherName = #{searchFields.teacherName}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
 			</if>
 	       <if test="searchFields.userId != null and searchFields.userId != ''">
 				AND userId = #{searchFields.userId}
+			</if>
+	       <if test="searchFields.academicTitle != null and searchFields.academicTitle != ''">
+				AND academicTitle = #{searchFields.academicTitle}
 			</if>
 	       <if test="searchFields.type != null and searchFields.type != ''">
 				AND type = #{searchFields.type}
@@ -181,16 +193,19 @@
 	<!-- 查询列表 -->
 	<select id="findListByParams" resultMap="resultMap">
 		SELECT <include refid="columns" />
-		FROM achievement
+		FROM teacher
 		<where>
-	       <if test="searchFields.title != null and searchFields.title != ''">
-				AND title = #{searchFields.title}
+	       <if test="searchFields.teacherName != null and searchFields.teacherName != ''">
+				AND teacherName = #{searchFields.teacherName}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
 			</if>
 	       <if test="searchFields.userId != null and searchFields.userId != ''">
 				AND userId = #{searchFields.userId}
+			</if>
+	       <if test="searchFields.academicTitle != null and searchFields.academicTitle != ''">
+				AND academicTitle = #{searchFields.academicTitle}
 			</if>
 	       <if test="searchFields.type != null and searchFields.type != ''">
 				AND type = #{searchFields.type}
@@ -221,16 +236,19 @@
 	<!-- 查询单个 -->
 	<select id="searchOne" resultMap="resultMap">
 		SELECT <include refid="columns" />
-		FROM achievement
+		FROM teacher
 		<where>
-	       <if test="searchFields.title != null and searchFields.title != ''">
-				AND title = #{searchFields.title}
+	       <if test="searchFields.teacherName != null and searchFields.teacherName != ''">
+				AND teacherName = #{searchFields.teacherName}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
 			</if>
 	       <if test="searchFields.userId != null and searchFields.userId != ''">
 				AND userId = #{searchFields.userId}
+			</if>
+	       <if test="searchFields.academicTitle != null and searchFields.academicTitle != ''">
+				AND academicTitle = #{searchFields.academicTitle}
 			</if>
 	       <if test="searchFields.type != null and searchFields.type != ''">
 				AND type = #{searchFields.type}

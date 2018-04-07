@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController{
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
@@ -41,8 +41,15 @@ public class UserController {
 
     @RequestMapping(value = "/list")
     @ResponseBody
-    public Map<String, Object> studentList(@RequestParam(value = "pagenum",defaultValue = "1") int pageNum,@RequestParam(value = "pagesize",defaultValue = "10") int pageSize) {
+    public Map<String, Object> studentList(@RequestParam(value = "pagenum",defaultValue = "1") int pageNum,
+                                           @RequestParam(value = "pagesize",defaultValue = "10") int pageSize,
+                                           @RequestParam(value = "username",required = false) String userName
+                                           ) {
         Map<String, Object> params = Maps.newHashMap();
+        // FIXME: 2018/4/7 根据登录的用户 ID  过滤应该展示的用户列表
+        if (null != userName){
+            params.put("userName",userName);
+        }
         Page<User> page = userService.searchPageList(pageNum, pageSize, params);
         Map<String, Object> resultMap = Maps.newHashMap();
         logger.info(" UserController --> students :{}", page.getResult());
