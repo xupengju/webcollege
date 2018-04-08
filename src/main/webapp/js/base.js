@@ -5,62 +5,62 @@ $("nav a").has(".navTwo").hover(function(){
 })
 
 $(".aboutBtn").click(function(){
-	window.location.href="about.html"
+	window.location.href="about.vm"
 	localStorage.setItem("index",0)
 	
 })
 $(".manageBtn").click(function(){
-	window.location.href="practiceManage.html"
+	window.location.href="practiceManage.vm"
 	localStorage.setItem("Manageindex",0)
 })
 $(".teachBtn").click(function(){
-	window.location.href="teachingResources.html"
+	window.location.href="teachingResources.vm"
 	localStorage.setItem("teachIndex",0)
 })
 $(".innovaBtn").click(function(){
-	window.location.href="innovation.html"
+	window.location.href="innovation.vm"
 	localStorage.setItem("innovaIndex",0)
 })
 $(".socialBtn").click(function(){
-	window.location.href="shehui.html"
+	window.location.href="shehui.vm"
 	localStorage.setItem("socialIndex",0)
 })
 $(".studentBtn").click(function(){
-	window.location.href="student.html"
+	window.location.href="student.vm"
 	localStorage.setItem("studentIndex",0)
 })
 var h=window.location.href;
 	h=h.substring(h.length-10,h.length-5)
 $(".aboutA div").click(function(){
 	var $index=$(this).index()
-	showaa("about",$index,"about.html","index")
+	showaa("about",$index,"about.vm","index")
 	
 })
 //实习管理
 $(".manageA div").click(function(){
 	var $index=$(this).index()
-	showaa("anage",$index,"practiceManage.html","Manageindex")
+	showaa("anage",$index,"practiceManage.vm","Manageindex")
 })
 //教学资源
 $(".teachA div").click(function(){
 	var $index=$(this).index()
-	showaa("urces",$index,"teachingResources.html","teachIndex")
+	showaa("urces",$index,"teachingResources.vm","teachIndex")
 	
 })
 //创新创业
 $(".innovaA div").click(function(){
 	var $index=$(this).index()
-	showaa("ation",$index,"innovation.html","innovaIndex")
+	showaa("ation",$index,"innovation.vm","innovaIndex")
 })
 //社会培训
 $(".socialA div").click(function(){
 	var $index=$(this).index()
-	showaa("hehui",$index,"shehui.html","socialIndex")
+	showaa("hehui",$index,"shehui.vm","socialIndex")
 })
 //学生管理
 $(".studentA div").click(function(){
 	var $index=$(this).index()
-	showaa("udent",$index,"student.html","studentIndex")
+	showaa("udent",$index,"student.vm","studentIndex")
 })
 function showaa(word,index,ht,ind){
 	if(h==word){

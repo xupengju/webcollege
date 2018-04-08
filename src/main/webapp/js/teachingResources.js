@@ -65,16 +65,16 @@ $(".leftNav li p").click(function(event){
 	$(".twoContent"+parentIndex).find(".rightBox").eq($in-1).show()
 })
 $(".newBox").eq(0).click(function(){
-	window.location.href="TeachingResourcesVideo.html"
+	window.location.href="TeachingResourcesVideo.vm"
 })
 $(".newBox").eq(1).click(function(){
-	window.location.href="TeachingResourcesImg.html"
+	window.location.href="TeachingResourcesImg.vm"
 })
 $(".newBox").eq(2).click(function(){
-	window.location.href="TeachingResourcesTeach.html"
+	window.location.href="TeachingResourcesTeach.vm"
 })
 $(".newBox").eq(3).click(function(){
-	window.location.href="TeachingResourcesLink.html"
+	window.location.href="TeachingResourcesLink.vm"
 })
 //返回
 $(".back1").click(function(){

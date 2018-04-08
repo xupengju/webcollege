@@ -3,18 +3,18 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="css/common.css"/>
-		<link rel="stylesheet" type="text/css" href="css/about.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/about.css"/>
 	</head>
 	<body>
 		<header>
 			<div class="box">
-				<img src="img/logo.png" />
-				<a href="login.html" class="loginBtn">登陆</a>
+				<img src="../../img/logo.png" />
+				<a href="login.vm" class="loginBtn">登陆</a>
 			</div>
 		</header>
 		<nav>
-			<a href="index.jsp">网站首页</a>
+			<a href="index.vm">网站首页</a>
 			<a>
 				<div class="aboutBtn">关于我们</div>
 				<div class="navTwo aboutA">
@@ -69,46 +69,42 @@
 				</div>
 			</a>
 		</nav>
-		<div class="detailAboutContent socialDetail">
-			<h2 class="tc mt50 mb50">石家庄职业技术学院实训考勤情况<div class="back1">返回</div></h2>
-			<table width="100%">
-				<tr>
-					<th>姓名</th>
-					<th>身份证号</th>
-					<th>学校</th>
-					<th>专业</th>
-				</tr>
-				<tr>
-					<td>张XXX</td>
-					<td>123940995859595XXX</td>
-					<td>石家庄职业技术学院</td>
-					<td>信息技术系</td>
-				</tr>
-				<tr>
-					<td>张XXX</td>
-					<td>123940995859595XXX</td>
-					<td>石家庄职业技术学院</td>
-					<td>信息技术系</td>
-				</tr>
-				<tr>
-					<td>张XXX</td>
-					<td>123940995859595XXX</td>
-					<td>石家庄职业技术学院</td>
-					<td>信息技术系</td>
-				</tr>
-				<tr>
-					<td>张XXX</td>
-					<td>123940995859595XXX</td>
-					<td>石家庄职业技术学院</td>
-					<td>信息技术系</td>
-				</tr>
-				<tr>
-					<td>张XXX</td>
-					<td>123940995859595XXX</td>
-					<td>石家庄职业技术学院</td>
-					<td>信息技术系</td>
-				</tr>
-			</table>
+		<div class="detailAboutContent dtr">
+			<h2 class="tc mt50 mb50">视频库 <div class="back1">返回</div></h2>
+			<ul>
+				<li>
+					<img src="../../img/java.jpg"/>
+					<a href="#">视频1</a>
+				</li>
+				<li>
+					<img src="../../img/java.jpg"/>
+					<a href="#">视频1</a>
+				</li>
+				<li>
+					<img src="../../img/java.jpg"/>
+					<a href="#">视频1</a>
+				</li>
+				<li>
+					<img src="../../img/java.jpg"/>
+					<a href="#">视频1</a>
+				</li>
+				<li>
+					<img src="../../img/java.jpg"/>
+					<a href="#">视频1</a>
+				</li>
+				<li>
+					<img src="../../img/java.jpg"/>
+					<a href="#">视频1</a>
+				</li>
+				<li>
+					<img src="../../img/java.jpg"/>
+					<a href="#">视频1</a>
+				</li>
+				<li>
+					<img src="../../img/java.jpg"/>
+					<a href="#">视频1</a>
+				</li>
+			</ul>
 		</div>
 		
 		<footer>
@@ -116,10 +112,11 @@
 			<p>学院地址：石家庄市中山西路长兴街12号 邮编：050081 电话：0311-85333755 招生热线：0311-85333630，0311-68092994</p>
 			<p>设计单位：石家庄职业技术学院  软件学院 冀ICP备14001874号-1</p>
 		</footer>
-		<script src="js/jquery-3.1.0.js"></script>
-		<script src="js/swiper.min.js"></script>
-		<script src="js/fenye.js"></script>
-		<script src="js/base.js"></script>
-		<script src="js/social.js"></script>
+		<script src="../../js/jquery-3.1.0.js"></script>
+		<script src="../../js/swiper.min.js"></script>
+		<script src="../../js/fenye.js"></script>
+
+		<script src="../../js/base.js"></script>
+		<script src="../../js/teachingResources.js"></script>
 	</body>
 </html>
