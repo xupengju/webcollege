@@ -1,26 +1,26 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
 <!DOCTYPE html>
 <html>
 <base>
 <meta charset="UTF-8">
 <title></title>
-<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css"/>
 <!--<link rel="stylesheet/less" type="text/css" href="css/common.less"/>
 <link rel="stylesheet/less" type="text/css" href="css/index.less"/>
 <link rel="stylesheet" type="text/css" href="css/swiper.min.css" />-->
-<link rel="stylesheet" type="text/css" href="css/common.css"/>
-<link rel="stylesheet" type="text/css" href="css/index.css"/>
-<script src="js/less.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+<script src="../../js/less.min.js"></script>
 </head>
 <body>
 <header>
     <div class="box">
-        <img src="img/logo.png"/>
-        <a href="login.html" class="loginBtn">登陆</a>
+        <img src="../../img/logo.png"/>
+        <a href="login.vm" class="loginBtn">登陆</a>
     </div>
 </header>
 <nav>
-    <a href="index.jsp">
+    <a href="index.vm">
         <div class="deepBlue">网站首页</div>
     </a>
     <a>
@@ -81,13 +81,13 @@
     <!--<img src="img/banner.png"/>-->
 </div>
 <div class="news">
-    <img class="img1" src="img/img3.jpg"/>
+    <img class="img1" src="../../img/img3.jpg"/>
     <div class="rightBox">
         <h3 class="title">通知公告
             <span>MORE<div class="jiao"></div></span>
         </h3>
         <div class="figure">
-            <img src="img/img4.jpg">
+            <img src="../../img/img4.jpg">
             <div>
                 <h3>新闻动态标题新闻动态标题新闻动态标题</h3>
                 <p>
@@ -103,13 +103,13 @@
     </div>
 </div>
 <div class="news">
-    <img class="img1" src="img/img3.jpg"/>
+    <img class="img1" src="../../img/img3.jpg"/>
     <div class="rightBox">
         <h3 class="title">通知公告
             <span>MORE<div class="jiao"></div></span>
         </h3>
         <div class="figure">
-            <img src="img/img4.jpg">
+            <img src="../../img/img4.jpg">
             <div>
                 <h3>新闻动态标题新闻动态标题新闻动态标题</h3>
                 <p>
@@ -129,43 +129,43 @@
     <div class="swiper-container">
         <ul class="swiper-wrapper">
             <li class="swiper-slide">
-                <img src="img/img5.jpg"/>
+                <img src="../../img/img5.jpg"/>
                 <p>
                     我院举办石家庄职业技术学院·石家庄社区学院入学活动
                 </p>
             </li>
             <li class="swiper-slide">
-                <img src="img/img5.jpg"/>
+                <img src="../../img/img5.jpg"/>
                 <p>
                     我院举办石家庄职业技术学院·石家庄社区学院入学活动
                 </p>
             </li>
             <li class="swiper-slide">
-                <img src="img/img5.jpg"/>
+                <img src="../../img/img5.jpg"/>
                 <p>
                     我院举办石家庄职业技术学院·石家庄社区学院入学活动
                 </p>
             </li>
             <li class="swiper-slide">
-                <img src="img/img5.jpg"/>
+                <img src="../../img/img5.jpg"/>
                 <p>
                     我院举办石家庄职业技术学院·石家庄社区学院入学活动
                 </p>
             </li>
             <li class="swiper-slide">
-                <img src="img/img5.jpg"/>
+                <img src="../../img/img5.jpg"/>
                 <p>
                     我院举办石家庄职业技术学院·石家庄社区学院入学活动
                 </p>
             </li>
             <li class="swiper-slide">
-                <img src="img/img5.jpg"/>
+                <img src="../../img/img5.jpg"/>
                 <p>
                     我院举办石家庄职业技术学院·石家庄社区学院入学活动
                 </p>
             </li>
             <li class="swiper-slide">
-                <img src="img/img5.jpg"/>
+                <img src="../../img/img5.jpg"/>
                 <p>
                     我院举办石家庄职业技术学院·石家庄社区学院入学活动
                 </p>
@@ -178,9 +178,9 @@
     <p>学院地址：石家庄市中山西路长兴街12号 邮编：050081 电话：0311-85333755 招生热线：0311-85333630，0311-68092994</p>
     <p>设计单位：石家庄职业技术学院 软件学院 冀ICP备14001874号-1</p>
 </footer>
-<script src="js/jquery-3.1.0.js"></script>
-<script src="js/base.js"></script>
-<script src="js/swiper.min.js"></script>
+<script src="../../js/jquery-3.1.0.js"></script>
+<script src="../../js/base.js"></script>
+<script src="../../js/swiper.min.js"></script>
 <script>
     var mySwiper = new Swiper('.swiper-container', {
         autoplay: 1000,//可选选项，自动滑动

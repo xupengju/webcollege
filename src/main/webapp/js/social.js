@@ -46,12 +46,13 @@ $(".leftNav li p").click(function(event){
 	var $in=$(this).index()+1;
 	$(this).css("background","#7a90b6").siblings().css("background","#adbad1")
 	var parentIndex=$(this).parent().index()
+	
 	$(".twoContent"+parentIndex).show().siblings(".co").hide()
 	$(".twoContent"+parentIndex).find(".rightBox").eq($in-1).show()
 })
 
 $(".schoolList li").click(function(){
-	window.location.href="socialDetail.html"
+	window.location.href="socialDetail.vm"
 })
 
 $(".back1").click(function(){
