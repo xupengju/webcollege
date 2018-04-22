@@ -21,7 +21,8 @@ import java.util.Map;
  * @Title:
  * @Description
  */
-@Controller("/resource")
+@Controller
+@RequestMapping("/api/resource")
 public class ResourceController {
 
     private static Logger logger = LoggerFactory

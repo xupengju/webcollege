@@ -21,7 +21,8 @@ import java.util.Map;
  * @Title:
  * @Description
  */
-@Controller("/oauthToken")
+@Controller
+@RequestMapping("/oauthToken")
 public class OauthTokenController {
 
     private static Logger logger = LoggerFactory

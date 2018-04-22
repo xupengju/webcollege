@@ -13,6 +13,5 @@ public class Constants {
     /**
      * 图片服务器上传地址
      */
-    public static final String FILE_UPLOAD_ADDRESS = "http://image.yinyuetai.com/edit";
-
+    //public static final String IMG_PATH = "/media/temporaryupload";
 }
