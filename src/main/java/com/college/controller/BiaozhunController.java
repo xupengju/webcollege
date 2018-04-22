@@ -21,7 +21,8 @@ import java.util.Map;
  * @Title:
  * @Description
  */
-@Controller("/biaozhun")
+@Controller
+@RequestMapping("/biaozhun")
 public class BiaozhunController {
 
     private static Logger logger = LoggerFactory

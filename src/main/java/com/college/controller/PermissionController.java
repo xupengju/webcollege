@@ -21,7 +21,8 @@ import java.util.Map;
  * @Title:
  * @Description
  */
-@Controller("/permission")
+@Controller
+@RequestMapping("/permission")
 public class PermissionController {
 
     private static Logger logger = LoggerFactory

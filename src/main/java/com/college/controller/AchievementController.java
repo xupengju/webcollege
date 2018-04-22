@@ -21,7 +21,8 @@ import java.util.Map;
  * @Title:
  * @Description
  */
-@Controller("/achievement")
+@Controller
+@RequestMapping("/achievement")
 public class AchievementController {
 
     private static Logger logger = LoggerFactory
