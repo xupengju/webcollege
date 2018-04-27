@@ -122,6 +122,7 @@ public class UserRoleController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         UserRole userRole = new UserRole();
+        userRole.setId(id);
         userRole.setUserId(userId);
         userRole.setRoleId(roleId);
         userRole.setStatus(status);

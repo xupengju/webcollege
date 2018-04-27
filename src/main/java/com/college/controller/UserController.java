@@ -1,6 +1,5 @@
 package com.college.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.college.entity.User;
 import com.college.service.UserService;
 import com.github.pagehelper.Page;
@@ -11,13 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

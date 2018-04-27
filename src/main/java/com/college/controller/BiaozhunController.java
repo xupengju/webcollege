@@ -115,6 +115,7 @@ public class BiaozhunController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         Biaozhun biaozhun = new Biaozhun();
+        biaozhun.setId(id);
         biaozhun.setUserId(userId);
         biaozhun.setStatus(status);
         biaozhun.setCreateTime(createTime);

@@ -127,6 +127,7 @@ public class TeacherController {
         Map<String, Object> resultMap = Maps.newHashMap();
         resultMap.put("resultcode", AppCode._200);
         resultMap.put("resultd", id);
+        logger.info("这里是add");
         return resultMap;
     }
 
@@ -164,6 +165,7 @@ public class TeacherController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         Teacher teacher = new Teacher();
+        teacher.setId(id);
         teacher.setTeacherName(teacherName);
         teacher.setResume(resume);
         teacher.setUserId(userId);
@@ -179,6 +181,7 @@ public class TeacherController {
         Map<String, Object> resultMap = Maps.newHashMap();
         resultMap.put("resultcode", AppCode._200);
         resultMap.put("resultd", id);
+        logger.info("这里是update");
         return resultMap;
     }
 

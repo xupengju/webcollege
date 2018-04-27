@@ -129,6 +129,7 @@ public class RoleController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         Role role = new Role();
+        role.setId(id);
         role.setRoleName(roleName);
         role.setSign(sign);
         role.setRemark(remark);

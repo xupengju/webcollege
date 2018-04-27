@@ -136,6 +136,7 @@ public class OauthTokenController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         OauthToken oauthToken = new OauthToken();
+        oauthToken.setId(id);
         oauthToken.setUserId(userId);
         oauthToken.setToken(token);
         oauthToken.setExpiredSecond(expiredSecond);

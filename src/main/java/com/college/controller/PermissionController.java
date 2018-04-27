@@ -122,6 +122,7 @@ public class PermissionController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         Permission permission = new Permission();
+        permission.setId(id);
         permission.setAction(action);
         permission.setUrl(url);
         permission.setStatus(status);
