@@ -157,6 +157,7 @@ public class AchievementController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         Achievement achievement = new Achievement();
+        achievement.setId(id);
         achievement.setTitle(title);
         achievement.setResume(resume);
         achievement.setUserId(userId);

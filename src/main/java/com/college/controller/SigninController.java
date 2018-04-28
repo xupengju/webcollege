@@ -115,6 +115,7 @@ public class SigninController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         Signin signin = new Signin();
+        signin.setId(id);
         signin.setUserId(userId);
         signin.setStatus(status);
         signin.setCreateTime(createTime);

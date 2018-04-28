@@ -122,6 +122,7 @@ public class RolePermissionController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         RolePermission rolePermission = new RolePermission();
+        rolePermission.setId(id);
         rolePermission.setRoleId(roleId);
         rolePermission.setPermissionId(permissionId);
         rolePermission.setStatus(status);

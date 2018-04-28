@@ -157,6 +157,7 @@ public class NoticeController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         Notice notice = new Notice();
+        notice.setId(id);
         notice.setTitle(title);
         notice.setResume(resume);
         notice.setType(type);
