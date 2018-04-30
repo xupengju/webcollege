@@ -180,7 +180,12 @@ public class ApiUserService {
         // 1. 查询用户角色
         Map<String, Object> paramsMap = Maps.newHashMap();
         paramsMap.put("userId", userId);
-        paramsMap.put("status", 0);
+        paramsMap.put("status", true);
+        User user = userService.searchOne(paramsMap);
+        if (null != user && user.getAdministrator()) {
+            logger.info("管理员 boolean : {}", user.getAdministrator());
+            return true;
+        }
         List<UserRole> userRoleList = userRoleService.findListByParams(paramsMap);
         logger.info("用户的角色 : {}", userRoleList.toString());
         logger.info("用户的url : {}", url);
