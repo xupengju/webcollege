@@ -3,6 +3,7 @@ package com.college.controller;
 import com.college.contants.AppCode;
 import com.college.contants.Path;
 import com.college.entity.Teacher;
+import com.college.model.Resp;
 import com.college.service.TeacherService;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
@@ -99,7 +100,7 @@ public class TeacherController extends BaseController {
      */
     @RequestMapping(value = Path.TEACHER_ADD)
     @ResponseBody
-    public Map<String, Object> add(
+    public Resp add(
             @RequestParam(value = "teacherName", required = false) String teacherName,
             @RequestParam(value = "resume", required = false) String resume,
             @RequestParam(value = "userId", required = false) Integer userId,
@@ -124,11 +125,7 @@ public class TeacherController extends BaseController {
         teacher.setCreateTime(createTime);
         teacher.setUpdateTime(updateTime);
         Integer id = teacherService.insert(teacher);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        logger.info("这里是add");
-        return resultMap;
+        return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
     /**
@@ -150,7 +147,7 @@ public class TeacherController extends BaseController {
      */
     @RequestMapping(value = Path.TEACHER_UPDATE)
     @ResponseBody
-    public Map<String, Object> update(
+    public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "teacherName", required = false) String teacherName,
             @RequestParam(value = "resume", required = false) String resume,
@@ -178,11 +175,7 @@ public class TeacherController extends BaseController {
         teacher.setCreateTime(createTime);
         teacher.setUpdateTime(updateTime);
         teacherService.update(teacher);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        logger.info("这里是update");
-        return resultMap;
+        return Resp.success();
     }
 
 }

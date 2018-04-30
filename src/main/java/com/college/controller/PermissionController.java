@@ -3,6 +3,7 @@ package com.college.controller;
 import com.college.contants.AppCode;
 import com.college.contants.Path;
 import com.college.entity.Permission;
+import com.college.model.Resp;
 import com.college.service.PermissionService;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
@@ -81,7 +82,7 @@ public class PermissionController extends BaseController {
      */
     @RequestMapping(value = Path.PERMISSION_ADD)
     @ResponseBody
-    public Map<String, Object> add(
+    public Resp add(
             @RequestParam(value = "action", required = false) String action,
             @RequestParam(value = "url", required = false) String url,
             @RequestParam(value = "status", required = false) boolean status,
@@ -94,10 +95,7 @@ public class PermissionController extends BaseController {
         permission.setCreateTime(createTime);
         permission.setUpdateTime(updateTime);
         Integer id = permissionService.insert(permission);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
     /**
@@ -113,7 +111,7 @@ public class PermissionController extends BaseController {
      */
     @RequestMapping(value = Path.PERMISSION_UPDATE)
     @ResponseBody
-    public Map<String, Object> update(
+    public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "action", required = false) String action,
             @RequestParam(value = "url", required = false) String url,
@@ -129,10 +127,7 @@ public class PermissionController extends BaseController {
         permission.setCreateTime(createTime);
         permission.setUpdateTime(updateTime);
         permissionService.update(permission);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return Resp.success();
     }
 
 }

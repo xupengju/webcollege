@@ -3,6 +3,7 @@ package com.college.controller;
 import com.college.contants.AppCode;
 import com.college.contants.Path;
 import com.college.entity.RolePermission;
+import com.college.model.Resp;
 import com.college.service.RolePermissionService;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
@@ -81,7 +82,7 @@ public class RolePermissionController extends BaseController {
      */
     @RequestMapping(value = Path.ROLE_PERMISSION_ADD)
     @ResponseBody
-    public Map<String, Object> add(
+    public Resp add(
             @RequestParam(value = "roleId", required = false) Integer roleId,
             @RequestParam(value = "permissionId", required = false) Integer permissionId,
             @RequestParam(value = "status", required = false) boolean status,
@@ -94,10 +95,7 @@ public class RolePermissionController extends BaseController {
         rolePermission.setCreateTime(createTime);
         rolePermission.setUpdateTime(updateTime);
         Integer id = rolePermissionService.insert(rolePermission);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
     /**
@@ -113,7 +111,7 @@ public class RolePermissionController extends BaseController {
      */
     @RequestMapping(value = Path.ROLE_PERMISSION_UPDATE)
     @ResponseBody
-    public Map<String, Object> update(
+    public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "roleId", required = false) Integer roleId,
             @RequestParam(value = "permissionId", required = false) Integer permissionId,
@@ -129,10 +127,7 @@ public class RolePermissionController extends BaseController {
         rolePermission.setCreateTime(createTime);
         rolePermission.setUpdateTime(updateTime);
         rolePermissionService.update(rolePermission);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return Resp.success();
     }
 
 }

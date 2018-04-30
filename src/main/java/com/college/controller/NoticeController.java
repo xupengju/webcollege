@@ -3,6 +3,7 @@ package com.college.controller;
 import com.college.contants.AppCode;
 import com.college.contants.Path;
 import com.college.entity.Notice;
+import com.college.model.Resp;
 import com.college.service.NoticeService;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
@@ -96,7 +97,7 @@ public class NoticeController extends BaseController {
      */
     @RequestMapping(value = Path.NOTICE_ADD)
     @ResponseBody
-    public Map<String, Object> add(
+    public Resp add(
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "resume", required = false) String resume,
             @RequestParam(value = "type", required = false) Integer type,
@@ -119,10 +120,7 @@ public class NoticeController extends BaseController {
         notice.setUpdateUser(updateUser);
         notice.setUpdateTime(updateTime);
         Integer id = noticeService.insert(notice);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
     /**
@@ -143,7 +141,7 @@ public class NoticeController extends BaseController {
      */
     @RequestMapping(value = Path.NOTICE_UPDATE)
     @ResponseBody
-    public Map<String, Object> update(
+    public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "resume", required = false) String resume,
@@ -169,10 +167,7 @@ public class NoticeController extends BaseController {
         notice.setUpdateUser(updateUser);
         notice.setUpdateTime(updateTime);
         noticeService.update(notice);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return Resp.success();
     }
 
 }

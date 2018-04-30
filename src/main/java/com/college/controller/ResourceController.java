@@ -3,6 +3,7 @@ package com.college.controller;
 import com.college.contants.AppCode;
 import com.college.contants.Path;
 import com.college.entity.Resource;
+import com.college.model.Resp;
 import com.college.service.ResourceService;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
@@ -96,7 +97,7 @@ public class ResourceController extends BaseController {
      */
     @RequestMapping(value = Path.RESOURCE_ADD)
     @ResponseBody
-    public Map<String, Object> add(
+    public Resp add(
             @RequestParam(value = "teacherName", required = false) String teacherName,
             @RequestParam(value = "resume", required = false) String resume,
             @RequestParam(value = "userId", required = false) Integer userId,
@@ -119,10 +120,7 @@ public class ResourceController extends BaseController {
         resource.setCreateTime(createTime);
         resource.setUpdateTime(updateTime);
         Integer id = resourceService.insert(resource);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
     /**
@@ -143,7 +141,7 @@ public class ResourceController extends BaseController {
      */
     @RequestMapping(value = Path.RESOURCE_UPDATE)
     @ResponseBody
-    public Map<String, Object> update(
+    public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "teacherName", required = false) String teacherName,
             @RequestParam(value = "resume", required = false) String resume,
@@ -168,10 +166,7 @@ public class ResourceController extends BaseController {
         resource.setCreateTime(createTime);
         resource.setUpdateTime(updateTime);
         resourceService.update(resource);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return Resp.success();
     }
 
 }

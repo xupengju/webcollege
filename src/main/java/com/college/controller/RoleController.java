@@ -3,6 +3,7 @@ package com.college.controller;
 import com.college.contants.AppCode;
 import com.college.contants.Path;
 import com.college.entity.Role;
+import com.college.model.Resp;
 import com.college.service.RoleService;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
@@ -84,7 +85,7 @@ public class RoleController extends BaseController {
      */
     @RequestMapping(value = Path.ROLE_ADD)
     @ResponseBody
-    public Map<String, Object> add(
+    public Resp add(
             @RequestParam(value = "roleName", required = false) String roleName,
             @RequestParam(value = "sign", required = false) String sign,
             @RequestParam(value = "remark", required = false) String remark,
@@ -99,10 +100,7 @@ public class RoleController extends BaseController {
         role.setCreateTime(createTime);
         role.setUpdateTime(updateTime);
         Integer id = roleService.insert(role);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
     /**
@@ -119,7 +117,7 @@ public class RoleController extends BaseController {
      */
     @RequestMapping(value = Path.ROLE_UPDATE)
     @ResponseBody
-    public Map<String, Object> update(
+    public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "roleName", required = false) String roleName,
             @RequestParam(value = "sign", required = false) String sign,
@@ -137,10 +135,7 @@ public class RoleController extends BaseController {
         role.setCreateTime(createTime);
         role.setUpdateTime(updateTime);
         roleService.update(role);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return Resp.success();
     }
 
 }
