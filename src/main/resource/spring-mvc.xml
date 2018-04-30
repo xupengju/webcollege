@@ -57,4 +57,9 @@
             <bean class="com.college.interceptor.OAuthInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <bean class="com.college.exception.ExceptionHandler">
+        <property name="alarm" value="false"/>
+        <property name="project" value="webcollege"/>
+    </bean>
 </beans>

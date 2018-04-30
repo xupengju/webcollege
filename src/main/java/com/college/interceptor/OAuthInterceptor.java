@@ -73,8 +73,7 @@ public class OAuthInterceptor extends HandlerInterceptorAdapter {
         String token = paramsMap.get("token");
         if (StringUtils.isBlank(token)) {
             logger.error("获取到的toke为空");
-            //throw new CollegeException(AppCode._10001);
-            return true;
+            throw new CollegeException(AppCode._10001);
         }
         logger.info("获取到的token为:{}", token);
 
