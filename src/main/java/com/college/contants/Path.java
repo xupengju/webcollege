@@ -16,7 +16,7 @@ public class Path {
     // 用户相关接口
     public static final String USER_LOGIN = "/api/user/login.json";//用户登录
     public static final String USER_ADD = "/api/user/add.json";//添加用户
-    public static final String USER_FIND = "/api/user/find.json";//添加用户
+    public static final String USER_FIND = "/api/user/find.json";
     public static final String USER_GET = "/api/user/get.json";
     public static final String USER_UPDATE = "/api/user/update.json";//修改用户
     public static final String USER_ROLE_UPDATE = "/api/user/role/update.json";
