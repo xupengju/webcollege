@@ -4,6 +4,7 @@ import com.college.entity.Permission;
 import com.college.entity.RolePermission;
 import com.college.entity.User;
 import com.college.entity.UserRole;
+import com.college.model.ResourceModel;
 import com.college.model.UserModel;
 import com.college.service.PermissionService;
 import com.college.service.RolePermissionService;
@@ -14,6 +15,8 @@ import com.google.common.collect.Maps;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +32,8 @@ import java.util.Map;
  */
 @Service
 public class ApiUserService {
+    private static Logger logger = LoggerFactory
+            .getLogger(ApiUserService.class);
 
     @Autowired
     private UserService userService;
@@ -41,6 +46,7 @@ public class ApiUserService {
 
     @Autowired
     private UserRoleService userRoleService;
+
     /**
      * 试图以给定用户名、密码进行登录
      * 如果登录成功，返回该用户的实例
@@ -53,8 +59,10 @@ public class ApiUserService {
     public User attempLogin(String loginName, String password) {
         Map<String, Object> paramsMap = Maps.newHashMap();
         paramsMap.put("userName", loginName);
-        paramsMap.put("status", true);
+        paramsMap.put("status", 0);
         User user = userService.searchOne(paramsMap);
+        logger.info("user :{}", user.toString());
+        logger.info("pass :{}", getEncryptedPassword(password, user.getSalt()));
         if (null != user) {
             if (!user.getPassword().equals(getEncryptedPassword(password, user.getSalt()))) {
                 return null;
@@ -87,8 +95,7 @@ public class ApiUserService {
         newUser.setAdministrator(false);
         newUser.setCreateTime(new Date());
         newUser.setUpdateTime(new Date());
-        Integer userId = userService.insert(newUser);
-        return userId;
+        return userService.insert(newUser);
     }
 
     /**
@@ -133,7 +140,7 @@ public class ApiUserService {
             // 判断是否存在相同用户名的(不包含本身)
             Map<String, Object> paramsMap = Maps.newHashMap();
             paramsMap.put("userName", user.getUserName());
-            paramsMap.put("status", true);
+            paramsMap.put("status", 0);
             List<User> userList = userService.findListByParams(paramsMap);
             if (CollectionUtils.isEmpty(userList)) {
                 // 登录名不重复
@@ -173,8 +180,10 @@ public class ApiUserService {
         // 1. 查询用户角色
         Map<String, Object> paramsMap = Maps.newHashMap();
         paramsMap.put("userId", userId);
-        paramsMap.put("status", true);
+        paramsMap.put("status", 0);
         List<UserRole> userRoleList = userRoleService.findListByParams(paramsMap);
+        logger.info("用户的角色 : {}", userRoleList.toString());
+        logger.info("用户的url : {}", url);
         if (!CollectionUtils.isEmpty(userRoleList)) {
             // 2. 根据角色查询用户权限
             List<Integer> roleIdList = Lists.newArrayList();
@@ -183,7 +192,9 @@ public class ApiUserService {
             }
 
             // 获取权限IdList
+            logger.info("roleIdList :{}", roleIdList);
             List<RolePermission> rolePermissionList = rolePermissionService.searchByRoleIds(roleIdList);
+            logger.info("获取 rolePermissionList :{}", rolePermissionList);
             if (!CollectionUtils.isEmpty(rolePermissionList)) {
                 List<Integer> permissionIdList = Lists.newArrayList();
                 for (RolePermission rolePermission : rolePermissionList) {
@@ -192,6 +203,7 @@ public class ApiUserService {
 
                 // 获取用户的权限,api
                 List<Permission> permissionList = permissionService.searchByIds(permissionIdList, "api");
+                logger.info("获取 permissionList :{}", permissionList);
                 List<String> urlList = Lists.newArrayList();
                 if (!CollectionUtils.isEmpty(permissionList)) {
                     for (Permission permission : permissionList) {
@@ -200,11 +212,72 @@ public class ApiUserService {
                         }
                     }
                 }
-
+                logger.info("urlList :{}", urlList);
                 return urlList.contains(url);
             }
         }
         return false;
     }
 
+    /**
+     * 修改密码
+     *
+     * @param userId      用户Id
+     * @param password    原密码
+     * @param newPassword 新密码
+     */
+    public boolean updatePassword(Integer userId, String password, String newPassword) {
+        User user = userService.get(new Long(userId));
+        if (null != user) {
+
+            logger.info("ApiUserService -- updatePassword -- password :{}", password);
+            logger.info("ApiUserService -- updatePassword -- currentPassword :{}", user.getPassword());
+            logger.info("ApiUserService -- updatePassword -- encryptedPassword :{}", getEncryptedPassword(password, user.getSalt()));
+            // 验证旧密码
+            if (!user.getPassword().equals(getEncryptedPassword(password, user.getSalt()))) {
+                return false;
+            }
+
+            // 设置新密码
+            // 设置用户密码
+            String salt = getRandomSalt();
+            user.setPassword(getEncryptedPassword(newPassword, salt));
+            user.setSalt(salt);
+            userService.update(user);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 添加用户角色
+     *
+     * @param userId
+     * @param roleId
+     */
+    public void updateUserRole(Integer userId, Integer roleId) {
+        userRoleService.updateUserRole(userId, roleId);
+    }
+
+
+    /**
+     * 获取用户角色
+     *
+     * @param userId
+     * @return
+     */
+    public Integer getUserRole(Integer userId) {
+        Map<String, Object> paramsMap = Maps.newHashMap();
+        paramsMap.put("userId", userId);
+        paramsMap.put("status", true);
+
+        // 查询用户角色关系是否存在
+        UserRole userRole = userRoleService.searchOne(paramsMap);
+        return null == userRole ? 0 : userRole.getRoleId();
+    }
+
+    //权限树
+    public List<ResourceModel> getUserPermissionTree(Integer userId) {
+        return null;
+    }
 }

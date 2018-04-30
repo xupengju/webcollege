@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="com.college.repository.PermissionDao">
+<mapper namespace="com.college.repository.UserRoleDao">
 
-	<resultMap id="resultMap" type="com.college.entity.Permission">
+	<resultMap id="resultMap" type="com.college.entity.UserRole">
         <result property="id" column="id"/>
-        <result property="action" column="action"/>
-        <result property="url" column="url"/>
+        <result property="userId" column="userId"/>
+        <result property="roleId" column="roleId"/>
         <result property="status" column="status"/>
         <result property="createTime" column="createTime"/>
         <result property="updateTime" column="updateTime"/>
@@ -16,27 +16,27 @@
 	
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="columns">
-		id,action,url,status,createTime,updateTime
+		id,userId,roleId,status,createTime,updateTime
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.Permission">
+	<select id="get" parameterType="Integer" resultType="com.college.entity.UserRole">
 		SELECT <include refid="columns" />
-		FROM permission
+		FROM user_role
 		WHERE id=#{id}
 	</select>
 
 	<!-- 新增 -->
-	<insert id="insert" parameterType="com.college.entity.Permission" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO permission (
-        	action,
-        	url,
+	<insert id="insert" parameterType="com.college.entity.UserRole" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO user_role (
+        	userId,
+        	roleId,
         	status,
         	createTime,
         	updateTime
 		) VALUES (
-        	#{action},
-        	#{url},
+        	#{userId},
+        	#{roleId},
         	#{status},
         	#{createTime},
         	#{updateTime}
@@ -45,13 +45,13 @@
 	
 	<!-- 更新 -->
 	<update id="update" >
-        UPDATE permission
+        UPDATE user_role
 		<set>
-			<if test="action!=null and action!='' ">
-				action = #{action},
+			<if test="userId!=null and userId!='' ">
+				userId = #{userId},
 			</if>
-			<if test="url!=null and url!='' ">
-				url = #{url},
+			<if test="roleId!=null and roleId!='' ">
+				roleId = #{roleId},
 			</if>
 			<if test="status!=null and status!='' ">
 				status = #{status},
@@ -69,19 +69,19 @@
 	
 	<!-- 删除用户 -->
 	<delete id="delete" parameterType="Integer">
-	     DELETE FROM permission WHERE id=#{id}
+	     DELETE FROM user_role WHERE id=#{id}
 	</delete>
 
 	<!-- 查询分页列表 -->
 	<select id="searchPageList" resultMap="resultMap">
 		SELECT <include refid="columns" />
-		FROM permission
+		FROM user_role
 		<where>
-	       <if test="searchFields.action != null and searchFields.action != ''">
-				AND action = #{searchFields.action}
+	       <if test="searchFields.userId != null and searchFields.userId != ''">
+				AND userId = #{searchFields.userId}
 			</if>
-	       <if test="searchFields.url != null and searchFields.url != ''">
-				AND url = #{searchFields.url}
+	       <if test="searchFields.roleId != null and searchFields.roleId != ''">
+				AND roleId = #{searchFields.roleId}
 			</if>
 	       <if test="searchFields.status != null and searchFields.status != ''">
 				AND status = #{searchFields.status}
@@ -98,13 +98,13 @@
 	<!--条件查询分页记录总数-->
 	<select id="getTotalCount" resultType="Long">
 		SELECT count(1)
-		FROM permission
+		FROM user_role
 		<where>
-	       <if test="searchFields.action != null and searchFields.action != ''">
-				AND action = #{searchFields.action}
+	       <if test="searchFields.userId != null and searchFields.userId != ''">
+				AND userId = #{searchFields.userId}
 			</if>
-	       <if test="searchFields.url != null and searchFields.url != ''">
-				AND url = #{searchFields.url}
+	       <if test="searchFields.roleId != null and searchFields.roleId != ''">
+				AND roleId = #{searchFields.roleId}
 			</if>
 	       <if test="searchFields.status != null and searchFields.status != ''">
 				AND status = #{searchFields.status}
@@ -121,13 +121,13 @@
 	<!-- 查询列表 -->
 	<select id="findListByParams" resultMap="resultMap">
 		SELECT <include refid="columns" />
-		FROM permission
+		FROM user_role
 		<where>
-	       <if test="searchFields.action != null and searchFields.action != ''">
-				AND action = #{searchFields.action}
+	       <if test="searchFields.userId != null and searchFields.userId != ''">
+				AND userId = #{searchFields.userId}
 			</if>
-	       <if test="searchFields.url != null and searchFields.url != ''">
-				AND url = #{searchFields.url}
+	       <if test="searchFields.roleId != null and searchFields.roleId != ''">
+				AND roleId = #{searchFields.roleId}
 			</if>
 	       <if test="searchFields.status != null and searchFields.status != ''">
 				AND status = #{searchFields.status}
@@ -146,13 +146,13 @@
 	<!-- 查询单个 -->
 	<select id="searchOne" resultMap="resultMap">
 		SELECT <include refid="columns" />
-		FROM permission
+		FROM user_role
 		<where>
-	       <if test="searchFields.action != null and searchFields.action != ''">
-				AND action = #{searchFields.action}
+	       <if test="searchFields.userId != null and searchFields.userId != ''">
+				AND userId = #{searchFields.userId}
 			</if>
-	       <if test="searchFields.url != null and searchFields.url != ''">
-				AND url = #{searchFields.url}
+	       <if test="searchFields.roleId != null and searchFields.roleId != ''">
+				AND roleId = #{searchFields.roleId}
 			</if>
 	       <if test="searchFields.status != null and searchFields.status != ''">
 				AND status = #{searchFields.status}
@@ -167,18 +167,4 @@
 		limit 1
 	</select>
 
-	<select id="searchByIds" resultMap="resultMap">
-		SELECT <include refid="columns" />
-		FROM permission
-		WHERE status = TRUE
-		<if test="list != null">
-			AND id IN
-			<foreach collection="list" item="item" index="index" open="(" separator="," close=")">
-				#{item, jdbcType=INTEGER}
-			</foreach>
-		</if>
-		<if test="resourceType != null and resourceType != ''">
-			AND `action` = #{resourceType, jdbcType=VARCHAR}
-		</if>
-	</select>
 </mapper> 

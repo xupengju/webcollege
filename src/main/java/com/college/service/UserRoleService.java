@@ -1,9 +1,12 @@
 package com.college.service;
 
 import java.lang.reflect.Field;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +66,27 @@ public class UserRoleService {
 	public UserRole searchOne(Map<String, Object> params) {
         return userRoleDao.searchOne(params);
     }
- 
+
+    public void updateUserRole(Integer userId, Integer roleId) {
+		Map<String,Object> paramsMap = Maps.newHashMap();
+		paramsMap.put("userId", userId);
+		paramsMap.put("status", true);
+
+		UserRole userRole = userRoleDao.searchOne(paramsMap);
+		if(null != userRole){
+			if(!userRole.getRoleId().equals(roleId)){
+				userRole.setRoleId(roleId);
+				userRoleDao.update(userRole);
+			}
+			return;
+		}
+
+		userRole = new UserRole();
+		userRole.setUserId(userId);
+		userRole.setRoleId(roleId);
+		userRole.setStatus(true);
+		userRole.setCreateTime(new Date());
+		userRole.setUpdateTime(new Date());
+		userRoleDao.insert(userRole);
+    }
 }

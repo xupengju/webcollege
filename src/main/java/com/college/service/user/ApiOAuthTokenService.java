@@ -5,6 +5,8 @@ import com.college.entity.OauthToken;
 import com.college.service.OauthTokenService;
 import com.college.utils.OAuthUtils;
 import com.google.common.collect.Maps;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,7 @@ public class ApiOAuthTokenService {
 
     private static final String scope = "APIOAUTHTOKENSERVICE_";
 
+    private static Logger logger = LoggerFactory.getLogger(ApiOAuthTokenService.class);
     @Autowired
     private OauthTokenService oauthTokenService;
 
@@ -40,22 +43,22 @@ public class ApiOAuthTokenService {
             oauthToken.setUserId(userId);
             oauthToken.setToken(token);
             oauthToken.setExpiredSecond(Constants.EXPIRED_TIME);
-            long tokenExpiredTime = System.currentTimeMillis() + new Long(Constants.EXPIRED_TIME);
-            oauthToken.setExpiredTime(new Date(tokenExpiredTime * 1000L));
+            long tokenExpiredTime = System.currentTimeMillis() + (long) Constants.EXPIRED_TIME * 1000L;
+            oauthToken.setExpiredTime(new Date(tokenExpiredTime));
             oauthToken.setStatus(true);
             oauthToken.setCreateTime(new Date());
             oauthToken.setUpdateTime(new Date());
             oauthTokenService.insert(oauthToken);
             return token;
         }
-
+        logger.info("是否过期 : {}", isTokenExpired(oauthToken));
         if (isTokenExpired(oauthToken)) {
             // 过期
             token = OAuthUtils.generatorToken(userId);
             oauthToken.setToken(token);
             oauthToken.setExpiredSecond(Constants.EXPIRED_TIME);
-            long tokenExpiredTime = System.currentTimeMillis() + new Long(Constants.EXPIRED_TIME);
-            oauthToken.setExpiredTime(new Date(tokenExpiredTime * 1000L));
+            long tokenExpiredTime = System.currentTimeMillis() + (long) Constants.EXPIRED_TIME * 1000L;
+            oauthToken.setExpiredTime(new Date(tokenExpiredTime));
             oauthTokenService.update(oauthToken);
         } else {
             token = oauthToken.getToken();
@@ -98,6 +101,8 @@ public class ApiOAuthTokenService {
      * @return true:过期,false:未过期
      */
     public boolean isTokenExpired(OauthToken oauthToken) {
-        return System.currentTimeMillis() * 1000L > oauthToken.getExpiredTime().getTime();
+        //logger.info("当前毫秒值 :{}", System.currentTimeMillis());
+        //logger.info("令牌毫秒值 :{}", oauthToken.getExpiredTime().getTime());
+        return System.currentTimeMillis() > oauthToken.getExpiredTime().getTime();
     }
 }

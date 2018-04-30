@@ -59,7 +59,7 @@ public class Teacher implements Serializable {
 	/**
 	 * 0: 正常 1:删除
 	 */
-	private Integer status;
+	private Boolean status;
 	/**
 	 * 创建时间
 	 */
@@ -134,11 +134,11 @@ public class Teacher implements Serializable {
 	public void setContent(String value) {
 		this.content = value;
 	}
-	public Integer getStatus() {
+	public Boolean getStatus() {
 		return this.status;
 	}
 	
-	public void setStatus(Integer value) {
+	public void setStatus(Boolean value) {
 		this.status = value;
 	}
 	public java.util.Date getCreateTime() {

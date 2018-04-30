@@ -1,6 +1,7 @@
 package com.college.controller;
 
 import com.college.contants.AppCode;
+import com.college.contants.Path;
 import com.college.entity.Permission;
 import com.college.service.PermissionService;
 import com.github.pagehelper.Page;
@@ -8,10 +9,10 @@ import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -21,9 +22,8 @@ import java.util.Map;
  * @Title:
  * @Description
  */
-@Controller
-@RequestMapping("/permission")
-public class PermissionController {
+@RestController
+public class PermissionController extends BaseController {
 
     private static Logger logger = LoggerFactory
             .getLogger(PermissionController.class);
@@ -44,14 +44,14 @@ public class PermissionController {
      * @param updateTime 更新时间
      * @return
      */
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = Path.PERMISSION_ALL)
     @ResponseBody
     public Map<String, Object> getList(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
                                        @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
                                        @RequestParam(value = "id", required = false) Integer id,
                                        @RequestParam(value = "action", required = false) Integer action,
                                        @RequestParam(value = "url", required = false) Integer url,
-                                       @RequestParam(value = "status", required = false) Integer status,
+                                       @RequestParam(value = "status", required = false) boolean status,
                                        @RequestParam(value = "createTime", required = false) Integer createTime,
                                        @RequestParam(value = "updateTime", required = false) Integer updateTime
     ) {
@@ -79,12 +79,12 @@ public class PermissionController {
      * @param updateTime 更新时间
      * @return
      */
-    @RequestMapping("/add")
+    @RequestMapping(value = Path.PERMISSION_ADD)
     @ResponseBody
     public Map<String, Object> add(
             @RequestParam(value = "action", required = false) String action,
             @RequestParam(value = "url", required = false) String url,
-            @RequestParam(value = "status", required = false) Integer status,
+            @RequestParam(value = "status", required = false) boolean status,
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
         Permission permission = new Permission();
@@ -111,13 +111,13 @@ public class PermissionController {
      * @param updateTime 更新时间
      * @return
      */
-    @RequestMapping("/update")
+    @RequestMapping(value = Path.PERMISSION_UPDATE)
     @ResponseBody
     public Map<String, Object> update(
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "action", required = false) String action,
             @RequestParam(value = "url", required = false) String url,
-            @RequestParam(value = "status", required = false) Integer status,
+            @RequestParam(value = "status", required = false) boolean status,
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {

@@ -1,6 +1,7 @@
 package com.college.controller;
 
 import com.college.contants.AppCode;
+import com.college.contants.Path;
 import com.college.entity.Notice;
 import com.college.service.NoticeService;
 import com.github.pagehelper.Page;
@@ -8,10 +9,10 @@ import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -21,9 +22,8 @@ import java.util.Map;
  * @Title:
  * @Description
  */
-@Controller
-@RequestMapping("/notice")
-public class NoticeController {
+@RestController
+public class NoticeController extends BaseController {
 
     private static Logger logger = LoggerFactory
             .getLogger(NoticeController.class);
@@ -49,7 +49,7 @@ public class NoticeController {
      * @param updateTime 更新时间
      * @return
      */
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = Path.NOTICE_LIST)
     @ResponseBody
     public Map<String, Object> getList(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
                                        @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
@@ -60,7 +60,7 @@ public class NoticeController {
                                        @RequestParam(value = "image", required = false) Integer image,
                                        @RequestParam(value = "link", required = false) Integer link,
                                        @RequestParam(value = "content", required = false) Integer content,
-                                       @RequestParam(value = "status", required = false) Integer status,
+                                       @RequestParam(value = "status", required = false) boolean status,
                                        @RequestParam(value = "createTime", required = false) Integer createTime,
                                        @RequestParam(value = "updateUser", required = false) Integer updateUser,
                                        @RequestParam(value = "updateTime", required = false) Integer updateTime
@@ -94,7 +94,7 @@ public class NoticeController {
      * @param updateTime 更新时间
      * @return
      */
-    @RequestMapping("/add")
+    @RequestMapping(value = Path.NOTICE_ADD)
     @ResponseBody
     public Map<String, Object> add(
             @RequestParam(value = "title", required = false) String title,
@@ -103,7 +103,7 @@ public class NoticeController {
             @RequestParam(value = "image", required = false) String image,
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "status", required = false) Integer status,
+            @RequestParam(value = "status", required = false) boolean status,
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
             @RequestParam(value = "updateUser", required = false) String updateUser,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
@@ -141,7 +141,7 @@ public class NoticeController {
      * @param updateTime 更新时间
      * @return
      */
-    @RequestMapping("/update")
+    @RequestMapping(value = Path.NOTICE_UPDATE)
     @ResponseBody
     public Map<String, Object> update(
             @RequestParam(value = "id", required = false) Integer id,
@@ -151,7 +151,7 @@ public class NoticeController {
             @RequestParam(value = "image", required = false) String image,
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "status", required = false) Integer status,
+            @RequestParam(value = "status", required = false) boolean status,
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
             @RequestParam(value = "updateUser", required = false) String updateUser,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime

@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>图片上传</title>
 </head>
-<form action="/upload/uploadimage" enctype="multipart/form-data" method="post">
+<form action="/api/file/upload.json" enctype="multipart/form-data" method="post">
     上传图片：<input type="file" name="file" value="选择图片"><br>
     <input type="submit" value="上传">
 </form>

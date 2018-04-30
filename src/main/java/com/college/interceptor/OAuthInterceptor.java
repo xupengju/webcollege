@@ -73,7 +73,8 @@ public class OAuthInterceptor extends HandlerInterceptorAdapter {
         String token = paramsMap.get("token");
         if (StringUtils.isBlank(token)) {
             logger.error("获取到的toke为空");
-            throw new CollegeException(AppCode._10001);
+            //throw new CollegeException(AppCode._10001);
+            return true;
         }
         logger.info("获取到的token为:{}", token);
 
@@ -89,7 +90,7 @@ public class OAuthInterceptor extends HandlerInterceptorAdapter {
 
         // 设置用户信息
         Integer userId = oauthToken.getUserId();
-
+        logger.info("待验证权限的用户 ID:{}", userId + "");
         boolean isPermission = apiUserService.isPermission(userId, requestUrl);
         logger.info("验证结果:{}", isPermission + "");
         // TODO 添加权限校验
@@ -102,7 +103,7 @@ public class OAuthInterceptor extends HandlerInterceptorAdapter {
 
         // 记录操作日志
         logRequest(request, userId, paramsMap);
-
+        logger.info("handler : {}",handler);
         return super.preHandle(request, response, handler);
     }
 

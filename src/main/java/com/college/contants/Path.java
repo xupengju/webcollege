@@ -44,7 +44,40 @@ public class Path {
     public static final String PERMISSION_SEARCH = "/api/permission/search.json";
     public static final String PERMISSION_DELETE = "/api/permission/delete.json";
 
+    //RESOURCE
+    public static final String RESOURCE_ADD = "/api/resource/add.json";
+    public static final String RESOURCE_GET = "/api/resource/get.json";
+    public static final String RESOURCE_UPDATE = "/api/resource/update.json";
+    public static final String RESOURCE_LIST = "/api/resource/list.json";
+    public static final String RESOURCE_ALL = "/api/resource/all.json";
 
 
+    //TEACHER
+    public static final String TEACHER_ADD = "/api/teacher/add.json";
+    public static final String TEACHER_GET = "/api/teacher/get.json";
+    public static final String TEACHER_UPDATE = "/api/teacher/update.json";
+    public static final String TEACHER_LIST = "/api/teacher/list.json";
+    public static final String TEACHER_ALL = "/api/teacher/all.json";
 
+
+    //ACHIEVEMENT
+    public static final String ACHIEVEMENT_ADD = "/api/achievement/add.json";
+    public static final String ACHIEVEMENT_GET = "/api/achievement/get.json";
+    public static final String ACHIEVEMENT_UPDATE = "/api/achievement/update.json";
+    public static final String ACHIEVEMENT_LIST = "/api/achievement/list.json";
+    public static final String ACHIEVEMENT_ALL = "/api/achievement/all.json";
+
+    //NOTICE
+    public static final String NOTICE_ADD = "/api/notice/add.json";
+    public static final String NOTICE_GET = "/api/notice/get.json";
+    public static final String NOTICE_UPDATE = "/api/notice/update.json";
+    public static final String NOTICE_LIST = "/api/notice/list.json";
+    public static final String NOTICE_ALL = "/api/notice/all.json";
+
+    //signin
+    public static final String SIGNIN_ADD = "/api/signin/add.json";
+    public static final String SIGNIN_GET = "/api/signin/get.json";
+    public static final String SIGNIN_UPDATE = "/api/signin/update.json";
+    public static final String SIGNIN_LIST = "/api/signin/list.json";
+    public static final String SIGNIN_ALL = "/api/signin/all.json";
 }

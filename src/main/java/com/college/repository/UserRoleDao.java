@@ -43,4 +43,10 @@ public interface UserRoleDao {
 	 */
     UserRole searchOne(@Param("searchFields") Map<String, Object> params);
 
+	/**
+	 * 更新用户角色
+	 * @param userId
+	 * @param roleId
+	 */
+	void updateUserRole(Integer userId, Integer roleId);;
 }
