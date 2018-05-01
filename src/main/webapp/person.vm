@@ -151,5 +151,6 @@
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hCBcm8H8opRLdC0f6OibbGavC0pne1uc"></script>
 		<script src="js/base.js"></script>
 		<script src="js/person.js"></script>
+		<script> alert("1")</script>
 	</body>
 </html>

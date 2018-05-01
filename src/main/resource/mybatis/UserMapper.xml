@@ -22,9 +22,13 @@
 	<sql id="columns">
 		id,userName,password,salt,realName,idCard,administrator,status,createTime,updateTime
 	</sql>
+
+	<sql id="base_columns">
+		id,userName,realName,idCard,status,createTime,updateTime
+	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.User">
+	<select id="get" parameterType="Long" resultType="com.college.entity.User">
 		SELECT <include refid="columns" />
 		FROM user
 		WHERE id=#{id}
@@ -98,7 +102,7 @@
 
 	<!-- 查询分页列表 -->
 	<select id="searchPageList" resultMap="resultMap">
-		SELECT <include refid="columns" />
+		SELECT <include refid="base_columns" />
 		FROM user
 		<where>
 	       <if test="searchFields.userName != null and searchFields.userName != ''">

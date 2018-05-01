@@ -33,6 +33,11 @@ public class Signin implements Serializable {
 	 * 更新时间
 	 */
 	private java.util.Date updateTime;
+
+
+	//add field
+
+	private String userName;
 	//maxId
 	private Integer maxId;
 
@@ -78,5 +83,13 @@ public class Signin implements Serializable {
 
 	public void setMaxId(Integer maxId) {
 		this.maxId = maxId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }
