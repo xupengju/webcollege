@@ -13,6 +13,9 @@ public class Path {
     public static final String CSS = "/css";
     public static final String IMG = "/img";
     // ===================================== 用户: USER  ============================================ //
+    //首页
+    public static final String INDEX = "/api/user/index";//用户登录
+
     // 用户相关接口
     public static final String USER_LOGIN = "/api/user/login.json";//用户登录
     public static final String USER_ADD = "/api/user/add.json";//添加用户

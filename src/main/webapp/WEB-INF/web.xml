@@ -58,7 +58,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>/login.vm</welcome-file>
+        <welcome-file>/index.vm</welcome-file>
     </welcome-file-list>
 
     <servlet-mapping>

@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -27,7 +26,6 @@ public class LoginController extends BaseController {
     private static Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @RequestMapping(Path.USER_LOGIN)
-    @ResponseBody
     public Object login(LoginReqModel user) {
         logger.info("login : {}", user.toString());
         User loginUser = apiUserService.attempLogin(user.getUserName(), user.getPassword());
@@ -44,5 +42,11 @@ public class LoginController extends BaseController {
             loginRespModel.setToken(token);
             return Resp.success(loginRespModel);
         }
+    }
+
+    @RequestMapping(value = "/index")
+    public String index() {
+        logger.info("index : {}", "index");
+        return "index";
     }
 }
