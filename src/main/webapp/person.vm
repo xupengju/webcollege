@@ -1,156 +1,132 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<!--<link rel="stylesheet/less" type="text/css" href="css/common.less"/>
-		<link rel="stylesheet/less" type="text/css" href="css/person.less"/>-->
-		<link rel="stylesheet" type="text/css" href="css/common.css"/>
-		<link rel="stylesheet" type="text/css" href="css/person.css"/>
-		
-		<script src="js/less.min.js"></script>
-		<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
-		<script src="js/jquery-3.1.0.js"></script>
-	    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.4&key=d5ffc72a2371e65a9a91861e49795e76"></script>
-	   <!-- <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>-->
-	</head>
-	<body>
-		<header>
-			<div class="box">
-				<img src="img/logo.png"/>
-				<a href="login.vm" class="loginBtn">登陆</a>
-			</div>
-		</header>
-		<nav>
-			<a href="index.vm">网站首页</a>
-			<a><div class="aboutBtn">关于我们</div>
-				<div class="navTwo aboutA">
-					<div>学校介绍</div>
-					<div>基地介绍</div>
-					<div>成果展示</div>
-					<div>师资队伍</div>
-				</div>
-			</a>
-			<a><div class="manageBtn">实习管理</div>
-				<div class="navTwo manageA">
-					<div>实习流程</div>
-					<div>岗位目标与要求</div>
-					<div>企业产品标准</div>
-					<div>安全操作规范</div>
-					<div>实习考核标准</div>
-				</div>
-			</a>
-			<a><div class="teachBtn">教学资源</div>
-				<div class="navTwo teachA">
-					<div>企业项目</div>
-					<div>资源库</div>
-					<!--<div>教学视频</div>-->
-				</div>
-			</a>
-			<a><div class="innovaBtn">创新创业</div>
-				<div class="navTwo innovaA">
-					<div>众创空间介绍</div>
-					<div>学生创新</div>
-					<div>校企合作项目</div>
-					<div>技术服务</div>
-				</div>
-			</a>
-			<a>
-				<div class="socialBtn">社会培训</div>
-				<div class="navTwo socialA">
-					<div>职业鉴定</div>
-					<div>员工培训</div>
-					<div>学生实习</div>
-				</div>
-			</a>
-			<a><div class="studentBtn">学生管理</div>
-				<div class="navTwo studentA">
-					<div>学生考勤管理</div>
-					<div>安全责任书</div>
-					<div>实习手册</div>
-					<div>顶岗实习评价表</div>
-				</div>
-			</a>
-		</nav>
-		<div class="personBox">
-			<h3 class="tc mt30 mb20">个人信息</h3>
-			<div class="btn">签到</div>
-			<p>
-				<span>姓名</span>
-				<b>李未未</b>
-			</p>
-			<p>
-				<span>身份证 </span>
-				<b>136072739821######</b>
-			</p>
-			<p>
-				<span>性别</span>
-				<b>女生</b>
-			</p>
-			<p>
-				<span>学号</span>
-				<b>136072739821######</b>
-			</p>
-			<p>
-				<span>学校专业班级</span>
-				<b>石家庄职业技术学校  ###专业 ###班级</b>
-			</p>
-			<p>
-				<span>联系方式</span>
-				<b>139821######9821######</b>
-			</p>
-			<p>
-				<span>邮箱</span>
-				<b>139821######@qq。com</b>
-			</p>
-		</div>
-		<table width="600" height="200" border="1">
-			<tr>
-				<td colspan="6">考勤记录</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</table>
-		<footer>
-			<p class="pt10">中华人民共和国教育部 中国教育网 中国高职高专教育网 河北省教育厅 河北省高职高专教育网 中国高校之窗 长城网</p>
-			<p>学院地址：石家庄市中山西路长兴街12号 邮编：050081 电话：0311-85333755 招生热线：0311-85333630，0311-68092994</p>
-			<p>设计单位：石家庄职业技术学院  软件学院 冀ICP备14001874号-1</p>
-		</footer>
-		<div style="" id='container'></div>
-		<div style="" id="allmap"></div>
-		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hCBcm8H8opRLdC0f6OibbGavC0pne1uc"></script>
-		<script src="js/base.js"></script>
-		<script src="js/person.js"></script>
-		<script> alert("1")</script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<link rel="stylesheet/less" type="text/css" href="css/common.less"/>
+    <link rel="stylesheet/less" type="text/css" href="css/person.less"/>-->
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/person.css"/>
+
+    <script src="js/less.min.js"></script>
+    <script src="js/jquery-3.1.0.js"></script>
+    <!-- <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+
+  <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.4&key=d5ffc72a2371e65a9a91861e49795e76"></script>
+<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>-->
+</head>
+<body>
+<header>
+    <div class="box">
+        <img src="img/logo.png"/>
+        <a href="login.vm" class="loginBtn">登陆</a>
+    </div>
+</header>
+<nav>
+    <a href="index.vm">网站首页</a>
+    <a><div class="aboutBtn">关于我们</div>
+        <div class="navTwo aboutA">
+            <div>学校介绍</div>
+            <div>基地介绍</div>
+            <div>成果展示</div>
+            <div>师资队伍</div>
+        </div>
+    </a>
+    <a><div class="manageBtn">实习管理</div>
+        <div class="navTwo manageA">
+            <div>实习流程</div>
+            <div>岗位目标与要求</div>
+            <div>企业产品标准</div>
+            <div>安全操作规范</div>
+            <div>实习考核标准</div>
+        </div>
+    </a>
+    <a><div class="teachBtn">教学资源</div>
+        <div class="navTwo teachA">
+            <div>企业项目</div>
+            <div>资源库</div>
+            <!--<div>教学视频</div>-->
+        </div>
+    </a>
+    <a><div class="innovaBtn">创新创业</div>
+        <div class="navTwo innovaA">
+            <div>众创空间介绍</div>
+            <div>学生创新</div>
+            <div>校企合作项目</div>
+            <div>技术服务</div>
+        </div>
+    </a>
+    <a>
+        <div class="socialBtn">社会培训</div>
+        <div class="navTwo socialA">
+            <div>职业鉴定</div>
+            <div>员工培训</div>
+            <div>学生实习</div>
+        </div>
+    </a>
+    <a><div class="studentBtn">学生管理</div>
+        <div class="navTwo studentA">
+            <div>学生考勤管理</div>
+            <div>安全责任书</div>
+            <div>实习手册</div>
+            <div>顶岗实习评价表</div>
+        </div>
+    </a>
+</nav>
+<div class="personBox">
+    <h3 class="tc mt30 mb20">个人信息</h3>
+    <div class="btn">签到</div>
+    <p>
+        <span>姓名</span>
+        <b>李未未</b>
+    </p>
+    <p>
+        <span>身份证 </span>
+        <b>136072739821######</b>
+    </p>
+    <p>
+        <span>性别</span>
+        <b>女生</b>
+    </p>
+    <p>
+        <span>学号</span>
+        <b>136072739821######</b>
+    </p>
+    <p>
+        <span>学校专业班级</span>
+        <b>石家庄职业技术学校  ###专业 ###班级</b>
+    </p>
+    <p>
+        <span>联系方式</span>
+        <b>139821######9821######</b>
+    </p>
+    <p>
+        <span>邮箱</span>
+        <b>139821######@qq。com</b>
+    </p>
+</div>
+<table class="signTable" width="600" height="" border="1">
+    <tr>
+        <th colspan="3">考勤记录</th>
+    </tr>
+    <tr>
+        <th>序号</th>
+        <th>签到时间</th>
+        <th>签到</th>
+    </tr>
+
+</table>
+<footer>
+    <p class="pt10">中华人民共和国教育部 中国教育网 中国高职高专教育网 河北省教育厅 河北省高职高专教育网 中国高校之窗 长城网</p>
+    <p>学院地址：石家庄市中山西路长兴街12号 邮编：050081 电话：0311-85333755 招生热线：0311-85333630，0311-68092994</p>
+    <p>设计单位：石家庄职业技术学院  软件学院 冀ICP备14001874号-1</p>
+</footer>
+<!--<div style="" id='container'></div>
+<div style="" id="allmap"></div>-->
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hCBcm8H8opRLdC0f6OibbGavC0pne1uc"></script>
+-->
+<script src="js/base.js"></script>
+<script src="js/person.js"></script>
+
+</body>
 </html>
