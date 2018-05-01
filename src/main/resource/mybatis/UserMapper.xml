@@ -28,7 +28,7 @@
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.User">
+	<select id="get" parameterType="Long" resultType="com.college.entity.User">
 		SELECT <include refid="columns" />
 		FROM user
 		WHERE id=#{id}

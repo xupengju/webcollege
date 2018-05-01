@@ -117,8 +117,6 @@ public class ResourceController extends BaseController {
         resource.setLink(link);
         resource.setContent(content);
         resource.setStatus(status);
-        resource.setCreateTime(createTime);
-        resource.setUpdateTime(updateTime);
         Integer id = resourceService.insert(resource);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
@@ -163,8 +161,6 @@ public class ResourceController extends BaseController {
         resource.setLink(link);
         resource.setContent(content);
         resource.setStatus(status);
-        resource.setCreateTime(createTime);
-        resource.setUpdateTime(updateTime);
         resourceService.update(resource);
         return Resp.success();
     }

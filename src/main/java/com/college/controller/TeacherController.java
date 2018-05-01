@@ -122,8 +122,6 @@ public class TeacherController extends BaseController {
         teacher.setLink(link);
         teacher.setContent(content);
         teacher.setStatus(status);
-        teacher.setCreateTime(createTime);
-        teacher.setUpdateTime(updateTime);
         Integer id = teacherService.insert(teacher);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
@@ -172,8 +170,6 @@ public class TeacherController extends BaseController {
         teacher.setLink(link);
         teacher.setContent(content);
         teacher.setStatus(status);
-        teacher.setCreateTime(createTime);
-        teacher.setUpdateTime(updateTime);
         teacherService.update(teacher);
         return Resp.success();
     }
