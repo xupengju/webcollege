@@ -69,6 +69,8 @@ public class TeacherController extends BaseController {
                                        @RequestParam(value = "updateTime", required = false) Integer updateTime
     ) {
         Map<String, Object> params = Maps.newHashMap();
+        params.put("type",type);
+        params.put("status",1);
         Page<Teacher> page = teacherService.searchPageList(pageNum, pageSize, params);
         Map<String, Object> resultMap = Maps.newHashMap();
         logger.info(" TeacherController -->  pageResult :{}", page.getResult());
@@ -121,7 +123,6 @@ public class TeacherController extends BaseController {
         teacher.setImage(image);
         teacher.setLink(link);
         teacher.setContent(content);
-        teacher.setStatus(status);
         Integer id = teacherService.insert(teacher);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }

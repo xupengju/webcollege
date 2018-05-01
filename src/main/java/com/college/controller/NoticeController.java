@@ -170,4 +170,13 @@ public class NoticeController extends BaseController {
         return Resp.success();
     }
 
+
+
+    @RequestMapping(value = Path.NOTICE_GET)
+    @ResponseBody
+    public Resp get(@RequestParam(value = "id") Long id) {
+        Notice notice = noticeService.get(id);
+        return null != notice ? Resp.success(notice) : Resp.error(AppCode._10012);
+    }
+
 }

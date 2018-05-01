@@ -170,4 +170,11 @@ public class AchievementController extends BaseController {
         return Resp.success();
     }
 
+    @RequestMapping(value = Path.ACHIEVEMENT_GET)
+    @ResponseBody
+    public Resp get(@RequestParam(value = "id") Long id) {
+        Achievement achievement = achievementService.get(id);
+        return null != achievement ? Resp.success(achievement) : Resp.error(AppCode._10012);
+    }
+
 }

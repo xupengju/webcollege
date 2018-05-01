@@ -19,7 +19,7 @@
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.Biaozhun">
+	<select id="get" parameterType="Long" resultType="com.college.entity.Biaozhun">
 		SELECT <include refid="columns" />
 		FROM biaozhun
 		WHERE id=#{id}

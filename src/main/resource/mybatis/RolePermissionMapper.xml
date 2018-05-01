@@ -20,7 +20,7 @@
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.RolePermission">
+	<select id="get" parameterType="Long" resultType="com.college.entity.RolePermission">
 		SELECT <include refid="columns" />
 		FROM role_permission
 		WHERE id=#{id}

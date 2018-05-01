@@ -25,7 +25,7 @@
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.Achievement">
+	<select id="get" parameterType="Long" resultType="com.college.entity.Achievement">
 		SELECT <include refid="columns" />
 		FROM achievement
 		WHERE id=#{id}
