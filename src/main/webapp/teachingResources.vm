@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<!--<link rel="stylesheet/less" type="text/css" href="css/common.less" />
+		<link rel="stylesheet/less" type="text/css" href="css/about.less" />-->
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/about.css"/>
+		<script src="../../js/less.min.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<div class="box">
+				<img src="../../img/logo.png" />
+				<a href="login.vm" class="loginBtn">登陆</a>
+			</div>
+		</header>
+		<nav>
+			<a href="index.vm">网站首页</a>
+			<a>
+				<div class="aboutBtn">关于我们</div>
+				<div class="navTwo aboutA">
+					<div>学校介绍</div>
+					<div>基地介绍</div>
+					<div>成果展示</div>
+					<div>师资队伍</div>
+				</div>
+			</a>
+			<a>
+				<div class="manageBtn">实习管理</div>
+				<div class="navTwo manageA">
+					<div>实习流程</div>
+					<div>岗位目标与要求</div>
+					<div>企业产品标准</div>
+					<div>安全操作规范</div>
+					<div>实习考核标准</div>
+				</div>
+			</a>
+			<a>
+				<div class="teachBtn deepBlue">教学资源</div>
+				<div class="navTwo teachA">
+					<div>企业项目</div>
+					<div>资源库</div>
+					<!--<div>教学视频</div>-->
+				</div>
+			</a>
+			<a>
+				<div class="innovaBtn">创新创业</div>
+				<div class="navTwo innovaA">
+					<div>众创空间介绍</div>
+					<div>学生创新</div>
+					<div>校企合作项目</div>
+					<div>技术服务</div>
+				</div>
+			</a>
+			<a>
+				<div class="socialBtn">社会培训</div>
+				<div class="navTwo socialA">
+					<div>职业鉴定</div>
+					<div>员工培训</div>
+					<div>学生实习</div>
+				</div>
+			</a>
+			<a>
+				<div class="studentBtn">学生管理</div>
+				<div class="navTwo studentA">
+					<div>学生考勤管理</div>
+					<div>安全责任书</div>
+					<div>实习手册</div>
+					<div>顶岗实习评价表</div>
+				</div>
+			</a>
+		</nav>
+		<div class="content">
+			<ul class="leftNav">
+				<li class="btnBlue">企业项目
+
+				</li>
+				<li>资源库
+					<p>
+						<a class="twoR" href="#">任务库</a>
+					</p>
+					<p>
+						<a class="twoR" href="#">项目库</a>
+					</p>
+					<p>
+						<a class="twoR" href="#">教学视频</a>
+					</p>
+				</li>
+
+			</ul>
+
+			<div class="rightBox ri1">
+				<h2 class="tc mt30 mb20">企业项目</h2>
+				<p class="gain">
+					<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+					<span>2018-12-16</span>
+				</p>
+				<p class="gain">
+					<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+					<span>2018-12-16</span>
+				</p>
+				<p class="gain">
+					<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+					<span>2018-12-16</span>
+				</p>
+				<p class="gain">
+					<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+					<span>2018-12-16</span>
+				</p>
+				<p class="gain">
+					<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+					<span>2018-12-16</span>
+				</p>
+				<p class="gain">
+					<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+					<span>2018-12-16</span>
+				</p>
+				<p class="gain">
+					<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+					<span>2018-12-16</span>
+				</p>
+				<p class="gain">
+					<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+					<span>2018-12-16</span>
+				</p>
+				<div id="page" class="page_div"></div>
+			</div>
+			<div class="rightBox ri2">
+				<div class="newBox">
+					<img src="../../img/try1.png">
+					视频库
+				</div>
+				<div class="newBox">
+					<img src="../../img/try2.png">
+					图片库
+				</div>
+				<div class="newBox">
+					<img src="../../img/try3.png">
+					讲座库
+				</div>
+				<div class="newBox">
+					<img src="../../img/try4.png">
+					链接库
+				</div>
+			</div>
+			<div class="twoContent1 co">
+				<div class="rightBox">
+					<h2 class="tc mt30 mb20">任务库</h2>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<div id="page2" class="page_div"></div>
+				</div>
+				<div class="rightBox">
+					<h2 class="tc mt30 mb20">项目库</h2>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<div id="page3" class="page_div"></div>
+
+				</div>
+				<div class="rightBox">
+					<h2 class="tc mt30 mb20">教学视频</h2>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<p class="gain">
+						<a href="detaiAbout.vm">xxxxxxxxxxxxx成果1的展示</a>
+						<span>2018-12-16</span>
+					</p>
+					<div id="page4" class="page_div"></div>
+				</div>
+
+			</div>
+		</div>
+
+		<footer>
+			<p class="pt10">中华人民共和国教育部 中国教育网 中国高职高专教育网 河北省教育厅 河北省高职高专教育网 中国高校之窗 长城网</p>
+			<p>学院地址：石家庄市中山西路长兴街12号 邮编：050081 电话：0311-85333755 招生热线：0311-85333630，0311-68092994</p>
+			<p>设计单位：石家庄职业技术学院 软件学院 冀ICP备14001874号-1</p>
+		</footer>
+		<script src="../../js/jquery-3.1.0.js"></script>
+
+		<script src="../../js/swiper.min.js"></script>
+		<script src="../../js/fenye.js"></script>
+
+		<script src="../../js/base.js"></script>
+		<script src="../../js/teachingResources.js"></script>
+	</body>
+
+</html>
