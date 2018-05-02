@@ -167,7 +167,7 @@ public class ResourceController extends BaseController {
     }
 
 
-    @RequestMapping(value = Path.NOTICE_GET)
+    @RequestMapping(value = Path.RESOURCE_GET)
     @ResponseBody
     public Resp get(@RequestParam(value = "id") Long id) {
         Resource resource = resourceService.get(id);
