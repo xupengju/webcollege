@@ -16,7 +16,7 @@ function getRandomCode(){
 			index=parseInt(Math.random()*100);
 		}
 		str+=arr[index]
-		console.log(str)
+		//console.log(str)
 	}	
 	for(var i=0;i<codeB.length;i++){
 		codeB[i].innerHTML=str[i].toUpperCase();
@@ -25,4 +25,53 @@ function getRandomCode(){
 	}
 	//code.innerHTML=str.toUpperCase();
 }
-getRandomCode()
+getRandomCode();
+localStorage.clear()
+
+$(".btn").click(function(){
+    var userName=$(".userName").val();
+    var pwd=$(".pwd").val();
+    var code1=$(".code").val();
+    var codeVal=$("b").eq(0).html()+$("b").eq(1).html()+$("b").eq(2).html()+$("b").eq(3).html();
+    var reg=new RegExp(codeVal,"ig");
+    //验证码判断
+    if(code1==""){
+        alert("验证码不能为空")
+    }else if(!reg.test(code1)){
+        alert("验证码错误")
+        getRandomCode();
+    }else{
+        if(userName=="" || pwd==""){
+            alert("用户名或密码不能为空")
+        }else{
+            $.ajax({
+                url:"/api/user/login.json",
+                type:"post",
+                data:{
+                    userName:userName,
+                    password:pwd,
+                },
+                success:function(dataP){
+                    console.log(dataP)
+                    if(dataP.code==900){//服务器错误
+                        alert(dataP.message)
+                    }else if(dataP.code==200){//成功
+                       //alert("登陆成功")
+                        localStorage.setItem("token",dataP.data.token)
+                        window.location.href="person.vm"
+                    }else if(dataP.code==10002){//用户名或密码错误
+                        alert(dataP.message);
+                    }else  if(dataP.code==10005){//密码错误
+                        alert(dataP.message);
+                    }
+
+                }
+            })
+        }
+
+    }
+
+
+})
+
+

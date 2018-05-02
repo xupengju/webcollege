@@ -15,21 +15,21 @@ public class Permission implements Serializable {
 	public static final String ALIAS_MAXID = "maxId";
 
 	/**
-	 * 
+	 *
 	 */
 	private Integer id;
 	/**
-	 * 
+	 *
 	 */
 	private String action;
 	/**
-	 * 
+	 *
 	 */
 	private String url;
 	/**
 	 * 0: 正常 1:删除
 	 */
-	private Integer status;
+	private Boolean status;
 	/**
 	 * 创建时间
 	 */
@@ -62,11 +62,11 @@ public class Permission implements Serializable {
 	public void setUrl(String value) {
 		this.url = value;
 	}
-	public Integer getStatus() {
+	public Boolean getStatus() {
 		return this.status;
 	}
 	
-	public void setStatus(Integer value) {
+	public void setStatus(Boolean value) {
 		this.status = value;
 	}
 	public java.util.Date getCreateTime() {
@@ -90,5 +90,19 @@ public class Permission implements Serializable {
 
 	public void setMaxId(Integer maxId) {
 		this.maxId = maxId;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Permission{" +
+				"id=" + id +
+				", action='" + action + '\'' +
+				", url='" + url + '\'' +
+				", status=" + status +
+				", createTime=" + createTime +
+				", updateTime=" + updateTime +
+				", maxId=" + maxId +
+				'}';
 	}
 }

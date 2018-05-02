@@ -1,17 +1,20 @@
 package com.college.controller;
 
 import com.college.contants.AppCode;
+import com.college.contants.Path;
+import com.college.entity.Notice;
 import com.college.entity.Resource;
+import com.college.model.Resp;
 import com.college.service.ResourceService;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -21,9 +24,8 @@ import java.util.Map;
  * @Title:
  * @Description
  */
-@Controller
-@RequestMapping("/api/resource")
-public class ResourceController {
+@RestController
+public class ResourceController extends BaseController {
 
     private static Logger logger = LoggerFactory
             .getLogger(ResourceController.class);
@@ -49,7 +51,7 @@ public class ResourceController {
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = Path.RESOURCE_LIST)
     @ResponseBody
     public Map<String, Object> getList(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
                                        @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
@@ -61,7 +63,7 @@ public class ResourceController {
                                        @RequestParam(value = "image", required = false) Integer image,
                                        @RequestParam(value = "link", required = false) Integer link,
                                        @RequestParam(value = "content", required = false) Integer content,
-                                       @RequestParam(value = "status", required = false) Integer status,
+                                       @RequestParam(value = "status", required = false) boolean status,
                                        @RequestParam(value = "createTime", required = false) Integer createTime,
                                        @RequestParam(value = "updateTime", required = false) Integer updateTime
     ) {
@@ -94,9 +96,9 @@ public class ResourceController {
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping("/add")
+    @RequestMapping(value = Path.RESOURCE_ADD)
     @ResponseBody
-    public Map<String, Object> add(
+    public Resp add(
             @RequestParam(value = "teacherName", required = false) String teacherName,
             @RequestParam(value = "resume", required = false) String resume,
             @RequestParam(value = "userId", required = false) Integer userId,
@@ -104,7 +106,7 @@ public class ResourceController {
             @RequestParam(value = "image", required = false) String image,
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "status", required = false) Integer status,
+            @RequestParam(value = "status", required = false) boolean status,
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
         Resource resource = new Resource();
@@ -116,13 +118,8 @@ public class ResourceController {
         resource.setLink(link);
         resource.setContent(content);
         resource.setStatus(status);
-        resource.setCreateTime(createTime);
-        resource.setUpdateTime(updateTime);
         Integer id = resourceService.insert(resource);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
     /**
@@ -141,9 +138,9 @@ public class ResourceController {
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping("/update")
+    @RequestMapping(value = Path.RESOURCE_UPDATE)
     @ResponseBody
-    public Map<String, Object> update(
+    public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "teacherName", required = false) String teacherName,
             @RequestParam(value = "resume", required = false) String resume,
@@ -152,7 +149,7 @@ public class ResourceController {
             @RequestParam(value = "image", required = false) String image,
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "status", required = false) Integer status,
+            @RequestParam(value = "status", required = false) boolean status,
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
@@ -165,13 +162,16 @@ public class ResourceController {
         resource.setLink(link);
         resource.setContent(content);
         resource.setStatus(status);
-        resource.setCreateTime(createTime);
-        resource.setUpdateTime(updateTime);
         resourceService.update(resource);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return Resp.success();
+    }
+
+
+    @RequestMapping(value = Path.RESOURCE_GET)
+    @ResponseBody
+    public Resp get(@RequestParam(value = "id") Long id) {
+        Resource resource = resourceService.get(id);
+        return null != resource ? Resp.success(resource) : Resp.error(AppCode._10012);
     }
 
 }

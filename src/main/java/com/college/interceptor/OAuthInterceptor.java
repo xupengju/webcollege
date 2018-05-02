@@ -89,7 +89,7 @@ public class OAuthInterceptor extends HandlerInterceptorAdapter {
 
         // 设置用户信息
         Integer userId = oauthToken.getUserId();
-
+        logger.info("待验证权限的用户 ID:{}", userId + "");
         boolean isPermission = apiUserService.isPermission(userId, requestUrl);
         logger.info("验证结果:{}", isPermission + "");
         // TODO 添加权限校验
@@ -102,7 +102,7 @@ public class OAuthInterceptor extends HandlerInterceptorAdapter {
 
         // 记录操作日志
         logRequest(request, userId, paramsMap);
-
+        logger.info("handler : {}",handler);
         return super.preHandle(request, response, handler);
     }
 

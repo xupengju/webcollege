@@ -19,7 +19,7 @@
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.Signin">
+	<select id="get" parameterType="Long" resultType="com.college.entity.Signin">
 		SELECT <include refid="columns" />
 		FROM signin
 		WHERE id=#{id}
@@ -28,15 +28,9 @@
 	<!-- 新增 -->
 	<insert id="insert" parameterType="com.college.entity.Signin" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO signin (
-        	userId,
-        	status,
-        	createTime,
-        	updateTime
+        	userId
 		) VALUES (
-        	#{userId},
-        	#{status},
-        	#{createTime},
-        	#{updateTime}
+        	#{userId}
 		)
 	</insert>
 	
@@ -47,7 +41,7 @@
 			<if test="userId!=null and userId!='' ">
 				userId = #{userId},
 			</if>
-			<if test="status!=null and status!='' ">
+			<if test="status!=null">
 				status = #{status},
 			</if>
 			<if test="createTime!=null and createTime!='' ">
@@ -84,6 +78,7 @@
 				AND updateTime = #{searchFields.updateTime}
 			</if>
 		</where>
+		order by createTime desc
 	</select>
 	
 	<!--条件查询分页记录总数-->
@@ -122,6 +117,12 @@
 			</if>
 	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
 				AND updateTime = #{searchFields.updateTime}
+			</if>
+			<if test="searchFields.startTime != null and searchFields.startTime != ''">
+				AND createTime <![CDATA[>=]]> #{searchFields.startTime}
+			</if>
+			<if test="searchFields.endTime != null and searchFields.endTime != ''">
+				AND createTime <![CDATA[<=]]> #{searchFields.endTime}
 			</if>
 		</where>
 		ORDER BY

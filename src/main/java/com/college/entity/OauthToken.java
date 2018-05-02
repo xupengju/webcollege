@@ -39,7 +39,7 @@ public class OauthToken implements Serializable {
 	/**
 	 * 0: 正常 1:删除
 	 */
-	private boolean status;
+	private Boolean status;
 	/**
 	 * 创建时间
 	 */
@@ -86,11 +86,11 @@ public class OauthToken implements Serializable {
 	public void setExpiredTime(java.util.Date value) {
 		this.expiredTime = value;
 	}
-	public boolean getStatus() {
+	public Boolean getStatus() {
 		return this.status;
 	}
 	
-	public void setStatus(boolean value) {
+	public void setStatus(Boolean value) {
 		this.status = value;
 	}
 	public java.util.Date getCreateTime() {

@@ -1,9 +1,10 @@
 package com.college.controller;
 
-import org.springframework.stereotype.Controller;
+import com.college.contants.Path;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +18,8 @@ import java.util.UUID;
  * @author Milo on 2018/4/22.
  * @description
  */
-@Controller
-@RequestMapping(value = "upload")
-public class UploadController {
+@RestController
+public class UploadController extends BaseController {
 
     /**
      * 上传图片
@@ -31,7 +31,7 @@ public class UploadController {
      * @throws IllegalStateException
      * @throws IOException
      */
-    @RequestMapping(value = "/uploadimage", produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = Path.FILE_UPLOAD, produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String uploadImage(HttpServletRequest request,
                               HttpServletResponse response,

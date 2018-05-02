@@ -13,10 +13,13 @@ public class Path {
     public static final String CSS = "/css";
     public static final String IMG = "/img";
     // ===================================== 用户: USER  ============================================ //
+    //首页
+    public static final String INDEX = "/api/user/index";//用户登录
+
     // 用户相关接口
     public static final String USER_LOGIN = "/api/user/login.json";//用户登录
     public static final String USER_ADD = "/api/user/add.json";//添加用户
-    public static final String USER_FIND = "/api/user/find.json";//添加用户
+    public static final String USER_FIND = "/api/user/find.json";
     public static final String USER_GET = "/api/user/get.json";
     public static final String USER_UPDATE = "/api/user/update.json";//修改用户
     public static final String USER_ROLE_UPDATE = "/api/user/role/update.json";
@@ -44,7 +47,40 @@ public class Path {
     public static final String PERMISSION_SEARCH = "/api/permission/search.json";
     public static final String PERMISSION_DELETE = "/api/permission/delete.json";
 
+    //RESOURCE  资源
+    public static final String RESOURCE_ADD = "/api/resource/add.json";
+    public static final String RESOURCE_GET = "/api/resource/get.json";
+    public static final String RESOURCE_UPDATE = "/api/resource/update.json";
+    public static final String RESOURCE_LIST = "/api/resource/list.json";
+    public static final String RESOURCE_ALL = "/api/resource/all.json";
 
 
+    //TEACHER 教师
+    public static final String TEACHER_ADD = "/api/teacher/add.json";
+    public static final String TEACHER_GET = "/api/teacher/get.json";
+    public static final String TEACHER_UPDATE = "/api/teacher/update.json";
+    public static final String TEACHER_LIST = "/api/teacher/list.json";
+    public static final String TEACHER_ALL = "/api/teacher/all.json";
 
+
+    //ACHIEVEMENT 成果
+    public static final String ACHIEVEMENT_ADD = "/api/achievement/add.json";
+    public static final String ACHIEVEMENT_GET = "/api/achievement/get.json";
+    public static final String ACHIEVEMENT_UPDATE = "/api/achievement/update.json";
+    public static final String ACHIEVEMENT_LIST = "/api/achievement/list.json";
+    public static final String ACHIEVEMENT_ALL = "/api/achievement/all.json";
+
+    //NOTICE 公告
+    public static final String NOTICE_ADD = "/api/notice/add.json";
+    public static final String NOTICE_GET = "/api/notice/get.json";
+    public static final String NOTICE_UPDATE = "/api/notice/update.json";
+    public static final String NOTICE_LIST = "/api/notice/list.json";
+    public static final String NOTICE_ALL = "/api/notice/all.json";
+
+    //signin 签到
+    public static final String SIGNIN_ADD = "/api/signin/add.json";
+    public static final String SIGNIN_GET = "/api/signin/get.json";
+    public static final String SIGNIN_UPDATE = "/api/signin/update.json";
+    public static final String SIGNIN_LIST = "/api/signin/list.json";
+    public static final String SIGNIN_ALL = "/api/signin/all.json";
 }

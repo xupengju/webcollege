@@ -34,7 +34,7 @@ public class Role implements Serializable {
 	/**
 	 * 0: 正常 1:删除
 	 */
-	private Integer status;
+	private Boolean status;
 	/**
 	 * 创建时间
 	 */
@@ -74,11 +74,11 @@ public class Role implements Serializable {
 	public void setRemark(String value) {
 		this.remark = value;
 	}
-	public Integer getStatus() {
+	public Boolean getStatus() {
 		return this.status;
 	}
 	
-	public void setStatus(Integer value) {
+	public void setStatus(Boolean value) {
 		this.status = value;
 	}
 	public java.util.Date getCreateTime() {

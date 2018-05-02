@@ -16,8 +16,14 @@
         <param-name>log4jConfigLocation</param-name>
         <param-value>classpath:log4j.properties</param-value>
     </context-param>
+    <!-- Spring -->
+    <!-- 配置Spring上下文监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- Spring -->
 
-    <!-- 编码过滤器 -->
+    <!-- 配置Spring字符编码过滤器 -->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -35,36 +41,24 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- spring监听器 -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <!-- 防止spring内存溢出监听器，比如quartz -->
-    <listener>
-        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-    </listener>
-
-
-    <!-- spring mvc servlet-->
+    <!-- Spring MVC 核心控制器 DispatcherServlet 配置 -->
     <servlet>
-        <servlet-name>SpringMVC</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring-mvc.xml</param-value>
+            <param-value>classpath*:spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
-        <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SpringMVC</servlet-name>
-        <!-- 此处也可以配置成 *.do 形式 -->
-        <url-pattern>/</url-pattern>
+        <servlet-name>dispatcher</servlet-name>
+        <!-- 拦截所有/auth/* 的请求,交给DispatcherServlet处理,性能最好 -->
+        <url-pattern>*.json</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>/views/login.vm</welcome-file>
+        <welcome-file>/index.vm</welcome-file>
     </welcome-file-list>
 
     <servlet-mapping>

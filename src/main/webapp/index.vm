@@ -181,13 +181,7 @@
 <script src="../../js/jquery-3.1.0.js"></script>
 <script src="../../js/base.js"></script>
 <script src="../../js/swiper.min.js"></script>
-<script>
-    var mySwiper = new Swiper('.swiper-container', {
-        autoplay: 1000,//可选选项，自动滑动
-        slidesPerView: 5,
-        loop: true
-    })
+<script src="../../js/index.js">
 
-</script>
 </body>
 </html>

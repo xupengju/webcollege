@@ -22,7 +22,7 @@
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.OauthToken">
+	<select id="get" parameterType="Long" resultType="com.college.entity.OauthToken">
 		SELECT <include refid="columns" />
 		FROM oauth_token
 		WHERE id=#{id}

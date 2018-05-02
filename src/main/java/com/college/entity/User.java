@@ -49,7 +49,7 @@ public class User implements Serializable {
 	/**
 	 * 0: 正常 1:删除
 	 */
-	private boolean status;
+	private Boolean status;
 	/**
 	 * 创建时间
 	 */
@@ -110,11 +110,11 @@ public class User implements Serializable {
 	public void setAdministrator(boolean value) {
 		this.administrator = value;
 	}
-	public boolean getStatus() {
+	public Boolean getStatus() {
 		return this.status;
 	}
 	
-	public void setStatus(boolean value) {
+	public void setStatus(Boolean value) {
 		this.status = value;
 	}
 	public java.util.Date getCreateTime() {
@@ -138,5 +138,22 @@ public class User implements Serializable {
 
 	public void setMaxId(Integer maxId) {
 		this.maxId = maxId;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", userName='" + userName + '\'' +
+				", password='" + password + '\'' +
+				", salt='" + salt + '\'' +
+				", realName='" + realName + '\'' +
+				", idCard='" + idCard + '\'' +
+				", administrator=" + administrator +
+				", status=" + status +
+				", createTime=" + createTime +
+				", updateTime=" + updateTime +
+				", maxId=" + maxId +
+				'}';
 	}
 }
