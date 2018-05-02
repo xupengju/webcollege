@@ -2,6 +2,7 @@ package com.college.controller;
 
 import com.college.contants.AppCode;
 import com.college.contants.Path;
+import com.college.entity.Notice;
 import com.college.entity.Resource;
 import com.college.model.Resp;
 import com.college.service.ResourceService;
@@ -163,6 +164,14 @@ public class ResourceController extends BaseController {
         resource.setStatus(status);
         resourceService.update(resource);
         return Resp.success();
+    }
+
+
+    @RequestMapping(value = Path.NOTICE_GET)
+    @ResponseBody
+    public Resp get(@RequestParam(value = "id") Long id) {
+        Resource resource = resourceService.get(id);
+        return null != resource ? Resp.success(resource) : Resp.error(AppCode._10012);
     }
 
 }

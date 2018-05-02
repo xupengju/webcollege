@@ -25,7 +25,7 @@
 	</sql>
 	
 	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Integer" resultType="com.college.entity.Notice">
+	<select id="get" parameterType="Long" resultType="com.college.entity.Notice">
 		SELECT <include refid="columns" />
 		FROM notice
 		WHERE id=#{id}
