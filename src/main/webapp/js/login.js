@@ -64,14 +64,11 @@ $(".btn").click(function(){
                     }else  if(dataP.code==10005){//密码错误
                         alert(dataP.message);
                     }
-
                 }
             })
         }
 
     }
-
-
 })
 
 
