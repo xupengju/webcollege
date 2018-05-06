@@ -49,7 +49,7 @@ public class BaseInfoController {
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping(value = "/api/notice/list.json")
+    @RequestMapping(value = "/api/baseInfo/list.json")
     @ResponseBody
     public Map<String, Object> getList(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
                                        @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
