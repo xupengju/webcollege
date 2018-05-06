@@ -96,9 +96,9 @@
             </div>
         </div>
         <ul>
+            <!--<li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>
             <li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>
-            <li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>
-            <li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>
+            <li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>-->
         </ul>
     </div>
 </div>
@@ -118,9 +118,9 @@
             </div>
         </div>
         <ul>
+            <!--<li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>
             <li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>
-            <li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>
-            <li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>
+            <li><p>+ 华北水利水电大学黄河研究信息库水利水信</p><span>2015-5-19</span></li>-->
         </ul>
     </div>
 </div>
@@ -128,7 +128,7 @@
     <p class="t">图文热点</p>
     <div class="swiper-container">
         <ul class="swiper-wrapper">
-            <li class="swiper-slide">
+            <!--<li class="swiper-slide">
                 <img src="../../img/img5.jpg"/>
                 <p>
                     我院举办石家庄职业技术学院·石家庄社区学院入学活动
@@ -169,7 +169,7 @@
                 <p>
                     我院举办石家庄职业技术学院·石家庄社区学院入学活动
                 </p>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>
@@ -181,7 +181,7 @@
 <script src="../../js/jquery-3.1.0.js"></script>
 <script src="../../js/base.js"></script>
 <script src="../../js/swiper.min.js"></script>
-<script src="../../js/index.js">
+<script src="../../js/index.js"></script>
 
 </body>
 </html>

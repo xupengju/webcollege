@@ -48,3 +48,40 @@ $(".leftNav li p").click(function(event){
 	$(".twoContent"+parentIndex).show().siblings(".co").hide()
 	$(".twoContent"+parentIndex).find(".rightBox").eq($in-1).show()
 })
+//企业教师
+$.ajax({
+	type:"post",
+	url:"/api/teacher/list.json",
+	data:{
+		token:localStorage.getItem("token"),
+		type:1
+	},
+	success:function(data){
+		for(var i=0;i<data.result.length;i++){
+            $(".twoContent3 .rightBox").eq(0).find(".teacher").append(getTeacher1(data.result[i]))
+		}
+	}
+})
+//学校教师
+
+$.ajax({
+    type:"post",
+    url:"/api/teacher/list.json",
+    data:{
+        token:localStorage.getItem("token"),
+        type:2
+    },
+    success:function(data){
+        for(var i=0;i<data.result.length;i++){
+            $(".twoContent3 .rightBox").eq(1).find(".teacher").append(getTeacher1(data.result[i]))
+        }
+    }
+})
+//企业教师列表函数
+function  getTeacher1(data) {
+	var list="";
+	return list+='<li><img src="' +
+		''+data.image+'"><div class="word1"><h3>'
+		+data.teacherName+' '+data.academicTitle+'</h3><p>'
+		+data.resume+'</p></div></li>'
+}

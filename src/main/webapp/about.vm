@@ -171,7 +171,7 @@
 				<h2 class="tc mt30 mb20">企业教师</h2>
 				
 				<ul class="teacher">
-					<li>
+					<!--<li>
 						<img src="../img/img6.jpg">
 						<div class="word1">
 							<h3>张三    特级教师</h3>
@@ -224,7 +224,7 @@
 								Pellentesque quam est, auctor ut neque ac, lacinia posuere nisi. Nunc enim mauris, sagittis sed tortor eu, tristique tristique erat. Donec consectetur euismod sem vel laoreet. Donec vitae neque rutrum lectus faucibus aliquet. Nam vel odio vitae diam venenatis facilisis. Quisque imperdiet pellentesque orci a sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed cursus nibh non ultricies aliquam. Aenean egestas auctor ipsum, at ullamcorper sapien eleifend eu. Sed gravida mauris eleifend iaculis ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel libero eu mauris convallis condimentum nec id nisl. Nulla auctor odio in ullamcorper congue. Quisque venenatis ac dui quis pretium.
 							</p>
 						</div>
-					</li>
+					</li>-->
 				</ul>
 				<div id="page2" class="page_div"></div>
 				
@@ -233,7 +233,7 @@
 				<h2 class="tc mt30 mb20">学校教师</h2>
 				
 				<ul class="teacher">
-					<li>
+					<!--<li>
 						<img src="../img/img6.jpg">
 						<div class="word1">
 							<h3>张三    特级教师</h3>
@@ -286,7 +286,7 @@
 								Pellentesque quam est, auctor ut neque ac, lacinia posuere nisi. Nunc enim mauris, sagittis sed tortor eu, tristique tristique erat. Donec consectetur euismod sem vel laoreet. Donec vitae neque rutrum lectus faucibus aliquet. Nam vel odio vitae diam venenatis facilisis. Quisque imperdiet pellentesque orci a sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed cursus nibh non ultricies aliquam. Aenean egestas auctor ipsum, at ullamcorper sapien eleifend eu. Sed gravida mauris eleifend iaculis ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel libero eu mauris convallis condimentum nec id nisl. Nulla auctor odio in ullamcorper congue. Quisque venenatis ac dui quis pretium.
 							</p>
 						</div>
-					</li>
+					</li>-->
 				</ul>
 				<div id="page2" class="page_div"></div>
 			</div>
