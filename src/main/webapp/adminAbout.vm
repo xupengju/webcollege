@@ -19,11 +19,11 @@
     <ul class="adminNav">
         <li><a href="adminNotice.vm">新闻管理</a></li>
         <li class="on"><a href="adminAbout.vm">关于我们管理</a></li>
-        <li><a href="adminPracticeManage.vm.vm">实习管理</a></li>
-        <li>教学资源管理</li>
-        <li>创新创业管理</li>
-        <li>社会培训管理</li>
-        <li>学生管理</li>
+        <li><a href="adminPracticeManage.vm">实习管理</a></li>
+        <li><a href="adminTeachingResources.vm">教学资源管理</a></li>
+        <li><a href="adminInnovation.vm">创新创业管理</a></li>
+        <li><a href="adminSocial.vm">社会培训管理</a></li>
+        <li><a href="adminStudent.vm">学生管理</a></li>
     </ul>
     <div class="adminContent">
         <h1 class="mt20 mb20">关于我们界面创建</h1>
