@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>创建页面</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/adminCss.css"/>
+    <script src="../../js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../js/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src=".././js/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="../../js/zh-cn.js"></script>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<div class="adminHeader"><img src="img/logo.png">信息管理系统界面</div>
+    <ul class="adminNav">
+        <li><a href="adminNotice.vm">新闻管理</a></li>
+        <li><a href="adminAbout.vm">关于我们管理</a></li>
+        <li><a href="adminPracticeManage.vm">实习管理</a></li>
+        <li><a href="adminTeachingResources.vm">教学资源管理</a></li>
+        <li><a href="adminInnovation.vm">创新创业管理</a></li>
+        <li class="on"><a href="adminSocial.vm">社会培训管理</a></li>
+        <li><a href="adminStudent.vm">学生管理</a></li>
+    </ul>
+    <div class="adminContent">
+        <h1 class="mt20 mb20">创建社会培训相关</h1>
+        <select class="se">
+            <option value="">创建职业鉴定</option>
+            <option value="">创建电子设备装接工介绍</option>
+            <option value="">创建高级维修电工介绍</option>
+            <option value="">创建无线电调试员介绍</option>
+            <option value="">创建计算机装调员介绍</option>
+            <option value="">创建员工培训介绍</option>
+            <option value="">创建新入职员工培训介绍</option>
+            <option value="">创建员工专项能力培训介绍</option>
+            <option value="">创建学生实习</option>
+            <option value="">创建认识实习介绍</option>
+            <option value="">创建跟岗实习介绍</option>
+            <option value="">创建顶岗实习介绍</option>
+        </select>
+        <div class="newsBox1">
+            <h2 class="mt20 mb20">创建职业鉴定</h2>
+            <p>
+                <span>图片：</span>
+                <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                    <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                    <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor1" type="text/plain"></div>
+        </div>
+        <div class="newsBox2">
+            <h2 class="mt20 mb20">创建电子设备装接工介绍</h2>
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor2" type="text/plain"></div>
+        </div>
+        <div class="newsBox3">
+            <h2 class="mt20 mb20">创建高级维修电工介绍</h2>
+
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor3" type="text/plain"></div>
+        </div>
+        <div class="newsBox4">
+            <h2 class="mt20 mb20">创建无线电调试员介绍</h2>
+
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor4" type="text/plain"></div>
+        </div>
+        <div class="newsBox5">
+            <h2 class="mt20 mb20">创建计算机装调员介绍</h2>
+
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor5" type="text/plain"></div>
+        </div>
+        <div class="newsBox6">
+            <h2 class="mt20 mb20">创建员工培训介绍</h2>
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor6" type="text/plain"></div>
+        </div>
+        <div class="newsBox7">
+            <h2 class="mt20 mb20">创建新入职员工培训介绍</h2>
+
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor7" type="text/plain"></div>
+        </div>
+        <div class="newsBox8">
+            <h2 class="mt20 mb20">创建员工专项能力培训介绍</h2>
+
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor8" type="text/plain"></div>
+        </div>
+        <div class="newsBox9">
+            <h2 class="mt20 mb20">创建学生实习</h2>
+            <p>
+                <span>名称：</span>
+                <input type="text"/>
+            </p>
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+
+
+        </div>
+        <div class="newsBox10">
+            <h2 class="mt20 mb20">创建认识实习介绍</h2>
+
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor9" type="text/plain"></div>
+        </div>
+        <div class="newsBox11">
+            <h2 class="mt20 mb20">创建跟岗实习介绍</h2>
+
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor10" type="text/plain"></div>
+        </div>
+        <div class="newsBox12">
+            <h2 class="mt20 mb20">创建顶岗实习介绍</h2>
+
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor11" type="text/plain"></div>
+        </div>
+    </div>
+    <script src="../../js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="../../js/adminNotice.js"></script>
+</body>
+</html>
