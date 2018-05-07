@@ -27,3 +27,19 @@ var $ind=localStorage.getItem("studentIndex")
 if($ind){
 	a($(".leftNav li").eq($ind),parseInt($ind)+1)
 }
+//提交问卷
+function check() {
+    var kvName = {}, allSelected = true;
+    $('input:radio').each(function () {
+        if (kvName[this.name]) return true;
+        if ($('[name="' + this.name + '"]:checked').length == 0) {
+            alert('有未选择项');
+            return allSelected = false;
+        }
+        kvName[this.name] = true//标志此组已经检查过，剩余的不需要遍历了，上面的第一句直接继续检查下一组
+    });
+
+    if (allSelected) {
+    	alert('提交成功')
+    }
+}
