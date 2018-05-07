@@ -1,10 +1,12 @@
 package com.college.controller;
 
 import com.college.contants.Path;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +20,11 @@ import java.util.UUID;
  * @author Milo on 2018/4/22.
  * @description
  */
-@RestController
-public class UploadController extends BaseController {
-
+@Controller
+@RequestMapping
+public class UploadController {
+    private static Logger logger = LoggerFactory
+            .getLogger(UploadController.class);
     /**
      * 上传图片
      *
@@ -31,15 +35,17 @@ public class UploadController extends BaseController {
      * @throws IllegalStateException
      * @throws IOException
      */
-    @RequestMapping(value = Path.FILE_UPLOAD, produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = Path.FILE_UPLOAD)
     @ResponseBody
     public String uploadImage(HttpServletRequest request,
                               HttpServletResponse response,
                               @RequestParam(value = "file") MultipartFile file)
             throws IllegalStateException, IOException {
+
+        logger.info("uploadImage :{}","");
         HttpSession session = request.getSession();
         // fileName唯一性
-        String path = session.getServletContext().getRealPath("/media/temporaryupload");
+        String path = session.getServletContext().getRealPath("/");
         // 原始文件名
         String originalFileName = file.getOriginalFilename();
         // 获取图片后缀
@@ -60,6 +66,6 @@ public class UploadController extends BaseController {
          使用transferTo（dest）方法将上传文件写到服务器上指定的文件
          */
         file.transferTo(targetFile);
-        return request.getContextPath() + "/media/temporaryupload/" + fileName;
+        return request.getContextPath() + "/" + fileName;
     }
 }

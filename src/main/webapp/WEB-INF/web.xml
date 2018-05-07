@@ -53,7 +53,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <!-- 拦截所有/auth/* 的请求,交给DispatcherServlet处理,性能最好 -->
         <url-pattern>*.json</url-pattern>
     </servlet-mapping>
 
