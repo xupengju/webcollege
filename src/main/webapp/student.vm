@@ -287,7 +287,7 @@ Donec accumsan porttitor velit non venenatis. Praesent vehicula convallis nisl n
                     <p><input name="c15" type="radio"/>一般</p>
                     <p><input name="c15" type="radio"/>不满意</p>
                 </div>
-				<div class="downloadBtn">提交</div>
+				<div class="downloadBtn" onclick="check()">提交</div>
 			</div>
 		</div>
 		
