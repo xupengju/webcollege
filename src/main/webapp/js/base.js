@@ -99,3 +99,15 @@ function a(t,index){
 	//console.log(index)
 	$(".ri"+index).stop(true).show().siblings(".rightBox").stop(true).hide()
 }*/
+//用户是否登录
+
+if(localStorage.getItem("userName")!=null && localStorage.getItem("token")!=null){
+	$(".loginBtn").hide();
+	$(".box").append("<p>"+localStorage.getItem("userName")+"<button>退出</button></p>")
+}
+$(".box button").click(function () {
+	localStorage.clear();
+    $(".loginBtn").show();
+    $(".box p").remove();
+    window.location.href="../index.vm";
+})
