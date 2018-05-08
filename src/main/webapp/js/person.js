@@ -7,7 +7,7 @@ function showList(){
             token:localStorage.getItem("token")
         },
         success:function(data){
-           console.log(data)
+          // console.log(data)
             var list=data.result;
             for(var i=0;i<list.length;i++){
                 var isSign="";
@@ -22,7 +22,19 @@ function showList(){
     })
 }
 showList()
-
+//判断是否已签到
+$.ajax({
+    type:"post",
+    url:"/api/signin/add.json",
+    data:{
+        token:localStorage.getItem("token"),
+    },
+    success:function(data){
+        if(data.code==10011){
+            $(".btn").html("已签到").css("background","#ccc")
+        }
+    }
+})
 //添加签到接口
 $(".btn").click(function () {
     $.ajax({
@@ -32,7 +44,7 @@ $(".btn").click(function () {
             token:localStorage.getItem("token"),
         },
         success:function(data){
-           // console.log(data)
+           console.log(data)
 			if(data.code==200){
             	//alert("签到成功")
                 $(".btn").html("已签到").css("background","#ccc")

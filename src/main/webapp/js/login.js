@@ -58,6 +58,7 @@ $(".btn").click(function(){
                     }else if(dataP.code==200){//成功
                        //alert("登陆成功")
                         localStorage.setItem("token",dataP.data.token)
+                        localStorage.setItem("userName",userName)
                         window.location.href="person.vm"
                     }else if(dataP.code==10002){//用户名或密码错误
                         alert(dataP.message);
