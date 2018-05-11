@@ -64,19 +64,23 @@ $(".leftNav li p").click(function(event){
 	$(".twoContent"+parentIndex).show().siblings(".co").hide()
 	$(".twoContent"+parentIndex).find(".rightBox").eq($in-1).show()
 })
-$(".newBox").eq(0).click(function(){
+$(".ri2 .newBox").eq(0).click(function(){
 	window.location.href="TeachingResourcesVideo.vm"
 })
-$(".newBox").eq(1).click(function(){
+$(".ri2 .newBox").eq(1).click(function(){
 	window.location.href="TeachingResourcesImg.vm"
 })
-$(".newBox").eq(2).click(function(){
+$(".ri2 .newBox").eq(2).click(function(){
 	window.location.href="TeachingResourcesTeach.vm"
 })
-$(".newBox").eq(3).click(function(){
+$(".ri2 .newBox").eq(3).click(function(){
 	window.location.href="TeachingResourcesLink.vm"
 })
 //返回
 $(".back1").click(function(){
 	window.history.back()
+})
+//
+$(".ri1 .newBox").click(function () {
+	window.location.href="detaiAbout.vm"
 })
