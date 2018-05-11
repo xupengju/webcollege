@@ -34,6 +34,7 @@
     </a>
     <a><div class="manageBtn">实习管理</div>
         <div class="navTwo manageA">
+            <div>规章制度</div>
             <div>实习流程</div>
             <div>岗位目标与要求</div>
             <div>企业产品标准</div>
@@ -75,7 +76,7 @@
 </nav>
 <div class="personBox">
     <h3 class="tc mt30 mb20">个人信息</h3>
-    <div class="btn">签到</div>
+    <div class="btn" onclick="personObj.sign()">签到</div>
     <p>
         <span>姓名</span>
         <b>李未未</b>

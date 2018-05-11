@@ -35,6 +35,7 @@
     <a>
         <div class="manageBtn">实习管理</div>
         <div class="navTwo manageA">
+            <div>规章制度</div>
             <div>实习流程</div>
             <div>岗位目标与要求</div>
             <div>企业产品标准</div>
