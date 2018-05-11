@@ -77,5 +77,8 @@ var aboutObj={
 aboutObj.teacherList(1,0)
 //学校教师
 aboutObj.teacherList(2,1)
+$(".ruleWord p").click(function () {
+	window.location.href="detaiAbout.vm"
+})
 
 
