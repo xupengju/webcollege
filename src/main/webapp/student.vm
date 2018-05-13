@@ -28,11 +28,12 @@
 			</a>
 			<a><div class="manageBtn">实习管理</div>
 				<div class="navTwo manageA">
-					<div>实习流程</div>
-					<div>岗位目标与要求</div>
-					<div>企业产品标准</div>
-					<div>安全操作规范</div>
-					<div>实习考核标准</div>
+                    <div>规章制度</div>
+                    <div>实习流程</div>
+                    <div>岗位目标与要求</div>
+                    <div>企业产品标准</div>
+                    <div>安全操作规范</div>
+                    <div>实习考核标准</div>
 				</div>
 			</a>
 			<a><div class="teachBtn">教学资源</div>
@@ -153,11 +154,141 @@ Donec accumsan porttitor velit non venenatis. Praesent vehicula convallis nisl n
 			<div class="rightBox ri4">
 				<h2 class="tc mt30">顶岗实习评价表</h2>
 				<p class="word">
-					Donec accumsan porttitor velit non venenatis. Praesent vehicula convallis nisl non aliquet. Curabitur viverra nulla nec pulvinar volutpat. Etiam quis nisl augue. Sed fermentum mattis malesuada. Praesent congue blandit metus non blandit. Vivamus ante nisl, egestas quis ultricies eget, sollicitudin nec mauris. Donec molestie est dui, ac tincidunt tellus placerat ac. Nulla quam turpis, tincidunt non lorem at, varius hendrerit diam. Ut neque erat, elementum ac molestie in, mattis non massa. Vivamus lorem sapien, posuere vel justo vel, condimentum tempus libero. Sed vulputate orci magna, sed aliquam ex lacinia in. Nullam quis tortor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat augue, convallis lacinia erat sed, ullamcorper imperdiet lectus. Donec dapibus, leo nec lobortis accumsan, lacus est suscipit nibh, sit amet convallis erat est et arcu.
-Donec accumsan porttitor velit non venenatis. Praesent vehicula convallis nisl non aliquet. Curabitur viverra nulla nec pulvinar volutpat. Etiam quis nisl augue. Sed fermentum mattis malesuada. Praesent congue blandit metus non blandit. Vivamus ante nisl, egestas quis ultricies eget, sollicitudin nec mauris. Donec molestie est dui, ac tincidunt tellus placerat ac. Nulla quam turpis, tincidunt non lorem at, varius hendrerit diam. Ut neque erat, elementum ac molestie in, mattis non massa. Vivamus lorem sapien, posuere vel justo vel, condimentum tempus libero. Sed vulputate orci magna, sed aliquam ex lacinia in. Nullam quis tortor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat augue, convallis lacinia erat sed, ullamcorper imperdiet lectus. Donec dapibus, leo nec lobortis accumsan, lacus est suscipit nibh, sit amet convallis erat est et arcu.
-
+					1.对此次实习感觉如何？
 				</p>
-				<div class="downloadBtn">提交</div>
+				<div class="choseAns">
+					<p><input name="c1" type="radio"/>非常满意</p>
+                    <p><input name="c1" type="radio"/>满意</p>
+                    <p><input name="c1" type="radio"/>一般</p>
+                    <p><input name="c1" type="radio"/>不满意</p>
+				</div>
+                <p class="word">
+                    2.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c2" type="radio"/>非常满意</p>
+                    <p><input name="c2" type="radio"/>满意</p>
+                    <p><input name="c2" type="radio"/>一般</p>
+                    <p><input name="c2" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    3.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c3" type="radio"/>非常满意</p>
+                    <p><input name="c3" type="radio"/>满意</p>
+                    <p><input name="c3" type="radio"/>一般</p>
+                    <p><input name="c3" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    4.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c4" type="radio"/>非常满意</p>
+                    <p><input name="c4" type="radio"/>满意</p>
+                    <p><input name="c4" type="radio"/>一般</p>
+                    <p><input name="c4" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    5.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c5" type="radio"/>非常满意</p>
+                    <p><input name="c5" type="radio"/>满意</p>
+                    <p><input name="c5" type="radio"/>一般</p>
+                    <p><input name="c5" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    6.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c6" type="radio"/>非常满意</p>
+                    <p><input name="c6" type="radio"/>满意</p>
+                    <p><input name="c6" type="radio"/>一般</p>
+                    <p><input name="c6" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    7.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c7" type="radio"/>非常满意</p>
+                    <p><input name="c7" type="radio"/>满意</p>
+                    <p><input name="c7" type="radio"/>一般</p>
+                    <p><input name="c7" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    8.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c8" type="radio"/>非常满意</p>
+                    <p><input name="c8" type="radio"/>满意</p>
+                    <p><input name="c8" type="radio"/>一般</p>
+                    <p><input name="c8" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    9.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c9" type="radio"/>非常满意</p>
+                    <p><input name="c9" type="radio"/>满意</p>
+                    <p><input name="c9" type="radio"/>一般</p>
+                    <p><input name="c9" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    10.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c10" type="radio"/>非常满意</p>
+                    <p><input name="c10" type="radio"/>满意</p>
+                    <p><input name="c10" type="radio"/>一般</p>
+                    <p><input name="c10" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    11.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c11" type="radio"/>非常满意</p>
+                    <p><input name="c11" type="radio"/>满意</p>
+                    <p><input name="c11" type="radio"/>一般</p>
+                    <p><input name="c11" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    12.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c12" type="radio"/>非常满意</p>
+                    <p><input name="c12" type="radio"/>满意</p>
+                    <p><input name="c12" type="radio"/>一般</p>
+                    <p><input name="c12" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    13.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c13" type="radio"/>非常满意</p>
+                    <p><input name="c13" type="radio"/>满意</p>
+                    <p><input name="c13" type="radio"/>一般</p>
+                    <p><input name="c13" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    14.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c14" type="radio"/>非常满意</p>
+                    <p><input name="c14" type="radio"/>满意</p>
+                    <p><input name="c14" type="radio"/>一般</p>
+                    <p><input name="c14" type="radio"/>不满意</p>
+                </div>
+                <p class="word">
+                    15.对此次实习感觉如何？
+                </p>
+                <div class="choseAns">
+                    <p><input name="c15" type="radio"/>非常满意</p>
+                    <p><input name="c15" type="radio"/>满意</p>
+                    <p><input name="c15" type="radio"/>一般</p>
+                    <p><input name="c15" type="radio"/>不满意</p>
+                </div>
+				<div class="downloadBtn" onclick="check()">提交</div>
 			</div>
 		</div>
 		
@@ -167,10 +298,7 @@ Donec accumsan porttitor velit non venenatis. Praesent vehicula convallis nisl n
 			<p>设计单位：石家庄职业技术学院  软件学院 冀ICP备14001874号-1</p>
 		</footer>
 		<script src="../../js/jquery-3.1.0.js"></script>
-		
-		
 		<script src="../../js/fenye.js"></script>
-		
 		<script src="../../js/base.js"></script>
 		<script src="../../js/student.js"></script>
 	</body>

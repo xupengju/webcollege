@@ -74,6 +74,7 @@ html {
   font-weight: 900;
   text-align: center;
   letter-spacing: 5px;
+  cursor: pointer;
 }
 .formList p span b {
   display: inline-block;

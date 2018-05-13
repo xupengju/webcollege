@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>创建页面</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/adminCss.css"/>
+    <script src="../../js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../js/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src=".././js/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="../../js/zh-cn.js"></script>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<div class="adminHeader"><img src="img/logo.png">信息管理系统界面</div>
+    <ul class="adminNav">
+        <li><a href="adminNotice.vm">新闻管理</a></li>
+        <li><a href="adminAbout.vm">关于我们管理</a></li>
+        <li><a href="adminPracticeManage.vm">实习管理</a></li>
+        <li><a href="adminTeachingResources.vm">教学资源管理</a></li>
+        <li><a href="adminInnovation.vm">创新创业管理</a></li>
+        <li><a href="adminSocial.vm">社会培训管理</a></li>
+        <li class="on"><a href="adminStudent.vm">学生管理</a></li>
+    </ul>
+    <div class="adminContent">
+        <h1 class="mt20 mb20">创建学生管理相关</h1>
+        <select class="se">
+            <option value="">创建学生生产性实习安全责任书</option>
+            <option value="">创建实习手册</option>
+            <option value="">创建顶岗实习评价表</option>
+
+        </select>
+        <div class="newsBox1">
+            <h2 class="mt20 mb20">创建学生生产性实习安全责任书</h2>
+
+            <p>内容：</p>
+            <div id="editor1" type="text/plain"></div>
+        </div>
+        <div class="newsBox2">
+            <h2 class="mt20 mb20">创建实习手册</h2>
+
+            </p>
+            <p>内容：</p>
+            <div id="editor2" type="text/plain"></div>
+        </div>
+        <div class="newsBox3">
+            <h2 class="mt20 mb20">创建顶岗实习评价表</h2>
+            <p class="question">
+                <b>问题1：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+            <p class="question">
+                <b>问题2：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+            <p class="question">
+                <b>问题3：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+            <p class="question">
+                <b>问题4：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+            <p class="question">
+                <b>问题5：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+            <p class="question">
+                <b>问题6：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+            <p class="question">
+                <b>问题7：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+            <p class="question">
+                <b>问题8：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+            <p class="question">
+                <b>问题9：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+            <p class="question">
+                <b>问题10：</b><input type="text"/><br/>
+                答案1：<input type="text"/><br/>
+                答案2：<input type="text"/><br/>
+                答案3：<input type="text"/><br/>
+                答案4：<input type="text"/>
+            </p>
+        </div>
+
+    </div>
+    <script src="../../js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="../../js/adminNotice.js"></script>
+</body>
+</html>

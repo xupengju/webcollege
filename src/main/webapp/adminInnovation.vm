@@ -17,34 +17,27 @@
 <body>
 <div class="adminHeader"><img src="img/logo.png">信息管理系统界面</div>
     <ul class="adminNav">
-
-        <li class="on"><a href="adminNotice.vm">新闻管理</a></li>
+        <li><a href="adminNotice.vm">新闻管理</a></li>
         <li><a href="adminAbout.vm">关于我们管理</a></li>
         <li><a href="adminPracticeManage.vm">实习管理</a></li>
         <li><a href="adminTeachingResources.vm">教学资源管理</a></li>
-        <li><a href="adminInnovation.vm">创新创业管理</a></li>
+        <li class="on"><a href="adminInnovation.vm">创新创业管理</a></li>
         <li><a href="adminSocial.vm">社会培训管理</a></li>
         <li><a href="adminStudent.vm">学生管理</a></li>
     </ul>
     <div class="adminContent">
-        <h1 class="mt20 mb20">新闻界面创建</h1>
+        <h1 class="mt20 mb20">创建创新创业相关</h1>
         <select class="se">
-            <option value="">创建新闻</option>
-            <option value="">创建公告</option>
-            <option value="">创建图文热点</option>
+            <option value="">创建众创空间介绍</option>
+            <option value="">创建学生创新</option>
+            <option value="">创建校企合作项目</option>
+            <option value="">创建技术服务</option>
         </select>
         <div class="newsBox1">
-            <h2 class="mt20 mb20">创建新闻</h2>
+            <h2 class="mt20 mb20">创建众创空间介绍</h2>
+
             <p>
-                <span>标题：</span>
-                <input type="text"/>
-            </p>
-            <p>
-                <span>网址：</span>
-                <input type="text"/>
-            </p>
-            <p>
-                <span>封面：</span>
+                <span>图片：</span>
                 <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
                     <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
                     <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
@@ -54,45 +47,51 @@
             <div id="editor1" type="text/plain"></div>
         </div>
         <div class="newsBox2">
-            <h2 class="mt20 mb20">创建公告</h2>
+            <h2 class="mt20 mb20">创建学生创新</h2>
             <p>
-                <span>标题：</span>
-                <input type="text"/>
-            </p>
-            <p>
-                <span>网址：</span>
-                <input type="text"/>
-            </p>
-            <p>
-                <span>封面：</span>
+                <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar1">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar1')"/>
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor2" type="text/plain"></div>
         </div>
         <div class="newsBox3">
-            <h2 class="mt20 mb20">创建图文热点</h2>
+            <h2 class="mt20 mb20">创建校企合作项目</h2>
             <p>
                 <span>标题：</span>
                 <input type="text"/>
             </p>
             <p>
-                <span>网址：</span>
+                <span>时间：</span>
                 <input type="text"/>
             </p>
             <p>
-                <span>封面：</span>
-                <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                    <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar2">
-                    <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar2')"/>
-                </div>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
             </p>
             <p>内容：</p>
             <div id="editor3" type="text/plain"></div>
         </div>
+        <div class="newsBox4">
+            <h2 class="mt20 mb20">创建技术服务</h2>
+
+            <p>
+                <span>图片：</span>
+            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
+                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
+                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+            </div>
+            </p>
+            <p>内容：</p>
+            <div id="editor4" type="text/plain"></div>
+        </div>
+
     </div>
     <script src="../../js/ajaxfileupload.js"></script>
     <script type="text/javascript" src="../../js/adminNotice.js"></script>

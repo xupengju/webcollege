@@ -427,6 +427,9 @@ header .box a {
   margin-top: 50px;
   line-height: 30px;
 }
+header .box p{width: 300px;float: right;padding-top: 50px;text-align: right;}
+header .box p button{background: none;color: blue;text-decoration: underline;margin-left: 10px;cursor: pointer;
+outline: none}
 nav {
   height: 45px;
   background: #395b94;
@@ -481,3 +484,39 @@ footer {
 .aboutBtn {
   cursor: pointer;
 }
+/*
+管理员*/
+.adminHeader{height: 100px;
+  line-height: 100px;
+  font-size: 30px;color: #fff;background: #3a87ad;}
+.adminNav{
+  width: 15%;
+  text-align: center;
+  min-height: 40px;
+  overflow: hidden;
+background: #0e235a;
+  float: left;margin-left: 2.5%;margin-right: 2.5%;}
+.adminNav li{height:40px;line-height: 40px;cursor: pointer;}
+.adminNav a{display: block;height: 40px;color:#fff;}
+.adminNav .on{background: #3a87ad;}
+.adminContent{width: 80%;min-height: 100px;
+  overflow: hidden;
+  float: left;padding: 0 50px;box-sizing: border-box;}
+
+.adminContent input[type="text"]{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;height: 30px;border: 1px solid #333;
+  width: 300px;}
+.adminContent p{height:50px;
+  font-size: 16px;}
+
+.adminContent  p span{display: inline-block;width: 50px;}
+.adminContent p img{
+  display: inline-block;}
+.adminContent .newsBox2,.newsBox3,.newsBox4,.newsBox5,.newsBox6,.newsBox7,.newsBox8,.newsBox9,.newsBox10,.newsBox11,.newsBox12{
+  display: none;}
+
+.adminContent .question{height: 250px;margin: 20px}
+.adminContent .question input{margin-top: 10px}
+.adminContent select{height: 50px;outline: none}
