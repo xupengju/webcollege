@@ -6,7 +6,7 @@ public class Resource implements Serializable {
 	//alias
 	public static final String TABLE_ALIAS = "Resource";
 	public static final String ALIAS_ID = "id";
-	public static final String ALIAS_TEACHERNAME = "teacherName";
+	public static final String ALIAS_RESOURCENAME = "resourceName";
 	public static final String ALIAS_RESUME = "resume";
 	public static final String ALIAS_USERID = "userId";
 	public static final String ALIAS_TYPE = "type";
@@ -26,7 +26,7 @@ public class Resource implements Serializable {
 	/**
 	 * 
 	 */
-	private String teacherName;
+	private String resourceName;
 	/**
 	 * 
 	 */
@@ -73,12 +73,12 @@ public class Resource implements Serializable {
 	public void setId(Integer value) {
 		this.id = value;
 	}
-	public String getTeacherName() {
-		return this.teacherName;
+	public String getResourceName() {
+		return this.resourceName;
 	}
 	
-	public void setTeacherName(String value) {
-		this.teacherName = value;
+	public void setResourceName(String value) {
+		this.resourceName = value;
 	}
 	public String getResume() {
 		return this.resume;

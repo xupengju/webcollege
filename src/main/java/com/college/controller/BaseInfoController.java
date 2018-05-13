@@ -3,6 +3,8 @@ package com.college.controller;
 import com.college.contants.AppCode;
 import com.college.contants.Path;
 import com.college.entity.BaseInfo;
+import com.college.entity.Notice;
+import com.college.model.Resp;
 import com.college.service.BaseInfoService;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
@@ -170,6 +172,13 @@ public class BaseInfoController {
         resultMap.put("resultcode", AppCode._200);
         resultMap.put("resultd", id);
         return resultMap;
+    }
+
+    @RequestMapping(value = "/api/notice/get.json")
+    @ResponseBody
+    public Resp get(@RequestParam(value = "id") Long id) {
+        BaseInfo baseInfo= baseInfoService.get(id);
+        return null != baseInfo ? Resp.success(baseInfo) : Resp.error(AppCode._10012);
     }
 
 }
