@@ -96,7 +96,7 @@ public class BaseInfoController {
      */
     @RequestMapping(value = Path.BASEINFO_ADD)
     @ResponseBody
-    public Map<String, Object> add(
+    public Resp add(
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "resume", required = false) String resume,
             @RequestParam(value = "contentType", required = false) Integer contentType,
@@ -119,10 +119,7 @@ public class BaseInfoController {
         baseInfo.setUpdateUser(updateUser);
         baseInfo.setUpdateTime(updateTime);
         Integer id = baseInfoService.insert(baseInfo);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
     /**
@@ -143,7 +140,7 @@ public class BaseInfoController {
      */
     @RequestMapping(value =  Path.BASEINFO_UPDATE)
     @ResponseBody
-    public Map<String, Object> update(
+    public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "resume", required = false) String resume,
@@ -167,10 +164,7 @@ public class BaseInfoController {
         baseInfo.setUpdateUser(updateUser);
         baseInfo.setUpdateTime(updateTime);
         baseInfoService.update(baseInfo);
-        Map<String, Object> resultMap = Maps.newHashMap();
-        resultMap.put("resultcode", AppCode._200);
-        resultMap.put("resultd", id);
-        return resultMap;
+        return Resp.success();
     }
 
     @RequestMapping(value =  Path.BASEINFO_GET)
