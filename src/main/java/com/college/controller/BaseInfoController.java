@@ -94,7 +94,7 @@ public class BaseInfoController {
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping(value = "/api/baseInfo/add.json")
+    @RequestMapping(value = Path.BASEINFO_ADD)
     @ResponseBody
     public Map<String, Object> add(
             @RequestParam(value = "title", required = false) String title,
