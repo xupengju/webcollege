@@ -3,7 +3,6 @@ package com.college.controller;
 import com.college.contants.AppCode;
 import com.college.contants.Path;
 import com.college.entity.BaseInfo;
-import com.college.entity.Notice;
 import com.college.model.Resp;
 import com.college.service.BaseInfoService;
 import com.github.pagehelper.Page;
@@ -51,7 +50,7 @@ public class BaseInfoController {
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping(value = "/api/baseInfo/list.json")
+    @RequestMapping(value = Path.BASEINFO_LIST)
     @ResponseBody
     public Map<String, Object> getList(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
                                        @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
@@ -142,7 +141,7 @@ public class BaseInfoController {
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping(value = "/api/baseInfo/update.json")
+    @RequestMapping(value =  Path.BASEINFO_UPDATE)
     @ResponseBody
     public Map<String, Object> update(
             @RequestParam(value = "id", required = false) Integer id,
@@ -174,7 +173,7 @@ public class BaseInfoController {
         return resultMap;
     }
 
-    @RequestMapping(value = "/api/notice/get.json")
+    @RequestMapping(value =  Path.BASEINFO_GET)
     @ResponseBody
     public Resp get(@RequestParam(value = "id") Long id) {
         BaseInfo baseInfo= baseInfoService.get(id);

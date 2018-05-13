@@ -110,7 +110,7 @@ public class ResourceController extends BaseController {
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
         Resource resource = new Resource();
-        resource.setResourceName(resourceName);;
+        resource.setResourceName(resourceName);
         resource.setResume(resume);
         resource.setUserId(userId);
         resource.setType(type);
