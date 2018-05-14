@@ -50,11 +50,11 @@ $(".leftNav li p").click(function(event){
 	$(".twoContent"+parentIndex).show().siblings(".co").hide()
 	$(".twoContent"+parentIndex).find(".rightBox").eq($in-1).show()
 })
-
+/* 去掉
 $(".schoolList li").click(function(){
 	window.location.href="socialDetail.vm"
 })
-
+*/
 $(".back1").click(function(){
 	window.history.back()
 })

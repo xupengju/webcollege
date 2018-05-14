@@ -52,6 +52,7 @@
             </p>
             <p>内容：</p>
             <div id="editor1" type="text/plain"></div>
+            <button class="saveBtn">保存</button>
         </div>
         <div class="newsBox2">
             <h2 class="mt20 mb20">创建公告</h2>
