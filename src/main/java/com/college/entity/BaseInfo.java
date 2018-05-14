@@ -1,64 +1,64 @@
 package com.college.entity;
 
 import java.io.Serializable;
-public class Resource implements Serializable {
+public class BaseInfo implements Serializable {
 
 	//alias
-	public static final String TABLE_ALIAS = "Resource";
+	public static final String TABLE_ALIAS = "BaseInfo";
 	public static final String ALIAS_ID = "id";
-	public static final String ALIAS_RESOURCENAME = "resourceName";
+	public static final String ALIAS_TITLE = "title";
 	public static final String ALIAS_RESUME = "resume";
-	public static final String ALIAS_USERID = "userId";
-	public static final String ALIAS_TYPE = "type";
+	public static final String ALIAS_CONTENTTYPE = "contentType";
 	public static final String ALIAS_IMAGE = "image";
 	public static final String ALIAS_LINK = "link";
 	public static final String ALIAS_CONTENT = "content";
 	public static final String ALIAS_STATUS = "status";
 	public static final String ALIAS_CREATETIME = "createTime";
+	public static final String ALIAS_UPDATEUSER = "updateUser";
 	public static final String ALIAS_UPDATETIME = "updateTime";
 	//maxId
 	public static final String ALIAS_MAXID = "maxId";
 
 	/**
-	 * 
+	 * 主键
 	 */
 	private Integer id;
 	/**
-	 * 
+	 * 标题
 	 */
-	private String resourceName;
+	private String title;
 	/**
-	 * 
+	 * 摘要
 	 */
 	private String resume;
 	/**
-	 * 
+	 * 类别
 	 */
-	private Integer userId;
+	private Integer contentType;
 	/**
-	 * 
-	 */
-	private Integer type;
-	/**
-	 * 
+	 * 图片
 	 */
 	private String image;
 	/**
-	 * 
+	 * 链接
 	 */
 	private String link;
 	/**
-	 * 
+	 * 内容
 	 */
 	private String content;
 	/**
 	 * 0: 正常 1:删除
 	 */
-	private Boolean status;
+	private Integer status;
 	/**
 	 * 创建时间
 	 */
 	private java.util.Date createTime;
+	/**
+	 * 修改人
+	 */
+	private String updateUser;
 	/**
 	 * 更新时间
 	 */
@@ -73,12 +73,12 @@ public class Resource implements Serializable {
 	public void setId(Integer value) {
 		this.id = value;
 	}
-	public String getResourceName() {
-		return this.resourceName;
+	public String getTitle() {
+		return this.title;
 	}
 	
-	public void setResourceName(String value) {
-		this.resourceName = value;
+	public void setTitle(String value) {
+		this.title = value;
 	}
 	public String getResume() {
 		return this.resume;
@@ -87,19 +87,12 @@ public class Resource implements Serializable {
 	public void setResume(String value) {
 		this.resume = value;
 	}
-	public Integer getUserId() {
-		return this.userId;
+	public Integer getContentType() {
+		return this.contentType;
 	}
 	
-	public void setUserId(Integer value) {
-		this.userId = value;
-	}
-	public Integer getType() {
-		return this.type;
-	}
-	
-	public void setType(Integer value) {
-		this.type = value;
+	public void setContentType(Integer value) {
+		this.contentType = value;
 	}
 	public String getImage() {
 		return this.image;
@@ -122,11 +115,11 @@ public class Resource implements Serializable {
 	public void setContent(String value) {
 		this.content = value;
 	}
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return this.status;
 	}
 	
-	public void setStatus(Boolean value) {
+	public void setStatus(Integer value) {
 		this.status = value;
 	}
 	public java.util.Date getCreateTime() {
@@ -135,6 +128,13 @@ public class Resource implements Serializable {
 	
 	public void setCreateTime(java.util.Date value) {
 		this.createTime = value;
+	}
+	public String getUpdateUser() {
+		return this.updateUser;
+	}
+	
+	public void setUpdateUser(String value) {
+		this.updateUser = value;
 	}
 	public java.util.Date getUpdateTime() {
 		return this.updateTime;

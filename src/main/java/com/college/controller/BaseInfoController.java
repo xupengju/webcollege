@@ -2,19 +2,18 @@ package com.college.controller;
 
 import com.college.contants.AppCode;
 import com.college.contants.Path;
-import com.college.entity.Notice;
-import com.college.entity.Resource;
+import com.college.entity.BaseInfo;
 import com.college.model.Resp;
-import com.college.service.ResourceService;
+import com.college.service.BaseInfoService;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -24,53 +23,52 @@ import java.util.Map;
  * @Title:
  * @Description
  */
-@RestController
-public class ResourceController extends BaseController {
+@Controller
+public class BaseInfoController {
 
     private static Logger logger = LoggerFactory
-            .getLogger(ResourceController.class);
+            .getLogger(BaseInfoController.class);
 
     @Autowired
-    private ResourceService resourceService;
+    private BaseInfoService baseInfoService;
 
     /**
      * get list
      *
      * @param pageNum
      * @param pageSize
-     * @param id
-     * @param resourceName
-     * @param resume
-     * @param userId
-     * @param type
-     * @param image
-     * @param link
-     * @param content
+     * @param id          主键
+     * @param title       标题
+     * @param resume      摘要
+     * @param contentType 类别
+     * @param image       图片
+     * @param link        链接
+     * @param content     内容
      * @param status      0: 正常 1:删除
      * @param createTime  创建时间
+     * @param updateUser  修改人
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping(value = Path.RESOURCE_LIST)
+    @RequestMapping(value = Path.BASEINFO_LIST)
     @ResponseBody
     public Map<String, Object> getList(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
                                        @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
                                        @RequestParam(value = "id", required = false) Integer id,
-                                       @RequestParam(value = "resourceName", required = false) Integer resourceName,
+                                       @RequestParam(value = "title", required = false) Integer title,
                                        @RequestParam(value = "resume", required = false) Integer resume,
-                                       @RequestParam(value = "userId", required = false) Integer userId,
-                                       @RequestParam(value = "type", required = false) Integer type,
+                                       @RequestParam(value = "contentType", required = false) Integer contentType,
                                        @RequestParam(value = "image", required = false) Integer image,
                                        @RequestParam(value = "link", required = false) Integer link,
                                        @RequestParam(value = "content", required = false) Integer content,
                                        @RequestParam(value = "status", required = false) boolean status,
                                        @RequestParam(value = "createTime", required = false) Integer createTime,
-                                       @RequestParam(value = "updateTime", required = false) Integer updateTime
-    ) {
+                                       @RequestParam(value = "updateUser", required = false) Integer updateUser,
+                                       @RequestParam(value = "updateTime", required = false) Integer updateTime) {
         Map<String, Object> params = Maps.newHashMap();
-        Page<Resource> page = resourceService.searchPageList(pageNum, pageSize, params);
+        Page<BaseInfo> page = baseInfoService.searchPageList(pageNum, pageSize, params);
         Map<String, Object> resultMap = Maps.newHashMap();
-        logger.info(" ResourceController -->  pageResult :{}", page.getResult());
+        logger.info(" BaseInfoController -->  pageResult :{}", page.getResult());
         resultMap.put("result", page.getResult());
         resultMap.put("pages", page.getPages());
         resultMap.put("startrow", page.getStartRow());
@@ -84,94 +82,96 @@ public class ResourceController extends BaseController {
     /**
      * insert
      *
-     * @param resourceName
-     * @param resume
-     * @param userId
-     * @param type
-     * @param image
-     * @param link
-     * @param content
+     * @param title       标题
+     * @param resume      摘要
+     * @param contentType 类别
+     * @param image       图片
+     * @param link        链接
+     * @param content     内容
      * @param status      0: 正常 1:删除
      * @param createTime  创建时间
+     * @param updateUser  修改人
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping(value = Path.RESOURCE_ADD)
+    @RequestMapping(value = Path.BASEINFO_ADD)
     @ResponseBody
     public Resp add(
-            @RequestParam(value = "resourceName", required = false) String resourceName,
+            @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "resume", required = false) String resume,
-            @RequestParam(value = "userId", required = false) Integer userId,
-            @RequestParam(value = "type", required = false) Integer type,
+            @RequestParam(value = "contentType", required = false) Integer contentType,
             @RequestParam(value = "image", required = false) String image,
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "status", required = false) boolean status,
+            @RequestParam(value = "status", required = false) Integer status,
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
+            @RequestParam(value = "updateUser", required = false) String updateUser,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
-        Resource resource = new Resource();
-        resource.setResourceName(resourceName);
-        resource.setResume(resume);
-        resource.setUserId(userId);
-        resource.setType(type);
-        resource.setImage(image);
-        resource.setLink(link);
-        resource.setContent(content);
-        resource.setStatus(status);
-        Integer id = resourceService.insert(resource);
+        BaseInfo baseInfo = new BaseInfo();
+        baseInfo.setTitle(title);
+        baseInfo.setResume(resume);
+        baseInfo.setContentType(contentType);
+        baseInfo.setImage(image);
+        baseInfo.setLink(link);
+        baseInfo.setContent(content);
+        baseInfo.setStatus(status);
+        baseInfo.setCreateTime(createTime);
+        baseInfo.setUpdateUser(updateUser);
+        baseInfo.setUpdateTime(updateTime);
+        Integer id = baseInfoService.insert(baseInfo);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
     /**
      * update
      *
-     * @param id
-     * @param resourceName
-     * @param resume
-     * @param userId
-     * @param type
-     * @param image
-     * @param link
-     * @param content
+     * @param id          主键
+     * @param title       标题
+     * @param resume      摘要
+     * @param contentType 类别
+     * @param image       图片
+     * @param link        链接
+     * @param content     内容
      * @param status      0: 正常 1:删除
      * @param createTime  创建时间
+     * @param updateUser  修改人
      * @param updateTime  更新时间
      * @return
      */
-    @RequestMapping(value = Path.RESOURCE_UPDATE)
+    @RequestMapping(value =  Path.BASEINFO_UPDATE)
     @ResponseBody
     public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
-            @RequestParam(value = "resourceName", required = false) String resourceName,
+            @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "resume", required = false) String resume,
-            @RequestParam(value = "userId", required = false) Integer userId,
-            @RequestParam(value = "type", required = false) Integer type,
+            @RequestParam(value = "contentType", required = false) Integer contentType,
             @RequestParam(value = "image", required = false) String image,
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "status", required = false) boolean status,
+            @RequestParam(value = "status", required = false) Integer status,
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
-    ) {
-        Resource resource = new Resource();
-        resource.setResourceName(resourceName);
-        resource.setResume(resume);
-        resource.setUserId(userId);
-        resource.setType(type);
-        resource.setImage(image);
-        resource.setLink(link);
-        resource.setContent(content);
-        resource.setStatus(status);
-        resourceService.update(resource);
+            @RequestParam(value = "updateUser", required = false) String updateUser,
+            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+        BaseInfo baseInfo = new BaseInfo();
+        baseInfo.setTitle(title);
+        baseInfo.setResume(resume);
+        baseInfo.setContentType(contentType);
+        baseInfo.setImage(image);
+        baseInfo.setLink(link);
+        baseInfo.setContent(content);
+        baseInfo.setStatus(status);
+        baseInfo.setCreateTime(createTime);
+        baseInfo.setUpdateUser(updateUser);
+        baseInfo.setUpdateTime(updateTime);
+        baseInfoService.update(baseInfo);
         return Resp.success();
     }
 
-
-    @RequestMapping(value = Path.RESOURCE_GET)
+    @RequestMapping(value =  Path.BASEINFO_GET)
     @ResponseBody
     public Resp get(@RequestParam(value = "id") Long id) {
-        Resource resource = resourceService.get(id);
-        return null != resource ? Resp.success(resource) : Resp.error(AppCode._10012);
+        BaseInfo baseInfo= baseInfoService.get(id);
+        return null != baseInfo ? Resp.success(baseInfo) : Resp.error(AppCode._10012);
     }
 
 }
