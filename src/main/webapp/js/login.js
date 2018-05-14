@@ -41,7 +41,7 @@ var loginObj={
                 alert("用户名或密码不能为空")
             }else{
                 $.ajax({
-                    url:"/api/user/login.json",
+                    url:urlT+"/api/user/login.json",
                     type:"post",
                     data:{
                         userName:userName,

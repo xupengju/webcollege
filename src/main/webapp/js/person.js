@@ -38,7 +38,7 @@ var personObj={
     isSign:function () {
         $.ajax({
             type:"post",
-            url:"/api/signin/add.json",
+            url:urlT+"/api/signin/add.json",
             data:{
                 token:localStorage.getItem("token"),
             },
@@ -53,7 +53,7 @@ var personObj={
     sign:function () {
         $.ajax({
             type:"post",
-            url:"/api/signin/add.json",
+            url:urlT+"/api/signin/add.json",
             data:{
                 token:localStorage.getItem("token"),
             },
@@ -66,7 +66,7 @@ var personObj={
                     //更新签到列表
                     $.ajax({
                         type:"post",
-                        url:"/api/signin/update.json",
+                        url:urlT+"/api/signin/update.json",
                         data:{
                             token:localStorage.getItem("token"),
                         },
