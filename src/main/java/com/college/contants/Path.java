@@ -83,4 +83,11 @@ public class Path {
     public static final String SIGNIN_UPDATE = "/api/signin/update.json";
     public static final String SIGNIN_LIST = "/api/signin/list.json";
     public static final String SIGNIN_ALL = "/api/signin/all.json";
+
+    //baseInfo 静态页面 基本信息
+    public static final String BASEINFO_ADD = "/api/baseInfo/add.json";
+    public static final String BASEINFO_GET = "/api/baseInfo/get.json";
+    public static final String BASEINFO_UPDATE = "/api/baseInfo/update.json";
+    public static final String BASEINFO_LIST = "/api/baseInfo/list.json";
+    public static final String BASEINFO_ALL = "/api/baseInfo/all.json";
 }
