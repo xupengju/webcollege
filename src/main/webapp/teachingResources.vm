@@ -98,38 +98,32 @@
 
 			<div class="rightBox ri1">
 				<h2 class="tc mt30 mb20">企业项目</h2>
-				<p class="gain">
-					<a href="detaiAbout.vm">xxxxxxxxxxxxx企业项目1</a>
-					<span>2018-12-16</span>
-				</p>
-				<p class="gain">
-					<a href="detaiAbout.vm">xxxxxxxxxxxxx企业项目1</a>
-					<span>2018-12-16</span>
-				</p>
-				<p class="gain">
-					<a href="detaiAbout.vm">xxxxxxxxxxxxx企业项目1</a>
-					<span>2018-12-16</span>
-				</p>
-				<p class="gain">
-					<a href="detaiAbout.vm">xxxxxxxxxxxxx企业项目1</a>
-					<span>2018-12-16</span>
-				</p>
-				<p class="gain">
-					<a href="detaiAbout.vm">xxxxxxxxxxxxx企业项目1</a>
-					<span>2018-12-16</span>
-				</p>
-				<p class="gain">
-					<a href="detaiAbout.vm">xxxxxxxxxxxxx企业项目1</a>
-					<span>2018-12-16</span>
-				</p>
-				<p class="gain">
-					<a href="detaiAbout.vm">xxxxxxxxxxxxx企业项目1</a>
-					<span>2018-12-16</span>
-				</p>
-				<p class="gain">
-					<a href="detaiAbout.vm">xxxxxxxxxxxxx企业项目1</a>
-					<span>2018-12-16</span>
-				</p>
+                <div class="rBox" style="display: block;">
+                    <div class="newBox">
+                        <img src="../../img/img3.jpg">
+                        XXX项目1
+                    </div>
+                    <div class="newBox">
+                        <img src="../../img/img3.jpg">
+                        XXX项目1
+                    </div>
+                    <div class="newBox">
+                        <img src="../../img/img3.jpg">
+                        XXX项目1
+                    </div>
+                    <div class="newBox">
+                        <img src="../../img/img3.jpg">
+                        XXX项目1
+                    </div>
+                    <div class="newBox">
+                        <img src="../../img/img3.jpg">
+                        XXX项目1
+                    </div>
+                    <div class="newBox">
+                        <img src="../../img/img3.jpg">
+                        XXX项目1
+                    </div>
+                </div>
 				<div id="page" class="page_div"></div>
 			</div>
 			<div class="rightBox ri2">

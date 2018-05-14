@@ -162,4 +162,8 @@ function imgUpLoad(fileId, ImgId) {
 function imgSave() {
 
 }
+//保存
+$(".saveBtn").eq(0).click(function () {
+    alert(ue1.getContent())
+})
 
