@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="content">
-    <img class="logo" src="../../img/logo.png"/>
+    <img class="logo" src="../../img/logo2.png"/>
     <div class="formList">
         <p>用户名：<input class="userName" type="text"/></p>
         <p>密&nbsp;码：<input class="pwd" type="password"/></p>

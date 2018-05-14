@@ -15,7 +15,7 @@
 		
 		<header>
 			<div class="box">
-				<img src="../../img/logo.png"/>
+				<img src="../../img/logo2.png"/>
 				<a href="login.vm" class="loginBtn">登陆</a>
 			</div>
 		</header>
@@ -87,10 +87,16 @@
 			<div class="rightBox ri1">
 				<h2 class="tc mt30 mb20">规章制度</h2>
 				<div class="ruleWord">
-					<p>XXX规章制度1</p>
-                    <p>XXX规章制度1</p>
-                    <p>XXX规章制度1</p>
-                    <p>XXX规章制度1</p>
+					<p>数英生成性实训基地理事会章程</p>
+                    <p>校外生成性实训基地管理办法</p>
+                    <p>数英生产性实训基地生成实习管理办法</p>
+                    <p>数英生产性实训基地生产实习管理条例</p>
+					<p>数英生产性实训基地实践指导教师岗位职责</p>
+					<p>数英生产性实训基地安全操作规程</p>
+					<p>数英生产性实训基地设备管理办法</p>
+					<p>生产实习校企生三方安全责任书</p>
+					<p>数英生产性实训基地学生考核评价办法</p>
+					<p>石家庄职业技术学院对外培训管理办法</p>
 				</div>
 
 			</div>
