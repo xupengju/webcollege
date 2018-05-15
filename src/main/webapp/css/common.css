@@ -427,7 +427,7 @@ header .box a {
   margin-top: 50px;
   line-height: 30px;
 }
-header .box p{width: 300px;float: right;padding-top: 50px;text-align: right;}
+header .box p{width: 260px;float: right;padding-top: 50px;text-align: right;}
 header .box p button{background: none;color: blue;text-decoration: underline;margin-left: 10px;cursor: pointer;
 outline: none}
 nav {
