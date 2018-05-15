@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/adminCss.css"/>
-    <script src="../../js/jquery-3.1.0.js"></script>
+    <script src="../../js/jquery-2.0.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../js/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src=".././js/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../../js/zh-cn.js"></script>
@@ -27,49 +27,55 @@
     </ul>
     <div class="adminContent">
         <h1 class="mt20 mb20">关于我们界面创建</h1>
-        <select class="se">
-            <option value="">创建学校介绍</option>
-            <option value="">创建基地介绍</option>
-            <option value="">创建师资队伍介绍</option>
+        <select class="se" onchange="AdminAboutObject.selectChange()">
+            <option contentType="1" value="">创建学校介绍</option>
+            <option contentType="2" value="">创建基地介绍</option>
+            <option contentType="3" value="">创建师资队伍介绍</option>
             <option value="">创建企业教师</option>
             <option value="">创建学校教师</option>
             <option value="">创建成果</option>
         </select>
         <div class="newsBox1">
             <h2 class="mt20 mb20">创建学校介绍</h2>
+
             <p>
                 <span>图片：</span>
+
                 <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
                     <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                    <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                    <input style="display: none" type="file" id="file" name="file" onchange="AdminAboutObject.imgUpLoad('file','avatar')"/>
                 </div>
             </p>
+
             <p>内容：</p>
             <div id="editor1" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminAboutObject.saveAll(1,'')">保存</button>
         </div>
         <div class="newsBox2">
             <h2 class="mt20 mb20">创建基地介绍</h2>
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar1">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar1')"/>
+                <img onclick="$('input[id=file1]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar1">
+                <input style="display: none" type="file" id="file1" name="file" onchange="AdminAboutObject.imgUpLoad('file1','avatar1')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor2" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminAboutObject.saveAll(2,1)">保存</button>
         </div>
         <div class="newsBox3">
             <h2 class="mt20 mb20">创建师资队伍介绍</h2>
             <p>
                 <span>图片：</span>
                 <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                    <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar2">
-                    <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar2')"/>
+                    <img onclick="$('input[id=file2]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar2">
+                    <input style="display: none" type="file" id="file2" name="file" onchange="AdminAboutObject.imgUpLoad('file2','avatar2')"/>
                 </div>
             </p>
             <p>内容：</p>
             <div id="editor3" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminAboutObject.saveAll(3,2)">保存</button>
         </div>
         <div class="newsBox4">
             <h2 class="mt20 mb20">创建企业教师</h2>
@@ -80,12 +86,13 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar3">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar3')"/>
+                <img onclick="$('input[id=file3]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar3">
+                <input style="display: none" type="file" id="file3" name="file" onchange="AdminAboutObject.imgUpLoad('file3','avatar3')"/>
             </div>
             </p>
             <p>教师介绍：</p>
             <div id="editor4" type="text/plain"></div>
+            <button class="saveBtn">保存</button>
         </div>
         <div class="newsBox5">
             <h2 class="mt20 mb20">创建学校教师</h2>
@@ -96,12 +103,13 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar4">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar4')"/>
+                <img onclick="$('input[id=file4]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar4">
+                <input style="display: none" type="file" id="file4" name="file" onchange="AdminAboutObject.imgUpLoad('file4','avatar4')"/>
             </div>
             </p>
             <p>教师介绍：</p>
             <div id="editor5" type="text/plain"></div>
+            <button class="saveBtn">保存</button>
         </div>
         <div class="newsBox6">
             <h2 class="mt20 mb20">创建成果</h2>
@@ -116,15 +124,18 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar5">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar5')"/>
+                <img onclick="$('input[id=file5]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar5">
+                <input style="display: none" type="file" id="file5" name="file" onchange="AdminAboutObject.imgUpLoad('file5','avatar5')"/>
             </div>
             </p>
             <p>成果内容：</p>
             <div id="editor6" type="text/plain"></div>
+            <button class="saveBtn">保存</button>
         </div>
     </div>
+
     <script src="../../js/ajaxfileupload.js"></script>
-    <script type="text/javascript" src="../../js/adminNotice.js"></script>
+    <script type="text/javascript" src="../../js/adminBase.js"></script>
+    <script type="text/javascript" src="../../js/adminAbout.js"></script>
 </body>
 </html>
