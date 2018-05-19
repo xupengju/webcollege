@@ -427,7 +427,7 @@ header .box a {
   margin-top: 50px;
   line-height: 30px;
 }
-header .box p{width: 300px;float: right;padding-top: 50px;text-align: right;}
+header .box p{width: 260px;float: right;padding-top: 50px;text-align: right;}
 header .box p button{background: none;color: blue;text-decoration: underline;margin-left: 10px;cursor: pointer;
 outline: none}
 nav {
@@ -520,3 +520,10 @@ background: #0e235a;
 .adminContent .question{height: 250px;margin: 20px}
 .adminContent .question input{margin-top: 10px}
 .adminContent select{height: 50px;outline: none}
+
+.saveBtn{
+  width: 100px;height: 40px;
+  line-height: 40px;text-align: center;
+  margin: 20px auto;
+  display: block;
+}

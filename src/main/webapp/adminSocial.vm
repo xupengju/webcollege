@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/adminCss.css"/>
-    <script src="../../js/jquery-3.1.0.js"></script>
+    <script src="../../js/jquery-2.0.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../js/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src=".././js/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../../js/zh-cn.js"></script>
@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-<div class="adminHeader"><img src="img/logo.png">信息管理系统界面</div>
+<div class="adminHeader"><img src="img/logo2.png">信息管理系统界面</div>
     <ul class="adminNav">
         <li><a href="adminNotice.vm">新闻管理</a></li>
         <li><a href="adminAbout.vm">关于我们管理</a></li>
@@ -27,19 +27,19 @@
     </ul>
     <div class="adminContent">
         <h1 class="mt20 mb20">创建社会培训相关</h1>
-        <select class="se">
-            <option value="">创建职业鉴定</option>
-            <option value="">创建电子设备装接工介绍</option>
-            <option value="">创建高级维修电工介绍</option>
-            <option value="">创建无线电调试员介绍</option>
-            <option value="">创建计算机装调员介绍</option>
-            <option value="">创建员工培训介绍</option>
-            <option value="">创建新入职员工培训介绍</option>
-            <option value="">创建员工专项能力培训介绍</option>
-            <option value="">创建学生实习</option>
-            <option value="">创建认识实习介绍</option>
-            <option value="">创建跟岗实习介绍</option>
-            <option value="">创建顶岗实习介绍</option>
+        <select class="se" onchange="AdminSocialObject.selectChange()">
+            <option contentType="26" value="">创建职业鉴定</option>
+            <option contentType="14" value="">创建电子设备装接工介绍</optioncontentType>
+            <option contentType="15" value="">创建高级维修电工介绍</option>
+            <option contentType="16" value="">创建无线电调试员介绍</option>
+            <option contentType="17" value="">创建计算机装调员介绍</option>
+            <option contentType="27" value="">创建员工培训介绍</option>
+            <option contentType="18" value="">创建新入职员工培训介绍</option>
+            <option contentType="19" value="">创建员工专项能力培训介绍</option>
+            <option contentType="28" value="">创建学生实习</option>
+            <option contentType="20" value="">创建认识实习介绍</option>
+            <option contentType="21" value="">创建跟岗实习介绍</option>
+            <option contentType="22" value="">创建顶岗实习介绍</option>
         </select>
         <div class="newsBox1">
             <h2 class="mt20 mb20">创建职业鉴定</h2>
@@ -47,23 +47,25 @@
                 <span>图片：</span>
                 <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
                     <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                    <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                    <input style="display: none" type="file" id="file" name="file" onchange="AdminSocialObject.imgUpLoad('file','avatar')"/>
                 </div>
             </p>
             <p>内容：</p>
             <div id="editor1" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(1,'')">保存</button>
         </div>
         <div class="newsBox2">
             <h2 class="mt20 mb20">创建电子设备装接工介绍</h2>
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file1]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar1">
+                <input style="display: none" type="file" id="file1" name="file" onchange="AdminSocialObject.imgUpLoad('file1','avatar1')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor2" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(2,1)">保存</button>
         </div>
         <div class="newsBox3">
             <h2 class="mt20 mb20">创建高级维修电工介绍</h2>
@@ -71,12 +73,13 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file2]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar2">
+                <input style="display: none" type="file" id="file2" name="file" onchange="AdminSocialObject.imgUpLoad('file2','avatar2')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor3" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(3,2)">保存</button>
         </div>
         <div class="newsBox4">
             <h2 class="mt20 mb20">创建无线电调试员介绍</h2>
@@ -84,12 +87,13 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file3]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar3">
+                <input style="display: none" type="file" id="file3" name="file" onchange="AdminSocialObject.imgUpLoad('file3','avatar3')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor4" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(4,3)">保存</button>
         </div>
         <div class="newsBox5">
             <h2 class="mt20 mb20">创建计算机装调员介绍</h2>
@@ -97,24 +101,26 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file4]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar4">
+                <input style="display: none" type="file" id="file4" name="file" onchange="AdminSocialObject.imgUpLoad('file4','avatar4')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor5" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(5,4)">保存</button>
         </div>
         <div class="newsBox6">
             <h2 class="mt20 mb20">创建员工培训介绍</h2>
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file5]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar5">
+                <input style="display: none" type="file" id="file5" name="file" onchange="AdminSocialObject.imgUpLoad('file5','avatar5')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor6" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(6,5)">保存</button>
         </div>
         <div class="newsBox7">
             <h2 class="mt20 mb20">创建新入职员工培训介绍</h2>
@@ -122,12 +128,13 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file6]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar6">
+                <input style="display: none" type="file" id="file6" name="file" onchange="AdminSocialObject.imgUpLoad('file6','avatar6')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor7" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(7,6)">保存</button>
         </div>
         <div class="newsBox8">
             <h2 class="mt20 mb20">创建员工专项能力培训介绍</h2>
@@ -135,27 +142,28 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file7]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar7">
+                <input style="display: none" type="file" id="file7" name="file" onchange="AdminSocialObject.imgUpLoad('file7','avatar7')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor8" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(8,7)">保存</button>
         </div>
         <div class="newsBox9">
             <h2 class="mt20 mb20">创建学生实习</h2>
             <p>
                 <span>名称：</span>
-                <input type="text"/>
+                <input class="tit" type="text"/>
             </p>
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file8]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar8">
+                <input style="display: none" type="file" id="file8" name="file" onchange="AdminSocialObject.imgUpLoad('file8','avatar8')"/>
             </div>
             </p>
-
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(null,8)">保存</button>
 
         </div>
         <div class="newsBox10">
@@ -164,12 +172,13 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file9]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar9">
+                <input style="display: none" type="file" id="file9" name="file" onchange="AdminSocialObject.imgUpLoad('file9','avatar9')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor9" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(9)">保存</button>
         </div>
         <div class="newsBox11">
             <h2 class="mt20 mb20">创建跟岗实习介绍</h2>
@@ -177,12 +186,13 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file10]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar10">
+                <input style="display: none" type="file" id="file10" name="file" onchange="AdminSocialObject.imgUpLoad('file10','avatar10')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor10" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(10)">保存</button>
         </div>
         <div class="newsBox12">
             <h2 class="mt20 mb20">创建顶岗实习介绍</h2>
@@ -190,15 +200,17 @@
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file11]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar11">
+                <input style="display: none" type="file" id="file11" name="file" onchange="AdminSocialObject.imgUpLoad('file11','avatar11')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor11" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminSocialObject.saveAll(11)">保存</button>
         </div>
     </div>
     <script src="../../js/ajaxfileupload.js"></script>
-    <script type="text/javascript" src="../../js/adminNotice.js"></script>
+<script type="text/javascript" src="../../js/adminBase.js"></script>
+<script type="text/javascript" src="../../js/adminSocial.js"></script>
 </body>
 </html>
