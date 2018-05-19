@@ -3,7 +3,7 @@ var arr=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r'
 var colorArr=["red","blue","#cd00ce","orange","green","#0fb3ad","gray","#09a2b4","#290e8b"]
 var rotateArr=["4deg","5deg","6deg","7deg","8deg","9deg","10deg","11deg","12deg","-4deg","-5deg","-6deg","-7deg","-8deg","-9deg","-10deg","-11deg","-12deg"]
 var translateArr=["0","1px","2px","3px","3.5px","4px","-1px","-2px","-2.5px"]
-
+var urlT="";
 var loginObj={
     codeB:document.getElementById("code").getElementsByTagName("b"),
     //随机验证码
@@ -41,7 +41,7 @@ var loginObj={
                 alert("用户名或密码不能为空")
             }else{
                 $.ajax({
-                    url:"/api/user/login.json",
+                    url:urlT+"/api/user/login.json",
                     type:"post",
                     data:{
                         userName:userName,

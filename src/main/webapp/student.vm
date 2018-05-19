@@ -12,7 +12,7 @@
 	<body>
 		<header>
 			<div class="box">
-				<img src="../../img/logo.png"/>
+				<img src="../../img/logo2.png"/>
 				<a href="login.vm" class="loginBtn">登陆</a>
 			</div>
 		</header>

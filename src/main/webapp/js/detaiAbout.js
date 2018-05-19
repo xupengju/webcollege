@@ -6,7 +6,7 @@ var typeA=localStorage.getItem("typeA")
 if(typeA=="notice"){
     $.ajax({
         type:"post",
-        url:"http://localhost:8080/api/notice/get.json",
+        url:urlT+"/api/notice/get.json",
         data:{
             token:localStorage.getItem("token"),
             id:myID

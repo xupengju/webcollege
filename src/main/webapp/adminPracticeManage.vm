@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/adminCss.css"/>
-    <script src="../../js/jquery-3.1.0.js"></script>
+    <script src="../../js/jquery-2.0.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../js/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src=".././js/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../../js/zh-cn.js"></script>
@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-<div class="adminHeader"><img src="img/logo.png">信息管理系统界面</div>
+<div class="adminHeader"><img src="img/logo2.png">信息管理系统界面</div>
     <ul class="adminNav">
         <li><a href="adminNotice.vm">新闻管理</a></li>
         <li><a href="adminAbout.vm">关于我们管理</a></li>
@@ -27,112 +27,81 @@
     </ul>
     <div class="adminContent">
         <h1 class="mt20 mb20">创建实习管理相关</h1>
-        <select class="se">
-            <option value="">创建规章制度</option>
-            <option value="">创建实习流程</option>
-            <option value="">创建岗位目标与要求</option>
-            <option value="">创建企业产品标准</option>
-            <option value="">创建安全操作规范</option>
-            <option value="">创建实习考核标准</option>
+        <select class="se" onchange="AdminPractiveObject.selectChange()">
+            <option contentType="4" value="">创建规章制度</option>
+            <option contentType="5" value="">创建实习流程</option>
+            <option contentType="6" value="">创建岗位目标与要求</option>
+            <option contentType="7" value="">创建企业产品标准</option>
+            <option contentType="8" value="">创建安全操作规范</option>
+            <option contentType="9" value="">创建实习考核标准</option>
         </select>
         <div class="newsBox1">
             <h2 class="mt20 mb20">创建规章制度</h2>
             <p>
                 <span>标题：</span>
-                <input type="text"/>
-            </p>
-            <p>
-                <span>图片：</span>
-                <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                    <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                    <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
-                </div>
+                <input class="tit" type="text"/>
             </p>
             <p>内容：</p>
             <div id="editor1" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(1)">保存</button>
         </div>
         <div class="newsBox2">
             <h2 class="mt20 mb20">创建实习流程</h2>
-            <p>
-                <span>标题：</span>
-                <input type="text"/>
-            </p>
+
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
                 <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <input style="display: none" type="file" id="file" name="file" onchange="AdminPractiveObject.imgUpLoad('file','avatar')"/>
             </div>
             </p>
-            <p>内容：</p>
-            <div id="editor2" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(null,'')">保存</button>
+
         </div>
         <div class="newsBox3">
             <h2 class="mt20 mb20">创建岗位目标与要求</h2>
-            <p>
-                <span>标题：</span>
-                <input type="text"/>
-            </p>
+
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file1]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar1">
+                <input style="display: none" type="file" id="file1" name="file" onchange="AdminPractiveObject.imgUpLoad('file1','avatar1')"/>
             </div>
             </p>
-            <p>内容：</p>
-            <div id="editor3" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(null,1)">保存</button>
         </div>
         <div class="newsBox4">
             <h2 class="mt20 mb20">创建企业产品标准</h2>
-            <p>
-                <span>标题：</span>
-                <input type="text"/>
-            </p>
-            <p>
-                <span>图片：</span>
-            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
-            </div>
-            </p>
+
+
             <p>内容：</p>
             <div id="editor4" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(4,'')">保存</button>
         </div>
         <div class="newsBox5">
             <h2 class="mt20 mb20">创建安全操作规范</h2>
-            <p>
-                <span>标题：</span>
-                <input type="text"/>
-            </p>
+
             <p>
                 <span>图片：</span>
             <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
+                <img onclick="$('input[id=file2]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar2">
+                <input style="display: none" type="file" id="file2" name="file" onchange="AdminPractiveObject.imgUpLoad('file2','avatar2')"/>
             </div>
             </p>
             <p>内容：</p>
             <div id="editor5" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(5,2)">保存</button>
         </div>
         <div class="newsBox6">
             <h2 class="mt20 mb20">创建实习考核标准</h2>
-            <p>
-                <span>标题：</span>
-                <input type="text"/>
-            </p>
-            <p>
-                <span>图片：</span>
-            <div style="padding-right:0px;width: 120px;height: 120px;display: inline-block;">
-                <img onclick="$('input[id=file]').click();" src="img/auditImgDefault.png" width="120" height="120" id="avatar">
-                <input style="display: none" type="file" id="file" name="file" onchange="imgUpLoad('file','avatar')"/>
-            </div>
-            </p>
+
             <p>内容：</p>
             <div id="editor6" type="text/plain"></div>
+            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(6)">保存</button>
         </div>
     </div>
     <script src="../../js/ajaxfileupload.js"></script>
-    <script type="text/javascript" src="../../js/adminNotice.js"></script>
+    <script type="text/javascript" src="../../js/adminBase.js"></script>
+    <script type="text/javascript" src="../../js/adminPractive.js"></script>
 </body>
 </html>

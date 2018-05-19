@@ -1,5 +1,6 @@
 
 var indexObj={
+
     //轮播
     swi:function () {
         var mySwiper = new Swiper('.swiper-container', {
@@ -12,7 +13,7 @@ var indexObj={
     newsTop:function () {
         $.ajax({
             type:"post",
-            url:"http://localhost:8080/api/notice/list.json",
+            url:urlT+"/api/notice/list.json",
             data:{
                 token:localStorage.getItem("token"),
                 type:1
@@ -29,7 +30,7 @@ var indexObj={
     newsBottom:function () {
         $.ajax({
             type:"post",
-            url:"http://localhost:8080/api/notice/list.json",
+            url:urlT+"api/notice/list.json",
             data:{
                 token:localStorage.getItem("token"),
                 type:2
@@ -69,7 +70,7 @@ var indexObj={
     hotWordImg:function () {
         $.ajax({
             type:"post",
-            url:"http://localhost:8080/api/notice/list.json",
+            url:urlT+"api/notice/list.json",
             data:{
                 token:localStorage.getItem("token"),
                 type:3
