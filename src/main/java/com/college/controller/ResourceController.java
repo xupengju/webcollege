@@ -39,7 +39,7 @@ public class ResourceController extends BaseController {
      * @param pageNum
      * @param pageSize
      * @param id
-     * @param teacherName
+     * @param resourceName
      * @param resume
      * @param userId
      * @param type
@@ -56,7 +56,7 @@ public class ResourceController extends BaseController {
     public Map<String, Object> getList(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
                                        @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
                                        @RequestParam(value = "id", required = false) Integer id,
-                                       @RequestParam(value = "teacherName", required = false) Integer teacherName,
+                                       @RequestParam(value = "resourceName", required = false) Integer resourceName,
                                        @RequestParam(value = "resume", required = false) Integer resume,
                                        @RequestParam(value = "userId", required = false) Integer userId,
                                        @RequestParam(value = "type", required = false) Integer type,
@@ -84,7 +84,7 @@ public class ResourceController extends BaseController {
     /**
      * insert
      *
-     * @param teacherName
+     * @param resourceName
      * @param resume
      * @param userId
      * @param type
@@ -99,7 +99,7 @@ public class ResourceController extends BaseController {
     @RequestMapping(value = Path.RESOURCE_ADD)
     @ResponseBody
     public Resp add(
-            @RequestParam(value = "teacherName", required = false) String teacherName,
+            @RequestParam(value = "resourceName", required = false) String resourceName,
             @RequestParam(value = "resume", required = false) String resume,
             @RequestParam(value = "userId", required = false) Integer userId,
             @RequestParam(value = "type", required = false) Integer type,
@@ -110,7 +110,7 @@ public class ResourceController extends BaseController {
             @RequestParam(value = "createTime", required = false) java.util.Date createTime,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
         Resource resource = new Resource();
-        resource.setTeacherName(teacherName);
+        resource.setResourceName(resourceName);
         resource.setResume(resume);
         resource.setUserId(userId);
         resource.setType(type);
@@ -126,7 +126,7 @@ public class ResourceController extends BaseController {
      * update
      *
      * @param id
-     * @param teacherName
+     * @param resourceName
      * @param resume
      * @param userId
      * @param type
@@ -142,7 +142,7 @@ public class ResourceController extends BaseController {
     @ResponseBody
     public Resp update(
             @RequestParam(value = "id", required = false) Integer id,
-            @RequestParam(value = "teacherName", required = false) String teacherName,
+            @RequestParam(value = "resourceName", required = false) String resourceName,
             @RequestParam(value = "resume", required = false) String resume,
             @RequestParam(value = "userId", required = false) Integer userId,
             @RequestParam(value = "type", required = false) Integer type,
@@ -154,7 +154,7 @@ public class ResourceController extends BaseController {
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
     ) {
         Resource resource = new Resource();
-        resource.setTeacherName(teacherName);
+        resource.setResourceName(resourceName);
         resource.setResume(resume);
         resource.setUserId(userId);
         resource.setType(type);

@@ -27,6 +27,7 @@ var $ind=localStorage.getItem("studentIndex")
 if($ind){
 	a($(".leftNav li").eq($ind),parseInt($ind)+1)
 }
+/*
 //提交问卷
 function check() {
     var kvName = {}, allSelected = true;
@@ -43,3 +44,4 @@ function check() {
     	alert('提交成功')
     }
 }
+*/
