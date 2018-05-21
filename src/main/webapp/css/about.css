@@ -344,4 +344,5 @@ color: #fff;}
 .choseAns{padding:10px 0 10px 40px;font-size:12px;}
 /*
 规章制度*/
-.ruleWord p{height: 40px;line-height: 40px}
+.ruleWord p{height: 40px;line-height: 40px;
+  padding-left:40px;}
