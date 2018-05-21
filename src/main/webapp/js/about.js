@@ -52,7 +52,7 @@ var aboutObj={
     teacherList:function (typeNumber,index) {
         $.ajax({
             type:"post",
-            url:"/api/teacher/list.json",
+            url:urlT+"/api/teacher/list.json",
             data:{
                 token:localStorage.getItem("token"),
                 type:typeNumber

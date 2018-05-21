@@ -1,5 +1,6 @@
 
 var indexObj={
+
     //轮播
     swi:function () {
         var mySwiper = new Swiper('.swiper-container', {
@@ -12,7 +13,7 @@ var indexObj={
     newsTop:function () {
         $.ajax({
             type:"post",
-            url:"http://localhost:8080/api/notice/list.json",
+            url:urlT+"/api/notice/list.json",
             data:{
                 token:localStorage.getItem("token"),
                 type:1
@@ -29,7 +30,7 @@ var indexObj={
     newsBottom:function () {
         $.ajax({
             type:"post",
-            url:"http://localhost:8080/api/notice/list.json",
+            url:urlT+"api/notice/list.json",
             data:{
                 token:localStorage.getItem("token"),
                 type:2
@@ -42,11 +43,14 @@ var indexObj={
         })
     },
     showMessage:function(index,result){
-        $(".rightBox").eq(index).find(".figure").attr("myID",result[0].id)
-        $(".rightBox").eq(index).find(".figure img").attr("src",result[0].image);
-        $(".rightBox").eq(index).find(".figure h3").html(result[0].title);
-        $(".rightBox").eq(index).find(".figure p").html(indexObj.eclipseA(result[0].content,90));
-        for(var i=1;i<result.length;i++){
+        //新闻封面
+        $(".news").eq(index).find(".img1").attr("src",result[0].image)
+        //第一条
+        $(".rightBox").eq(index).find(".figure").attr("myID",result[1].id)
+        $(".rightBox").eq(index).find(".figure img").attr("src",result[1].image);
+        $(".rightBox").eq(index).find(".figure h3").html(result[1].title);
+        $(".rightBox").eq(index).find(".figure p").html(indexObj.eclipseA(result[1].content,90));
+        for(var i=2;i<result.length;i++){
             $(".rightBox").eq(index).find("ul").append(" <li myID='"
                 +result[i].id+"'><p>"
                 +result[i].title+"</p><span>"
@@ -69,7 +73,7 @@ var indexObj={
     hotWordImg:function () {
         $.ajax({
             type:"post",
-            url:"http://localhost:8080/api/notice/list.json",
+            url:urlT+"api/notice/list.json",
             data:{
                 token:localStorage.getItem("token"),
                 type:3
