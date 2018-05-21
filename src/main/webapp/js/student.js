@@ -45,3 +45,35 @@ function check() {
     }
 }
 */
+var studentObj={
+	//列表
+	signList:function () {
+		$.ajax({
+			type:"post",
+			url:urlT+"/api/signin/list.json",
+			data:{
+				token:localStorage.getItem("token")
+			},
+			success:function (data) {
+				console.log(data)
+				if(data.code==10001){
+					alert(data.message)
+				}else{
+                    for(var i=0;i<data.result.length;i++){
+                        $(".ratingForm table").append(studentObj.getSignList(data.result[i]))
+
+                    }
+				}
+
+
+            }
+		})
+    },
+	getSignList:function (data) {
+		var list="<tr><td>"
+			+data.userName+"</td><td>123467890123446767</td><td>"
+			+new Date(data.createTime).toLocaleDateString()+"</td></tr>"
+    	return list
+	}
+}
+studentObj.signList()

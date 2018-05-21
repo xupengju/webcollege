@@ -21,9 +21,9 @@
 <div class="content">
     <img class="logo" src="../../img/logo2.png"/>
     <div class="formList">
-        <p>用户名：<input class="userName" type="text"/></p>
-        <p>密&nbsp;码：<input class="pwd" type="password"/></p>
-        <p>验证码：<input class="code" type="text"/><span id="code" onselectstart="return false;" onclick="loginObj.getRandomCode()"><b>1</b><b>3</b><b>b</b><b>d</b></span></p>
+        <div><pre>用户名：</pre><input class="userName" type="text"/></div>
+        <div><pre>密  码：</pre><input class="pwd" type="password"/></div>
+        <div><pre>验证码：</pre><input class="code" type="text"/><span id="code" onselectstart="return false;" onclick="loginObj.getRandomCode()"><b>1</b><b>3</b><b>b</b><b>d</b></span></div>
         <a href="javascript:void(0)" onclick="loginObj.loginBtn()" class="btn">登陆</a>
     </div>
 </div>
