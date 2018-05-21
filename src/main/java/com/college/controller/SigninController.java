@@ -162,4 +162,23 @@ public class SigninController extends BaseController {
         return Resp.success();
     }
 
+    /**
+     * 条件查询
+     */
+    @RequestMapping(value = "/api/signin/conditionalQuery.json")
+    @ResponseBody
+    public Map<String, Object> conditionalQuery(@RequestParam(value = "realName", required = false) String realName,
+                                 @RequestParam(value = "idCard", required = false) String idCard,
+                                 @RequestParam(value = "userId", required = false) String userId){
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("realName",realName);
+        params.put("idCard",idCard);
+        params.put("userId",userId);
+        Map<String, Object> resultMap = Maps.newHashMap();
+        List<User> listByParams = signinService.conditionalQuery(params);
+        logger.info(" SigninController -->  conditionalQueryListByParams :{}", listByParams);
+        resultMap.put("result", listByParams);
+        return resultMap;
+    }
+
 }

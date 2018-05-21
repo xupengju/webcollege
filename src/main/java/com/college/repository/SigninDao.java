@@ -3,6 +3,7 @@ package com.college.repository;
 import java.util.List;
 import java.util.Map;
 
+import com.college.entity.User;
 import org.apache.ibatis.annotations.Param;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Repository;
@@ -42,5 +43,12 @@ public interface SigninDao {
 	 * @return  
 	 */
     Signin searchOne(@Param("searchFields") Map<String, Object> params);
+
+	/**
+	 * 条件查询
+	 * @param params
+	 * @return  List<User>
+	 */
+	List<User> conditionalQuery(@Param("searchFields") Map<String, Object> params);
 
 }
