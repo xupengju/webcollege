@@ -174,4 +174,13 @@ public class BaseInfoController {
         return null != baseInfo ? Resp.success(baseInfo) : Resp.error(AppCode._10012);
     }
 
+    @RequestMapping(value = "/api/baseInfo/searchOne.json")
+    @ResponseBody
+    public Resp searchOne(@RequestParam(value = "contentType") Integer contentType) {
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("contentType",contentType);
+        BaseInfo baseInfo= baseInfoService.searchOne(params);
+        return null != baseInfo ? Resp.success(baseInfo) : Resp.error(AppCode._10012);
+    }
+
 }
