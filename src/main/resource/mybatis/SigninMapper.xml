@@ -14,7 +14,7 @@
 	</resultMap>
 
 	<resultMap id="conditionalQueryResultMap" type="com.college.entity.User">
-		<result property="id" column="id"/>
+		<result property="id" column="userid"/>
 		<result property="realName" column="realName"/>
 		<result property="idCard" column="idCard"/>
 	</resultMap>
@@ -23,7 +23,7 @@
 	<sql id="columns">
 		id,userId,status,createTime,updateTime
 	</sql>
-	
+
 	<!-- 获取单个实体bean -->
 	<select id="get" parameterType="Long" resultType="com.college.entity.Signin">
 		SELECT <include refid="columns" />
@@ -164,14 +164,14 @@
 				AND userId = #{searchFields.userId}
 			</if>
 			<if test="searchFields.realName != null and searchFields.realName != ''">
-				AND status = #{searchFields.realName}
+				AND t1.status = #{searchFields.realName}
 			</if>
 			<if test="searchFields.idCard != null and searchFields.idCard != ''">
-				AND createTime = #{searchFields.idCard}
+				AND t1.createTime = #{searchFields.idCard}
 			</if>
 		</where>
 		ORDER BY
-		createTime DESC
+		t1.createTime DESC
 	</select>
 
 

@@ -243,4 +243,89 @@
 		limit 1
 	</select>
 
+	<!-- 查询分页学生列表 -->
+	<select id="pageQueryStudentList" resultMap="resultMap">
+		SELECT
+        t2.id,
+        t2.userName,
+        t2.realName,
+        t2.idCard,
+        t2. STATUS,
+        t2.createTime,
+        t2.updateTime
+		FROM
+		user_role  t1
+		JOIN user t2 ON t1.userid = t2.id
+		WHERE
+		roleId = '3'
+		<where>
+			<if test="searchFields.userName != null and searchFields.userName != ''">
+				AND userName = #{searchFields.userName}
+			</if>
+			<if test="searchFields.password != null and searchFields.password != ''">
+				AND password = #{searchFields.password}
+			</if>
+			<if test="searchFields.salt != null and searchFields.salt != ''">
+				AND salt = #{searchFields.salt}
+			</if>
+			<if test="searchFields.realName != null and searchFields.realName != ''">
+				AND realName = #{searchFields.realName}
+			</if>
+			<if test="searchFields.idCard != null and searchFields.idCard != ''">
+				AND idCard = #{searchFields.idCard}
+			</if>
+			<if test="searchFields.administrator != null and searchFields.administrator != ''">
+				AND administrator = #{searchFields.administrator}
+			</if>
+			<if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+			<if test="searchFields.createTime != null and searchFields.createTime != ''">
+				AND createTime = #{searchFields.createTime}
+			</if>
+			<if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+				AND updateTime = #{searchFields.updateTime}
+			</if>
+		</where>
+	</select>
+
+	<!--条件查询分页记录总数-->
+	<select id="getStudentTotalCount" resultType="Long">
+		SELECT count(1)
+		FROM
+		user_role  t1
+		JOIN user t2 ON t1.userid = t2.id
+		WHERE
+		roleId = '3'
+		<where>
+			<if test="searchFields.userName != null and searchFields.userName != ''">
+				AND userName = #{searchFields.userName}
+			</if>
+			<if test="searchFields.password != null and searchFields.password != ''">
+				AND password = #{searchFields.password}
+			</if>
+			<if test="searchFields.salt != null and searchFields.salt != ''">
+				AND salt = #{searchFields.salt}
+			</if>
+			<if test="searchFields.realName != null and searchFields.realName != ''">
+				AND realName = #{searchFields.realName}
+			</if>
+			<if test="searchFields.idCard != null and searchFields.idCard != ''">
+				AND idCard = #{searchFields.idCard}
+			</if>
+			<if test="searchFields.administrator != null and searchFields.administrator != ''">
+				AND administrator = #{searchFields.administrator}
+			</if>
+			<if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+			<if test="searchFields.createTime != null and searchFields.createTime != ''">
+				AND createTime = #{searchFields.createTime}
+			</if>
+			<if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+				AND updateTime = #{searchFields.updateTime}
+			</if>
+		</where>
+	</select>
+
 </mapper> 
