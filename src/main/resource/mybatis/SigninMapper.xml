@@ -12,12 +12,18 @@
         <result property="updateTime" column="updateTime"/>
 		 <result property="maxId" column="maxId"/>
 	</resultMap>
+
+	<resultMap id="conditionalQueryResultMap" type="com.college.entity.User">
+		<result property="id" column="userid"/>
+		<result property="realName" column="realName"/>
+		<result property="idCard" column="idCard"/>
+	</resultMap>
 	
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="columns">
 		id,userId,status,createTime,updateTime
 	</sql>
-	
+
 	<!-- 获取单个实体bean -->
 	<select id="get" parameterType="Long" resultType="com.college.entity.Signin">
 		SELECT <include refid="columns" />
@@ -149,5 +155,24 @@
 		</where>
 		limit 1
 	</select>
+
+	<select id="conditionalQuery" resultMap="conditionalQueryResultMap">
+		SELECT t1.userId,t2.realName,t2.idCard
+		FROM signin t1 left join user t2 on t1.userId = t2.id
+		<where>
+			<if test="searchFields.userId != null and searchFields.userId != ''">
+				AND userId = #{searchFields.userId}
+			</if>
+			<if test="searchFields.realName != null and searchFields.realName != ''">
+				AND t1.status = #{searchFields.realName}
+			</if>
+			<if test="searchFields.idCard != null and searchFields.idCard != ''">
+				AND t1.createTime = #{searchFields.idCard}
+			</if>
+		</where>
+		ORDER BY
+		t1.createTime DESC
+	</select>
+
 
 </mapper> 

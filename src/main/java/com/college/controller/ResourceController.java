@@ -46,7 +46,7 @@ public class ResourceController extends BaseController {
      * @param image
      * @param link
      * @param content
-     * @param status      0: 正常 1:删除
+     * @param status      0: 删除 1:正常
      * @param createTime  创建时间
      * @param updateTime  更新时间
      * @return
@@ -68,6 +68,7 @@ public class ResourceController extends BaseController {
                                        @RequestParam(value = "updateTime", required = false) Integer updateTime
     ) {
         Map<String, Object> params = Maps.newHashMap();
+        params.put("type",type);
         Page<Resource> page = resourceService.searchPageList(pageNum, pageSize, params);
         Map<String, Object> resultMap = Maps.newHashMap();
         logger.info(" ResourceController -->  pageResult :{}", page.getResult());
@@ -91,7 +92,7 @@ public class ResourceController extends BaseController {
      * @param image
      * @param link
      * @param content
-     * @param status      0: 正常 1:删除
+     * @param status      0: 删除 1:正常
      * @param createTime  创建时间
      * @param updateTime  更新时间
      * @return
@@ -133,7 +134,7 @@ public class ResourceController extends BaseController {
      * @param image
      * @param link
      * @param content
-     * @param status      0: 正常 1:删除
+     * @param status      0: 删除 1:正常
      * @param createTime  创建时间
      * @param updateTime  更新时间
      * @return

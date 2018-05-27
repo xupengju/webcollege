@@ -44,7 +44,7 @@ public class BaseInfoController {
      * @param image       图片
      * @param link        链接
      * @param content     内容
-     * @param status      0: 正常 1:删除
+     * @param status      0: 删除 1:正常
      * @param createTime  创建时间
      * @param updateUser  修改人
      * @param updateTime  更新时间
@@ -66,6 +66,8 @@ public class BaseInfoController {
                                        @RequestParam(value = "updateUser", required = false) Integer updateUser,
                                        @RequestParam(value = "updateTime", required = false) Integer updateTime) {
         Map<String, Object> params = Maps.newHashMap();
+        params.put("contentType",contentType);
+        params.put("status",1);
         Page<BaseInfo> page = baseInfoService.searchPageList(pageNum, pageSize, params);
         Map<String, Object> resultMap = Maps.newHashMap();
         logger.info(" BaseInfoController -->  pageResult :{}", page.getResult());
@@ -88,7 +90,7 @@ public class BaseInfoController {
      * @param image       图片
      * @param link        链接
      * @param content     内容
-     * @param status      0: 正常 1:删除
+     * @param status      0: 删除 1:正常
      * @param createTime  创建时间
      * @param updateUser  修改人
      * @param updateTime  更新时间
@@ -132,7 +134,7 @@ public class BaseInfoController {
      * @param image       图片
      * @param link        链接
      * @param content     内容
-     * @param status      0: 正常 1:删除
+     * @param status      0: 删除 1:正常
      * @param createTime  创建时间
      * @param updateUser  修改人
      * @param updateTime  更新时间
@@ -171,6 +173,17 @@ public class BaseInfoController {
     @ResponseBody
     public Resp get(@RequestParam(value = "id") Long id) {
         BaseInfo baseInfo= baseInfoService.get(id);
+        return null != baseInfo ? Resp.success(baseInfo) : Resp.error(AppCode._10012);
+    }
+
+    @RequestMapping(value = Path.BASEINFO_SEARCHONE)
+    @ResponseBody
+    public Resp searchOne(@RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "contentType") Integer contentType) {
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("id",id);
+        params.put("contentType",contentType);
+        BaseInfo baseInfo= baseInfoService.searchOne(params);
         return null != baseInfo ? Resp.success(baseInfo) : Resp.error(AppCode._10012);
     }
 

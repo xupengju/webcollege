@@ -43,4 +43,18 @@ public interface UserDao {
 	 */
     User searchOne(@Param("searchFields") Map<String, Object> params);
 
+	/**
+	 * 分页查询 返回学生列表 Page对象
+	 * @param params
+	 * @return
+	 */
+	Page<User> pageQueryStudentList(@Param("searchFields") Map<String, Object> params);
+
+	/**
+	 *
+	 * @param params
+	 * @return
+	 */
+	Long getStudentTotalCount(Map<String, Object> params);
+
 }

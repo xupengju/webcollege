@@ -63,5 +63,12 @@ public class UserService {
 	public User searchOne(Map<String, Object> params) {
         return userDao.searchOne(params);
     }
- 
+
+	public Page<User> pageQueryStudentList(int offset , int size,Map<String, Object> params){
+		PageHelper.startPage(offset, size);
+		return userDao.pageQueryStudentList(params);
+	}
+	public Long getStudentTotalCount(Map<String, Object> params) {
+		return userDao.getStudentTotalCount(params);
+	}
 }
