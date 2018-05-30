@@ -73,7 +73,7 @@
 		<div class="detailAboutContent dtr">
 			<h2 class="tc mt50 mb50">视频库 <div class="back1">返回</div></h2>
 			<ul>
-				<li>
+				<!--<li>
 					<img src="../../img/java.jpg"/>
 					<a href="#">视频1</a>
 				</li>
@@ -104,7 +104,7 @@
 				<li>
 					<img src="../../img/java.jpg"/>
 					<a href="#">视频1</a>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 		
@@ -119,5 +119,8 @@
 
 		<script src="../../js/base.js"></script>
 		<script src="../../js/teachingResources.js"></script>
+		<script>
+            TeachingResourcesObject.videoLibrary(1)
+		</script>
 	</body>
 </html>

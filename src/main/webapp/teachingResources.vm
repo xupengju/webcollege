@@ -99,9 +99,9 @@
 			<div class="rightBox ri1">
 				<h2 class="tc mt30 mb20">企业项目</h2>
                 <div class="rBox" style="display: block;">
-                    <div class="newBox">
+                    <!--<div class="newBox">
                         <img src="../../img/img3.jpg">
-                        XXX项目1
+						<p>XXX项目1</p>
                     </div>
                     <div class="newBox">
                         <img src="../../img/img3.jpg">
@@ -122,7 +122,7 @@
                     <div class="newBox">
                         <img src="../../img/img3.jpg">
                         XXX项目1
-                    </div>
+                    </div>-->
                 </div>
 				<div id="page" class="page_div"></div>
 			</div>
