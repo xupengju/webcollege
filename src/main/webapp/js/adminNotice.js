@@ -4,6 +4,25 @@ var AdminNoticeObject={
         $(".newsBox"+index).show().siblings("div").hide();
 
     },
+    //上传新闻：
+    noticeLoad:function(typeA){
+        var tittle=$(".newsBox1 .tit").val();
+        var linkT=$(".newsBox1 .linkT").val();
+        var content=eval("ue"+index).getContent();
+        $.ajax({
+            type:"post",
+            url:urlT+ "/api/notice/add.json",
+            data:{
+                token:localStorage.getItem("token"),
+                tittle:tittle,
+                resume:,
+                type:typeA
+            },
+            success:function (data) {
+                console.log(data)
+            }
+        })
+    },
     //单图上传  待调试
     imgUpLoad:function (fileId, ImgId) {
         console.log(fileId,ImgId)

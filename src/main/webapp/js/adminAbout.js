@@ -17,7 +17,7 @@ var AdminAboutObject={
        /* var title=$(".newsBox"+index).find(".tit").val();
         var link=$(".newsBox"+index).find(".linkT").val();*/
         var content=eval("ue"+index).getContent();
-
+        console.log(content)
 
         if(content==""){
             alert("请全部填写")

@@ -1,5 +1,5 @@
 //地址
-var urlT="";
+var urlT="http://47.98.114.223";
 
 $("nav a").has(".navTwo").hover(function(){
 	$(this).find(".navTwo").slideDown(300).parent().siblings().find(".navTwo").stop(true).slideUp(300)

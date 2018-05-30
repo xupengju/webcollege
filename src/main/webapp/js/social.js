@@ -58,3 +58,33 @@ $(".schoolList li").click(function(){
 $(".back1").click(function(){
 	window.history.back()
 })
+var SocialObject={
+    //职业鉴定
+    appraisal:function (typeNumber) {
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/baseInfo/searchOne.json",
+            data:{
+                token:localStorage.getItem("token"),
+                contentType:typeNumber
+            },
+            success:function (data) {
+                console.log(data)
+            }
+        })
+    },
+
+}
+
+SocialObject.appraisal(14)
+SocialObject.appraisal(15)
+SocialObject.appraisal(16)
+SocialObject.appraisal(17)
+SocialObject.appraisal(18)
+SocialObject.appraisal(19)
+SocialObject.appraisal(20)
+SocialObject.appraisal(21)
+SocialObject.appraisal(22)
+SocialObject.appraisal(26)
+SocialObject.appraisal(27)
+SocialObject.appraisal(28)
