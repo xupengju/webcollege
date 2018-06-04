@@ -37,3 +37,44 @@ var $ind=localStorage.getItem("Manageindex")
 if($ind){
 	a($(".leftNav li").eq($ind),parseInt($ind)+1)
 }
+var PracticeManageObject={
+	//规章制度
+    ruleList:function (typeNumber) {
+		$.ajax({
+			type:"post",
+            url:urlT+"/api/baseInfo/searchOne.json",
+			data:{
+                token:localStorage.getItem("token"),
+                contentType:4
+			},
+			success:function (data) {
+				console.log(data)
+            }
+		})
+    },
+	//实习流程/岗位目标与要求/企业产品标准
+    practiceProcess:function(type){
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/baseInfo/searchOne.json",
+            data:{
+                token:localStorage.getItem("token"),
+                contentType:type
+            },
+            success:function (data) {
+            	console.log(data)
+               $(".ri2 img").attr("src","")
+            }
+        })
+	},
+
+
+}
+//规章制度
+PracticeManageObject.ruleList(4)
+//实习流程
+PracticeManageObject.practiceProcess(5)
+PracticeManageObject.practiceProcess(6)
+PracticeManageObject.practiceProcess(7)
+PracticeManageObject.practiceProcess(8)
+PracticeManageObject.practiceProcess(9)

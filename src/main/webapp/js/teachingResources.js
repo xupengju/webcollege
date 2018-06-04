@@ -84,3 +84,51 @@ $(".back1").click(function(){
 $(".ri1 .newBox").click(function () {
 	window.location.href="detaiAbout.vm"
 })
+var TeachingResourcesObject={
+//企业项目
+    enterpriseProject:function () {
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/baseInfo/searchOne.json",
+            data:{
+                token:localStorage.getItem("token"),
+                contentType:10
+            },
+            success:function (data) {
+                console.log(data)
+            }
+        })
+    },
+	//视频库
+	videoLibrary:function (typeA) {
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/resource/list.json",
+            data:{
+                token:localStorage.getItem("token"),
+                type:typeA
+            },
+            success:function (data) {
+                console.log(data)
+                var re=data.result;
+                for(var i=0;i<re.length;i++){
+                    $(".detailAboutContent ul").append(TeachingResourcesObject.getVideoList(re[i]))
+                }
+            }
+        })
+    },
+    getVideoList:function (data) {
+        console.log(data)
+        var list=""
+        list='<li><img src="'
+            +data.image+'"/><a href="'+data.link+'">'
+            +data.resourceName+'</a></li>'
+        return list
+    }
+
+}
+TeachingResourcesObject.enterpiseProject()
+
+TeachingResourcesObject.videoLibrary(5)
+TeachingResourcesObject.videoLibrary(6)
+TeachingResourcesObject.videoLibrary(7)

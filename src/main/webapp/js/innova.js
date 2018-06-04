@@ -28,3 +28,38 @@ var $ind=localStorage.getItem("innovaIndex")
 if($ind){
 	a($(".leftNav li").eq($ind),parseInt($ind)+1)
 }
+var InnovationObject={
+    //众创空间
+    space:function (typeNumber) {
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/baseInfo/searchOne.json",
+            data:{
+                token:localStorage.getItem("token"),
+                contentType:typeNumber
+            },
+            success:function (data) {
+                console.log(data)
+            }
+        })
+    },
+	//校企合作项目
+    schoolEnterprise:function () {
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/baseInfo/list.json",
+            data:{
+                token:localStorage.getItem("token"),
+                contentType:10
+            },
+            success:function (data) {
+                console.log(data)
+            }
+        })
+    }
+}
+//type??????????
+InnovationObject.space(6)
+InnovationObject.space(10)
+InnovationObject.space(13)
+

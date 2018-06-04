@@ -1,13 +1,5 @@
 
-//分页器
-$("#page").paging({
-	pageNo:1,
-	totalPage: 9,
-	//totalSize: 300,
-	callback: function(num) {
-		alert(num)
-	}
-})
+
 //师资分页器
 $("#page2").paging({
 	pageNo:1,
@@ -49,6 +41,59 @@ $(".leftNav li p").click(function(event){
 	$(".twoContent"+parentIndex).find(".rightBox").eq($in-1).show()
 })
 var aboutObj={
+	//学校介绍和基地介绍
+	schoolSummary:function(index,contentType){
+
+		$.ajax({
+			type:"post",
+			url:urlT+"/api/baseInfo/searchOne.json",
+			data:{
+				token:localStorage.getItem("token"),
+            	contentType:contentType
+			},
+			success:function(data1) {
+				//console.log(data1)
+				var result=data1.data
+				$(".ri"+index+" img").eq(0).attr("src",result.image);
+				$(".ri"+index+" .word").html(result.content)
+			}
+		})
+	},
+	//成果展示
+    achievementShow:function(){
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/achievement/list.json",
+            data:{
+                token:localStorage.getItem("token"),
+            },
+            success:function(data) {
+                console.log(data)
+				var resultA=data.result;
+                for(var i=0;i<resultA.length;i++){
+					$(".ri3 .achev").append(aboutObj.getAchievementList(resultA[i]))
+				}
+                //分页器
+                $("#page").paging({
+                    pageNo:data.pagenum,
+                    totalPage: data.pagesize,
+                    //totalSize: 300,
+                    callback: function(num) {
+                        alert(num)
+                    }
+                })
+            }
+        })
+	},
+	//获取成果展示列表
+	getAchievementList:function(data){
+		var list=""
+		list='<p class="gain"><a href="views/detaiAbout.vm">'
+			+data.title+'</a><span>'
+			+new Date(data.createTime).toLocaleDateString()+'</span></p>'
+		return list
+	},
+	//教师列表
     teacherList:function (typeNumber,index) {
         $.ajax({
             type:"post",
@@ -73,6 +118,10 @@ var aboutObj={
             +data.resume+'</p></div></li>'
     }
 }
+aboutObj.schoolSummary(1,1)
+aboutObj.schoolSummary(2,2)
+aboutObj.schoolSummary(4,3)
+aboutObj.achievementShow()
 //企业教师
 aboutObj.teacherList(1,0)
 //学校教师
