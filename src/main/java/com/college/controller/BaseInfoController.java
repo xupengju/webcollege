@@ -105,8 +105,6 @@ public class BaseInfoController {
             @RequestParam(value = "image", required = false) String image,
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "status", required = false) Integer status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
             @RequestParam(value = "updateUser", required = false) String updateUser,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
         BaseInfo baseInfo = new BaseInfo();
@@ -116,8 +114,6 @@ public class BaseInfoController {
         baseInfo.setImage(image);
         baseInfo.setLink(link);
         baseInfo.setContent(content);
-        baseInfo.setStatus(status);
-        baseInfo.setCreateTime(createTime);
         baseInfo.setUpdateUser(updateUser);
         baseInfo.setUpdateTime(updateTime);
         Integer id = baseInfoService.insert(baseInfo);
