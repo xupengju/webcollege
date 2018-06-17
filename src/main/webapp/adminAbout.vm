@@ -81,7 +81,7 @@
             <h2 class="mt20 mb20">创建企业教师</h2>
             <p>
                 <span>姓名：</span>
-                <input type="text"/>
+                <input class="teacherName" type="text"/>
             </p>
             <p>
                 <span>图片：</span>
@@ -92,13 +92,13 @@
             </p>
             <p>教师介绍：</p>
             <div id="editor4" type="text/plain"></div>
-            <button class="saveBtn">保存</button>
+            <button class="saveBtn"  onclick="AdminAboutObject.saveAllT(4,3,1)">保存</button>
         </div>
         <div class="newsBox5">
             <h2 class="mt20 mb20">创建学校教师</h2>
             <p>
                 <span>姓名：</span>
-                <input type="text"/>
+                <input class="teacherName" type="text"/>
             </p>
             <p>
                 <span>图片：</span>
@@ -109,17 +109,17 @@
             </p>
             <p>教师介绍：</p>
             <div id="editor5" type="text/plain"></div>
-            <button class="saveBtn">保存</button>
+            <button class="saveBtn"  onclick="AdminAboutObject.saveAllT(5,4,2)">保存</button>
         </div>
         <div class="newsBox6">
             <h2 class="mt20 mb20">创建成果</h2>
             <p>
                 <span>名称：</span>
-                <input type="text"/>
+                <input class="titT" type="text"/>
             </p>
             <p>
                 <span>时间：</span>
-                <input type="text"/>
+                <input class="createTime" type="date"/>
             </p>
             <p>
                 <span>图片：</span>
@@ -130,7 +130,7 @@
             </p>
             <p>成果内容：</p>
             <div id="editor6" type="text/plain"></div>
-            <button class="saveBtn">保存</button>
+            <button class="saveBtn" onclick="AdminAboutObject.saveAllT(6,5)">保存</button>
         </div>
     </div>
 

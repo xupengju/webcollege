@@ -19,7 +19,7 @@
 			</div>
 		</header>
 		<nav>
-			<a href="views/index.vm">网站首页</a>
+            <a href="index.vm">网站首页</a>
 			<a><div class="aboutBtn deepBlue">关于我们</div>
 				<div class="navTwo aboutA">
 					<div>学校介绍</div>
@@ -272,7 +272,7 @@
 						</div>
 					</li>-->
 				</ul>
-				<div id="page2" class="page_div"></div>
+				<div id="page3" class="page_div"></div>
 			</div>
 		</div>
 		</div>
