@@ -6,7 +6,7 @@
 
 	<resultMap id="resultMap" type="com.college.entity.Resource">
         <result property="id" column="id"/>
-        <result property="teacherName" column="teacherName"/>
+        <result property="resourceName" column="resourceName"/>
         <result property="resume" column="resume"/>
         <result property="userId" column="userId"/>
         <result property="type" column="type"/>
@@ -21,7 +21,7 @@
 	
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="columns">
-		id,teacherName,resume,userId,type,image,link,content,status,createTime,updateTime
+		id,resourceName,resume,userId,type,image,link,content,status,createTime,updateTime
 	</sql>
 	
 	<!-- 获取单个实体bean -->
@@ -34,7 +34,7 @@
 	<!-- 新增 -->
 	<insert id="insert" parameterType="com.college.entity.Resource" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO resource (
-        	teacherName,
+        	resourceName,
         	resume,
         	userId,
         	type,
@@ -45,7 +45,7 @@
         	createTime,
         	updateTime
 		) VALUES (
-        	#{teacherName},
+        	#{resourceName},
         	#{resume},
         	#{userId},
         	#{type},
@@ -62,8 +62,8 @@
 	<update id="update" >
         UPDATE resource
 		<set>
-			<if test="teacherName!=null and teacherName!='' ">
-				teacherName = #{teacherName},
+			<if test="resourceName!=null and resourceName!='' ">
+				resourceName = #{resourceName},
 			</if>
 			<if test="resume!=null and resume!='' ">
 				resume = #{resume},
@@ -107,8 +107,8 @@
 		SELECT <include refid="columns" />
 		FROM resource
 		<where>
-	       <if test="searchFields.teacherName != null and searchFields.teacherName != ''">
-				AND teacherName = #{searchFields.teacherName}
+	       <if test="searchFields.resourceName != null and searchFields.resourceName != ''">
+				AND resourceName = #{searchFields.resourceName}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
@@ -145,8 +145,8 @@
 		SELECT count(1)
 		FROM resource
 		<where>
-	       <if test="searchFields.teacherName != null and searchFields.teacherName != ''">
-				AND teacherName = #{searchFields.teacherName}
+	       <if test="searchFields.resourceName != null and searchFields.resourceName != ''">
+				AND resourceName = #{searchFields.resourceName}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
@@ -183,8 +183,8 @@
 		SELECT <include refid="columns" />
 		FROM resource
 		<where>
-	       <if test="searchFields.teacherName != null and searchFields.teacherName != ''">
-				AND teacherName = #{searchFields.teacherName}
+	       <if test="searchFields.resourceName != null and searchFields.resourceName != ''">
+				AND resourceName = #{searchFields.resourceName}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
@@ -223,8 +223,8 @@
 		SELECT <include refid="columns" />
 		FROM resource
 		<where>
-	       <if test="searchFields.teacherName != null and searchFields.teacherName != ''">
-				AND teacherName = #{searchFields.teacherName}
+	       <if test="searchFields.resourceName != null and searchFields.resourceName != ''">
+				AND resourceName = #{searchFields.resourceName}
 			</if>
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}

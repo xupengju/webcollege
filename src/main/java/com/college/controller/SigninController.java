@@ -52,7 +52,7 @@ public class SigninController extends BaseController {
      * @param pageSize
      * @param id
      * @param userId     用户 ID
-     * @param status     0: 正常 1:删除
+     * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateTime 更新时间
      * @return
@@ -72,8 +72,6 @@ public class SigninController extends BaseController {
         User user = userService.get(currentId.longValue());
         if (!user.getAdministrator()) {
             params.put("userId", userId);
-        } else {
-            params.put("userId", currentId);
         }
         params.put("status", 1);
         Page<Signin> page = signinService.searchPageList(pageNum, pageSize, params);
@@ -83,8 +81,8 @@ public class SigninController extends BaseController {
         for (Signin signin : singins) {
             User signUser = userService.get(signin.getUserId().longValue());
             if (null != signUser) {
-                String realName = signUser.getRealName();
-                signin.setUserName(realName);
+                signin.setUserName(signUser.getRealName());
+                signin.setIdCard(signUser.getIdCard());
             }
             results.add(signin);
         }
@@ -160,6 +158,25 @@ public class SigninController extends BaseController {
         signin.setStatus(status);
         signinService.update(signin);
         return Resp.success();
+    }
+
+    /**
+     * 条件查询
+     */
+    @RequestMapping(value = Path.CONDITIONAL_QUERY)
+    @ResponseBody
+    public Map<String, Object> conditionalQuery(@RequestParam(value = "realName", required = false) String realName,
+                                 @RequestParam(value = "idCard", required = false) String idCard,
+                                 @RequestParam(value = "userId", required = false) String userId){
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("realName",realName);
+        params.put("idCard",idCard);
+        params.put("userId",userId);
+        Map<String, Object> resultMap = Maps.newHashMap();
+        List<User> listByParams = signinService.conditionalQuery(params);
+        logger.info(" SigninController -->  conditionalQueryListByParams :{}", listByParams);
+        resultMap.put("result", listByParams);
+        return resultMap;
     }
 
 }

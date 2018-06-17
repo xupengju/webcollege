@@ -2,6 +2,7 @@ package com.college.controller;
 
 import com.college.contants.AppCode;
 import com.college.contants.Path;
+import com.college.entity.Teacher;
 import com.college.entity.User;
 import com.college.model.*;
 import com.college.service.UserService;
@@ -158,4 +159,109 @@ public class UserController extends BaseController {
         return Resp.success(resourceModelList);
     }
 
+    @RequestMapping(value = Path.STUDENT_LIST)
+    @ResponseBody
+    public Map<String, Object> pageQueryStudentList(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
+                                           @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
+                                           @RequestParam(value = "username", required = false) String userName
+    ) {
+        Map<String, Object> params = Maps.newHashMap();
+        if (null != userName) {
+            params.put("userName", userName);
+        }
+        Page<User> page = userService.pageQueryStudentList(pageNum, pageSize, params);
+        Map<String, Object> resultMap = Maps.newHashMap();
+        logger.info(" UserController --> students :{}", page.getResult());
+        resultMap.put("result", page.getResult());
+        resultMap.put("pages", page.getPages());
+        resultMap.put("startrow", page.getStartRow());
+        resultMap.put("endrow", page.getEndRow());
+        resultMap.put("pagesize", page.getPageSize());
+        resultMap.put("pagenum", page.getPageNum());
+        resultMap.put("total", page.getTotal());
+        return resultMap;
+    }
+
+    /**
+     * insert
+     *
+     * @param studentName
+     * @param password
+     * @param salt
+     * @param realName
+     * @param idCard
+     * @param administrator
+     * @param status        0: 删除 1:正常
+     * @param createTime    创建时间
+     * @param updateTime    更新时间
+     * @return
+     */
+    @RequestMapping(value = Path.STUDENT_ADD)
+    @ResponseBody
+    public Resp addStudent(
+            @RequestParam(value = "studentName", required = false) String studentName,
+            @RequestParam(value = "password", required = false) String password,
+            @RequestParam(value = "salt", required = false) String salt,
+            @RequestParam(value = "realName", required = false) String realName,
+            @RequestParam(value = "idCard", required = false) String idCard,
+            @RequestParam(value = "administrator", required = false) boolean administrator,
+            @RequestParam(value = "status", required = false) boolean status,
+            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
+            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+        User student = new User();
+        student.setUserName(studentName);
+        student.setPassword(password);
+        student.setSalt(salt);
+        student.setRealName(realName);
+        student.setIdCard(idCard);
+        student.setAdministrator(administrator);
+        student.setStatus(status);
+        student.setCreateTime(createTime);
+        student.setUpdateTime(updateTime);
+        Integer id =  userService.insert(student);
+        return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
+    }
+
+    /**
+     * update
+     *
+     * @param id
+     * @param studentName
+     * @param password
+     * @param salt
+     * @param realName
+     * @param idCard
+     * @param administrator
+     * @param status        0: 删除 1:正常
+     * @param createTime    创建时间
+     * @param updateTime    更新时间
+     * @return
+     */
+    @RequestMapping(value = Path.STUDENT_UPDATE)
+    @ResponseBody
+    public Resp updateStudent(
+            @RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "studentName", required = false) String studentName,
+            @RequestParam(value = "password", required = false) String password,
+            @RequestParam(value = "salt", required = false) String salt,
+            @RequestParam(value = "realName", required = false) String realName,
+            @RequestParam(value = "idCard", required = false) String idCard,
+            @RequestParam(value = "administrator", required = false) boolean administrator,
+            @RequestParam(value = "status", required = false) boolean status,
+            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
+            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+        User student = new User();
+        student.setId(id);
+        student.setUserName(studentName);
+        student.setPassword(password);
+        student.setSalt(salt);
+        student.setRealName(realName);
+        student.setIdCard(idCard);
+        student.setAdministrator(administrator);
+        student.setStatus(status);
+        student.setCreateTime(createTime);
+        student.setUpdateTime(updateTime);
+        userService.update(student);
+        return Resp.success();
+    }
 }

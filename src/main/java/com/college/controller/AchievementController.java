@@ -45,7 +45,7 @@ public class AchievementController extends BaseController {
      * @param image
      * @param link
      * @param content
-     * @param status     0: 正常 1:删除
+     * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateTime 更新时间
      * @return
@@ -90,7 +90,7 @@ public class AchievementController extends BaseController {
      * @param image
      * @param link
      * @param content
-     * @param status     0: 正常 1:删除
+     * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateTime 更新时间
      * @return
@@ -134,7 +134,7 @@ public class AchievementController extends BaseController {
      * @param image
      * @param link
      * @param content
-     * @param status     0: 正常 1:删除
+     * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateTime 更新时间
      * @return

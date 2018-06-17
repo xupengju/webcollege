@@ -4,6 +4,8 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.college.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +65,9 @@ public class SigninService {
 	public Signin searchOne(Map<String, Object> params) {
         return signinDao.searchOne(params);
     }
+
+	public List<User> conditionalQuery(Map<String, Object> params){
+		return signinDao.conditionalQuery(params);
+	}
  
 }

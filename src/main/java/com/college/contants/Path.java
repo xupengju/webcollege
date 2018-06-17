@@ -27,6 +27,9 @@ public class Path {
     public static final String USER_ROLE_GET = "/api/user/role/get.json";
     public static final String USER_PERMISSION = "/api/user/permission.json";
     public static final String USER_LIST = "/api/user/userList.json";
+    public static final String STUDENT_LIST = "/api/user/studentList.json";
+    public static final String STUDENT_ADD = "/api/user/studentAdd.json";
+    public static final String STUDENT_UPDATE = "/api/user/studentUpdate.json";
 
     // 角色相关接口
     public static final String ROLE_ADD = "/api/role/add.json";
@@ -83,6 +86,8 @@ public class Path {
     public static final String SIGNIN_UPDATE = "/api/signin/update.json";
     public static final String SIGNIN_LIST = "/api/signin/list.json";
     public static final String SIGNIN_ALL = "/api/signin/all.json";
+    public static final String CONDITIONAL_QUERY = "/api/signin/conditionalQuery.json";
+
 
     //baseInfo 静态页面 基本信息
     public static final String BASEINFO_ADD = "/api/baseInfo/add.json";
@@ -90,4 +95,5 @@ public class Path {
     public static final String BASEINFO_UPDATE = "/api/baseInfo/update.json";
     public static final String BASEINFO_LIST = "/api/baseInfo/list.json";
     public static final String BASEINFO_ALL = "/api/baseInfo/all.json";
+    public static final String BASEINFO_SEARCHONE = "/api/baseInfo/searchOne.json";
 }
