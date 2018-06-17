@@ -12,13 +12,13 @@ var AdminSocialObject={
     //上传内容
     saveAll:function(index,v){
         if(index==null){//学生实习
-            var title=$(".newsBox9").find(".tit").val();
-            if(title==""){
+            var resourceName=$(".newsBox9").find(".tit").val();
+            if(resourceName==""){
                 alert("请全部填写")
             }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
                 alert("请上传图片")
             }else{
-                AdminSocialObject.ajaxT(title)
+                AdminSocialObject.ajaxA(resourceName)
             }
 
 
@@ -34,8 +34,29 @@ var AdminSocialObject={
         }
 
 
-        console.log(content,AdminSocialObject.contentType)
+        //console.log(content,AdminSocialObject.contentType)
 
+    },
+    //学生实习
+    ajaxA:function(resourceName){
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/resource/add.json",
+            data:{
+                token:localStorage.getItem("token"),
+                resourceName:resourceName,
+                type:10,
+            },
+            success:function (data) {
+                console.log(data)
+                if(data.code==200){//成功
+                    alert("上传成功")
+                }else{
+                    alert(data.message)
+                }
+            }
+
+        })
     },
     ajaxT:function(title){
         console.log(title)
