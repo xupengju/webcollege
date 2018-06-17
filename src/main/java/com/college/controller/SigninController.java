@@ -72,8 +72,6 @@ public class SigninController extends BaseController {
         User user = userService.get(currentId.longValue());
         if (!user.getAdministrator()) {
             params.put("userId", userId);
-        } else {
-            params.put("userId", currentId);
         }
         params.put("status", 1);
         Page<Signin> page = signinService.searchPageList(pageNum, pageSize, params);
@@ -83,8 +81,8 @@ public class SigninController extends BaseController {
         for (Signin signin : singins) {
             User signUser = userService.get(signin.getUserId().longValue());
             if (null != signUser) {
-                String realName = signUser.getRealName();
-                signin.setUserName(realName);
+                signin.setUserName(signUser.getRealName());
+                signin.setIdCard(signUser.getIdCard());
             }
             results.add(signin);
         }
