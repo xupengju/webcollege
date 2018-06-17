@@ -14,7 +14,7 @@
 	</resultMap>
 
 	<resultMap id="conditionalQueryResultMap" type="com.college.entity.User">
-		<result property="id" column="userid"/>
+		<result property="id" column="userId"/>
 		<result property="realName" column="realName"/>
 		<result property="idCard" column="idCard"/>
 	</resultMap>
