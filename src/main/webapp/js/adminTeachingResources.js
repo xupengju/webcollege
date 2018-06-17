@@ -1,51 +1,63 @@
 
 
-var AdminSocialObject={
-    contentType:26,
-    ////实习管理界面下拉
+var AdminTeachingR={
+    contentType:1,
+    ////关于我们界面下拉
     selectChange:function () {
         var index=$(".se").find("option:selected").index()+1;
         $(".newsBox"+index).show().siblings("div").hide();
-        AdminSocialObject.contentType=$(".se").find("option:selected").attr("contentType");
 
     },
-    //上传内容
-    saveAll:function(index,v){
-        if(index==null){//学生实习
-            var resourceName=$(".newsBox9").find(".tit").val();
-            if(resourceName==""){
+    //保存
+    saveAll:function(ind,index,v,type){
+        var resourceName=$(".newsBox"+ind+" .tit").val();
+        //var createTime=;
+        //var link=;
+        if(index==null){//有标题和连接
+            var link=$(".newsBox"+ind+" .linkT").val();
+            if(resourceName=="" || link==""){
                 alert("请全部填写")
             }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
                 alert("请上传图片")
             }else{
-                AdminSocialObject.ajaxA(resourceName)
+                AdminTeachingR.ajaxA(type,resourceName,link)
             }
-
-
-        }else{
+        }else if(index==8){//标题、时间、连接 教学视频
+            var createTime=$(".newsBox"+ind+" .createTime").val();
+            var link=$(".newsBox"+ind+" .linkT").val();
             var content=eval("ue"+index).getContent();
-            if(content==""){
+            if(content=="" || resourceName=="" || link=="" || createTime==""){
                 alert("请全部填写")
             }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
                 alert("请上传图片")
-            }else{
-                AdminSocialObject.ajaxC(content)
+            }else {
+                AdminTeachingR.ajaxB(type, resourceName, link, createTime, content)
+            }
+        }else{
+            var createTime=$(".newsBox"+ind+" .createTime").val();
+            var content=eval("ue"+index).getContent();
+            if(content=="" || resourceName=="" || createTime==""){
+                alert("请全部填写")
+            }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
+                alert("请上传图片")
+            }else {
+                AdminTeachingR.ajaxB(type, resourceName, createTime, content)
             }
         }
 
-
-        //console.log(content,AdminSocialObject.contentType)
-
     },
-    //学生实习
-    ajaxA:function(resourceName){
+
+
+    ajaxA:function(type,resourceName,link){
         $.ajax({
             type:"post",
             url:urlT+"/api/resource/add.json",
             data:{
                 token:localStorage.getItem("token"),
                 resourceName:resourceName,
-                type:10,
+                type:type,
+                link:link,
+
             },
             success:function (data) {
                 console.log(data)
@@ -58,44 +70,42 @@ var AdminSocialObject={
 
         })
     },
-    ajaxT:function(title){
-        console.log(title)
+    ajaxB:function(type,resourceName,content,link){
         $.ajax({
             type:"post",
-            url:urlT+"/api/baseInfo/add.json",
+            url:urlT+"/api/resource/add.json",
             data:{
                 token:localStorage.getItem("token"),
-                contentType:AdminSocialObject.contentType,
-                title:title,
-
+                resourceName:resourceName,
+                type:type,
+                link:link
             },
             success:function (data) {
                 console.log(data)
                 if(data.code==200){//成功
-
+                    alert("上传成功")
                 }else{
                     alert(data.message)
                 }
-            },
-            error:function () {
-                alert("保存失败")
             }
 
         })
     },
-    ajaxC:function(content){
+    ajaxC:function(type,resourceName,createTime,content){
         $.ajax({
             type:"post",
-            url:urlT+"/api/baseInfo/add.json",
+            url:urlT+"/api/resource/add.json",
             data:{
                 token:localStorage.getItem("token"),
-                contentType:AdminSocialObject.contentType,
+                resourceName:resourceName,
+                type:type,
+                createTime:createTime,
                 content:content
             },
             success:function (data) {
                 console.log(data)
                 if(data.code==200){//成功
-
+                    alert("上传成功")
                 }else{
                     alert(data.message)
                 }
@@ -103,9 +113,11 @@ var AdminSocialObject={
 
         })
     },
+    //
 
     //单图上传  待调试
     imgUpLoad:function (fileId, ImgId) {
+        console.log(fileId,ImgId)
         $.ajaxFileUpload({
             url :  urlT+ "/api/file/upload.json",
             type : 'post',
@@ -126,9 +138,10 @@ var AdminSocialObject={
     },
     imgSave:function () {
 
-    }
+    },
 
 
+    
 }
 
 

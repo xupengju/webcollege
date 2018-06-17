@@ -4,22 +4,37 @@ var AdminNoticeObject={
         $(".newsBox"+index).show().siblings("div").hide();
 
     },
-    //上传新闻：
-    noticeLoad:function(typeA){
-        var tittle=$(".newsBox1 .tit").val();
-        var linkT=$(".newsBox1 .linkT").val();
+    //保存
+    saveAll:function(typeA,index,v){
+        var tittle=$(".newsBox"+index+" .tit").val();
+        var linkT=$(".newsBox1"+index+" .linkT").val();
         var content=eval("ue"+index).getContent();
+        if(content=="" || tittle=="" || linkT==""){
+            alert("请全部填写")
+        }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
+            alert("请上传图片")
+        }else{
+            AdminNoticeObject.ajaxA(typeA,tittle,linkT,content)
+        }
+
+    },
+    ajaxA:function(typeA,tittle,linkT,content){
         $.ajax({
             type:"post",
             url:urlT+ "/api/notice/add.json",
             data:{
                 token:localStorage.getItem("token"),
                 tittle:tittle,
-                resume:,
+                link:linkT,
                 type:typeA
             },
             success:function (data) {
                 console.log(data)
+                if(data.code==200){//成功
+                    alert("上传成功")
+                }else{
+                    alert(data.message)
+                }
             }
         })
     },

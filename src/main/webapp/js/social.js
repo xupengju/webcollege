@@ -59,8 +59,8 @@ $(".back1").click(function(){
 	window.history.back()
 })
 var SocialObject={
-    //职业鉴定
-    appraisal:function (typeNumber) {
+
+    appraisal:function (typeNumber,index1,index2) {
         $.ajax({
             type:"post",
             url:urlT+"/api/baseInfo/searchOne.json",
@@ -68,23 +68,86 @@ var SocialObject={
                 token:localStorage.getItem("token"),
                 contentType:typeNumber
             },
-            success:function (data) {
-                console.log(data)
+            success:function (dataA) {
+            	console.log(dataA)
+            	var da=dataA.data
+               $(".twoContent"+index1+" .rightBox").eq(index2).find("img").attr("src",da.image);
+               $(".twoContent"+index1+" .rightBox").eq(index2).find(".word").html(da.content);
             }
         })
     },
+    //职业鉴定
+    appraisalA:function (typeNumber,index) {
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/baseInfo/searchOne.json",
+            data:{
+                token:localStorage.getItem("token"),
+                contentType:typeNumber
+            },
+            success:function (dataA) {
+                console.log(dataA)
+
+				var da=dataA.data
+				$(".ri"+index).find("img").attr("src",da.image);
+				$(".ri"+index).find(".word").html(da.content);
+
+
+            }
+        })
+    },
+	//学生实习
+	student:function (pagenum) {
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/resource/list.json",
+            data:{
+                token:localStorage.getItem("token"),
+                type:10,
+                pagenum:pagenum
+            },
+            success:function (data) {
+                console.log(data)
+                var re=data.result;
+                for(var i=0;i<re.length;i++){
+                    $(".ri3 .schoolList").append(SocialObject.getList(re[i]))
+                }
+                //分页器
+                var p=data.pages
+                $("#page").paging({
+                    pageNo:data.pagenum,
+                    totalPage: p,
+                    callback: function(num) {
+                        $(".ri3 .schoolList").html("")
+                        SocialObject.student(num)
+                    }
+                })
+            }
+        })
+    },
+    getList:function (data) {
+        // console.log(data)
+        var list=""
+        list= '<li><img src="'
+			+data.image+'"><p>'
+			+data.resourceName+'</p></li>'
+        return list
+    }
 
 }
+//电子设备装接工
+SocialObject.appraisal(14,0,0)
 
-SocialObject.appraisal(14)
-SocialObject.appraisal(15)
-SocialObject.appraisal(16)
-SocialObject.appraisal(17)
-SocialObject.appraisal(18)
-SocialObject.appraisal(19)
-SocialObject.appraisal(20)
-SocialObject.appraisal(21)
-SocialObject.appraisal(22)
-SocialObject.appraisal(26)
-SocialObject.appraisal(27)
-SocialObject.appraisal(28)
+SocialObject.appraisal(15,0,1)
+SocialObject.appraisal(16,0,2)
+SocialObject.appraisal(17,0,3)
+//新入职员工培训
+SocialObject.appraisal(18,1,0)
+SocialObject.appraisal(19,1,1)
+SocialObject.appraisal(20,2,0)
+SocialObject.appraisal(21,2,1)
+SocialObject.appraisal(22,2,2)
+
+SocialObject.appraisalA(26,1)
+SocialObject.appraisalA(27,2)
+SocialObject.student()

@@ -1,15 +1,7 @@
 
-//分页器
-$("#page").paging({
-	pageNo:1,
-	totalPage: 9,
-	//totalSize: 300,
-	callback: function(num) {
-		alert(num)
-	}
-})
+
 //师资分页器
-$("#page2").paging({
+/*$("#page2").paging({
 	pageNo:1,
 	totalPage: 9,
 	//totalSize: 300,
@@ -33,6 +25,7 @@ $("#page4").paging({
 		alert(num)
 	}
 })
+*/
 //左侧点击切换
 $(".leftNav li").click(function(){
 	var $index=$(this).index()+1
@@ -86,49 +79,77 @@ $(".ri1 .newBox").click(function () {
 })
 var TeachingResourcesObject={
 //企业项目
-    enterpriseProject:function () {
-        $.ajax({
-            type:"post",
-            url:urlT+"/api/baseInfo/searchOne.json",
-            data:{
-                token:localStorage.getItem("token"),
-                contentType:10
-            },
-            success:function (data) {
-                console.log(data)
-            }
-        })
-    },
-	//视频库
-	videoLibrary:function (typeA) {
+    eProject:function (pagenum) {
         $.ajax({
             type:"post",
             url:urlT+"/api/resource/list.json",
             data:{
                 token:localStorage.getItem("token"),
-                type:typeA
+                type:8,
+                pagenum:pagenum
             },
             success:function (data) {
+                //console.log(data)
+				var resultA=data.result;
+				for(var i=0;i<resultA.length;i++){
+					//下面的参数待定
+					//console.log(resultA[i].image)
+                    $(".ri1 .rBox").append('<div class="newBox"> <img src="'+resultA[i].image+'"><p>'+resultA[i].resourceName+'</p></div>')
+				}
+				//分页器
+                var p=data.pages
+                $("#page1").paging({
+                    pageNo:data.pagenum,
+                    totalPage: p,
+                    callback: function(num) {
+                        $(".ri1 .rBox").html("")
+                        TeachingResourcesObject.eProject(num)
+                    }
+                })
+            }
+        })
+    },
+	//视频库
+	videoLibrary:function (typeA,index,pagenum) {
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/resource/list.json",
+            data:{
+                token:localStorage.getItem("token"),
+                type:typeA,
+                pagenum:pagenum
+            },
+            success:function (data) {
+
                 console.log(data)
                 var re=data.result;
                 for(var i=0;i<re.length;i++){
-                    $(".detailAboutContent ul").append(TeachingResourcesObject.getVideoList(re[i]))
+                	console.log(index)
+                    $(".twoContent1 .rightBox").eq(index).find(".t").append(TeachingResourcesObject.getVideoList(re[i]))
                 }
+                var p=data.pages
+                $("#page"+(index+2)).paging({
+                    pageNo:data.pagenum,
+                    totalPage: p,
+                    callback: function(num) {
+                        $(".twoContent1 .rightBox").eq(index).find(".t").html("")
+                        TeachingResourcesObject.videoLibrary(typeA,index,num)
+                    }
+                })
             }
         })
     },
     getVideoList:function (data) {
-        console.log(data)
+       // console.log(data)
         var list=""
-        list='<li><img src="'
-            +data.image+'"/><a href="'+data.link+'">'
-            +data.resourceName+'</a></li>'
+        list='<p class="gain"><a href="detaiAbout.vm">'
+			+data.resourceName+'</a><span>'
+			+new Date(data.createTime).toLocaleDateString()+'</span> </p>'
         return list
     }
 
 }
-TeachingResourcesObject.enterpiseProject()
-
-TeachingResourcesObject.videoLibrary(5)
-TeachingResourcesObject.videoLibrary(6)
-TeachingResourcesObject.videoLibrary(7)
+TeachingResourcesObject.eProject()
+TeachingResourcesObject.videoLibrary(5,0,1)
+TeachingResourcesObject.videoLibrary(6,1,1)
+TeachingResourcesObject.videoLibrary(7,2,1)

@@ -43,7 +43,7 @@ var studentObj={
 					alert(data.message)
 				}else{
                     for(var i=0;i<data.result.length;i++){
-                        $(".ratingForm table").append(studentObj.getSignList(data.result[i]))
+                        $(".ratingForm table tbody").append(studentObj.getSignList(data.result[i]))
 
                     }
 				}
@@ -54,12 +54,40 @@ var studentObj={
     },
 	getSignList:function (data) {
 		var list="<tr><td>"
-			+data.userName+"</td><td>123467890123446767</td><td>"
+			+data.realName+"</td><td>"
+			+data.idCard+"</td><td>"
 			+new Date(data.createTime).toLocaleDateString()+"</td></tr>"
     	return list
 	},
+	//搜索
+	searchStudent:function(){
+		// /api/signin/conditionalQuery.json  三个搜索条件:  姓名  realName    身份证 idCard   用户ID userId
+       	var realName=$(".realName").val();
+        var idCard=$(".idCard").val();
+        var userID=$(".userID").val();
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/signin/conditionalQuery.json ",
+            data:{
+                token:localStorage.getItem("token"),
+                realName:realName,
+                idCard:idCard,
+                userId:userID
+            },
+            success:function (data) {
+
+                console.log(data)
+                $(".ratingForm table tbody").html("")
+				for(var i=0;i<data.result.length;i++){
+					$(".ratingForm table tbody").append(studentObj.getSignList(data.result[i]))
+
+				}
+
+            }
+        })
+	},
 	//安全责任书
-    manual:function () {
+    manual:function (typeNumber,index) {
         $.ajax({
             type:"post",
             url:urlT+"/api/baseInfo/searchOne.json",
@@ -67,13 +95,15 @@ var studentObj={
                 token:localStorage.getItem("token"),
                 contentType:typeNumber
             },
-            success:function (data) {
-                console.log(data)
+            success:function (dataA) {
+                //console.log(dataA)
+                var da=dataA.data
+                $(".ri"+index).find(".word").html(da.content);
             }
         })
     }
 }
 studentObj.signList()
-studentObj.manual(23)
-studentObj.manual(24)
-studentObj.manual(29)
+//安全责任书
+studentObj.manual(23,2)
+studentObj.manual(24,3)
