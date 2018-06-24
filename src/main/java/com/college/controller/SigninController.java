@@ -54,7 +54,7 @@ public class SigninController extends BaseController {
      * @param userId     用户 ID
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
-     * @param updateTime 更新时间
+
      * @return
      */
     @RequestMapping(value = Path.SIGNIN_LIST)
@@ -64,8 +64,7 @@ public class SigninController extends BaseController {
                                        @RequestParam(value = "id", required = false) Integer id,
                                        @RequestParam(value = "userId", required = false) Integer userId,
                                        @RequestParam(value = "status", required = false) boolean status,
-                                       @RequestParam(value = "createTime", required = false) Integer createTime,
-                                       @RequestParam(value = "updateTime", required = false) Integer updateTime
+                                       @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Map<String, Object> params = Maps.newHashMap();
         Integer currentId = getCurrentId();

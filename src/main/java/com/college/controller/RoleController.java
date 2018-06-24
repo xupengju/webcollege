@@ -5,6 +5,7 @@ import com.college.contants.Path;
 import com.college.entity.Role;
 import com.college.model.Resp;
 import com.college.service.RoleService;
+import com.college.utils.DateTimeUtil;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -43,7 +44,7 @@ public class RoleController extends BaseController {
      * @param remark
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
-     * @param updateTime 更新时间
+
      * @return
      */
     @RequestMapping(value = Path.ROLE_LIST)
@@ -80,7 +81,7 @@ public class RoleController extends BaseController {
      * @param remark
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
-     * @param updateTime 更新时间
+
      * @return
      */
     @RequestMapping(value = Path.ROLE_ADD)
@@ -90,15 +91,13 @@ public class RoleController extends BaseController {
             @RequestParam(value = "sign", required = false) String sign,
             @RequestParam(value = "remark", required = false) String remark,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime) {
         Role role = new Role();
         role.setRoleName(roleName);
         role.setSign(sign);
         role.setRemark(remark);
         role.setStatus(status);
-        role.setCreateTime(createTime);
-        role.setUpdateTime(updateTime);
+        role.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         Integer id = roleService.insert(role);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
@@ -112,7 +111,7 @@ public class RoleController extends BaseController {
      * @param remark
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
-     * @param updateTime 更新时间
+
      * @return
      */
     @RequestMapping(value = Path.ROLE_UPDATE)
@@ -123,8 +122,7 @@ public class RoleController extends BaseController {
             @RequestParam(value = "sign", required = false) String sign,
             @RequestParam(value = "remark", required = false) String remark,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
+            @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Role role = new Role();
         role.setId(id);
@@ -132,8 +130,7 @@ public class RoleController extends BaseController {
         role.setSign(sign);
         role.setRemark(remark);
         role.setStatus(status);
-        role.setCreateTime(createTime);
-        role.setUpdateTime(updateTime);
+        role.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         roleService.update(role);
         return Resp.success();
     }

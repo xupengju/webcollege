@@ -5,6 +5,7 @@ import com.college.contants.Path;
 import com.college.entity.Permission;
 import com.college.model.Resp;
 import com.college.service.PermissionService;
+import com.college.utils.DateTimeUtil;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -42,7 +43,6 @@ public class PermissionController extends BaseController {
      * @param url
      * @param status     0: 正常 1:删除
      * @param createTime 创建时间
-     * @param updateTime 更新时间
      * @return
      */
     @RequestMapping(value = Path.PERMISSION_ALL)
@@ -53,8 +53,7 @@ public class PermissionController extends BaseController {
                                        @RequestParam(value = "action", required = false) Integer action,
                                        @RequestParam(value = "url", required = false) Integer url,
                                        @RequestParam(value = "status", required = false) boolean status,
-                                       @RequestParam(value = "createTime", required = false) Integer createTime,
-                                       @RequestParam(value = "updateTime", required = false) Integer updateTime
+                                       @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Map<String, Object> params = Maps.newHashMap();
         Page<Permission> page = permissionService.searchPageList(pageNum, pageSize, params);
@@ -77,7 +76,6 @@ public class PermissionController extends BaseController {
      * @param url
      * @param status     0: 正常 1:删除
      * @param createTime 创建时间
-     * @param updateTime 更新时间
      * @return
      */
     @RequestMapping(value = Path.PERMISSION_ADD)
@@ -86,14 +84,12 @@ public class PermissionController extends BaseController {
             @RequestParam(value = "action", required = false) String action,
             @RequestParam(value = "url", required = false) String url,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime) {
         Permission permission = new Permission();
         permission.setAction(action);
         permission.setUrl(url);
         permission.setStatus(status);
-        permission.setCreateTime(createTime);
-        permission.setUpdateTime(updateTime);
+        permission.setCreateTime(DateTimeUtil.parseDateTime(createTime, "yyyy-MM-dd HH:mm:ss"));
         Integer id = permissionService.insert(permission);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
@@ -106,7 +102,6 @@ public class PermissionController extends BaseController {
      * @param url
      * @param status     0: 正常 1:删除
      * @param createTime 创建时间
-     * @param updateTime 更新时间
      * @return
      */
     @RequestMapping(value = Path.PERMISSION_UPDATE)
@@ -116,16 +111,14 @@ public class PermissionController extends BaseController {
             @RequestParam(value = "action", required = false) String action,
             @RequestParam(value = "url", required = false) String url,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
+            @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Permission permission = new Permission();
         permission.setId(id);
         permission.setAction(action);
         permission.setUrl(url);
         permission.setStatus(status);
-        permission.setCreateTime(createTime);
-        permission.setUpdateTime(updateTime);
+        permission.setCreateTime(DateTimeUtil.parseDateTime(createTime, "yyyy-MM-dd HH:mm:ss"));
         permissionService.update(permission);
         return Resp.success();
     }

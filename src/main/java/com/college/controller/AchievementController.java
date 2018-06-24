@@ -5,6 +5,7 @@ import com.college.contants.Path;
 import com.college.entity.Achievement;
 import com.college.model.Resp;
 import com.college.service.AchievementService;
+import com.college.utils.DateTimeUtil;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -47,7 +48,6 @@ public class AchievementController extends BaseController {
      * @param content
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
-     * @param updateTime 更新时间
      * @return
      */
     @RequestMapping(value = Path.ACHIEVEMENT_LIST)
@@ -63,8 +63,7 @@ public class AchievementController extends BaseController {
                                        @RequestParam(value = "link", required = false) Integer link,
                                        @RequestParam(value = "content", required = false) Integer content,
                                        @RequestParam(value = "status", required = false) boolean status,
-                                       @RequestParam(value = "createTime", required = false) Integer createTime,
-                                       @RequestParam(value = "updateTime", required = false) Integer updateTime
+                                       @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Map<String, Object> params = Maps.newHashMap();
         Page<Achievement> page = achievementService.searchPageList(pageNum, pageSize, params);
@@ -92,7 +91,6 @@ public class AchievementController extends BaseController {
      * @param content
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
-     * @param updateTime 更新时间
      * @return
      */
     @RequestMapping(value = Path.ACHIEVEMENT_ADD)
@@ -106,8 +104,7 @@ public class AchievementController extends BaseController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime) {
         Achievement achievement = new Achievement();
         achievement.setTitle(title);
         achievement.setResume(resume);
@@ -117,8 +114,7 @@ public class AchievementController extends BaseController {
         achievement.setLink(link);
         achievement.setContent(content);
         achievement.setStatus(status);
-        achievement.setCreateTime(createTime);
-        achievement.setUpdateTime(updateTime);
+        achievement.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         Integer id = achievementService.insert(achievement);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
@@ -136,7 +132,6 @@ public class AchievementController extends BaseController {
      * @param content
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
-     * @param updateTime 更新时间
      * @return
      */
     @RequestMapping(value = Path.ACHIEVEMENT_UPDATE)
@@ -151,8 +146,7 @@ public class AchievementController extends BaseController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
+            @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Achievement achievement = new Achievement();
         achievement.setId(id);
@@ -164,8 +158,7 @@ public class AchievementController extends BaseController {
         achievement.setLink(link);
         achievement.setContent(content);
         achievement.setStatus(status);
-        achievement.setCreateTime(createTime);
-        achievement.setUpdateTime(updateTime);
+        achievement.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         achievementService.update(achievement);
         return Resp.success();
     }

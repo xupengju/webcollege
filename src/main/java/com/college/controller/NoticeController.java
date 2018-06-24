@@ -5,6 +5,7 @@ import com.college.contants.Path;
 import com.college.entity.Notice;
 import com.college.model.Resp;
 import com.college.service.NoticeService;
+import com.college.utils.DateTimeUtil;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -47,7 +48,7 @@ public class NoticeController extends BaseController {
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateUser
-     * @param updateTime 更新时间
+
      * @return
      */
     @RequestMapping(value = Path.NOTICE_LIST)
@@ -62,9 +63,9 @@ public class NoticeController extends BaseController {
                                        @RequestParam(value = "link", required = false) Integer link,
                                        @RequestParam(value = "content", required = false) Integer content,
                                        @RequestParam(value = "status", required = false) boolean status,
-                                       @RequestParam(value = "createTime", required = false) Integer createTime,
-                                       @RequestParam(value = "updateUser", required = false) Integer updateUser,
-                                       @RequestParam(value = "updateTime", required = false) Integer updateTime
+                                       @RequestParam(value = "createTime", required = false) String createTime,
+                                       @RequestParam(value = "updateUser", required = false) Integer updateUser
+
     ) {
         Map<String, Object> params = Maps.newHashMap();
         Page<Notice> page = noticeService.searchPageList(pageNum, pageSize, params);
@@ -92,7 +93,7 @@ public class NoticeController extends BaseController {
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateUser
-     * @param updateTime 更新时间
+
      * @return
      */
     @RequestMapping(value = Path.NOTICE_ADD)
@@ -105,9 +106,8 @@ public class NoticeController extends BaseController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateUser", required = false) String updateUser,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime,
+            @RequestParam(value = "updateUser", required = false) String updateUser) {
         Notice notice = new Notice();
         notice.setTitle(title);
         notice.setResume(resume);
@@ -116,9 +116,9 @@ public class NoticeController extends BaseController {
         notice.setLink(link);
         notice.setContent(content);
         notice.setStatus(status);
-        notice.setCreateTime(createTime);
+        notice.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         notice.setUpdateUser(updateUser);
-        notice.setUpdateTime(updateTime);
+
         Integer id = noticeService.insert(notice);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
@@ -136,7 +136,7 @@ public class NoticeController extends BaseController {
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateUser
-     * @param updateTime 更新时间
+
      * @return
      */
     @RequestMapping(value = Path.NOTICE_UPDATE)
@@ -150,9 +150,8 @@ public class NoticeController extends BaseController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateUser", required = false) String updateUser,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
+            @RequestParam(value = "createTime", required = false) String createTime,
+            @RequestParam(value = "updateUser", required = false) String updateUser
     ) {
         Notice notice = new Notice();
         notice.setId(id);
@@ -163,9 +162,8 @@ public class NoticeController extends BaseController {
         notice.setLink(link);
         notice.setContent(content);
         notice.setStatus(status);
-        notice.setCreateTime(createTime);
+        notice.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         notice.setUpdateUser(updateUser);
-        notice.setUpdateTime(updateTime);
         noticeService.update(notice);
         return Resp.success();
     }
