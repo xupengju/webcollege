@@ -24,10 +24,87 @@ var AdminAboutObject={
         }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
             alert("请上传图片")
         }else{
-            AdminAboutObject.ajaxC()
+            AdminAboutObject.ajaxC(content)
         }
 
     },
+    //企业教师保存
+    saveAllT:function(index,v,type){
+
+        var content=eval("ue"+index).getContent();
+        var teacherName=$(".newsBox"+index+" .teacherName").val();
+        console.log(content)
+        if(content=="" || teacherName==""){
+            alert("请全部填写")
+        }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
+            alert("请上传图片")
+        }else{
+            AdminAboutObject.ajaxA(type,teacherName,content)
+        }
+
+    },
+    //保存资源
+    saveAllR:function(index,v){
+        var content=eval("ue"+index).getContent();
+        console.log(content)
+        var title=$(".newsBox"+index+" .titT").val();
+        var createTime=$(".newsBox"+index+" .createTime").val();
+        //时间。。。。。。。。。。。。。。。
+        if(content=="" || title=="" || createTime==""){
+            alert("请全部填写")
+        }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
+            alert("请上传图片")
+        }else{
+            AdminAboutObject.ajaxR(content,title,createTime)
+        }
+    },
+    //资源
+    ajaxR:function(content,title,createTime){
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/achievement/add.json",
+            data:{
+                token:localStorage.getItem("token"),
+                title:title,
+                createTime:createTime,
+                content:content
+            },
+            success:function (data) {
+                console.log(data)
+                if(data.code==200){//成功
+                    alert("上传成功")
+                }else{
+                    alert(data.message)
+                }
+            }
+
+        })
+    },
+    //企业教师和学校教师
+    ajaxA:function(type,teacherName,content){
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/teacher/add.json",
+            data:{
+                token:localStorage.getItem("token"),
+                type:type,
+                teacherName:teacherName,
+                /*title:title,
+                link:link,*/
+                content:content
+            },
+            success:function (data) {
+                console.log(data)
+                if(data.code==200){//成功
+                    alert("上传成功")
+                }else{
+                    alert(data.message)
+                }
+            }
+
+        })
+    },
+
     ajaxC:function(content){
         $.ajax({
             type:"post",
@@ -42,7 +119,7 @@ var AdminAboutObject={
             success:function (data) {
                 console.log(data)
                 if(data.code==200){//成功
-
+                    alert("上传成功")
                 }else{
                     alert(data.message)
                 }

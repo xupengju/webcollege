@@ -1,14 +1,6 @@
 
 
-//师资分页器
-$("#page2").paging({
-	pageNo:1,
-	totalPage: 9,
-	//totalSize: 300,
-	callback: function(num) {
-		alert(num)
-	}
-})
+
 //左侧点击切换
 $(".leftNav li").click(function(){
 	
@@ -60,26 +52,28 @@ var aboutObj={
 		})
 	},
 	//成果展示
-    achievementShow:function(){
+    achievementShow:function(pagenum){
         $.ajax({
             type:"post",
             url:urlT+"/api/achievement/list.json",
             data:{
                 token:localStorage.getItem("token"),
+				pagenum:pagenum
             },
             success:function(data) {
-                console.log(data)
+                //console.log(data)
 				var resultA=data.result;
                 for(var i=0;i<resultA.length;i++){
 					$(".ri3 .achev").append(aboutObj.getAchievementList(resultA[i]))
 				}
                 //分页器
+                var p=data.pages
                 $("#page").paging({
                     pageNo:data.pagenum,
-                    totalPage: data.pagesize,
-                    //totalSize: 300,
+                    totalPage: p,
                     callback: function(num) {
-                        alert(num)
+                        $(".ri3 .achev").html("")
+                        aboutObj.achievementShow(num)
                     }
                 })
             }
@@ -94,18 +88,29 @@ var aboutObj={
 		return list
 	},
 	//教师列表
-    teacherList:function (typeNumber,index) {
+    teacherList:function (typeNumber,index,pagenum) {
         $.ajax({
             type:"post",
             url:urlT+"/api/teacher/list.json",
             data:{
                 token:localStorage.getItem("token"),
-                type:typeNumber
+                type:typeNumber,
+				pagenum:pagenum
             },
             success:function(data){
                 for(var i=0;i<data.result.length;i++){
                     $(".twoContent3 .rightBox").eq(index).find(".teacher").append(aboutObj.getTeacher1(data.result[i]))
                 }
+                //分页器
+                var p=data.pages
+                $("#page"+(index+2)).paging({
+                    pageNo:data.pagenum,
+                    totalPage: p,
+                    callback: function(num) {
+                        $(".twoContent3 .rightBox").eq(index).find(".teacher").html("")
+                        aboutObj.teacherList(typeNumber,index,num)
+                    }
+                })
             }
         })
     },

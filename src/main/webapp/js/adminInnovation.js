@@ -11,16 +11,14 @@ var AdminInnovationObject={
     },
     //上传内容
     saveAll:function(index,v){
-
-
         if(AdminInnovationObject.contentType==12){//企业合作项目
-            var title=$(".newsBox3").find(".tit").val();
+            var resourceName=$(".newsBox3").find(".tit").val();
             var createTime=$(".newsBox3").find(".timeT").val();
             var content=eval("ue"+index).getContent();
-            if(title=="" || createTime=="" || content==""){
+            if(resourceName=="" || createTime=="" || content==""){
                 alert("请全部填写")
             }else{
-                AdminInnovationObject.ajaxT(title,content,createTime)
+                AdminInnovationObject.ajaxA(resourceName,createTime,content)
             }
         }else{
             if(index!=null){
@@ -45,8 +43,33 @@ var AdminInnovationObject={
         }
 
 
-        console.log(content,AdminInnovationObject.contentType)
+        //console.log(content,AdminInnovationObject.contentType)
 
+    },
+    //校企合作项目   报错。。。。。。。。。。。。。。。
+    ajaxA:function(resourceName,createTime,content){
+        console.log(resourceName)
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/resource/add.json",
+            data:{
+                token:localStorage.getItem("token"),
+                resourceName:resourceName,
+                type:9,
+                createTime:createTime,
+                content:content
+
+            },
+            success:function (data) {
+                console.log(data)
+                if(data.code==200){//成功
+                    alert("上传成功")
+                }else{
+                    alert(data.message)
+                }
+            }
+
+        })
     },
     ajaxT:function(title,content,createTime){
         console.log(title,content,createTime)
