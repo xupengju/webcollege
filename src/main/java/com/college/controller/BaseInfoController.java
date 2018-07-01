@@ -113,6 +113,7 @@ public class BaseInfoController {
         baseInfo.setImage(image);
         baseInfo.setLink(link);
         baseInfo.setContent(content);
+        baseInfo.setStatus(1);
         baseInfo.setUpdateUser(updateUser);
         baseInfo.setUpdateTime(updateTime);
         Integer id = baseInfoService.insert(baseInfo);
