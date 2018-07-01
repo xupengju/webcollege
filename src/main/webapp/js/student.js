@@ -87,7 +87,7 @@ var studentObj={
         })
 	},
 	//安全责任书
-    manual:function (typeNumber,index) {
+    manual:function () {
         $.ajax({
             type:"post",
             url:urlT+"/api/baseInfo/searchOne.json",
@@ -96,14 +96,10 @@ var studentObj={
                 contentType:typeNumber
             },
             success:function (dataA) {
-                //console.log(dataA)
-                var da=dataA.data
-                $(".ri"+index).find(".word").html(da.content);
+
             }
         })
     }
 }
 studentObj.signList()
-//安全责任书
-studentObj.manual(23,2)
-studentObj.manual(24,3)
+
