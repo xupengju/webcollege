@@ -121,10 +121,11 @@ var TeachingResourcesObject={
             },
             success:function (data) {
 
-                console.log(data)
+               // console.log(data)
                 var re=data.result;
                 for(var i=0;i<re.length;i++){
                 	console.log(index)
+                    console.log(re[i])
                     $(".twoContent1 .rightBox").eq(index).find(".t").append(TeachingResourcesObject.getVideoList(re[i]))
                 }
                 var p=data.pages
