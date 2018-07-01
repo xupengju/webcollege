@@ -5,6 +5,7 @@ import com.college.contants.Path;
 import com.college.entity.BaseInfo;
 import com.college.model.Resp;
 import com.college.service.BaseInfoService;
+import com.college.utils.DateTimeUtil;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -47,7 +48,7 @@ public class BaseInfoController {
      * @param status      0: 删除 1:正常
      * @param createTime  创建时间
      * @param updateUser  修改人
-     * @param updateTime  更新时间
+
      * @return
      */
     @RequestMapping(value = Path.BASEINFO_LIST)
@@ -90,10 +91,8 @@ public class BaseInfoController {
      * @param image       图片
      * @param link        链接
      * @param content     内容
-     * @param status      0: 删除 1:正常
-     * @param createTime  创建时间
      * @param updateUser  修改人
-     * @param updateTime  更新时间
+
      * @return
      */
     @RequestMapping(value = Path.BASEINFO_ADD)
@@ -133,7 +132,7 @@ public class BaseInfoController {
      * @param status      0: 删除 1:正常
      * @param createTime  创建时间
      * @param updateUser  修改人
-     * @param updateTime  更新时间
+
      * @return
      */
     @RequestMapping(value =  Path.BASEINFO_UPDATE)
@@ -147,9 +146,8 @@ public class BaseInfoController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) Integer status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateUser", required = false) String updateUser,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime,
+            @RequestParam(value = "updateUser", required = false) String updateUser) {
         BaseInfo baseInfo = new BaseInfo();
         baseInfo.setTitle(title);
         baseInfo.setResume(resume);
@@ -158,9 +156,8 @@ public class BaseInfoController {
         baseInfo.setLink(link);
         baseInfo.setContent(content);
         baseInfo.setStatus(status);
-        baseInfo.setCreateTime(createTime);
+        baseInfo.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         baseInfo.setUpdateUser(updateUser);
-        baseInfo.setUpdateTime(updateTime);
         baseInfoService.update(baseInfo);
         return Resp.success();
     }

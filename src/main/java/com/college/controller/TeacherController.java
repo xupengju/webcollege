@@ -65,8 +65,7 @@ public class TeacherController extends BaseController {
                                        @RequestParam(value = "link", required = false) Integer link,
                                        @RequestParam(value = "content", required = false) Integer content,
                                        @RequestParam(value = "status", required = false) boolean status,
-                                       @RequestParam(value = "createTime", required = false) Integer createTime,
-                                       @RequestParam(value = "updateTime", required = false) Integer updateTime
+                                       @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Map<String, Object> params = Maps.newHashMap();
         params.put("type",type);
@@ -112,8 +111,7 @@ public class TeacherController extends BaseController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime) {
         Teacher teacher = new Teacher();
         teacher.setTeacherName(teacherName);
         teacher.setResume(resume);
@@ -157,8 +155,7 @@ public class TeacherController extends BaseController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
+            @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Teacher teacher = new Teacher();
         teacher.setId(id);

@@ -5,6 +5,7 @@ import com.college.contants.Path;
 import com.college.entity.RolePermission;
 import com.college.model.Resp;
 import com.college.service.RolePermissionService;
+import com.college.utils.DateTimeUtil;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -77,7 +78,6 @@ public class RolePermissionController extends BaseController {
      * @param permissionId
      * @param status       0: 删除 1:正常
      * @param createTime   创建时间
-     * @param updateTime   更新时间
      * @return
      */
     @RequestMapping(value = Path.ROLE_PERMISSION_ADD)
@@ -86,14 +86,12 @@ public class RolePermissionController extends BaseController {
             @RequestParam(value = "roleId", required = false) Integer roleId,
             @RequestParam(value = "permissionId", required = false) Integer permissionId,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime) {
         RolePermission rolePermission = new RolePermission();
         rolePermission.setRoleId(roleId);
         rolePermission.setPermissionId(permissionId);
         rolePermission.setStatus(status);
-        rolePermission.setCreateTime(createTime);
-        rolePermission.setUpdateTime(updateTime);
+        rolePermission.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         Integer id = rolePermissionService.insert(rolePermission);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
@@ -106,7 +104,6 @@ public class RolePermissionController extends BaseController {
      * @param permissionId
      * @param status       0: 删除 1:正常
      * @param createTime   创建时间
-     * @param updateTime   更新时间
      * @return
      */
     @RequestMapping(value = Path.ROLE_PERMISSION_UPDATE)
@@ -116,16 +113,14 @@ public class RolePermissionController extends BaseController {
             @RequestParam(value = "roleId", required = false) Integer roleId,
             @RequestParam(value = "permissionId", required = false) Integer permissionId,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
+            @RequestParam(value = "createTime", required = false) String createTime
     ) {
         RolePermission rolePermission = new RolePermission();
         rolePermission.setId(id);
         rolePermission.setRoleId(roleId);
         rolePermission.setPermissionId(permissionId);
         rolePermission.setStatus(status);
-        rolePermission.setCreateTime(createTime);
-        rolePermission.setUpdateTime(updateTime);
+        rolePermission.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         rolePermissionService.update(rolePermission);
         return Resp.success();
     }

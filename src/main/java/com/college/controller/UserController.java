@@ -7,6 +7,7 @@ import com.college.entity.User;
 import com.college.model.*;
 import com.college.service.UserService;
 import com.college.service.user.ApiUserService;
+import com.college.utils.DateTimeUtil;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -206,8 +207,7 @@ public class UserController extends BaseController {
             @RequestParam(value = "idCard", required = false) String idCard,
             @RequestParam(value = "administrator", required = false) boolean administrator,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime) {
         User student = new User();
         student.setUserName(studentName);
         student.setPassword(password);
@@ -216,8 +216,7 @@ public class UserController extends BaseController {
         student.setIdCard(idCard);
         student.setAdministrator(administrator);
         student.setStatus(status);
-        student.setCreateTime(createTime);
-        student.setUpdateTime(updateTime);
+        student.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         Integer id =  userService.insert(student);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
@@ -248,8 +247,7 @@ public class UserController extends BaseController {
             @RequestParam(value = "idCard", required = false) String idCard,
             @RequestParam(value = "administrator", required = false) boolean administrator,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime) {
         User student = new User();
         student.setId(id);
         student.setUserName(studentName);
@@ -259,8 +257,7 @@ public class UserController extends BaseController {
         student.setIdCard(idCard);
         student.setAdministrator(administrator);
         student.setStatus(status);
-        student.setCreateTime(createTime);
-        student.setUpdateTime(updateTime);
+        student.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         userService.update(student);
         return Resp.success();
     }

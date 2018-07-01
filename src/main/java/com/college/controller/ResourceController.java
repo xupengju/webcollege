@@ -6,6 +6,7 @@ import com.college.entity.Notice;
 import com.college.entity.Resource;
 import com.college.model.Resp;
 import com.college.service.ResourceService;
+import com.college.utils.DateTimeUtil;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -48,7 +49,7 @@ public class ResourceController extends BaseController {
      * @param content
      * @param status      0: 删除 1:正常
      * @param createTime  创建时间
-     * @param updateTime  更新时间
+
      * @return
      */
     @RequestMapping(value = Path.RESOURCE_LIST)
@@ -64,8 +65,7 @@ public class ResourceController extends BaseController {
                                        @RequestParam(value = "link", required = false) Integer link,
                                        @RequestParam(value = "content", required = false) Integer content,
                                        @RequestParam(value = "status", required = false) boolean status,
-                                       @RequestParam(value = "createTime", required = false) Integer createTime,
-                                       @RequestParam(value = "updateTime", required = false) Integer updateTime
+                                       @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Map<String, Object> params = Maps.newHashMap();
         params.put("type",type);
@@ -94,7 +94,7 @@ public class ResourceController extends BaseController {
      * @param content
      * @param status      0: 删除 1:正常
      * @param createTime  创建时间
-     * @param updateTime  更新时间
+
      * @return
      */
     @RequestMapping(value = Path.RESOURCE_ADD)
@@ -108,8 +108,7 @@ public class ResourceController extends BaseController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+            @RequestParam(value = "createTime", required = false) String createTime) {
         Resource resource = new Resource();
         resource.setResourceName(resourceName);
         resource.setResume(resume);
@@ -136,7 +135,7 @@ public class ResourceController extends BaseController {
      * @param content
      * @param status      0: 删除 1:正常
      * @param createTime  创建时间
-     * @param updateTime  更新时间
+
      * @return
      */
     @RequestMapping(value = Path.RESOURCE_UPDATE)
@@ -151,8 +150,7 @@ public class ResourceController extends BaseController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) boolean status,
-            @RequestParam(value = "createTime", required = false) java.util.Date createTime,
-            @RequestParam(value = "updateTime", required = false) java.util.Date updateTime
+            @RequestParam(value = "createTime", required = false) String createTime
     ) {
         Resource resource = new Resource();
         resource.setResourceName(resourceName);
@@ -163,6 +161,7 @@ public class ResourceController extends BaseController {
         resource.setLink(link);
         resource.setContent(content);
         resource.setStatus(status);
+        resource.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         resourceService.update(resource);
         return Resp.success();
     }
