@@ -75,6 +75,8 @@
   width: 370px;
   margin-left: 14px;
 }
+.news .rightBox .figure div h3{width:370px;overflow: hidden;white-space: nowrap;
+  text-overflow: ellipsis;}
 .news .rightBox .figure p {
   font-size: 12px;
   line-height: 30px;

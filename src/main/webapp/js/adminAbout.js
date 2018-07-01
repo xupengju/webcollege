@@ -49,6 +49,7 @@ var AdminAboutObject={
         console.log(content)
         var title=$(".newsBox"+index+" .titT").val();
         var createTime=$(".newsBox"+index+" .createTime").val();
+        console.log(createTime)
         //时间。。。。。。。。。。。。。。。
         if(content=="" || title=="" || createTime==""){
             alert("请全部填写")
