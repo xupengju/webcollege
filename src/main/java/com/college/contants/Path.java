@@ -8,6 +8,8 @@ public class Path {
     // ===================================== 公共:ERP COMMONS START ======================================== //
     // 上传图片
     public static final String FILE_UPLOAD = "/api/file/upload.json";
+    public static final String FILE_UPLOAD_FILE1 = "/api/file/uploadfile1.json";
+    public static final String FILE_UPLOAD_FILE2 = "/api/file/uploadfile2.json";
 
     public static final String JS = "/js";
     public static final String CSS = "/css";

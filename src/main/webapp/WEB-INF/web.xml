@@ -59,25 +59,6 @@
     <welcome-file-list>
         <welcome-file>/index.vm</welcome-file>
     </welcome-file-list>
-    <servlet>
-        <servlet-name>UploadHandleServlet</servlet-name>
-        <servlet-class>com.college.controller.UploadHandleServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>UploadHandleServlet</servlet-name>
-        <url-pattern>/servlet/UploadHandleServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ListFileServlet</servlet-name>
-        <servlet-class>com.college.controller.ListFileServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ListFileServlet</servlet-name>
-        <url-pattern>/servlet/ListFileServlet</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>DownLoadServlet</servlet-name>
