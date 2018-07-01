@@ -83,10 +83,10 @@ public class UploadController {
     public String fileUpload2(@RequestParam("file") CommonsMultipartFile file) throws IOException {
         long startTime = System.currentTimeMillis();
         System.out.println("fileName：" + file.getOriginalFilename());
-        String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")).toLowerCase();
         // 生成图片存储的名称，UUID 避免相同图片名冲突，并加上图片后缀
         String fileName = UUID.randomUUID().toString() + suffix;
-        if (".doc".equals(suffix) || ".docx".equals(suffix) || ".txt".equals(suffix)){
+        if (".doc".equals(suffix) || ".docx".equals(suffix) || ".txt".equals(suffix) || ".pdf".equals(suffix)){
             String path = "/data/wwwroot/default/" + fileName ;
 
             File newFile = new File(path);

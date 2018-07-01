@@ -37,9 +37,9 @@ public class DownLoadServlet {
             logger.info("FILE_DOWN_FILE realPath: {}", realPath);
             logger.info("FILE_DOWN_FILE file: {}", file);
             if (file.exists()) {
-                String suffix = file.getName().substring(file.getName().lastIndexOf("."));
+                String suffix = file.getName().substring(file.getName().lastIndexOf(".")).toLowerCase();
                 logger.info("FILE_DOWN_FILE suffix: {}", suffix);
-                if (".doc".equals(suffix) || ".docx".equals(suffix) || ".txt".equals(suffix)) {
+                if (".doc".equals(suffix) || ".docx".equals(suffix) || ".txt".equals(suffix) || ".pdf".equals(suffix)) {
                     response.setContentType("application/force-download");// 设置强制下载不打开
                     //response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);// 设置文件名
                     response.setHeader("Content-Disposition", "attachment; filename=\"" + new String(fileName.getBytes("gbk"),"iso-8859-1") + "\"");    byte[] buffer = new byte[1024];
