@@ -30,13 +30,10 @@ public class DownLoadServlet {
      */
     @RequestMapping(Path.FILE_DOWN_FILE)
     public String downloadFile(@RequestParam("fileName") String fileName,
-                               HttpServletRequest request, HttpServletResponse response) {
+                               HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
         if (fileName != null) {
-
-
             String realPath = request.getServletContext().getRealPath("");
             File file = new File(realPath, fileName);
-
             logger.info("FILE_DOWN_FILE realPath: {}", realPath);
             logger.info("FILE_DOWN_FILE file: {}", file);
             if (file.exists()) {
@@ -44,8 +41,8 @@ public class DownLoadServlet {
                 logger.info("FILE_DOWN_FILE suffix: {}", suffix);
                 if (".doc".equals(suffix) || ".docx".equals(suffix) || ".txt".equals(suffix)) {
                     response.setContentType("application/force-download");// 设置强制下载不打开
-                    response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);// 设置文件名
-                    byte[] buffer = new byte[1024];
+                    //response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);// 设置文件名
+                    response.setHeader("Content-Disposition", "attachment; filename=\"" + new String(fileName.getBytes("gbk"),"iso-8859-1") + "\"");    byte[] buffer = new byte[1024];
                     FileInputStream fis = null;
                     BufferedInputStream bis = null;
                     try {
