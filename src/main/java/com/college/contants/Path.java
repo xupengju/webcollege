@@ -10,6 +10,7 @@ public class Path {
     public static final String FILE_UPLOAD = "/api/file/upload.json";
     public static final String FILE_UPLOAD_FILE1 = "/api/file/uploadfile1.json";
     public static final String FILE_UPLOAD_FILE2 = "/api/file/uploadfile2.json";
+    public static final String FILE_DOWN_FILE = "/api/file/download.json";
 
     public static final String JS = "/js";
     public static final String CSS = "/css";
