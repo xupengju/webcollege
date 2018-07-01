@@ -85,7 +85,7 @@ public class UploadController {
         System.out.println("fileName：" + file.getOriginalFilename());
         String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")).toLowerCase();
         // 生成图片存储的名称，UUID 避免相同图片名冲突，并加上图片后缀
-        String fileName = UUID.randomUUID().toString() + suffix;
+        String fileName = file.getOriginalFilename();
         if (".doc".equals(suffix) || ".docx".equals(suffix) || ".txt".equals(suffix) || ".pdf".equals(suffix)){
             String path = "/data/wwwroot/default/" + fileName ;
 
