@@ -115,7 +115,6 @@ public class NoticeController extends BaseController {
         notice.setImage(image);
         notice.setLink(link);
         notice.setContent(content);
-        notice.setStatus(status);
         logger.info("create time :{}",DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         notice.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         notice.setUpdateUser(updateUser);
