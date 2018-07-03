@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.Map;
 
 
@@ -114,6 +115,7 @@ public class BaseInfoController {
         baseInfo.setLink(link);
         baseInfo.setContent(content);
         baseInfo.setStatus(1);
+        baseInfo.setCreateTime(new Date());
         baseInfo.setUpdateUser(updateUser);
         baseInfo.setUpdateTime(updateTime);
         Integer id = baseInfoService.insert(baseInfo);
