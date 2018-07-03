@@ -68,6 +68,7 @@ public class NoticeController extends BaseController {
 
     ) {
         Map<String, Object> params = Maps.newHashMap();
+        params.put("type",type);
         Page<Notice> page = noticeService.searchPageList(pageNum, pageSize, params);
         Map<String, Object> resultMap = Maps.newHashMap();
         logger.info(" NoticeController -->  pageResult :{}", page.getResult());
