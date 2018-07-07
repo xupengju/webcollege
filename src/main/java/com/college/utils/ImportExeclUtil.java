@@ -242,6 +242,14 @@ public class ImportExeclUtil {
         return dataLst;
     }
 
+    public List<List<String>> getBankListByExcel(InputStream in,String fileName){
+
+        boolean isExcel2003 = true;
+        System.out.println("读取Excel--"+fileName);
+        List<List<String>> list = this.read(in,isExcel2003);
+        return list;
+    }
+
     /**
      * @描述：main测试方法
      * @返回值：void
@@ -252,14 +260,15 @@ public class ImportExeclUtil {
         // List<List<String>> list = poi.read("d:/aaa.xls");
         List<List<String>> list = poi.read("C:/Users/dell/Desktop/11.xlsx");
 //        List<List<String>> list = poi.read("C:/Users/dell/Desktop/sysres_template00.xls");
-        if (list != null)
-        {
-            for (int i = 0; i < list.size(); i++)
-            {
+        printTest(list);
+    }
+
+    public static void printTest(List<List<String>>list) {
+        if (list != null) {
+            for (int i = 0; i < list.size(); i++) {
                 System.out.print("第" + (i) + "行");
                 List<String> cellList = list.get(i);
-                for (int j = 0; j < cellList.size(); j++)
-                {
+                for (int j = 0; j < cellList.size(); j++) {
                     // System.out.print("    第" + (j + 1) + "列值：");
                     System.out.print("    " + cellList.get(j));
                 }
