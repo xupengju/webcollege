@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -147,14 +148,14 @@ public class ImportExeclUtil {
         {
             /** 根据版本选择创建Workbook的方式 */
             Workbook wb = null;
-            if (isExcel2003)
+/*            if (isExcel2003)
             {
                 wb = new HSSFWorkbook(inputStream);
             }
-            else
-            {
+            else*/
+//            {
                 wb = new XSSFWorkbook(inputStream);
-            }
+//            }
             dataLst = read(wb);
         }
         catch (IOException e)
@@ -258,9 +259,10 @@ public class ImportExeclUtil {
     {
         ImportExeclUtil poi = new ImportExeclUtil();
         // List<List<String>> list = poi.read("d:/aaa.xls");
-        List<List<String>> list = poi.read("C:/Users/dell/Desktop/11.xlsx");
+//        List<List<String>> list = poi.read("C:/Users/dell/Desktop/11.xlsx");
+        List<List<String>> list1 = poi.read("C:/Users/dell/Desktop/\\Demo/导入导出/11.xlsx");
 //        List<List<String>> list = poi.read("C:/Users/dell/Desktop/sysres_template00.xls");
-        printTest(list);
+        printTest(list1);
     }
 
     public static void printTest(List<List<String>>list) {
