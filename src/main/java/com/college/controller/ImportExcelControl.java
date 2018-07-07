@@ -104,6 +104,7 @@ public class ImportExcelControl {
                 boolean status = true;
 //                String createTime = DateTimeUtil.getDateAndMinute();
                 user.setUserName(userName);
+                password = apiUserService.getEncryptedPassword(user.getPassword(), salt);
                 user.setPassword(password);
                 user.setSalt(salt);
                 user.setRealName(realName);
