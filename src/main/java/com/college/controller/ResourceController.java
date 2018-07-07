@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Map;
 
 
@@ -117,7 +118,14 @@ public class ResourceController extends BaseController {
         resource.setImage(image);
         resource.setLink(link);
         resource.setContent(content);
-        resource.setStatus(status);
+        resource.setStatus(true);
+        if (null != createTime){
+            logger.info("create time :{}",DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
+            resource.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
+        }else {
+            resource.setCreateTime(new Date());
+        }
+
         Integer id = resourceService.insert(resource);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }

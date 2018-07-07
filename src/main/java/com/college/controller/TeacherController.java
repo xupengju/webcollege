@@ -96,7 +96,6 @@ public class TeacherController extends BaseController {
      * @param content
      * @param status        0: 删除 1:正常
      * @param createTime    创建时间
-     * @param updateTime    更新时间
      * @return
      */
     @RequestMapping(value = Path.TEACHER_ADD)
@@ -110,7 +109,6 @@ public class TeacherController extends BaseController {
             @RequestParam(value = "image", required = false) String image,
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "status", required = false) boolean status,
             @RequestParam(value = "createTime", required = false) String createTime) {
         Teacher teacher = new Teacher();
         teacher.setTeacherName(teacherName);
@@ -121,6 +119,7 @@ public class TeacherController extends BaseController {
         teacher.setImage(image);
         teacher.setLink(link);
         teacher.setContent(content);
+        teacher.setStatus(true);
         Integer id = teacherService.insert(teacher);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
