@@ -113,7 +113,7 @@
 	       <if test="searchFields.resume != null and searchFields.resume != ''">
 				AND resume = #{searchFields.resume}
 			</if>
-	       <if test="searchFields.type != null and searchFields.type != ''">
+	       <if test="searchFields.type != null">
 				AND type = #{searchFields.type}
 			</if>
 	       <if test="searchFields.image != null and searchFields.image != ''">
@@ -138,6 +138,7 @@
 				AND updateTime = #{searchFields.updateTime}
 			</if>
 		</where>
+		order by createTime desc
 	</select>
 	
 	<!--条件查询分页记录总数-->

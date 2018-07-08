@@ -68,6 +68,7 @@ public class NoticeController extends BaseController {
 
     ) {
         Map<String, Object> params = Maps.newHashMap();
+        params.put("type",type);
         Page<Notice> page = noticeService.searchPageList(pageNum, pageSize, params);
         Map<String, Object> resultMap = Maps.newHashMap();
         logger.info(" NoticeController -->  pageResult :{}", page.getResult());
@@ -115,7 +116,7 @@ public class NoticeController extends BaseController {
         notice.setImage(image);
         notice.setLink(link);
         notice.setContent(content);
-        notice.setStatus(status);
+        logger.info("create time :{}",DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         notice.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         notice.setUpdateUser(updateUser);
 

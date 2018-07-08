@@ -254,6 +254,8 @@
 				AND updateTime = #{searchFields.updateTime}
 			</if>
 		</where>
+		ORDER BY
+		createTime DESC
 		limit 1
 	</select>
 

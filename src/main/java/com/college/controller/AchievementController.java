@@ -113,7 +113,7 @@ public class AchievementController extends BaseController {
         achievement.setImage(image);
         achievement.setLink(link);
         achievement.setContent(content);
-        achievement.setStatus(status);
+        achievement.setStatus(true);
         achievement.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
         Integer id = achievementService.insert(achievement);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
