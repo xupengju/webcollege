@@ -55,11 +55,23 @@ var loginObj={
                             //alert("登陆成功")
                             localStorage.setItem("token",dataP.data.token)
                             localStorage.setItem("userName",userName)
-                            window.location.href="person.vm"
+                            if(userName=="admin"){
+                                window.location.href="adminNotice.vm"
+                            }else{
+                                window.location.href="person.vm"
+                            }
+
                         }else if(dataP.code==10002){//用户名或密码错误
                             alert(dataP.message);
+                            $(".userName").val("")
+                            $(".pwd").val("")
+                            $(".code").val("")
+
                         }else  if(dataP.code==10005){//密码错误
                             alert(dataP.message);
+                            $(".userName").val("")
+                            $(".pwd").val("")
+                            $(".code").val("")
                         }
                     }
                 })
