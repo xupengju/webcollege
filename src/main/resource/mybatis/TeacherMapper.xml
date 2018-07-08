@@ -147,6 +147,7 @@
 				AND updateTime = #{searchFields.updateTime}
 			</if>
 		</where>
+		order by createTime desc
 	</select>
 	
 	<!--条件查询分页记录总数-->

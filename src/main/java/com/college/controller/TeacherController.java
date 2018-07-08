@@ -5,6 +5,7 @@ import com.college.contants.Path;
 import com.college.entity.Teacher;
 import com.college.model.Resp;
 import com.college.service.TeacherService;
+import com.college.utils.DateTimeUtil;
 import com.github.pagehelper.Page;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Map;
 
 
@@ -48,7 +50,6 @@ public class TeacherController extends BaseController {
      * @param content
      * @param status        0: 删除 1:正常
      * @param createTime    创建时间
-     * @param updateTime    更新时间
      * @return
      */
     @RequestMapping(value = Path.TEACHER_LIST)
@@ -94,7 +95,6 @@ public class TeacherController extends BaseController {
      * @param image
      * @param link
      * @param content
-     * @param status        0: 删除 1:正常
      * @param createTime    创建时间
      * @return
      */
@@ -120,6 +120,13 @@ public class TeacherController extends BaseController {
         teacher.setLink(link);
         teacher.setContent(content);
         teacher.setStatus(true);
+        if (null != createTime){
+            logger.info("create time :{}",DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
+            teacher.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
+        }else {
+            teacher.setCreateTime(new Date());
+        }
+
         Integer id = teacherService.insert(teacher);
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
@@ -138,7 +145,6 @@ public class TeacherController extends BaseController {
      * @param content
      * @param status        0: 删除 1:正常
      * @param createTime    创建时间
-     * @param updateTime    更新时间
      * @return
      */
     @RequestMapping(value = Path.TEACHER_UPDATE)
