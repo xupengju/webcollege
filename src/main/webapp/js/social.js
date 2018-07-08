@@ -69,10 +69,15 @@ var SocialObject={
                 contentType:typeNumber
             },
             success:function (dataA) {
-            	console.log(dataA)
-            	var da=dataA.data
-               $(".twoContent"+index1+" .rightBox").eq(index2).find("img").attr("src",da.image);
-               $(".twoContent"+index1+" .rightBox").eq(index2).find(".word").html(da.content);
+              //  if(dataA.code==200){
+                    console.log(dataA)
+                    var da=dataA.data
+                    $(".twoContent"+index1+" .rightBox").eq(index2).find("img").attr("src",da.image);
+                    $(".twoContent"+index1+" .rightBox").eq(index2).find(".word").html(da.content);
+               /* }else if(dataA.code==10001){
+                    window.location.href="login.vm"
+                }*/
+
             }
         })
     },
@@ -86,11 +91,16 @@ var SocialObject={
                 contentType:typeNumber
             },
             success:function (dataA) {
-                console.log(dataA)
+              //  if(dataA.code==200){
+                    console.log(dataA)
 
-				var da=dataA.data
-				$(".ri"+index).find("img").attr("src",da.image);
-				$(".ri"+index).find(".word").html(da.content);
+                    var da=dataA.data
+                    $(".ri"+index).find("img").attr("src",da.image);
+                    $(".ri"+index).find(".word").html(da.content);
+                /*}else if(dataA.code==10001){
+                    window.location.href="login.vm"
+                }*/
+
 
 
             }
@@ -107,21 +117,26 @@ var SocialObject={
                 pagenum:pagenum
             },
             success:function (data) {
-                console.log(data)
-                var re=data.result;
-                for(var i=0;i<re.length;i++){
-                    $(".ri3 .schoolList").append(SocialObject.getList(re[i]))
-                }
-                //分页器
-                var p=data.pages
-                $("#page").paging({
-                    pageNo:data.pagenum,
-                    totalPage: p,
-                    callback: function(num) {
-                        $(".ri3 .schoolList").html("")
-                        SocialObject.student(num)
+               // if(data.code==200){
+                    console.log(data)
+                    var re=data.result;
+                    for(var i=0;i<re.length;i++){
+                        $(".ri3 .schoolList").append(SocialObject.getList(re[i]))
                     }
-                })
+                    //分页器
+                    var p=data.pages
+                    $("#page").paging({
+                        pageNo:data.pagenum,
+                        totalPage: p,
+                        callback: function(num) {
+                            $(".ri3 .schoolList").html("")
+                            SocialObject.student(num)
+                        }
+                    })
+                /*}else if(data.code==10001){
+                    window.location.href="login.vm"
+                }*/
+
             }
         })
     },

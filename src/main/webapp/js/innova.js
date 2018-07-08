@@ -39,10 +39,15 @@ var InnovationObject={
                 contentType:typeNumber
             },
             success:function (dataA) {
-                //console.log(dataA)
-                var da=dataA.data;
-                $(".ri"+index).find("img").attr("src",da.image);
-                $(".ri"+index).find(".word").html(da.content);
+              //  if(dataA.code==200){
+                    //console.log(dataA)
+                    var da=dataA.data;
+                    $(".ri"+index).find("img").attr("src",da.image);
+                    $(".ri"+index).find(".word").html(da.content);
+               /* }else if(dataA.code==10001){
+                    window.location.href="login.vm"
+                }
+*/
             }
         })
     },
@@ -57,28 +62,40 @@ var InnovationObject={
                 pagenum:pagenum
             },
             success:function (data) {
-               console.log(data)
-                var re=data.result;
-                for(var i=0;i<re.length;i++){
-                    $(".ri3").find(".t").append(InnovationObject.getList(re[i]))
-                }
-                //分页器
-                var p=data.pages
-                $("#page").paging({
-                    pageNo:data.pagenum,
-                    totalPage: p,
-                    callback: function(num) {
-                        $(".ri3").find(".t").html("")
-                        InnovationObject.schoolEnterprise(num)
+             //   if(data.code==200){
+                    console.log(data)
+                    var re=data.result;
+                    for(var i=0;i<re.length;i++){
+                        $(".ri3").find(".t").append(InnovationObject.getList(re[i]))
                     }
-                })
+                    $(".ri3 .t .gain").click(function(){
+                        var myID=$(this).attr("myID");
+                        localStorage.setItem("myID",myID);
+                        localStorage.setItem("typeA","cooperation")
+                        window.location.href="detaiAbout.vm"
+                    })
+                    //分页器
+                    var p=data.pages
+                    $("#page").paging({
+                        pageNo:data.pagenum,
+                        totalPage: p,
+                        callback: function(num) {
+                            $(".ri3").find(".t").html("")
+                            InnovationObject.schoolEnterprise(num)
+                        }
+                    })
+               /* }else if(data.code==10001){
+                    window.location.href="login.vm"
+                }*/
+
             }
         })
     },
     getList:function (data) {
         // console.log(data)
         var list=""
-        list='<p class="gain"><a href="detaiAbout.vm">'
+        list='<p myID="'
+            +data.id+'" class="gain"><a href="detaiAbout.vm">'
             +data.resourceName+'</a><span>'
             +new Date(data.createTime).toLocaleDateString()+'</span> </p>'
         return list

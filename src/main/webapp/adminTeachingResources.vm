@@ -45,7 +45,7 @@
             </p>
             <p>
                 <span>时间：</span>
-                <input class="createTime" type="date"/>
+                <input class="timeA" type="datetime-local"/>
             </p>
             <p>
                 <span>图片：</span>
@@ -144,7 +144,7 @@
             </p>
             <p>
                 <span>时间：</span>
-                <input class="createTime" type="date"/>
+                <input class="timeA" type="datetime-local"/>
             </p>
             <p>
                 <span>图片：</span>
@@ -165,7 +165,7 @@
             </p>
             <p>
                 <span>时间：</span>
-                <input class="createTime" type="date"/>
+                <input class="timeA" type="datetime-local"/>
             </p>
             <p>
                 <span>图片：</span>
@@ -186,7 +186,7 @@
             </p>
             <p>
                 <span>时间：</span>
-                <input class="createTime" type="date"/>
+                <input class="timeA" type="datetime-local"/>
             </p>
             <p>
                 <span>连接：</span>

@@ -39,9 +39,13 @@
                 <span>标题：</span>
                 <input class="tit" type="text"/>
             </p>
-            <p>
+           <!--<p>
                 <span>网址：</span>
                 <input class="linkT" type="text"/>
+            </p>-->
+            <p>
+                <span>时间：</span>
+                <input class="timeA" type="datetime-local"/>
             </p>
             <p>
                 <span>封面：</span>
@@ -60,9 +64,13 @@
                 <span>标题：</span>
                 <input class="tit" type="text"/>
             </p>
-            <p>
+           <!--<p>
                 <span>网址：</span>
                 <input class="linkT" type="text"/>
+            </p>-->
+            <p>
+                <span>时间：</span>
+                <input class="timeA" type="datetime-local"/>
             </p>
             <p>
                 <span>封面：</span>
@@ -81,9 +89,13 @@
                 <span>标题：</span>
                 <input class="tit" type="text"/>
             </p>
-            <p>
+           <!--<p>
                 <span>网址：</span>
                 <input class="linkT" type="text"/>
+            </p>-->
+            <p>
+                <span>时间：</span>
+                <input class="timeA" type="datetime-local"/>
             </p>
             <p>
                 <span>封面：</span>

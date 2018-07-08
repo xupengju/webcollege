@@ -40,7 +40,7 @@ var studentObj={
 			success:function (data) {
 				console.log(data)
 				if(data.code==10001){
-					alert(data.message)
+                    window.location.href="login.vm"
 				}else{
                     for(var i=0;i<data.result.length;i++){
                         $(".ratingForm table tbody").append(studentObj.getSignList(data.result[i]))
@@ -87,23 +87,12 @@ var studentObj={
         })
 	},
 	//安全责任书
-    manual:function (typeNumber,index) {
-        $.ajax({
-            type:"post",
-            url:urlT+"/api/baseInfo/searchOne.json",
-            data:{
-                token:localStorage.getItem("token"),
-                contentType:typeNumber
-            },
-            success:function (dataA) {
-                //console.log(dataA)
-                var da=dataA.data
-                $(".ri"+index).find(".word").html(da.content);
-            }
-        })
+    manual:function (word) {
+		console.log(word)
+     	//下载  下载文件接口:
+       //http://47.98.114.223/api/file/download.json?fileName=15304409594293.0版本微信相关.docx
+		window.location.href=urlT+"/api/file/download.json?fileName="+word;
     }
 }
 studentObj.signList()
-//安全责任书
-studentObj.manual(23,2)
-studentObj.manual(24,3)
+

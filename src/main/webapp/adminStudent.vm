@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/adminCss.css"/>
-    <script src="../../js/jquery-3.1.0.js"></script>
+    <script src="../../js/jquery-2.0.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../img/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../img/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../../img/zh-cn.js"></script>
@@ -27,7 +27,7 @@
     </ul>
     <div class="adminContent">
         <h1 class="mt20 mb20">创建学生管理相关</h1>
-        <select class="se">
+        <select class="se" onchange="AdminStudentObject.selectChange()">
             <option value="">创建学生生产性实习安全责任书</option>
             <option value="">创建实习手册</option>
             <option value="">创建顶岗实习评价表</option>
@@ -36,92 +36,23 @@
         <div class="newsBox1">
             <h2 class="mt20 mb20">创建学生生产性实习安全责任书</h2>
 
-            <p>内容：</p>
-            <div id="editor1" type="text/plain"></div>
+            <input type="file" id="file1" name="file">
+            <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file1','安全责任书')"/>
         </div>
         <div class="newsBox2">
             <h2 class="mt20 mb20">创建实习手册</h2>
 
-            </p>
-            <p>内容：</p>
-            <div id="editor2" type="text/plain"></div>
+            <input type="file" id="file2" name="file">
+            <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file2','实习手册')"/>
         </div>
         <div class="newsBox3">
             <h2 class="mt20 mb20">创建顶岗实习评价表</h2>
-            <p class="question">
-                <b>问题1：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
-            <p class="question">
-                <b>问题2：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
-            <p class="question">
-                <b>问题3：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
-            <p class="question">
-                <b>问题4：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
-            <p class="question">
-                <b>问题5：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
-            <p class="question">
-                <b>问题6：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
-            <p class="question">
-                <b>问题7：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
-            <p class="question">
-                <b>问题8：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
-            <p class="question">
-                <b>问题9：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
-            <p class="question">
-                <b>问题10：</b><input type="text"/><br/>
-                答案1：<input type="text"/><br/>
-                答案2：<input type="text"/><br/>
-                答案3：<input type="text"/><br/>
-                答案4：<input type="text"/>
-            </p>
+                <input type="file" id="file3" name="file">
+                <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file3','顶岗实习评价表')"/>
         </div>
-
     </div>
     <script src="../../js/ajaxfileupload.js"></script>
-
+    <script type="text/javascript" src="../../js/adminBase.js"></script>
+    <script type="text/javascript" src="../../js/adminStudent.js"></script>
 </body>
 </html>

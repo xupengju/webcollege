@@ -109,26 +109,18 @@
 			</div>
 			<div class="rightBox ri2">
 				<h2 class="tc mt30">学生生产性实习安全责任书</h2>
-				<p class="word">
-					<!--Donec accumsan porttitor velit non venenatis. Praesent vehicula convallis nisl non aliquet. Curabitur viverra nulla nec pulvinar volutpat. Etiam quis nisl augue. Sed fermentum mattis malesuada. Praesent congue blandit metus non blandit. Vivamus ante nisl, egestas quis ultricies eget, sollicitudin nec mauris. Donec molestie est dui, ac tincidunt tellus placerat ac. Nulla quam turpis, tincidunt non lorem at, varius hendrerit diam. Ut neque erat, elementum ac molestie in, mattis non massa. Vivamus lorem sapien, posuere vel justo vel, condimentum tempus libero. Sed vulputate orci magna, sed aliquam ex lacinia in. Nullam quis tortor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat augue, convallis lacinia erat sed, ullamcorper imperdiet lectus. Donec dapibus, leo nec lobortis accumsan, lacus est suscipit nibh, sit amet convallis erat est et arcu.
-Donec accumsan porttitor velit non venenatis. Praesent vehicula convallis nisl non aliquet. Curabitur viverra nulla nec pulvinar volutpat. Etiam quis nisl augue. Sed fermentum mattis malesuada. Praesent congue blandit metus non blandit. Vivamus ante nisl, egestas quis ultricies eget, sollicitudin nec mauris. Donec molestie est dui, ac tincidunt tellus placerat ac. Nulla quam turpis, tincidunt non lorem at, varius hendrerit diam. Ut neque erat, elementum ac molestie in, mattis non massa. Vivamus lorem sapien, posuere vel justo vel, condimentum tempus libero. Sed vulputate orci magna, sed aliquam ex lacinia in. Nullam quis tortor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat augue, convallis lacinia erat sed, ullamcorper imperdiet lectus. Donec dapibus, leo nec lobortis accumsan, lacus est suscipit nibh, sit amet convallis erat est et arcu.
--->
-				</p>
-				<div class="downloadBtn">下载</div>
+
+				<div class="downloadBtn" onclick="studentObj.manual('安全责任书.doc')">下载</div>
 			</div>
 			<div class="rightBox ri3">
 				<h2 class="tc mt30">实习手册</h2>
-				<p class="word">
-				<!--	Donec accumsan porttitor velit non venenatis. Praesent vehicula convallis nisl non aliquet. Curabitur viverra nulla nec pulvinar volutpat. Etiam quis nisl augue. Sed fermentum mattis malesuada. Praesent congue blandit metus non blandit. Vivamus ante nisl, egestas quis ultricies eget, sollicitudin nec mauris. Donec molestie est dui, ac tincidunt tellus placerat ac. Nulla quam turpis, tincidunt non lorem at, varius hendrerit diam. Ut neque erat, elementum ac molestie in, mattis non massa. Vivamus lorem sapien, posuere vel justo vel, condimentum tempus libero. Sed vulputate orci magna, sed aliquam ex lacinia in. Nullam quis tortor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat augue, convallis lacinia erat sed, ullamcorper imperdiet lectus. Donec dapibus, leo nec lobortis accumsan, lacus est suscipit nibh, sit amet convallis erat est et arcu.
-Donec accumsan porttitor velit non venenatis. Praesent vehicula convallis nisl non aliquet. Curabitur viverra nulla nec pulvinar volutpat. Etiam quis nisl augue. Sed fermentum mattis malesuada. Praesent congue blandit metus non blandit. Vivamus ante nisl, egestas quis ultricies eget, sollicitudin nec mauris. Donec molestie est dui, ac tincidunt tellus placerat ac. Nulla quam turpis, tincidunt non lorem at, varius hendrerit diam. Ut neque erat, elementum ac molestie in, mattis non massa. Vivamus lorem sapien, posuere vel justo vel, condimentum tempus libero. Sed vulputate orci magna, sed aliquam ex lacinia in. Nullam quis tortor velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse erat augue, convallis lacinia erat sed, ullamcorper imperdiet lectus. Donec dapibus, leo nec lobortis accumsan, lacus est suscipit nibh, sit amet convallis erat est et arcu.
--->
-				</p>
-				<div class="downloadBtn">下载</div>
+
+				<div class="downloadBtn" onclick="studentObj.manual('实习手册.doc')">下载</div>
 			</div>
 			<div class="rightBox ri4">
 				<h2 class="tc mt30">顶岗实习评价表</h2>
-				表格
-				<div class="downloadBtn" onclick="check()">下载</div>
+
+				<div class="downloadBtn" onclick="studentObj.manual('顶岗实习评价表.doc')">下载</div>
 			</div>
 		</div>
 		
