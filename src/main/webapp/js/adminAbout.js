@@ -17,14 +17,13 @@ var AdminAboutObject={
        /* var title=$(".newsBox"+index).find(".tit").val();
         var link=$(".newsBox"+index).find(".linkT").val();*/
         var content=eval("ue"+index).getContent();
-        console.log(content)
-
+        var image=$(".newsBox"+index+" img").attr("src")
         if(content==""){
             alert("请全部填写")
         }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
             alert("请上传图片")
         }else{
-            AdminAboutObject.ajaxC(content)
+            AdminAboutObject.ajaxC(content,image)
         }
 
     },
@@ -33,13 +32,14 @@ var AdminAboutObject={
 
         var content=eval("ue"+index).getContent();
         var teacherName=$(".newsBox"+index+" .teacherName").val();
+        var image=$(".newsBox"+index+" img").attr("src")
         console.log(content)
         if(content=="" || teacherName==""){
             alert("请全部填写")
         }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
             alert("请上传图片")
         }else{
-            AdminAboutObject.ajaxA(type,teacherName,content)
+            AdminAboutObject.ajaxA(type,teacherName,content,image)
         }
 
     },
@@ -48,19 +48,21 @@ var AdminAboutObject={
         var content=eval("ue"+index).getContent();
         console.log(content)
         var title=$(".newsBox"+index+" .titT").val();
-        var createTime=$(".newsBox"+index+" .createTime").val();
+        var createTime=$(".newsBox"+index+" .timeA").val();
+        createTime=createTime.split("T").join(" ")+":00"
         console.log(createTime)
+        var image=$(".newsBox"+index+" img").attr("src")
         //时间。。。。。。。。。。。。。。。
         if(content=="" || title=="" || createTime==""){
             alert("请全部填写")
         }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
             alert("请上传图片")
         }else{
-            AdminAboutObject.ajaxR(content,title,createTime)
+            AdminAboutObject.ajaxR(content,title,createTime,image)
         }
     },
     //资源
-    ajaxR:function(content,title,createTime){
+    ajaxR:function(content,title,createTime,image){
         $.ajax({
             type:"post",
             url:urlT+"/api/achievement/add.json",
@@ -68,12 +70,15 @@ var AdminAboutObject={
                 token:localStorage.getItem("token"),
                 title:title,
                 createTime:createTime,
+                image:image,
                 content:content
             },
             success:function (data) {
                 console.log(data)
                 if(data.code==200){//成功
                     alert("上传成功")
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
                 }else{
                     alert(data.message)
                 }
@@ -82,7 +87,7 @@ var AdminAboutObject={
         })
     },
     //企业教师和学校教师
-    ajaxA:function(type,teacherName,content){
+    ajaxA:function(type,teacherName,content,image){
         $.ajax({
             type:"post",
             url:urlT+"/api/teacher/add.json",
@@ -92,12 +97,15 @@ var AdminAboutObject={
                 teacherName:teacherName,
                 /*title:title,
                 link:link,*/
+                image:image,
                 content:content
             },
             success:function (data) {
                 console.log(data)
                 if(data.code==200){//成功
                     alert("上传成功")
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
                 }else{
                     alert(data.message)
                 }
@@ -106,7 +114,7 @@ var AdminAboutObject={
         })
     },
 
-    ajaxC:function(content){
+    ajaxC:function(content,image){
         $.ajax({
             type:"post",
             url:urlT+"/api/baseInfo/add.json",
@@ -115,12 +123,16 @@ var AdminAboutObject={
                 contentType:AdminAboutObject.contentType,
                 /*title:title,
                 link:link,*/
+                image:image,
                 content:content
             },
             success:function (data) {
                 console.log(data)
                 if(data.code==200){//成功
                     alert("上传成功")
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
+
                 }else{
                     alert(data.message)
                 }

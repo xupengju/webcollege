@@ -44,10 +44,15 @@ var aboutObj={
             	contentType:contentType
 			},
 			success:function(data1) {
-				//console.log(data1)
-				var result=data1.data
-				$(".ri"+index+" img").eq(0).attr("src",result.image);
-				$(".ri"+index+" .word").html(result.content)
+				console.log(data1)
+				//if(data1.code==200){
+                    var result=data1.data
+                    $(".ri"+index+" img").eq(0).attr("src",result.image);
+                    $(".ri"+index+" .word").html(result.content)
+				/*}else if(data1.code==10001){
+					window.location.href="login.vm"
+				}*/
+
 			}
 		})
 	},
@@ -61,28 +66,41 @@ var aboutObj={
 				pagenum:pagenum
             },
             success:function(data) {
-                //console.log(data)
-				var resultA=data.result;
-                for(var i=0;i<resultA.length;i++){
-					$(".ri3 .achev").append(aboutObj.getAchievementList(resultA[i]))
-				}
-                //分页器
-                var p=data.pages
-                $("#page").paging({
-                    pageNo:data.pagenum,
-                    totalPage: p,
-                    callback: function(num) {
-                        $(".ri3 .achev").html("")
-                        aboutObj.achievementShow(num)
+                console.log(data)
+            	//if(data.code==200){
+                    console.log(data)
+                    var resultA=data.result;
+                    for(var i=0;i<resultA.length;i++){
+                        $(".ri3 .achev").append(aboutObj.getAchievementList(resultA[i]))
                     }
-                })
+                    $(".ri3 .achev p").click(function(){
+                        var myID=$(this).attr("myID");
+                        localStorage.setItem("myID",myID);
+                        localStorage.setItem("typeA","about")
+                        window.location.href="detaiAbout.vm"
+                    })
+                    //分页器
+                    var p=data.pages
+                    $("#page").paging({
+                        pageNo:data.pagenum,
+                        totalPage: p,
+                        callback: function(num) {
+                            $(".ri3 .achev").html("")
+                            aboutObj.achievementShow(num)
+                        }
+                    })
+				//}else if(data.code==10001){
+                  //  window.location.href="login.vm"
+                //}
+
             }
         })
 	},
 	//获取成果展示列表
 	getAchievementList:function(data){
 		var list=""
-		list='<p class="gain"><a href="views/detaiAbout.vm">'
+		list='<p myID="'
+			+data.id+'" class="gain"><a href="detaiAbout.vm">'
 			+data.title+'</a><span>'
 			+new Date(data.createTime).toLocaleDateString()+'</span></p>'
 		return list
@@ -98,19 +116,24 @@ var aboutObj={
 				pagenum:pagenum
             },
             success:function(data){
-                for(var i=0;i<data.result.length;i++){
-                    $(".twoContent3 .rightBox").eq(index).find(".teacher").append(aboutObj.getTeacher1(data.result[i]))
-                }
-                //分页器
-                var p=data.pages
-                $("#page"+(index+2)).paging({
-                    pageNo:data.pagenum,
-                    totalPage: p,
-                    callback: function(num) {
-                        $(".twoContent3 .rightBox").eq(index).find(".teacher").html("")
-                        aboutObj.teacherList(typeNumber,index,num)
+                console.log(data)
+            	//if(data.code==200){
+                    for(var i=0;i<data.result.length;i++){
+                        $(".twoContent3 .rightBox").eq(index).find(".teacher").append(aboutObj.getTeacher1(data.result[i]))
                     }
-                })
+                    //分页器
+                    var p=data.pages
+                    $("#page"+(index+2)).paging({
+                        pageNo:data.pagenum,
+                        totalPage: p,
+                        callback: function(num) {
+                            $(".twoContent3 .rightBox").eq(index).find(".teacher").html("")
+                            aboutObj.teacherList(typeNumber,index,num)
+                        }
+                    })
+				/*}else if(data.code==10001){
+                    window.location.href="login.vm"
+                }*/
             }
         })
     },
@@ -119,14 +142,14 @@ var aboutObj={
         var list="";
         return list+='<li><img src="' +
             ''+data.image+'"><div class="word1"><h3>'
-            +data.teacherName+' '+data.academicTitle+'</h3><p>'
-            +data.resume+'</p></div></li>'
+            +data.teacherName+'</h3><p>'
+            +data.content+'</p></div></li>'
     }
 }
 aboutObj.schoolSummary(1,1)
 aboutObj.schoolSummary(2,2)
 aboutObj.schoolSummary(4,3)
-aboutObj.achievementShow()
+aboutObj.achievementShow(1)
 //企业教师
 aboutObj.teacherList(1,0)
 //学校教师

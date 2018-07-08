@@ -48,9 +48,14 @@ var PracticeManageObject={
                 contentType:4
 			},
 			success:function (da) {
-				console.log(da)
-                var data1=da.data
-				$(".ruleWord").append("<p>"+data1.resume+"</p>")
+				//if(da.code==200){
+                    console.log(da)
+                    var data1=da.data
+                    $(".ruleWord").append("<p>"+data1.content+"</p>")
+				/*}else if(da.code==10001){
+                    window.location.href="login.vm"
+                }*/
+
 
             }
 		})
@@ -65,17 +70,22 @@ var PracticeManageObject={
                 contentType:type
             },
             success:function (da) {
-            	console.log(da)
-				var data1=da.data
-				if(index==2 || index==3){
-                    $(".ri"+index+" img").attr("src",data1.image);
-				}else if(index==4 || index==6){
-                    $(".ri"+index+" .word").html(data1.content);
+            	//if(da.code==200){
+                    console.log(da)
+                    var data1=da.data
+                    if(index==2 || index==3){
+                        $(".ri"+index+" img").attr("src",data1.image);
+                    }else if(index==4 || index==6){
+                        $(".ri"+index+" .word").html(data1.content);
 
-				}else if(index==5){
-                    $(".ri"+index+" img").attr("src",data1.image);
-                    $(".ri"+index+" .word").html(data1.content);
-				}
+                    }else if(index==5){
+                        $(".ri"+index+" img").attr("src",data1.image);
+                        $(".ri"+index+" .word").html(data1.content);
+                    }
+				/*}else if(da.code==10001){
+                    window.location.href="login.vm"
+                }*/
+
 
             }
         })

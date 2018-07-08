@@ -30,6 +30,9 @@ var AdminStudentObject={
                 console.log(data)
                 if(data.code==200){//成功
                     alert("上传成功")
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
+
                 }else{
                     alert(data.message)
                 }
@@ -38,7 +41,7 @@ var AdminStudentObject={
         })
     },
     //上传文件
-    fileUpLoad:function (fileId) {
+    fileUpLoad:function (fileId,word) {
         console.log(fileId)
         $.ajaxFileUpload({
             url :  urlT+ "/api/file/uploadfile1.json",
@@ -51,10 +54,16 @@ var AdminStudentObject={
                 console.log(data,status)
                 if(status=="success"){
                     //上传
-                    alert("上传成功");
-                }
-            },
+                    var w=data.substring(81,data.length-11)
+                    console.log(w)
+                    if(w!==word){
+                        alert("请上传文件名为'"+word+"'的文件")
+                    }else{
+                        alert("上传成功");
+                    }
 
+                }
+            }
         });
     },
 

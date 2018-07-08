@@ -11,6 +11,7 @@ var AdminSocialObject={
     },
     //上传内容
     saveAll:function(index,v){
+        var image=$(".newsBox"+index+" img").attr("src")
         if(index==null){//学生实习
             var resourceName=$(".newsBox9").find(".tit").val();
             if(resourceName==""){
@@ -18,7 +19,7 @@ var AdminSocialObject={
             }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
                 alert("请上传图片")
             }else{
-                AdminSocialObject.ajaxA(resourceName)
+                AdminSocialObject.ajaxA(resourceName,image)
             }
 
 
@@ -29,7 +30,7 @@ var AdminSocialObject={
             }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
                 alert("请上传图片")
             }else{
-                AdminSocialObject.ajaxC(content)
+                AdminSocialObject.ajaxC(content,image)
             }
         }
 
@@ -38,7 +39,7 @@ var AdminSocialObject={
 
     },
     //学生实习
-    ajaxA:function(resourceName){
+    ajaxA:function(resourceName,image){
         $.ajax({
             type:"post",
             url:urlT+"/api/resource/add.json",
@@ -46,11 +47,15 @@ var AdminSocialObject={
                 token:localStorage.getItem("token"),
                 resourceName:resourceName,
                 type:10,
+                image:image
             },
             success:function (data) {
                 console.log(data)
                 if(data.code==200){//成功
                     alert("上传成功")
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
+
                 }else{
                     alert(data.message)
                 }
@@ -58,43 +63,23 @@ var AdminSocialObject={
 
         })
     },
-    ajaxT:function(title){
-        console.log(title)
+
+    ajaxC:function(content,image){
         $.ajax({
             type:"post",
             url:urlT+"/api/baseInfo/add.json",
             data:{
                 token:localStorage.getItem("token"),
                 contentType:AdminSocialObject.contentType,
-                title:title,
-
+                content:content,
+                image:image
             },
             success:function (data) {
                 console.log(data)
                 if(data.code==200){//成功
-
-                }else{
-                    alert(data.message)
-                }
-            },
-            error:function () {
-                alert("保存失败")
-            }
-
-        })
-    },
-    ajaxC:function(content){
-        $.ajax({
-            type:"post",
-            url:urlT+"/api/baseInfo/add.json",
-            data:{
-                token:localStorage.getItem("token"),
-                contentType:AdminSocialObject.contentType,
-                content:content
-            },
-            success:function (data) {
-                console.log(data)
-                if(data.code==200){//成功
+                    alert("上传成功")
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
 
                 }else{
                     alert(data.message)

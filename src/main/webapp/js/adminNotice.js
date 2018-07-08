@@ -7,31 +7,41 @@ var AdminNoticeObject={
     //保存
     saveAll:function(typeA,index,v){
         var tittle=$(".newsBox"+index+" .tit").val();
-        var linkT=$(".newsBox1"+index+" .linkT").val();
+        var createTime=$(".newsBox"+index+" .timeA").val();
+        createTime=createTime.split("T").join(" ")+":00"
+        console.log(createTime)
         var content=eval("ue"+index).getContent();
-        if(content=="" || tittle=="" || linkT==""){
+        var image=$(".newsBox"+index+" img").attr("src")
+        if(content=="" || tittle=="" || createTime==""){
             alert("请全部填写")
         }else if($("#avatar"+v).attr("src")=="img/auditImgDefault.png"){
             alert("请上传图片")
         }else{
-            AdminNoticeObject.ajaxA(typeA,tittle,linkT,content)
+            AdminNoticeObject.ajaxA(typeA,tittle,createTime,content,image)
         }
 
     },
-    ajaxA:function(typeA,tittle,linkT,content){
+    ajaxA:function(typeA,tittle,createTime,content,image){
+        console.log(createTime)
         $.ajax({
             type:"post",
             url:urlT+ "/api/notice/add.json",
             data:{
                 token:localStorage.getItem("token"),
-                tittle:tittle,
-                link:linkT,
-                type:typeA
+                title:tittle,
+                createTime:createTime,
+                link:"http://www.baidu.com",
+                type:typeA,
+                content:content,
+                image:image
             },
             success:function (data) {
                 console.log(data)
                 if(data.code==200){//成功
                     alert("上传成功")
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
+
                 }else{
                     alert(data.message)
                 }

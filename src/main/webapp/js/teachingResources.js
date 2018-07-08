@@ -1,31 +1,7 @@
 
 
 //师资分页器
-/*$("#page2").paging({
-	pageNo:1,
-	totalPage: 9,
-	//totalSize: 300,
-	callback: function(num) {
-		alert(num)
-	}
-})
-$("#page3").paging({
-	pageNo:1,
-	totalPage: 9,
-	//totalSize: 300,
-	callback: function(num) {
-		alert(num)
-	}
-})
-$("#page4").paging({
-	pageNo:1,
-	totalPage: 9,
-	//totalSize: 300,
-	callback: function(num) {
-		alert(num)
-	}
-})
-*/
+
 //左侧点击切换
 $(".leftNav li").click(function(){
 	var $index=$(this).index()+1
@@ -89,23 +65,35 @@ var TeachingResourcesObject={
                 pagenum:pagenum
             },
             success:function (data) {
-                //console.log(data)
-				var resultA=data.result;
-				for(var i=0;i<resultA.length;i++){
-					//下面的参数待定
-					//console.log(resultA[i].image)
-                    $(".ri1 .rBox").append('<div class="newBox"> <img src="'+resultA[i].image+'"><p>'+resultA[i].resourceName+'</p></div>')
-				}
-				//分页器
-                var p=data.pages
-                $("#page1").paging({
-                    pageNo:data.pagenum,
-                    totalPage: p,
-                    callback: function(num) {
-                        $(".ri1 .rBox").html("")
-                        TeachingResourcesObject.eProject(num)
+                console.log(data)
+                if(data.code==200){
+                    //ceonsol.log(data)
+                    var resultA=data.result;
+                    for(var i=0;i<resultA.length;i++){
+                        //下面的参数待定
+                        //console.log(resultA[i].image)
+                        $(".ri1 .rBox").append('<div myID="'+resultA[i].id+'" class="newBox"> <img src="'+resultA[i].image+'"><p>'+resultA[i].resourceName+'</p></div>')
                     }
-                })
+                    $(".ri1 .rBox .newBox").click(function(){
+                        var myID=$(this).attr("myID");
+                        localStorage.setItem("myID",myID);
+                        localStorage.setItem("typeA","enterprise")
+                        window.location.href="detaiAbout.vm"
+                    })
+                    //分页器
+                    var p=data.pages
+                    $("#page1").paging({
+                        pageNo:data.pagenum,
+                        totalPage: p,
+                        callback: function(num) {
+                            $(".ri1 .rBox").html("")
+                            TeachingResourcesObject.eProject(num)
+                        }
+                    })
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
+                }
+
             }
         })
     },
@@ -120,30 +108,104 @@ var TeachingResourcesObject={
                 pagenum:pagenum
             },
             success:function (data) {
-
-               // console.log(data)
-                var re=data.result;
-                for(var i=0;i<re.length;i++){
-                	console.log(index)
-                    console.log(re[i])
-                    $(".twoContent1 .rightBox").eq(index).find(".t").append(TeachingResourcesObject.getVideoList(re[i]))
-                }
-                var p=data.pages
-                $("#page"+(index+2)).paging({
-                    pageNo:data.pagenum,
-                    totalPage: p,
-                    callback: function(num) {
-                        $(".twoContent1 .rightBox").eq(index).find(".t").html("")
-                        TeachingResourcesObject.videoLibrary(typeA,index,num)
+                if(data.code==200){
+                    // console.log(data)
+                    var re=data.result;
+                    for(var i=0;i<re.length;i++){
+                        console.log(index)
+                        console.log(re[i])
+                        $(".twoContent1 .rightBox").eq(index).find(".t").append(TeachingResourcesObject.getVideoList(re[i]))
                     }
-                })
+                    $(".twoContent1 .rightBox").eq(0).find(".t").find(".gain").click(function(){
+                        var myID=$(this).attr("myID");
+                        localStorage.setItem("myID",myID);
+                        localStorage.setItem("typeA","task")
+                        window.location.href="detaiAbout.vm"
+                    })
+                    $(".twoContent1 .rightBox").eq(1).find(".t").find(".gain").click(function(){
+                        var myID=$(this).attr("myID");
+                        localStorage.setItem("myID",myID);
+                        localStorage.setItem("typeA","project")
+                        window.location.href="detaiAbout.vm"
+                    })
+                    $(".twoContent1 .rightBox").eq(2).find(".t").find(".gain").click(function(){
+                        alert()
+                        var myID=$(this).attr("myID");
+                        localStorage.setItem("myID",myID);
+                        localStorage.setItem("typeA","teachingVideo")
+                        window.location.href="detaiAbout.vm"
+                    })
+                    var p=data.pages
+                    $("#page"+(index+2)).paging({
+                        pageNo:data.pagenum,
+                        totalPage: p,
+                        callback: function(num) {
+                            $(".twoContent1 .rightBox").eq(index).find(".t").html("")
+                            TeachingResourcesObject.videoLibrary(typeA,index,num)
+                        }
+                    })
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
+                }
+
             }
         })
+    },
+    //教学视频
+    videoLibraryV:function(typeA,index,pagenum){
+        $.ajax({
+            type:"post",
+            url:urlT+"/api/resource/list.json",
+            data:{
+                token:localStorage.getItem("token"),
+                type:typeA,
+                pagenum:pagenum
+            },
+            success:function (data) {
+                if(data.code==200){
+                    // console.log(data)
+                    var re=data.result;
+                    for(var i=0;i<re.length;i++){
+                        console.log(index)
+                        console.log(re[i])
+                        $(".twoContent1 .rightBox").eq(index).find(".t").append(TeachingResourcesObject.getVideoListV(re[i]))
+                    }
+
+                   /* $(".twoContent1 .rightBox").eq(2).find(".t").find(".gain").click(function(){
+                        alert()
+                        var myID=$(this).attr("myID");
+                        localStorage.setItem("myID",myID);
+                        localStorage.setItem("typeA","teachingVideo")
+                        window.location.href="detaiAbout.vm"
+                    })*/
+                    var p=data.pages
+                    $("#page"+(index+2)).paging({
+                        pageNo:data.pagenum,
+                        totalPage: p,
+                        callback: function(num) {
+                            $(".twoContent1 .rightBox").eq(index).find(".t").html("")
+                            TeachingResourcesObject.videoLibraryV(typeA,index,num)
+                        }
+                    })
+                }else if(data.code==10001){
+                    window.location.href="login.vm"
+                }
+
+            }
+        })
+    },
+    getVideoListV:function (data) {
+        // console.log(data)
+        var list=""
+        list='<p myID="'+data.id+'" class="gain"><a href="'+data.link+'">'
+            +data.resourceName+'</a><span>'
+            +new Date(data.createTime).toLocaleDateString()+'</span> </p>'
+        return list
     },
     getVideoList:function (data) {
        // console.log(data)
         var list=""
-        list='<p class="gain"><a href="detaiAbout.vm">'
+        list='<p myID="'+data.id+'" class="gain"><a href="#">'
 			+data.resourceName+'</a><span>'
 			+new Date(data.createTime).toLocaleDateString()+'</span> </p>'
         return list
@@ -153,4 +215,4 @@ var TeachingResourcesObject={
 TeachingResourcesObject.eProject()
 TeachingResourcesObject.videoLibrary(5,0,1)
 TeachingResourcesObject.videoLibrary(6,1,1)
-TeachingResourcesObject.videoLibrary(7,2,1)
+TeachingResourcesObject.videoLibraryV(7,2,1)

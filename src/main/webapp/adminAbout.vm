@@ -119,7 +119,8 @@
             </p>
             <p>
                 <span>时间：</span>
-                <input class="createTime" type="date"/>
+
+                <input class="timeA" type="datetime-local"/>
             </p>
             <p>
                 <span>图片：</span>
@@ -130,7 +131,7 @@
             </p>
             <p>成果内容：</p>
             <div id="editor6" type="text/plain"></div>
-            <button class="saveBtn" onclick="AdminAboutObject.saveAllT(6,5)">保存</button>
+            <button class="saveBtn" onclick="AdminAboutObject.saveAllR(6,5)">保存</button>
         </div>
     </div>
 

@@ -37,18 +37,18 @@
             <h2 class="mt20 mb20">创建学生生产性实习安全责任书</h2>
 
             <input type="file" id="file1" name="file">
-            <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file1')"/>
+            <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file1','安全责任书')"/>
         </div>
         <div class="newsBox2">
             <h2 class="mt20 mb20">创建实习手册</h2>
 
             <input type="file" id="file2" name="file">
-            <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file2')"/>
+            <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file2','实习手册')"/>
         </div>
         <div class="newsBox3">
             <h2 class="mt20 mb20">创建顶岗实习评价表</h2>
                 <input type="file" id="file3" name="file">
-                <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file3')"/>
+                <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file3','顶岗实习评价表')"/>
         </div>
     </div>
     <script src="../../js/ajaxfileupload.js"></script>

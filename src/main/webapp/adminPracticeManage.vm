@@ -55,7 +55,7 @@
                 <input style="display: none" type="file" id="file" name="file" onchange="AdminPractiveObject.imgUpLoad('file','avatar')"/>
             </div>
             </p>
-            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(null,'')">保存</button>
+            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(null,'',2)">保存</button>
 
         </div>
         <div class="newsBox3">
@@ -68,7 +68,7 @@
                 <input style="display: none" type="file" id="file1" name="file" onchange="AdminPractiveObject.imgUpLoad('file1','avatar1')"/>
             </div>
             </p>
-            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(null,1)">保存</button>
+            <button class="saveBtn" onclick="AdminPractiveObject.saveAll(null,1,3)">保存</button>
         </div>
         <div class="newsBox4">
             <h2 class="mt20 mb20">创建企业产品标准</h2>

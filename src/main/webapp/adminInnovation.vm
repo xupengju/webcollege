@@ -68,7 +68,7 @@
             </p>
             <p>
                 <span>时间：</span>
-                <input class="timeT" type="date"/>
+                <input class="timeA" type="datetime-local"/>
             </p>
             <p>
                 <span>图片：</span>
