@@ -28,7 +28,7 @@
                         error: errorMsg
                     });
                     function resutlMsg(msg){
-                        alert(msg);
+                     //   alert(msg);
                         $("#upfile").val("");
                     }
                     function errorMsg(){
@@ -41,7 +41,7 @@
         //JS校验form表单信息
         function checkData(){
             var fileDir = $("#upfile").val();
-            alert(fileDir);
+       //     alert(fileDir);
             var suffix = fileDir.substr(fileDir.lastIndexOf("."));
             if("" == fileDir){
                 alert("选择需要导入的Excel文件!");

@@ -1,13 +1,20 @@
 package com.college.controller;
 
+import com.college.entity.Role;
 import com.college.entity.User;
+import com.college.entity.UserRole;
+import com.college.service.RoleService;
+import com.college.service.UserRoleService;
 import com.college.service.UserService;
 import com.college.service.user.ApiUserService;
 import com.college.utils.ImportExeclUtil;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping
@@ -30,6 +39,10 @@ public class ImportExcelControl {
     private ApiUserService apiUserService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserRoleService userRoleService;
+    @Autowired
+    private RoleService roleService;
     /**
      * 描述:通过传统方式form表单提交方式导入excel文件
      *
@@ -75,6 +88,8 @@ public class ImportExcelControl {
                 String password = "";
                 String realName = "";
                 String idCard = "";
+                String roleName = "";
+                Integer roleId = 3; // 默认角色是学生  -- 1：管理员 - 2：教师 -  3：学生
                 for (int j = 0; j < cellList.size(); j++) {
                     // System.out.print("    第" + (j + 1) + "列值：");
                     // 第一列 用户名
@@ -98,13 +113,24 @@ public class ImportExcelControl {
                         // 密码 自动初始化 身份ID 后6位
                         password = idCard.substring(idCard.length() - 6);
                     }
+                    // 第五列 用户角色
+                    if (j == 4) {
+                        roleName = cellList.get(j).trim();
+                        // 根据roleName 判断 角色id
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("roleName",roleName);
+                        Role role = roleService.searchOne(map);
+                        if (null != role.getId()){
+                            roleId = role.getId();
+                        }
+                    }
                     System.out.print("    " + cellList.get(j));
                 }
                 System.out.println();
                 boolean status = true;
 //                String createTime = DateTimeUtil.getDateAndMinute();
                 user.setUserName(userName);
-                password = apiUserService.getEncryptedPassword(user.getPassword(), salt);
+                password = apiUserService.getEncryptedPassword(password, salt);
                 user.setPassword(password);
                 user.setSalt(salt);
                 user.setRealName(realName);
@@ -112,7 +138,27 @@ public class ImportExcelControl {
 //                    user.setAdministrator(administrator);
                 user.setStatus(status);
                 user.setCreateTime(new Date());
-                Integer userId = userService.insert(user);
+                // 插入之前 校验用户名UserName 是否存在
+                // 判断是否存在相同用户名的(不包含本身)
+                Map<String, Object> paramsMap = Maps.newHashMap();
+                paramsMap.put("userName", user.getUserName());
+                paramsMap.put("status", 1);
+                List<User> userList = userService.findListByParams(paramsMap);
+                Integer userId = null;
+                if (CollectionUtils.isEmpty(userList)) {
+                    // 登录名不重复 添加用户
+                    userId = userService.insert(user);
+                    // 添加用户角色
+                    UserRole userRole = new UserRole();
+                    userRole.setUserId(userId);
+                    userRole.setRoleId(roleId);
+                    userRole.setStatus(true);
+                    userRole.setCreateTime(new Date());
+                    userRoleService.insert(userRole);
+                } else {
+                    // 登录名重复 TODO
+                    logger.error(userName+"用户名已存在！");
+                }
                 logger.info("ImportExcel-addUser userId :{}", userId);
             }
         }
