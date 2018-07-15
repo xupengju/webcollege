@@ -26,7 +26,7 @@ import java.util.Map;
  * @Description
  */
 @Controller
-public class BaseInfoController {
+public class BaseInfoController extends BaseController{
 
     private static Logger logger = LoggerFactory
             .getLogger(BaseInfoController.class);
@@ -107,6 +107,8 @@ public class BaseInfoController {
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "updateUser", required = false) String updateUser,
             @RequestParam(value = "updateTime", required = false) java.util.Date updateTime) {
+
+
         BaseInfo baseInfo = new BaseInfo();
         baseInfo.setTitle(title);
         baseInfo.setResume(resume);

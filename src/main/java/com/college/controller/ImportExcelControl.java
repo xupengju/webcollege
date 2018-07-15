@@ -11,7 +11,6 @@ import com.college.utils.ImportExeclUtil;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -43,6 +42,7 @@ public class ImportExcelControl {
     private UserRoleService userRoleService;
     @Autowired
     private RoleService roleService;
+
     /**
      * 描述:通过传统方式form表单提交方式导入excel文件
      *
@@ -72,9 +72,10 @@ public class ImportExcelControl {
 
     /**
      * 导入表格数据 录入数据库
+     *
      * @param list
      */
-    private void importUser2DB(List<List<String>>list){
+    private void importUser2DB(List<List<String>> list) {
         logger.info("ImportExcel-addUser user - start");
         if (list != null) {
             // 第一行是表头 无效信息不入库
@@ -84,7 +85,7 @@ public class ImportExcelControl {
                 User user = new User();
                 String userName = "";
                 String salt = "";
-                salt = apiUserService.getRandomSalt();
+                salt = ApiUserService.getRandomSalt();
                 String password = "";
                 String realName = "";
                 String idCard = "";
@@ -95,7 +96,7 @@ public class ImportExcelControl {
                     // 第一列 用户名
                     if (j == 0) {
                         userName = cellList.get(j);
-                        if (userName.equals("") || userName == null){
+                        if (userName.equals("") || userName == null) {
                             return;
                         }
                     }
@@ -117,10 +118,10 @@ public class ImportExcelControl {
                     if (j == 4) {
                         roleName = cellList.get(j).trim();
                         // 根据roleName 判断 角色id
-                        Map<String, Object> map = new HashMap<>();
-                        map.put("roleName",roleName);
+                        Map<String, Object> map = new HashMap<String, Object>();
+                        map.put("roleName", roleName);
                         Role role = roleService.searchOne(map);
-                        if (null != role.getId()){
+                        if (null != role.getId()) {
                             roleId = role.getId();
                         }
                     }
@@ -130,7 +131,7 @@ public class ImportExcelControl {
                 boolean status = true;
 //                String createTime = DateTimeUtil.getDateAndMinute();
                 user.setUserName(userName);
-                password = apiUserService.getEncryptedPassword(password, salt);
+                password = ApiUserService.getEncryptedPassword(password, salt);
                 user.setPassword(password);
                 user.setSalt(salt);
                 user.setRealName(realName);
@@ -157,7 +158,7 @@ public class ImportExcelControl {
                     userRoleService.insert(userRole);
                 } else {
                     // 登录名重复 TODO
-                    logger.error(userName+"用户名已存在！");
+                    logger.error(userName + "用户名已存在！");
                 }
                 logger.info("ImportExcel-addUser userId :{}", userId);
             }
@@ -182,6 +183,7 @@ public class ImportExcelControl {
         }
         return hexString.toString();
     }*/
+
     /**
      * 描述:通过 jquery.form.js 插件提供的ajax方式上传文件
      *

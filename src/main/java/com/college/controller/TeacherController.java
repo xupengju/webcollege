@@ -110,6 +110,10 @@ public class TeacherController extends BaseController {
             @RequestParam(value = "link", required = false) String link,
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "createTime", required = false) String createTime) {
+        Integer currentId = getCurrentId();
+        if (!isAdmin(currentId)) {
+            return Resp.error(AppCode._10004);
+        }
         Teacher teacher = new Teacher();
         teacher.setTeacherName(teacherName);
         teacher.setResume(resume);
