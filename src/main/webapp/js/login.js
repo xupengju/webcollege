@@ -35,6 +35,7 @@ var loginObj={
             alert("验证码不能为空")
         }else if(!reg.test(code1)){
             alert("验证码错误")
+            $(".code").val("")
             loginObj.getRandomCode();
         }else{
             if(userName=="" || pwd==""){
