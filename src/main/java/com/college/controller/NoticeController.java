@@ -48,7 +48,6 @@ public class NoticeController extends BaseController {
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateUser
-
      * @return
      */
     @RequestMapping(value = Path.NOTICE_LIST)
@@ -68,7 +67,7 @@ public class NoticeController extends BaseController {
 
     ) {
         Map<String, Object> params = Maps.newHashMap();
-        params.put("type",type);
+        params.put("type", type);
         Page<Notice> page = noticeService.searchPageList(pageNum, pageSize, params);
         Map<String, Object> resultMap = Maps.newHashMap();
         logger.info(" NoticeController -->  pageResult :{}", page.getResult());
@@ -94,7 +93,6 @@ public class NoticeController extends BaseController {
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateUser
-
      * @return
      */
     @RequestMapping(value = Path.NOTICE_ADD)
@@ -109,6 +107,10 @@ public class NoticeController extends BaseController {
             @RequestParam(value = "status", required = false) boolean status,
             @RequestParam(value = "createTime", required = false) String createTime,
             @RequestParam(value = "updateUser", required = false) String updateUser) {
+        Integer currentId = getCurrentId();
+        if (!isAdmin(currentId)) {
+            return Resp.error(AppCode._10004);
+        }
         Notice notice = new Notice();
         notice.setTitle(title);
         notice.setResume(resume);
@@ -116,8 +118,8 @@ public class NoticeController extends BaseController {
         notice.setImage(image);
         notice.setLink(link);
         notice.setContent(content);
-        logger.info("create time :{}",DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
-        notice.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
+        logger.info("create time :{}", DateTimeUtil.parseDateTime(createTime, "yyyy-MM-dd HH:mm:ss"));
+        notice.setCreateTime(DateTimeUtil.parseDateTime(createTime, "yyyy-MM-dd HH:mm:ss"));
         notice.setUpdateUser(updateUser);
 
         Integer id = noticeService.insert(notice);
@@ -137,7 +139,6 @@ public class NoticeController extends BaseController {
      * @param status     0: 删除 1:正常
      * @param createTime 创建时间
      * @param updateUser
-
      * @return
      */
     @RequestMapping(value = Path.NOTICE_UPDATE)
@@ -163,12 +164,11 @@ public class NoticeController extends BaseController {
         notice.setLink(link);
         notice.setContent(content);
         notice.setStatus(status);
-        notice.setCreateTime(DateTimeUtil.parseDateTime(createTime,"yyyy-MM-dd HH:mm:ss"));
+        notice.setCreateTime(DateTimeUtil.parseDateTime(createTime, "yyyy-MM-dd HH:mm:ss"));
         notice.setUpdateUser(updateUser);
         noticeService.update(notice);
         return Resp.success();
     }
-
 
 
     @RequestMapping(value = Path.NOTICE_GET)

@@ -2,7 +2,9 @@ package com.college.controller;
 
 import com.college.contants.Constants;
 import com.college.entity.User;
+import com.college.service.UserService;
 import com.college.service.user.ApiUserService;
+import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +18,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * @author Milo on 2018/4/7.
@@ -28,6 +31,8 @@ public class BaseController {
     protected HttpServletRequest request;
     @Autowired
     private ApiUserService apiUserService;
+    @Autowired
+    private UserService userService;
 
 
     @InitBinder
@@ -46,6 +51,18 @@ public class BaseController {
         Object userIdObj = request.getAttribute(Constants.LOGIN_ENTITY);
         String userIdStr = (null == userIdObj ? "" : userIdObj.toString());
         return StringUtils.isBlank(userIdStr) ? 0 : Integer.valueOf(userIdStr);
+    }
+
+    protected boolean isAdmin(int userId) {
+        Map<String, Object> paramsMap = Maps.newHashMap();
+        paramsMap.put("userId", userId);
+        paramsMap.put("status", true);
+        User user = userService.searchOne(paramsMap);
+        if (null != user && user.getAdministrator()) {
+            logger.info("管理员 boolean : {}", user.getAdministrator());
+            return true;
+        }
+        return false;
     }
 
     /**

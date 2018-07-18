@@ -110,6 +110,10 @@ public class ResourceController extends BaseController {
             @RequestParam(value = "content", required = false) String content,
             @RequestParam(value = "status", required = false) boolean status,
             @RequestParam(value = "createTime", required = false) String createTime) {
+        Integer currentId = getCurrentId();
+        if (!isAdmin(currentId)) {
+            return Resp.error(AppCode._10004);
+        }
         Resource resource = new Resource();
         resource.setResourceName(resourceName);
         resource.setResume(resume);

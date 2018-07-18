@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -147,14 +148,14 @@ public class ImportExeclUtil {
         {
             /** 根据版本选择创建Workbook的方式 */
             Workbook wb = null;
-            if (isExcel2003)
+/*            if (isExcel2003)
             {
                 wb = new HSSFWorkbook(inputStream);
             }
-            else
-            {
+            else*/
+//            {
                 wb = new XSSFWorkbook(inputStream);
-            }
+//            }
             dataLst = read(wb);
         }
         catch (IOException e)
@@ -242,6 +243,14 @@ public class ImportExeclUtil {
         return dataLst;
     }
 
+    public List<List<String>> getBankListByExcel(InputStream in,String fileName){
+
+        boolean isExcel2003 = true;
+        System.out.println("读取Excel--"+fileName);
+        List<List<String>> list = this.read(in,isExcel2003);
+        return list;
+    }
+
     /**
      * @描述：main测试方法
      * @返回值：void
@@ -250,16 +259,18 @@ public class ImportExeclUtil {
     {
         ImportExeclUtil poi = new ImportExeclUtil();
         // List<List<String>> list = poi.read("d:/aaa.xls");
-        List<List<String>> list = poi.read("C:/Users/dell/Desktop/11.xlsx");
+//        List<List<String>> list = poi.read("C:/Users/dell/Desktop/11.xlsx");
+        List<List<String>> list1 = poi.read("C:/Users/dell/Desktop/\\Demo/导入导出/11.xlsx");
 //        List<List<String>> list = poi.read("C:/Users/dell/Desktop/sysres_template00.xls");
-        if (list != null)
-        {
-            for (int i = 0; i < list.size(); i++)
-            {
+        printTest(list1);
+    }
+
+    public static void printTest(List<List<String>>list) {
+        if (list != null) {
+            for (int i = 0; i < list.size(); i++) {
                 System.out.print("第" + (i) + "行");
                 List<String> cellList = list.get(i);
-                for (int j = 0; j < cellList.size(); j++)
-                {
+                for (int j = 0; j < cellList.size(); j++) {
                     // System.out.print("    第" + (j + 1) + "列值：");
                     System.out.print("    " + cellList.get(j));
                 }
