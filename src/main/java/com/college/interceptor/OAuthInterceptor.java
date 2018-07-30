@@ -52,7 +52,9 @@ public class OAuthInterceptor extends HandlerInterceptorAdapter {
             //Path.RESOURCE_LIST,
             Path.FILE_UPLOAD_FILE1,
             Path.FILE_UPLOAD_FILE2,
-            Path.FILE_DOWN_FILE
+            Path.FILE_DOWN_FILE,
+            Path.BASEINFO_SEARCHONE,
+            Path.BASEINFO_GET
     );
 
     @Override
