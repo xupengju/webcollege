@@ -47,8 +47,11 @@ var TeachingResourcesObject={
                 pagenum:pagenum
             },
             success:function (data) {
-
                console.log(data)
+                if(data.code==10001){
+                   alert(data.message)
+                    return;
+                }
                 var re=data.result;
                 for(var i=0;i<re.length;i++){
 
@@ -64,15 +67,12 @@ var TeachingResourcesObject={
                         TeachingResourcesObject.videoLibrary(typeA,num)
                     }
                 })
-
             }
         })
     },
     getVideoList:function (data) {
-
         var list=""
         list='<li><img src="'+data.image+'"/><a href="'+data.link+'">'+data.resourceName+'</a> </li>'
         return list
     }
-
 }

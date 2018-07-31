@@ -66,8 +66,13 @@ var TeachingResourcesObject={
             },
             success:function (data) {
                 console.log(data)
-                if(data.code==200){
-                    //ceonsol.log(data)
+                if(data.code==10001){
+                    alert("用户未登录")
+                   // window.location.href="login.vm"
+                }else if(data.code==10004){
+                    alert("用户未授权")
+                   // window.location.href="login.vm"
+                }else{
                     var resultA=data.result;
                     for(var i=0;i<resultA.length;i++){
                         //下面的参数待定
@@ -81,7 +86,7 @@ var TeachingResourcesObject={
                         window.location.href="detaiAbout.vm"
                     })
                     //分页器
-                    var p=data.pages
+                    var p=data.pages;
                     $("#page1").paging({
                         pageNo:data.pagenum,
                         totalPage: p,
@@ -90,9 +95,9 @@ var TeachingResourcesObject={
                             TeachingResourcesObject.eProject(num)
                         }
                     })
-                }else if(data.code==10001){
-                    window.location.href="login.vm"
                 }
+
+               /* }else */
 
             }
         })
@@ -108,7 +113,7 @@ var TeachingResourcesObject={
                 pagenum:pagenum
             },
             success:function (data) {
-                if(data.code==200){
+                //if(data.code==200){
                     // console.log(data)
                     var re=data.result;
                     for(var i=0;i<re.length;i++){
@@ -144,9 +149,9 @@ var TeachingResourcesObject={
                             TeachingResourcesObject.videoLibrary(typeA,index,num)
                         }
                     })
-                }else if(data.code==10001){
+                /*}else if(data.code==10001){
                     window.location.href="login.vm"
-                }
+                }*/
 
             }
         })
@@ -162,7 +167,7 @@ var TeachingResourcesObject={
                 pagenum:pagenum
             },
             success:function (data) {
-                if(data.code==200){
+               // if(data.code==200){
                     // console.log(data)
                     var re=data.result;
                     for(var i=0;i<re.length;i++){
@@ -187,9 +192,9 @@ var TeachingResourcesObject={
                             TeachingResourcesObject.videoLibraryV(typeA,index,num)
                         }
                     })
-                }else if(data.code==10001){
+               /* }else if(data.code==10001){
                     window.location.href="login.vm"
-                }
+                }*/
 
             }
         })
@@ -210,7 +215,6 @@ var TeachingResourcesObject={
 			+new Date(data.createTime).toLocaleDateString()+'</span> </p>'
         return list
     }
-
 }
 TeachingResourcesObject.eProject()
 TeachingResourcesObject.videoLibrary(5,0,1)
