@@ -72,7 +72,7 @@
 		</nav>
 		<div class="detailAboutContent">
 
-			<h2 class="tc mt50 mb10"> <div class="back1"><a style="color:#fff;display: block;width: 100%;height: 100%;" href="javascript :history.back(-1)">返回</a></div></h2>
+			<h2 class="tc mt50 mb10"> <div class="back1" onclick="back()">返回</div></h2>
 			<p class="dP1 ml512 f18 mb30"></p>
 			<div class="dP2 f14"> </div>
             <img class="tu mt20 mb20" src="">
