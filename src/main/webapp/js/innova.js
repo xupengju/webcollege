@@ -55,7 +55,7 @@ var InnovationObject={
     schoolEnterprise:function (pagenum) {
         $.ajax({
             type:"post",
-            url:urlT+"/api/resource/list.json",
+            url:urlT+"/api/resource/lists.json",
             data:{
                 token:localStorage.getItem("token"),
                 type:9,
@@ -101,6 +101,7 @@ var InnovationObject={
         return list
     }
 }
+
 //type??????????
 //众创空间
 InnovationObject.space(10,1)

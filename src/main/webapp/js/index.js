@@ -88,6 +88,9 @@ var indexObj={
                         +indexObj.eclipseA(result[i].title,50)+'</p></li>')
                 }
                 indexObj.swi()
+                $('.swiper-container img').on('mousedown',function (e) {
+                    e.preventDefault()
+                })
             }
         })
     },
@@ -107,6 +110,7 @@ var indexObj={
 }
 indexObj.newsTop();
 indexObj.newsBottom();
-indexObj.hotWordImg()
+indexObj.hotWordImg();
+
 
 
