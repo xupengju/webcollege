@@ -48,6 +48,7 @@ public class OAuthInterceptor extends HandlerInterceptorAdapter {
             Path.NOTICE_GET,
             Path.NOTICE_LIST,
             Path.ACHIEVEMENT_LIST,
+            Path.ACHIEVEMENT_GET,
             Path.TEACHER_LIST,
             //Path.RESOURCE_LIST,
             Path.FILE_UPLOAD_FILE1,
