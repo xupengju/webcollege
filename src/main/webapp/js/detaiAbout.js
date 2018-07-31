@@ -15,12 +15,12 @@ if(typeA=="notice"){
         success:function (dataA) {
             console.log(dataA)
             var result=dataA.data;
-            if(dataA.code==200){
-                $(".detailAboutContent h2").html(result.title+'<div class="back1">返回</div>')
-                $(".detailAboutContent p").eq(0).html(new Date(result.createTime).toLocaleString())
-                $(".detailAboutContent p").eq(1).html(result.content)
-                $(".detailAboutContent img").attr("src",result.image)
-            }
+           // if(dataA.code==200){
+                $(".detailAboutContent h2").html(result.title+'<div class="back1" onclick="back()">返回</div>')
+                $(".detailAboutContent .dP1").html(new Date(result.createTime).toLocaleString())
+                $(".detailAboutContent .dP2").html(result.content)
+                $(".detailAboutContent .tu").attr("src",result.image)
+           // }
         }
     })
 }else if(typeA=="about"){//成果展示
@@ -34,10 +34,11 @@ if(typeA=="notice"){
         success:function (dataA) {
             console.log(dataA)
             var result=dataA.data;
+
             if(dataA.code==200){
-                $(".detailAboutContent h2").html(result.title+'<div class="back1">返回</div>')
-                $(".detailAboutContent p").eq(0).html(new Date(result.createTime).toLocaleString())
-                $(".detailAboutContent p").eq(1).html(result.content)
+                $(".detailAboutContent h2").html(result.title+'<div class="back1" onclick="back()">返回</div>')
+                $(".detailAboutContent .dP1").html(new Date(result.createTime).toLocaleString())
+                $(".detailAboutContent .dP2").html(result.content)
                 $(".detailAboutContent img").attr("src",result.image)
             }
 
@@ -61,14 +62,18 @@ function getC(){
             id:myID
         },
         success:function (dataA) {
+
             if(dataA.code==200){
                 console.log(dataA)
                 var result=dataA.data;
                 if(dataA.code==200){
-                    $(".detailAboutContent h2").html(result.resourceName+'<div class="back1">返回</div>')
-                    $(".detailAboutContent p").eq(0).html(new Date(result.createTime).toLocaleString())
-                    $(".detailAboutContent p").eq(1).html(result.content)
-                    $(".detailAboutContent img").attr("src",result.image)
+                    $(".detailAboutContent h2").html(result.resourceName+'<div class="back1" onclick="back()">返回</div>')
+                    $(".detailAboutContent .dP1").html(new Date(result.createTime).toLocaleString())
+                    console.log(result.content)
+                    var a=result.content
+                    $(".detailAboutContent .dP2").html(a)
+                    $(".detailAboutContent .tu").hide()
+                   // $(".detailAboutContent .tu").attr("src",result.image)
                 }
             }else if(dataA.code==10001){
                 window.location.href="login.vm"
@@ -77,4 +82,9 @@ function getC(){
 
         }
     })
+}
+function back(){
+
+    window.history.go(-1);
+
 }
