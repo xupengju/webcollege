@@ -73,13 +73,14 @@ var AdminTeachingR={
             },
             success:function (data) {
                 console.log(data)
-                if(data.code==200){//成功
-                    alert("上传成功")
-                }else if(data.code==10001){
+                if(data.code==10001){
+                    alert("用户未登录")
                     window.location.href="login.vm"
-
+                }else if(data.code==10004){
+                    alert("用户未授权")
+                    window.location.href="login.vm"
                 }else{
-                    alert(data.message)
+                    alert("上传成功")
                 }
             }
 
@@ -101,13 +102,14 @@ var AdminTeachingR={
             },
             success:function (data) {
                 console.log(data)
-                if(data.code==200){//成功
-                    alert("上传成功")
-                }else if(data.code==10001){
+                if(data.code==10001){
+                    alert("用户未登录")
                     window.location.href="login.vm"
-
+                }else if(data.code==10004){
+                    alert("用户未授权")
+                    window.location.href="login.vm"
                 }else{
-                    alert(data.message)
+                    alert("上传成功")
                 }
             }
 
@@ -128,13 +130,14 @@ var AdminTeachingR={
             },
             success:function (data) {
                 console.log(data)
-                if(data.code==200){//成功
-                    alert("上传成功")
-                }else if(data.code==10001){
+                if(data.code==10001){
+                    alert("用户未登录")
                     window.location.href="login.vm"
-
+                }else if(data.code==10004){
+                    alert("用户未授权")
+                    window.location.href="login.vm"
                 }else{
-                    alert(data.message)
+                    alert("上传成功")
                 }
             }
 
