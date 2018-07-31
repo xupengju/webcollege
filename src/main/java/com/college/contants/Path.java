@@ -58,6 +58,7 @@ public class Path {
     public static final String RESOURCE_GET = "/api/resource/get.json";
     public static final String RESOURCE_UPDATE = "/api/resource/update.json";
     public static final String RESOURCE_LIST = "/api/resource/list.json";
+    public static final String RESOURCE_LISTS = "/api/resource/lists.json";
     public static final String RESOURCE_ALL = "/api/resource/all.json";
 
 
