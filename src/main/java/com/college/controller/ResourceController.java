@@ -232,4 +232,11 @@ public class ResourceController extends BaseController {
         return null != resource ? Resp.success(resource) : Resp.error(AppCode._10012);
     }
 
+    @RequestMapping(value = Path.RESOURCE_GETS)
+    @ResponseBody
+    public Resp gets(@RequestParam(value = "id") Long id) {
+        Resource resource = resourceService.get(id);
+        return null != resource ? Resp.success(resource) : Resp.error(AppCode._10012);
+    }
+
 }
