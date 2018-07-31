@@ -39,9 +39,13 @@ var studentObj={
 			},
 			success:function (data) {
 				console.log(data)
-				if(data.code==10001){
+                if(data.code==10001){
+                    alert("用户未登录")
                     window.location.href="login.vm"
-				}else{
+                }else if(data.code==10004){
+                    alert("用户未授权")
+                    window.location.href="login.vm"
+                }else{
                     for(var i=0;i<data.result.length;i++){
                         $(".ratingForm table tbody").append(studentObj.getSignList(data.result[i]))
 
@@ -53,8 +57,14 @@ var studentObj={
 		})
     },
 	getSignList:function (data) {
+		console.log(data)
+		if(data.userName){
+			var uName=data.userName
+		}else{
+			var uName=data.realName
+		}
 		var list="<tr><td>"
-			+data.realName+"</td><td>"
+			+uName+"</td><td>"
 			+data.idCard+"</td><td>"
 			+new Date(data.createTime).toLocaleDateString()+"</td></tr>"
     	return list
@@ -95,4 +105,3 @@ var studentObj={
     }
 }
 studentObj.signList()
-
