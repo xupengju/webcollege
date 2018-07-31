@@ -55,7 +55,7 @@ var AdminStudentObject={
                 console.log(data,status)
                 if(status=="success"){
                     //上传
-                    var w=data.substring(81,data.length-11)
+                    var w=data.substring(81,data.length-10)
                     console.log(w)
                     if(w!==word){
                         alert("请上传文件名为'"+word+"'的文件")
