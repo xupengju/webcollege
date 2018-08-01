@@ -62,8 +62,6 @@ function getB(){
             id:myID
         },
         success:function (dataA) {
-
-
             console.log(dataA)
             var result=dataA.data;
             $(".detailAboutContent h2").html(result.resourceName+'<div class="back1" onclick="back()">返回</div>')
