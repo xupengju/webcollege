@@ -83,7 +83,6 @@ function getC(){
             id:myID
         },
         success:function (dataA) {
-
             if(dataA.code==200){
                 console.log(dataA)
                 var result=dataA.data;
