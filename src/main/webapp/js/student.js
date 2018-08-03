@@ -41,11 +41,14 @@ var studentObj={
 				console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
-                    window.location.href="login.vm"
+					$(".downloadBtn").hide()
+                    //window.location.href="login.vm"
                 }else if(data.code==10004){
                     alert("用户未授权")
-                    window.location.href="login.vm"
+                    $(".downloadBtn").hide()
+                   // window.location.href="login.vm"
                 }else{
+                    $(".downloadBtn").show()
                     for(var i=0;i<data.result.length;i++){
                         $(".ratingForm table tbody").append(studentObj.getSignList(data.result[i]))
 
