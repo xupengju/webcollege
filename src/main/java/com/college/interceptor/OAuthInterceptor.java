@@ -45,13 +45,18 @@ public class OAuthInterceptor extends HandlerInterceptorAdapter {
             Path.JS,
             Path.IMG,
             Path.FILE_UPLOAD,
+            Path.NOTICE_GET,
             Path.NOTICE_LIST,
             Path.ACHIEVEMENT_LIST,
+            Path.ACHIEVEMENT_GET,
             Path.TEACHER_LIST,
-            //Path.RESOURCE_LIST,
+            Path.RESOURCE_LISTS,
+            Path.RESOURCE_GETS,
             Path.FILE_UPLOAD_FILE1,
             Path.FILE_UPLOAD_FILE2,
-            Path.FILE_DOWN_FILE
+            Path.FILE_DOWN_FILE,
+            Path.BASEINFO_SEARCHONE,
+            Path.BASEINFO_GET
     );
 
     @Override

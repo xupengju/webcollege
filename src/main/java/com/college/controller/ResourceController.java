@@ -36,7 +36,7 @@ public class ResourceController extends BaseController {
     private ResourceService resourceService;
 
     /**
-     * get list
+     * get  list  需要权限
      *
      * @param pageNum
      * @param pageSize
@@ -56,6 +56,52 @@ public class ResourceController extends BaseController {
     @RequestMapping(value = Path.RESOURCE_LIST)
     @ResponseBody
     public Map<String, Object> getList(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
+                                       @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
+                                       @RequestParam(value = "id", required = false) Integer id,
+                                       @RequestParam(value = "resourceName", required = false) Integer resourceName,
+                                       @RequestParam(value = "resume", required = false) Integer resume,
+                                       @RequestParam(value = "userId", required = false) Integer userId,
+                                       @RequestParam(value = "type", required = false) Integer type,
+                                       @RequestParam(value = "image", required = false) Integer image,
+                                       @RequestParam(value = "link", required = false) Integer link,
+                                       @RequestParam(value = "content", required = false) Integer content,
+                                       @RequestParam(value = "status", required = false) boolean status,
+                                       @RequestParam(value = "createTime", required = false) String createTime
+    ) {
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("type",type);
+        Page<Resource> page = resourceService.searchPageList(pageNum, pageSize, params);
+        Map<String, Object> resultMap = Maps.newHashMap();
+        logger.info(" ResourceController -->  pageResult :{}", page.getResult());
+        resultMap.put("result", page.getResult());
+        resultMap.put("pages", page.getPages());
+        resultMap.put("startrow", page.getStartRow());
+        resultMap.put("endrow", page.getEndRow());
+        resultMap.put("pagesize", page.getPageSize());
+        resultMap.put("pagenum", page.getPageNum());
+        resultMap.put("total", page.getTotal());
+        return resultMap;
+    }
+
+    /**
+     * 不需要权限
+     * @param pageNum
+     * @param pageSize
+     * @param id
+     * @param resourceName
+     * @param resume
+     * @param userId
+     * @param type
+     * @param image
+     * @param link
+     * @param content
+     * @param status
+     * @param createTime
+     * @return
+     */
+    @RequestMapping(value = Path.RESOURCE_LISTS)
+    @ResponseBody
+    public Map<String, Object> getLists(@RequestParam(value = "pagenum", defaultValue = "1") int pageNum,
                                        @RequestParam(value = "pagesize", defaultValue = "10") int pageSize,
                                        @RequestParam(value = "id", required = false) Integer id,
                                        @RequestParam(value = "resourceName", required = false) Integer resourceName,
@@ -182,6 +228,13 @@ public class ResourceController extends BaseController {
     @RequestMapping(value = Path.RESOURCE_GET)
     @ResponseBody
     public Resp get(@RequestParam(value = "id") Long id) {
+        Resource resource = resourceService.get(id);
+        return null != resource ? Resp.success(resource) : Resp.error(AppCode._10012);
+    }
+
+    @RequestMapping(value = Path.RESOURCE_GETS)
+    @ResponseBody
+    public Resp gets(@RequestParam(value = "id") Long id) {
         Resource resource = resourceService.get(id);
         return null != resource ? Resp.success(resource) : Resp.error(AppCode._10012);
     }
