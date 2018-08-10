@@ -1,6 +1,6 @@
 //地址
-var urlT="http://localhost";
-
+//var urlT="http://localhost";
+var urlT="http://szsy.baoerkejiedu.com"
 $("nav a").has(".navTwo").hover(function(){
 	$(this).find(".navTwo").slideDown(300).parent().siblings().find(".navTwo").stop(true).slideUp(300)
 },function(){
