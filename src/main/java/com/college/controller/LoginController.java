@@ -3,6 +3,7 @@ package com.college.controller;
 import com.college.contants.AppCode;
 import com.college.contants.Path;
 import com.college.entity.User;
+import com.college.entity.UserRole;
 import com.college.model.LoginReqModel;
 import com.college.model.LoginRespModel;
 import com.college.model.Resp;
@@ -40,6 +41,8 @@ public class LoginController extends BaseController {
             loginRespModel.setUserId(loginUser.getId());
             loginRespModel.setRealName(loginUser.getRealName());
             loginRespModel.setToken(token);
+            int roleId = apiUserService.getUserRole(loginUser.getId());
+            loginRespModel.setRol(roleId+"");
             return Resp.success(loginRespModel);
         }
     }
