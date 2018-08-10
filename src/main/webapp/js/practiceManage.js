@@ -42,20 +42,24 @@ var PracticeManageObject={
     ruleList:function (typeNumber) {
 		$.ajax({
 			type:"post",
-            url:urlT+"/api/baseInfo/searchOne.json",
+            url:urlT+"/api/resource/lists.json",
 			data:{
                 token:localStorage.getItem("token"),
-                contentType:4
+                type:13
 			},
 			success:function (da) {
 				//if(da.code==200){
-                    console.log(da)
-                    var data1=da.data
-                    $(".ruleWord").append("<p>"+data1.content+"</p>")
-				/*}else if(da.code==10001){
-                    window.location.href="login.vm"
-                }*/
-
+                console.log(da)
+                var re=da.result;
+                for(var i=0;i<re.length;i++){
+                    $(".ri1 .ruleWord").append("<p myID='"+re[i].id+"'>"+re[i].resourceName+"</p>")
+                }
+                $(".ri1 .ruleWord p").click(function(){
+                    var myID=$(this).attr("myID");
+                    localStorage.setItem("myID",myID);
+                    localStorage.setItem("typeA","rule")
+                    window.location.href="detaiAbout.vm"
+                })
 
             }
 		})

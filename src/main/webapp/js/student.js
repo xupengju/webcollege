@@ -27,7 +27,7 @@ var $ind=localStorage.getItem("studentIndex")
 if($ind){
 	a($(".leftNav li").eq($ind),parseInt($ind)+1)
 }
-
+var $rol=localStorage.getItem("rol")
 var studentObj={
 	//列表
 	signList:function () {
@@ -40,12 +40,14 @@ var studentObj={
 			success:function (data) {
 				console.log(data)
                 if(data.code==10001){
-                    alert("用户未登录")
+                    alert("用户未登录");
 					$(".downloadBtn").hide()
+					$(".studentYe").hide()
                     //window.location.href="login.vm"
                 }else if(data.code==10004){
                     alert("用户未授权")
                     $(".downloadBtn").hide()
+                    $(".studentYe").hide()
                    // window.location.href="login.vm"
                 }else{
                     $(".downloadBtn").show()
@@ -53,6 +55,11 @@ var studentObj={
                         $(".ratingForm table tbody").append(studentObj.getSignList(data.result[i]))
 
                     }
+                    if($rol==1 || $rol==2){
+                        $(".studentYe").show()
+					}else{
+                        $(".studentYe").hide()
+					}
 				}
 
 
@@ -88,7 +95,6 @@ var studentObj={
                 userId:userID
             },
             success:function (data) {
-
                 console.log(data)
                 $(".ratingForm table tbody").html("")
 				for(var i=0;i<data.result.length;i++){
