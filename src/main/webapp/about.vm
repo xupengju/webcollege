@@ -15,7 +15,7 @@
 		<header>
 			<div class="box">
 				<img src="../img/logo2.png"/>
-				<a href="views/login.vm" class="loginBtn">登陆</a>
+				<a href="login.vm" class="loginBtn">登陆</a>
 			</div>
 		</header>
 		<nav>
@@ -86,7 +86,7 @@
 			<div class="rightBox ri1">
 				<h2 class="tc mt30 mb20">学校介绍</h2>
 				
-				<img src="../img/sImg.jpg">
+				<img src="">
 				<p class="word">
 
 				</p>
@@ -96,7 +96,7 @@
 			<div class="rightBox ri2">
 				<h2 class="tc mt30 mb20">基地介绍</h2>
 				
-				<img src="../img/img1.jpg">
+				<img src="">
 				<div class="word">
 
 				</div>
