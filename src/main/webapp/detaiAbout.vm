@@ -71,10 +71,12 @@
 			</a>
 		</nav>
 		<div class="detailAboutContent">
-			<h2 class="tc mt50 mb10">xxxxxxxxxxxxx成果1的展示 <div class="back1">返回</div></h2>
-			<p class="ml512 f18 mb30">2018-12-16</p>
-			<p class="f14">Nulla non viverra tellus, non lobortis leo. Curabitur tristique tempor ultricies. Mauris ut ante eu dui dapibus pulvinar ac id tellus. Nam rutrum nibh ac sem pretium, a malesuada nibh blandit. Curabitur rutrum ipsum nec nisl pretium dictum. Sed at magna id erat efficitur pulvinar. Duis et diam sit amet augue laoreet imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi sit amet vehicula leo. Phasellus pellentesque sapien id tellus elementum, at tempor lectus fermentum. Pellentesque malesuada volutpat orci, at bibendum urna molestie at.</p>
-			<img class="mt20 mb20" src="../../img/img2.jpg">
+
+			<h2 class="tc mt50 mb10"> <div class="back1" onclick="back()">返回</div></h2>
+			<p class="dP1 ml512 f18 mb30"></p>
+			<div class="dP2 f14"> </div>
+            <img class="tu mt20 mb20" src="">
+
 		</div>
 		
 		<footer>

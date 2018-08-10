@@ -35,6 +35,7 @@ var loginObj={
             alert("验证码不能为空")
         }else if(!reg.test(code1)){
             alert("验证码错误")
+            $(".code").val("")
             loginObj.getRandomCode();
         }else{
             if(userName=="" || pwd==""){
@@ -55,11 +56,17 @@ var loginObj={
                             //alert("登陆成功")
                             localStorage.setItem("token",dataP.data.token)
                             localStorage.setItem("userName",userName)
-                            if(userName=="admin"){
+                            console.log(dataP.data.rol)
+                            localStorage.setItem("rol",dataP.data.rol)
+
+                            if(dataP.data.rol==1){//管理员
                                 window.location.href="adminNotice.vm"
+                            }else if(dataP.data.rol==2){//老师
+                                window.location.href="index.vm"
                             }else{
                                 window.location.href="person.vm"
                             }
+
 
                         }else if(dataP.code==10002){//用户名或密码错误
                             alert(dataP.message);

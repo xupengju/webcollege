@@ -62,22 +62,23 @@ var AdminPractiveObject={
     ajaxT:function(title,content){
         $.ajax({
             type:"post",
-            url:urlT+"/api/baseInfo/add.json",
+            url:urlT+"/api/resource/add.json",
             data:{
                 token:localStorage.getItem("token"),
-                contentType:AdminPractiveObject.contentType,
-                title:title,
+                type:13,
+                resourceName:title,
                 content:content
             },
             success:function (data) {
                 console.log(data)
-                if(data.code==200){//成功
-                    alert("上传成功")
-                }else if(data.code==10001){
+                if(data.code==10001){
+                    alert("用户未登录")
                     window.location.href="login.vm"
-
+                }else if(data.code==10004){
+                    alert("用户未授权")
+                    window.location.href="login.vm"
                 }else{
-                    alert(data.message)
+                    alert("上传成功")
                 }
             }
 
@@ -94,13 +95,14 @@ var AdminPractiveObject={
             },
             success:function (data) {
                 console.log(data)
-                if(data.code==200){//成功
-                    alert("上传成功")
-                }else if(data.code==10001){
+                if(data.code==10001){
+                    alert("用户未登录")
                     window.location.href="login.vm"
-
+                }else if(data.code==10004){
+                    alert("用户未授权")
+                    window.location.href="login.vm"
                 }else{
-                    alert(data.message)
+                    alert("上传成功")
                 }
             }
 
@@ -117,13 +119,14 @@ var AdminPractiveObject={
             },
             success:function (data) {
                 console.log(data)
-                if(data.code==200){//成功
-                    alert("上传成功")
-                }else if(data.code==10001){
+                if(data.code==10001){
+                    alert("用户未登录")
                     window.location.href="login.vm"
-
+                }else if(data.code==10004){
+                    alert("用户未授权")
+                    window.location.href="login.vm"
                 }else{
-                    alert(data.message)
+                    alert("上传成功")
                 }
             }
 
@@ -141,13 +144,14 @@ var AdminPractiveObject={
             },
             success:function (data) {
                 console.log(data)
-                if(data.code==200){//成功
-                    alert("上传成功")
-                }else if(data.code==10001){
+                if(data.code==10001){
+                    alert("用户未登录")
                     window.location.href="login.vm"
-
+                }else if(data.code==10004){
+                    alert("用户未授权")
+                    window.location.href="login.vm"
                 }else{
-                    alert(data.message)
+                    alert("上传成功")
                 }
             }
 

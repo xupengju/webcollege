@@ -6,7 +6,8 @@ var indexObj={
         var mySwiper = new Swiper('.swiper-container', {
             autoplay: 1000,//可选选项，自动滑动
             slidesPerView: 5,
-            loop: true
+            loop: true,
+            autoplayDisableOnInteraction:false,
         })
     },
     //新闻列表 上
@@ -87,6 +88,9 @@ var indexObj={
                         +indexObj.eclipseA(result[i].title,50)+'</p></li>')
                 }
                 indexObj.swi()
+                $('.swiper-container img').on('mousedown',function (e) {
+                    e.preventDefault()
+                })
             }
         })
     },
@@ -106,6 +110,7 @@ var indexObj={
 }
 indexObj.newsTop();
 indexObj.newsBottom();
-indexObj.hotWordImg()
+indexObj.hotWordImg();
+
 
 

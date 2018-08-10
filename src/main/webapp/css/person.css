@@ -27,6 +27,7 @@
   font-weight: normal;
 }
 .personBox .btn {
+  cursor:pointer;
   width: 86px;
   height: 30px;
   background: #395b94;
