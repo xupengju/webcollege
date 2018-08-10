@@ -52,6 +52,8 @@ if(typeA=="notice"){
     getC()
 }else if(typeA=="cooperation"){//校企合作
     getB()
+}else if(typeA=="rule"){//规章制度
+    getD()
 }
 function getB(){
     $.ajax({
@@ -71,6 +73,27 @@ function getB(){
             $(".detailAboutContent .dP2").html(a)
             //$(".detailAboutContent .tu").hide()
             $(".detailAboutContent .tu").attr("src",result.image)
+        }
+    })
+}
+function getD(){
+    $.ajax({
+        type:"post",
+        url:urlT+"/api/resource/gets.json",
+        data:{
+            token:localStorage.getItem("token"),
+            id:myID
+        },
+        success:function (dataA) {
+            console.log(dataA)
+            var result=dataA.data;
+            $(".detailAboutContent h2").html(result.resourceName+'<div class="back1" onclick="back()">返回</div>')
+            $(".detailAboutContent .dP1").html(new Date(result.createTime).toLocaleString())
+            console.log(result.content)
+            var a=result.content
+            $(".detailAboutContent .dP2").html(a)
+            //$(".detailAboutContent .tu").hide()
+            $(".detailAboutContent .tu").hide()
         }
     })
 }

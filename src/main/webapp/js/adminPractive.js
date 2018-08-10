@@ -62,11 +62,11 @@ var AdminPractiveObject={
     ajaxT:function(title,content){
         $.ajax({
             type:"post",
-            url:urlT+"/api/baseInfo/add.json",
+            url:urlT+"/api/resource/add.json",
             data:{
                 token:localStorage.getItem("token"),
-                contentType:AdminPractiveObject.contentType,
-                title:title,
+                type:13,
+                resourceName:title,
                 content:content
             },
             success:function (data) {
