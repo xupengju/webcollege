@@ -3,7 +3,7 @@ if(localStorage.getItem("rol")==null){
     alert("用户未登录")
     window.location.href="login.vm"
 }
-var urlT=""
+var urlT="http://szsy.baoerkejiedu.com"
 if($("#editor1").attr("id")!=undefined) {
     var ue1 = UE.getEditor('editor1',{
         toolbars: [
