@@ -10,6 +10,7 @@ public class LoginRespModel implements Serializable {
 
     private Integer userId;
     private String realName;
+    private String rol;
     private String token;
 
     public Integer getUserId() {
@@ -34,5 +35,13 @@ public class LoginRespModel implements Serializable {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }
