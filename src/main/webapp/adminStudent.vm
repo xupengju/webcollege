@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/adminCss.css"/>
     <script src="../../js/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../img/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../../img/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="../../img/zh-cn.js"></script>
@@ -31,7 +32,7 @@
             <option value="">创建学生生产性实习安全责任书</option>
             <option value="">创建实习手册</option>
             <option value="">创建顶岗实习评价表</option>
-
+            <option value="">导入学生</option>
         </select>
         <div class="newsBox1">
             <h2 class="mt20 mb20">创建学生生产性实习安全责任书</h2>
@@ -47,8 +48,16 @@
         </div>
         <div class="newsBox3">
             <h2 class="mt20 mb20">创建顶岗实习评价表</h2>
-                <input type="file" id="file3" name="file">
-                <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file3','顶岗实习评价表')"/>
+            <input type="file" id="file3" name="file">
+            <input type="button" value="上传" onclick="AdminStudentObject.fileUpLoad('file3','顶岗实习评价表')"/>
+        </div>
+        <div class="newsBox4">
+            <h2 class="mt20 mb20">导入学生列表</h2>
+            <form>
+                <input type="file"  name="upfile" id="file4"/>
+                <input type="button" value="上传" onclick="AdminStudentObject.studentUpload('file4')"/>
+
+            </form>
         </div>
     </div>
     <script src="../../js/ajaxfileupload.js"></script>
