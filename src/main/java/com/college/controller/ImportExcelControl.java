@@ -3,19 +3,19 @@ package com.college.controller;
 import com.college.entity.Role;
 import com.college.entity.User;
 import com.college.entity.UserRole;
+import com.college.model.Resp;
 import com.college.service.RoleService;
 import com.college.service.UserRoleService;
 import com.college.service.UserService;
 import com.college.service.user.ApiUserService;
 import com.college.utils.ImportExeclUtil;
-import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -50,7 +50,8 @@ public class ImportExcelControl {
      * @throws Exception
      */
     @RequestMapping(value = "/api/file/importExcel.json", method = {RequestMethod.GET, RequestMethod.POST})
-    public String uploadExcel(HttpServletRequest request) throws Exception {
+    @ResponseBody
+    public Resp uploadExcel(HttpServletRequest request) throws Exception {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         System.out.println("通过传统方式form表单提交方式导入excel文件!");
         InputStream in = null;
@@ -67,7 +68,7 @@ public class ImportExcelControl {
         ImportExeclUtil.printTest(list);
         this.importUser2DB(list);
 //        return "import result success";
-        return "index";
+        return Resp.success();
     }
 
     /**
@@ -86,36 +87,38 @@ public class ImportExcelControl {
                 String userName = "";
                 String salt = "";
                 salt = ApiUserService.getRandomSalt();
-                String password = "";
                 String realName = "";
                 String idCard = "";
                 String roleName = "";
                 Integer roleId = 3; // 默认角色是学生  -- 1：管理员 - 2：教师 -  3：学生
+                int sex = 0;
+                String sexStr;
+                String school = "";
+                String className = "";
+                String classNo = "";
+                String phone = "";
+                String email = "";
                 for (int j = 0; j < cellList.size(); j++) {
                     // System.out.print("    第" + (j + 1) + "列值：");
                     // 第一列 用户名
                     if (j == 0) {
                         userName = cellList.get(j);
-                        if (userName.equals("") || userName == null) {
+                        if ("".equals(userName)) {
                             return;
                         }
                     }
-                    // 第二列 密码 自动初始化 身份ID 后6位
+
                     if (j == 1) {
-//                        password = cellList.get(j);
-                    }
-                    // 第三列 真实姓名
-                    if (j == 2) {
                         realName = cellList.get(j);
                     }
-                    // 第四列 身份ID
-                    if (j == 3) {
+
+                    if (j == 2) {
                         idCard = cellList.get(j);
-                        // 密码 自动初始化 身份ID 后6位
-                        password = idCard.substring(idCard.length() - 6);
                     }
-                    // 第五列 用户角色
-                    if (j == 4) {
+
+
+                    // 第四列 用户角色
+                    if (j == 3) {
                         roleName = cellList.get(j).trim();
                         // 根据roleName 判断 角色id
                         Map<String, Object> map = new HashMap<String, Object>();
@@ -125,42 +128,61 @@ public class ImportExcelControl {
                             roleId = role.getId();
                         }
                     }
+                    //性别
+                    if (j == 4) {
+                        sexStr = cellList.get(j).trim();
+                        if (sexStr.equals("男")){
+                            sex = 1;
+                        }else if (sexStr.equals("女")){
+                            sex = 0;
+                        }else {
+                            sex = 2;
+                        }
+
+                    }
+                    //学号
+                    if (j == 5) {
+                        classNo = cellList.get(j);
+                    }
+                    //学校专业班级
+                    if (j == 6) {
+                        className = cellList.get(j);
+                    }
+                    //联系方式
+                    if (j == 7) {
+                        phone = cellList.get(j);
+                    }
+                    //邮箱
+                    if (j == 8) {
+                        email = cellList.get(j);
+                    }
                     System.out.print("    " + cellList.get(j));
                 }
-                System.out.println();
-                boolean status = true;
-//                String createTime = DateTimeUtil.getDateAndMinute();
                 user.setUserName(userName);
+                String password = idCard.substring(idCard.length()-6);
                 password = ApiUserService.getEncryptedPassword(password, salt);
                 user.setPassword(password);
                 user.setSalt(salt);
                 user.setRealName(realName);
                 user.setIdCard(idCard);
-//                    user.setAdministrator(administrator);
-                user.setStatus(status);
+                user.setStatus(true);
+                user.setSex(sex);
+                user.setPhone(phone);
                 user.setCreateTime(new Date());
-                // 插入之前 校验用户名UserName 是否存在
-                // 判断是否存在相同用户名的(不包含本身)
-                Map<String, Object> paramsMap = Maps.newHashMap();
-                paramsMap.put("userName", user.getUserName());
-                paramsMap.put("status", 1);
-                List<User> userList = userService.findListByParams(paramsMap);
-                Integer userId = null;
-                if (CollectionUtils.isEmpty(userList)) {
-                    // 登录名不重复 添加用户
-                    userId = userService.insert(user);
-                    // 添加用户角色
-                    UserRole userRole = new UserRole();
-                    userRole.setUserId(userId);
-                    userRole.setRoleId(roleId);
-                    userRole.setStatus(true);
-                    userRole.setCreateTime(new Date());
-                    userRoleService.insert(userRole);
-                } else {
-                    // 登录名重复 TODO
-                    logger.error(userName + "用户名已存在！");
-                }
-                logger.info("ImportExcel-addUser userId :{}", userId);
+                user.setClassName(className);
+                user.setClassNo(classNo);
+                user.setSchool(school);
+                user.setEmail(email);
+
+                int userId = userService.insert(user);
+                // 添加用户角色
+                UserRole userRole = new UserRole();
+                userRole.setUserId(userId);
+                userRole.setRoleId(roleId);
+                userRole.setStatus(true);
+                userRole.setCreateTime(new Date());
+                userRoleService.insert(userRole);
+
             }
         }
         logger.info("ImportExcel-addUser user - end");

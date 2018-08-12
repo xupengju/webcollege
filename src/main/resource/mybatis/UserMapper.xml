@@ -1,251 +1,273 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
 <mapper namespace="com.college.repository.UserDao">
 
-	<resultMap id="resultMap" type="com.college.entity.User">
-        <result property="id" column="id"/>
-        <result property="userName" column="userName"/>
-        <result property="password" column="password"/>
-        <result property="salt" column="salt"/>
-        <result property="realName" column="realName"/>
-        <result property="idCard" column="idCard"/>
-        <result property="administrator" column="administrator"/>
-        <result property="status" column="status"/>
-        <result property="createTime" column="createTime"/>
-        <result property="updateTime" column="updateTime"/>
-		 <result property="maxId" column="maxId"/>
-	</resultMap>
-	
-	<!-- 用于select查询公用抽取的列 -->
-	<sql id="columns">
-		id,userName,password,salt,realName,idCard,administrator,status,createTime,updateTime
+    <resultMap id="resultMap" type="com.college.entity.User">
+    <result property="id" column="id"/>
+    <result property="userName" column="userName"/>
+    <result property="password" column="password"/>
+    <result property="salt" column="salt"/>
+    <result property="realName" column="realName"/>
+    <result property="idCard" column="idCard"/>
+    <result property="administrator" column="administrator"/>
+    <result property="status" column="status"/>
+    <result property="createTime" column="createTime"/>
+    <result property="updateTime" column="updateTime"/>
+    <result property="maxId" column="maxId"/>
+    <result property="className" column="className"/>
+    <result property="sex" column="sex"/>
+    <result property="classNo" column="classNo"/>
+    <result property="phone" column="phone"/>
+    <result property="email" column="email"/>
+    <result property="school" column="school" />
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+		id,userName,password,salt,realName,idCard,administrator,status,createTime,updateTime,className,classNo,phone,email,school,sex
 	</sql>
 
-	<sql id="base_columns">
-		id,userName,realName,idCard,status,createTime,updateTime
+    <sql id="base_columns">
+		id,userName,realName,idCard,status,createTime,updateTime,className,classNo,phone,email,school,sex
 	</sql>
-	
-	<!-- 获取单个实体bean -->
-	<select id="get" parameterType="Long" resultType="com.college.entity.User">
-		SELECT <include refid="columns" />
-		FROM user
-		WHERE id=#{id}
-	</select>
 
-	<!-- 新增 -->
-	<insert id="insert" parameterType="com.college.entity.User" useGeneratedKeys="true" keyProperty="id">
+    <!-- 获取单个实体bean -->
+    <select id="get" parameterType="Long" resultType="com.college.entity.User">
+        SELECT
+        <include refid="columns"/>
+        FROM user
+        WHERE id=#{id}
+    </select>
+
+    <!-- 新增 -->
+    <insert id="insert" parameterType="com.college.entity.User" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO user (
         	userName,
         	password,
         	salt,
         	realName,
         	idCard,
+        	sex,
         	administrator,
         	status,
         	createTime,
-        	updateTime
+        	updateTime,
+        	className,
+        	classNo,
+        	phone,
+        	email,
+        	school
 		) VALUES (
         	#{userName},
         	#{password},
         	#{salt},
         	#{realName},
         	#{idCard},
+        	#{sex},
         	#{administrator},
         	#{status},
         	#{createTime},
-        	#{updateTime}
+        	#{updateTime},
+        	#{className},
+        	#{classNo},
+        	#{phone},
+        	#{email},
+        	#{school}
 		)
 	</insert>
-	
-	<!-- 更新 -->
-	<update id="update" >
+
+    <!-- 更新 -->
+    <update id="update">
         UPDATE user
-		<set>
-			<if test="userName!=null and userName!='' ">
-				userName = #{userName},
-			</if>
-			<if test="password!=null and password!='' ">
-				password = #{password},
-			</if>
-			<if test="salt!=null and salt!='' ">
-				salt = #{salt},
-			</if>
-			<if test="realName!=null and realName!='' ">
-				realName = #{realName},
-			</if>
-			<if test="idCard!=null and idCard!='' ">
-				idCard = #{idCard},
-			</if>
-			<if test="administrator!=null and administrator!='' ">
-				administrator = #{administrator},
-			</if>
-			<if test="status!=null and status!='' ">
-				status = #{status},
-			</if>
-			<if test="createTime!=null and createTime!='' ">
-				createTime = #{createTime},
-			</if>
-			<if test="updateTime!=null and updateTime!='' ">
-				updateTime = #{updateTime}
-			</if>
-		</set>
-        WHERE 
-	        id = #{id}
-	</update>
-	
-	<!-- 删除用户 -->
-	<delete id="delete" parameterType="Integer">
+        <set>
+            <if test="userName!=null and userName!='' ">
+                userName = #{userName},
+            </if>
+            <if test="password!=null and password!='' ">
+                password = #{password},
+            </if>
+            <if test="salt!=null and salt!='' ">
+                salt = #{salt},
+            </if>
+            <if test="realName!=null and realName!='' ">
+                realName = #{realName},
+            </if>
+            <if test="idCard!=null and idCard!='' ">
+                idCard = #{idCard},
+            </if>
+            <if test="administrator!=null and administrator!='' ">
+                administrator = #{administrator},
+            </if>
+            <if test="status!=null and status!='' ">
+                status = #{status},
+            </if>
+            <if test="createTime!=null and createTime!='' ">
+                createTime = #{createTime},
+            </if>
+            <if test="updateTime!=null and updateTime!='' ">
+                updateTime = #{updateTime}
+            </if>
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="delete" parameterType="Integer">
 	     DELETE FROM user WHERE id=#{id}
 	</delete>
 
-	<!-- 查询分页列表 -->
-	<select id="searchPageList" resultMap="resultMap">
-		SELECT <include refid="base_columns" />
-		FROM user
-		<where>
-	       <if test="searchFields.userName != null and searchFields.userName != ''">
-				AND userName = #{searchFields.userName}
-			</if>
-	       <if test="searchFields.password != null and searchFields.password != ''">
-				AND password = #{searchFields.password}
-			</if>
-	       <if test="searchFields.salt != null and searchFields.salt != ''">
-				AND salt = #{searchFields.salt}
-			</if>
-	       <if test="searchFields.realName != null and searchFields.realName != ''">
-				AND realName = #{searchFields.realName}
-			</if>
-	       <if test="searchFields.idCard != null and searchFields.idCard != ''">
-				AND idCard = #{searchFields.idCard}
-			</if>
-	       <if test="searchFields.administrator != null and searchFields.administrator != ''">
-				AND administrator = #{searchFields.administrator}
-			</if>
-	       <if test="searchFields.status != null and searchFields.status != ''">
-				AND status = #{searchFields.status}
-			</if>
-	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
-				AND createTime = #{searchFields.createTime}
-			</if>
-	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
-				AND updateTime = #{searchFields.updateTime}
-			</if>
-		</where>
-	</select>
-	
-	<!--条件查询分页记录总数-->
-	<select id="getTotalCount" resultType="Long">
-		SELECT count(1)
-		FROM user
-		<where>
-	       <if test="searchFields.userName != null and searchFields.userName != ''">
-				AND userName = #{searchFields.userName}
-			</if>
-	       <if test="searchFields.password != null and searchFields.password != ''">
-				AND password = #{searchFields.password}
-			</if>
-	       <if test="searchFields.salt != null and searchFields.salt != ''">
-				AND salt = #{searchFields.salt}
-			</if>
-	       <if test="searchFields.realName != null and searchFields.realName != ''">
-				AND realName = #{searchFields.realName}
-			</if>
-	       <if test="searchFields.idCard != null and searchFields.idCard != ''">
-				AND idCard = #{searchFields.idCard}
-			</if>
-	       <if test="searchFields.administrator != null and searchFields.administrator != ''">
-				AND administrator = #{searchFields.administrator}
-			</if>
-	       <if test="searchFields.status != null and searchFields.status != ''">
-				AND status = #{searchFields.status}
-			</if>
-	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
-				AND createTime = #{searchFields.createTime}
-			</if>
-	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
-				AND updateTime = #{searchFields.updateTime}
-			</if>
-		</where>
-	</select>
+    <!-- 查询分页列表 -->
+    <select id="searchPageList" resultMap="resultMap">
+        SELECT
+        <include refid="base_columns"/>
+        FROM user
+        <where>
+            <if test="searchFields.userName != null and searchFields.userName != ''">
+                AND userName = #{searchFields.userName}
+            </if>
+            <if test="searchFields.password != null and searchFields.password != ''">
+                AND password = #{searchFields.password}
+            </if>
+            <if test="searchFields.salt != null and searchFields.salt != ''">
+                AND salt = #{searchFields.salt}
+            </if>
+            <if test="searchFields.realName != null and searchFields.realName != ''">
+                AND realName = #{searchFields.realName}
+            </if>
+            <if test="searchFields.idCard != null and searchFields.idCard != ''">
+                AND idCard = #{searchFields.idCard}
+            </if>
+            <if test="searchFields.administrator != null and searchFields.administrator != ''">
+                AND administrator = #{searchFields.administrator}
+            </if>
+            <if test="searchFields.status != null and searchFields.status != ''">
+                AND status = #{searchFields.status}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+                AND updateTime = #{searchFields.updateTime}
+            </if>
+        </where>
+    </select>
 
-	<!-- 查询列表 -->
-	<select id="findListByParams" resultMap="resultMap">
-		SELECT <include refid="columns" />
-		FROM user
-		<where>
-	       <if test="searchFields.userName != null and searchFields.userName != ''">
-				AND userName = #{searchFields.userName}
-			</if>
-	       <if test="searchFields.password != null and searchFields.password != ''">
-				AND password = #{searchFields.password}
-			</if>
-	       <if test="searchFields.salt != null and searchFields.salt != ''">
-				AND salt = #{searchFields.salt}
-			</if>
-	       <if test="searchFields.realName != null and searchFields.realName != ''">
-				AND realName = #{searchFields.realName}
-			</if>
-	       <if test="searchFields.idCard != null and searchFields.idCard != ''">
-				AND idCard = #{searchFields.idCard}
-			</if>
-	       <if test="searchFields.administrator != null and searchFields.administrator != ''">
-				AND administrator = #{searchFields.administrator}
-			</if>
-	       <if test="searchFields.status != null and searchFields.status != ''">
-				AND status = #{searchFields.status}
-			</if>
-	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
-				AND createTime = #{searchFields.createTime}
-			</if>
-	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
-				AND updateTime = #{searchFields.updateTime}
-			</if>
-		</where>
-		ORDER BY
-		createTime DESC
-	</select>
-	
-	<!-- 查询单个 -->
-	<select id="searchOne" resultMap="resultMap">
-		SELECT <include refid="columns" />
-		FROM user
-		<where>
-	       <if test="searchFields.userName != null and searchFields.userName != ''">
-				AND userName = #{searchFields.userName}
-			</if>
-	       <if test="searchFields.password != null and searchFields.password != ''">
-				AND password = #{searchFields.password}
-			</if>
-	       <if test="searchFields.salt != null and searchFields.salt != ''">
-				AND salt = #{searchFields.salt}
-			</if>
-	       <if test="searchFields.realName != null and searchFields.realName != ''">
-				AND realName = #{searchFields.realName}
-			</if>
-	       <if test="searchFields.idCard != null and searchFields.idCard != ''">
-				AND idCard = #{searchFields.idCard}
-			</if>
-	       <if test="searchFields.administrator != null and searchFields.administrator != ''">
-				AND administrator = #{searchFields.administrator}
-			</if>
-	       <if test="searchFields.status != null and searchFields.status != ''">
-				AND status = #{searchFields.status}
-			</if>
-	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
-				AND createTime = #{searchFields.createTime}
-			</if>
-	       <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
-				AND updateTime = #{searchFields.updateTime}
-			</if>
-		</where>
-		limit 1
-	</select>
+    <!--条件查询分页记录总数-->
+    <select id="getTotalCount" resultType="Long">
+        SELECT count(1)
+        FROM user
+        <where>
+            <if test="searchFields.userName != null and searchFields.userName != ''">
+                AND userName = #{searchFields.userName}
+            </if>
+            <if test="searchFields.password != null and searchFields.password != ''">
+                AND password = #{searchFields.password}
+            </if>
+            <if test="searchFields.salt != null and searchFields.salt != ''">
+                AND salt = #{searchFields.salt}
+            </if>
+            <if test="searchFields.realName != null and searchFields.realName != ''">
+                AND realName = #{searchFields.realName}
+            </if>
+            <if test="searchFields.idCard != null and searchFields.idCard != ''">
+                AND idCard = #{searchFields.idCard}
+            </if>
+            <if test="searchFields.administrator != null and searchFields.administrator != ''">
+                AND administrator = #{searchFields.administrator}
+            </if>
+            <if test="searchFields.status != null and searchFields.status != ''">
+                AND status = #{searchFields.status}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+                AND updateTime = #{searchFields.updateTime}
+            </if>
+        </where>
+    </select>
 
-	<!-- 查询分页学生列表 -->
-	<select id="pageQueryStudentList" resultMap="resultMap">
-		SELECT
+    <!-- 查询列表 -->
+    <select id="findListByParams" resultMap="resultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM user
+        <where>
+            <if test="searchFields.userName != null and searchFields.userName != ''">
+                AND userName = #{searchFields.userName}
+            </if>
+            <if test="searchFields.password != null and searchFields.password != ''">
+                AND password = #{searchFields.password}
+            </if>
+            <if test="searchFields.salt != null and searchFields.salt != ''">
+                AND salt = #{searchFields.salt}
+            </if>
+            <if test="searchFields.realName != null and searchFields.realName != ''">
+                AND realName = #{searchFields.realName}
+            </if>
+            <if test="searchFields.idCard != null and searchFields.idCard != ''">
+                AND idCard = #{searchFields.idCard}
+            </if>
+            <if test="searchFields.administrator != null and searchFields.administrator != ''">
+                AND administrator = #{searchFields.administrator}
+            </if>
+            <if test="searchFields.status != null and searchFields.status != ''">
+                AND status = #{searchFields.status}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+                AND updateTime = #{searchFields.updateTime}
+            </if>
+        </where>
+        ORDER BY
+        createTime DESC
+    </select>
+
+    <!-- 查询单个 -->
+    <select id="searchOne" resultMap="resultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM user
+        <where>
+            <if test="searchFields.userName != null and searchFields.userName != ''">
+                AND userName = #{searchFields.userName}
+            </if>
+            <if test="searchFields.password != null and searchFields.password != ''">
+                AND password = #{searchFields.password}
+            </if>
+            <if test="searchFields.salt != null and searchFields.salt != ''">
+                AND salt = #{searchFields.salt}
+            </if>
+            <if test="searchFields.realName != null and searchFields.realName != ''">
+                AND realName = #{searchFields.realName}
+            </if>
+            <if test="searchFields.idCard != null and searchFields.idCard != ''">
+                AND idCard = #{searchFields.idCard}
+            </if>
+            <if test="searchFields.administrator != null and searchFields.administrator != ''">
+                AND administrator = #{searchFields.administrator}
+            </if>
+            <if test="searchFields.status != null and searchFields.status != ''">
+                AND status = #{searchFields.status}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+                AND updateTime = #{searchFields.updateTime}
+            </if>
+        </where>
+        limit 1
+    </select>
+
+    <!-- 查询分页学生列表 -->
+    <select id="pageQueryStudentList" resultMap="resultMap">
+        SELECT
         t2.id,
         t2.userName,
         t2.realName,
@@ -253,79 +275,79 @@
         t2. STATUS,
         t2.createTime,
         t2.updateTime
-		FROM
-		user_role  t1
-		JOIN user t2 ON t1.userid = t2.id
-		WHERE
-		roleId = '3'
-		<where>
-			<if test="searchFields.userName != null and searchFields.userName != ''">
-				AND userName = #{searchFields.userName}
-			</if>
-			<if test="searchFields.password != null and searchFields.password != ''">
-				AND password = #{searchFields.password}
-			</if>
-			<if test="searchFields.salt != null and searchFields.salt != ''">
-				AND salt = #{searchFields.salt}
-			</if>
-			<if test="searchFields.realName != null and searchFields.realName != ''">
-				AND realName = #{searchFields.realName}
-			</if>
-			<if test="searchFields.idCard != null and searchFields.idCard != ''">
-				AND idCard = #{searchFields.idCard}
-			</if>
-			<if test="searchFields.administrator != null and searchFields.administrator != ''">
-				AND administrator = #{searchFields.administrator}
-			</if>
-			<if test="searchFields.status != null and searchFields.status != ''">
-				AND status = #{searchFields.status}
-			</if>
-			<if test="searchFields.createTime != null and searchFields.createTime != ''">
-				AND createTime = #{searchFields.createTime}
-			</if>
-			<if test="searchFields.updateTime != null and searchFields.updateTime != ''">
-				AND updateTime = #{searchFields.updateTime}
-			</if>
-		</where>
-	</select>
+        FROM
+        user_role t1
+        JOIN user t2 ON t1.userid = t2.id
+        WHERE
+        roleId = '3'
+        <where>
+            <if test="searchFields.userName != null and searchFields.userName != ''">
+                AND userName = #{searchFields.userName}
+            </if>
+            <if test="searchFields.password != null and searchFields.password != ''">
+                AND password = #{searchFields.password}
+            </if>
+            <if test="searchFields.salt != null and searchFields.salt != ''">
+                AND salt = #{searchFields.salt}
+            </if>
+            <if test="searchFields.realName != null and searchFields.realName != ''">
+                AND realName = #{searchFields.realName}
+            </if>
+            <if test="searchFields.idCard != null and searchFields.idCard != ''">
+                AND idCard = #{searchFields.idCard}
+            </if>
+            <if test="searchFields.administrator != null and searchFields.administrator != ''">
+                AND administrator = #{searchFields.administrator}
+            </if>
+            <if test="searchFields.status != null and searchFields.status != ''">
+                AND status = #{searchFields.status}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+                AND updateTime = #{searchFields.updateTime}
+            </if>
+        </where>
+    </select>
 
-	<!--条件查询分页记录总数-->
-	<select id="getStudentTotalCount" resultType="Long">
-		SELECT count(1)
-		FROM
-		user_role  t1
-		JOIN user t2 ON t1.userid = t2.id
-		WHERE
-		roleId = '3'
-		<where>
-			<if test="searchFields.userName != null and searchFields.userName != ''">
-				AND userName = #{searchFields.userName}
-			</if>
-			<if test="searchFields.password != null and searchFields.password != ''">
-				AND password = #{searchFields.password}
-			</if>
-			<if test="searchFields.salt != null and searchFields.salt != ''">
-				AND salt = #{searchFields.salt}
-			</if>
-			<if test="searchFields.realName != null and searchFields.realName != ''">
-				AND realName = #{searchFields.realName}
-			</if>
-			<if test="searchFields.idCard != null and searchFields.idCard != ''">
-				AND idCard = #{searchFields.idCard}
-			</if>
-			<if test="searchFields.administrator != null and searchFields.administrator != ''">
-				AND administrator = #{searchFields.administrator}
-			</if>
-			<if test="searchFields.status != null and searchFields.status != ''">
-				AND status = #{searchFields.status}
-			</if>
-			<if test="searchFields.createTime != null and searchFields.createTime != ''">
-				AND createTime = #{searchFields.createTime}
-			</if>
-			<if test="searchFields.updateTime != null and searchFields.updateTime != ''">
-				AND updateTime = #{searchFields.updateTime}
-			</if>
-		</where>
-	</select>
+    <!--条件查询分页记录总数-->
+    <select id="getStudentTotalCount" resultType="Long">
+        SELECT count(1)
+        FROM
+        user_role t1
+        JOIN user t2 ON t1.userid = t2.id
+        WHERE
+        roleId = '3'
+        <where>
+            <if test="searchFields.userName != null and searchFields.userName != ''">
+                AND userName = #{searchFields.userName}
+            </if>
+            <if test="searchFields.password != null and searchFields.password != ''">
+                AND password = #{searchFields.password}
+            </if>
+            <if test="searchFields.salt != null and searchFields.salt != ''">
+                AND salt = #{searchFields.salt}
+            </if>
+            <if test="searchFields.realName != null and searchFields.realName != ''">
+                AND realName = #{searchFields.realName}
+            </if>
+            <if test="searchFields.idCard != null and searchFields.idCard != ''">
+                AND idCard = #{searchFields.idCard}
+            </if>
+            <if test="searchFields.administrator != null and searchFields.administrator != ''">
+                AND administrator = #{searchFields.administrator}
+            </if>
+            <if test="searchFields.status != null and searchFields.status != ''">
+                AND status = #{searchFields.status}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.updateTime != null and searchFields.updateTime != ''">
+                AND updateTime = #{searchFields.updateTime}
+            </if>
+        </where>
+    </select>
 
 </mapper> 

@@ -58,8 +58,21 @@ public class User implements Serializable {
 	 * 更新时间
 	 */
 	private java.util.Date updateTime;
+
+	private String className;
+
+	private String classNo;
+
+	private String email;
+
+	private String school;
+
+	private Integer sex;
+
+	private String phone;
 	//maxId
 	private Integer maxId;
+
 
 	public Integer getId() {
 		return this.id;
@@ -140,6 +153,54 @@ public class User implements Serializable {
 		this.maxId = maxId;
 	}
 
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
+	public String getClassNo() {
+		return classNo;
+	}
+
+	public void setClassNo(String classNo) {
+		this.classNo = classNo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
+
+	public Integer getSex() {
+		return sex;
+	}
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
@@ -153,6 +214,12 @@ public class User implements Serializable {
 				", status=" + status +
 				", createTime=" + createTime +
 				", updateTime=" + updateTime +
+				", className='" + className + '\'' +
+				", classNo='" + classNo + '\'' +
+				", email='" + email + '\'' +
+				", school='" + school + '\'' +
+				", sex=" + sex +
+				", phone='" + phone + '\'' +
 				", maxId=" + maxId +
 				'}';
 	}
