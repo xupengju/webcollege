@@ -100,9 +100,7 @@ var studentObj={
                 $(".ratingForm table tbody").html("")
 				for(var i=0;i<data.result.length;i++){
 					$(".ratingForm table tbody").append(studentObj.getSignList(data.result[i]))
-
 				}
-
             }
         })
 	},
