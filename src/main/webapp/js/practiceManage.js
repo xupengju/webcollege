@@ -49,7 +49,7 @@ var PracticeManageObject={
 			},
 			success:function (da) {
 				//if(da.code==200){
-                console.log(da)
+                //console.log(da)
                 var re=da.result;
                 for(var i=0;i<re.length;i++){
                     $(".ri1 .ruleWord").append("<p myID='"+re[i].id+"'>"+re[i].resourceName+"</p>")
@@ -75,7 +75,7 @@ var PracticeManageObject={
             },
             success:function (da) {
             	//if(da.code==200){
-                    console.log(da)
+                    //console.log(da)
                     var data1=da.data
                     if(index==2 || index==3){
                         $(".ri"+index+" img").attr("src",data1.image);

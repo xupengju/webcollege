@@ -28,6 +28,7 @@ if($ind){
 	a($(".leftNav li").eq($ind),parseInt($ind)+1)
 }
 var $rol=localStorage.getItem("rol")
+console.log($rol)
 var studentObj={
 	//列表
 	signList:function () {

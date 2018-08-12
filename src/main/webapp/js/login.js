@@ -49,16 +49,20 @@ var loginObj={
                         password:pwd,
                     },
                     success:function(dataP){
-                        console.log(dataP)
+                        //console.log(dataP)
                         if(dataP.code==900){//服务器错误
                             alert(dataP.message)
                         }else if(dataP.code==200){//成功
                             //alert("登陆成功")
                             localStorage.setItem("token",dataP.data.token)
                             localStorage.setItem("userName",userName)
-                            console.log(dataP.data.rol)
+                           // console.log(dataP.data.rol)
                             localStorage.setItem("rol",dataP.data.rol)
+                            //计时
+                            //console.log(getSday(0.25))
+                            var lastTime=getSday(0.25).getTime()
 
+                            localStorage.setItem("lastTime",lastTime)
                             if(dataP.data.rol==1){//管理员
                                 window.location.href="adminNotice.vm"
                             }else if(dataP.data.rol==2){//老师
@@ -66,7 +70,6 @@ var loginObj={
                             }else{
                                 window.location.href="person.vm"
                             }
-
 
                         }else if(dataP.code==10002){//用户名或密码错误
                             alert(dataP.message);
@@ -92,4 +95,9 @@ var loginObj={
 loginObj.getRandomCode();
 
 
-
+function getSday(n){
+    var now=new Date();
+    var time=now.getTime();
+    time+=n*24*60*60*1000;
+    return new Date(time);
+}
