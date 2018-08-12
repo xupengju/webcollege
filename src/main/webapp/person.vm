@@ -74,7 +74,7 @@
         </div>
     </a>
 </nav>
-<div class="personBox">
+<div style="display: none" class="personBox">
     <h3 class="tc mt30 mb20">个人信息</h3>
     <div class="btn" onclick="personObj.sign()">签到</div>
     <p>
