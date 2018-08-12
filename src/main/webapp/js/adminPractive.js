@@ -56,7 +56,7 @@ var AdminPractiveObject={
         }
 
 
-        console.log(content,AdminPractiveObject.contentType)
+        //console.log(content,AdminPractiveObject.contentType)
 
     },
     ajaxT:function(title,content){
@@ -70,7 +70,7 @@ var AdminPractiveObject={
                 content:content
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -94,7 +94,7 @@ var AdminPractiveObject={
                 image:image
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -118,7 +118,7 @@ var AdminPractiveObject={
                 content:content
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -143,7 +143,7 @@ var AdminPractiveObject={
                 content:content
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"

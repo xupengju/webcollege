@@ -149,7 +149,7 @@ var AdminAboutObject={
 
     //单图上传  待调试
     imgUpLoad:function (fileId, ImgId) {
-        console.log(fileId,ImgId)
+        //console.log(fileId,ImgId)
         $.ajaxFileUpload({
             url :  urlT+ "/api/file/upload.json",
             type : 'post',

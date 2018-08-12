@@ -44,7 +44,7 @@ var aboutObj={
             	contentType:contentType
 			},
 			success:function(data1) {
-				console.log(data1)
+				//console.log(data1)
 				//if(data1.code==200){
                     var result=data1.data
                     $(".ri"+index+" img").eq(0).attr("src",result.image);
@@ -66,9 +66,9 @@ var aboutObj={
 				pagenum:pagenum
             },
             success:function(data) {
-                console.log(data)
+                //console.log(data)
             	//if(data.code==200){
-                    console.log(data)
+                    //console.log(data)
                     var resultA=data.result;
                     for(var i=0;i<resultA.length;i++){
                         $(".ri3 .achev").append(aboutObj.getAchievementList(resultA[i]))
@@ -116,7 +116,7 @@ var aboutObj={
 				pagenum:pagenum
             },
             success:function(data){
-                console.log(data)
+                //console.log(data)
             	//if(data.code==200){
                     for(var i=0;i<data.result.length;i++){
                         $(".twoContent3 .rightBox").eq(index).find(".teacher").append(aboutObj.getTeacher1(data.result[i]))

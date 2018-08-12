@@ -27,7 +27,7 @@ var AdminStudentObject={
                 content:content
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -43,7 +43,7 @@ var AdminStudentObject={
     },
     //上传文件
     fileUpLoad:function (fileId,word) {
-        console.log(fileId)
+        //console.log(fileId)
         $.ajaxFileUpload({
             url :  urlT+ "/api/file/uploadfile1.json",
             type : 'post',
@@ -52,11 +52,11 @@ var AdminStudentObject={
             dataType : 'application/json',
             async : true,
             success : function(data, status) {
-                console.log(data,status)
+                //console.log(data,status)
                 if(status=="success"){
                     //上传
                     var w=data.substring(81,data.length-10)
-                    console.log(w)
+                    //console.log(w)
                     if(w!==word){
                         alert("请上传文件名为'"+word+"'的文件")
                     }else{
@@ -67,7 +67,36 @@ var AdminStudentObject={
             }
         });
     },
+    //导入学生列表
+    studentUpload:function(fileId){
+     
+        var fileDir = $("#"+fileId).val();
+        var suffix = fileDir.substr(fileDir.lastIndexOf("."));
 
+        if(fileDir == ""){
+            alert("选择需要导入的Excel文件!");
+
+        }else if(".xls" != suffix && ".xlsx" != suffix ){
+            alert("选择Excel格式的文件导入!");
+        }else{
+            $.ajaxFileUpload({
+                url :  urlT+ "/api/file/importExcel.json",
+                type: 'post',
+                secureuri: false,
+                data: {},
+                fileElementId: "file4",
+                dataType: 'json',
+                success: function (rel, status) {
+                    //console.log(rel)
+                    if (rel.code == 200) {
+                       alert("导入成功")
+                    } else{
+                        alert(rel.message)
+                    }
+                }
+            })
+        }
+    }
 
 
 }

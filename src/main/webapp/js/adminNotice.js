@@ -9,7 +9,7 @@ var AdminNoticeObject={
         var tittle=$(".newsBox"+index+" .tit").val();
         var createTime=$(".newsBox"+index+" .timeA").val();
         createTime=createTime.split("T").join(" ")+":00"
-        console.log(createTime)
+        //console.log(createTime)
         var content=eval("ue"+index).getContent();
         var image=$(".newsBox"+index+" img").attr("src")
         if(content=="" || tittle=="" || createTime==""){
@@ -22,7 +22,7 @@ var AdminNoticeObject={
 
     },
     ajaxA:function(typeA,tittle,createTime,content,image){
-        console.log(createTime)
+        //console.log(createTime)
         $.ajax({
             type:"post",
             url:urlT+ "/api/notice/add.json",
@@ -36,7 +36,7 @@ var AdminNoticeObject={
                 image:image
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -51,7 +51,7 @@ var AdminNoticeObject={
     },
     //单图上传  待调试
     imgUpLoad:function (fileId, ImgId) {
-        console.log(fileId,ImgId)
+        //console.log(fileId,ImgId)
         $.ajaxFileUpload({
             url :  urlT+ "/api/file/upload.json",
             type : 'post',
