@@ -34,18 +34,18 @@ var personObj={
     messageShow:function(data){
         console.log(data)
         $(".personBox p").eq(0).find("b").html(data.user.realName);
-        $(".personBox p").eq(1).find("b").html(data.user.idCard);//身份证
-        if((data.user.sex==0){
-            $(".personBox p").eq(2).find("b").html("女");//性别
+       // $(".personBox p").eq(1).find("b").html(data.user.idCard);//身份证
+        if(data.user.sex==0){
+            $(".personBox p").eq(1).find("b").html("女");//性别
         }else if(data.user.sex==1){
-            $(".personBox p").eq(2).find("b").html("男");//性别
+            $(".personBox p").eq(1).find("b").html("男");//性别
         }else if(data.user.sex==2){
-            $(".personBox p").eq(2).find("b").html("未填写");//性别
+            $(".personBox p").eq(1).find("b").html("未填写");//性别
         }
-        $(".personBox p").eq(3).find("b").html(data.user.classNo);//学号
-        $(".personBox p").eq(4).find("b").html(data.user.school);//学校
-        $(".personBox p").eq(5).find("b").html(data.user.realName);//qq
-        $(".personBox p").eq(6).find("b").html(data.user.email);//邮箱
+        $(".personBox p").eq(2).find("b").html(data.user.classNo);//学号
+        $(".personBox p").eq(3).find("b").html(data.user.school+" "+data.user.className);//学校
+        $(".personBox p").eq(4).find("b").html(data.user.phone);//联系方式
+        $(".personBox p").eq(5).find("b").html(data.user.email);//邮箱
         //未完
     },
     //判断是否已签到
