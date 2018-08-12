@@ -31,12 +31,13 @@ var $rol=localStorage.getItem("rol")
 console.log($rol)
 var studentObj={
 	//列表
-	signList:function () {
+	signList:function (pagenum) {
 		$.ajax({
 			type:"post",
 			url:urlT+"/api/signin/list.json",
 			data:{
-				token:localStorage.getItem("token")
+				token:localStorage.getItem("token"),
+                pagenum:pagenum
 			},
 			success:function (data) {
 				console.log(data)
@@ -61,6 +62,16 @@ var studentObj={
 					}else{
                         $(".studentYe").hide()
 					}
+					//分页器
+                    var p=data.pages;
+                    $("#page").paging({
+                        pageNo:data.pagenum,
+                        totalPage: p,
+                        callback: function(num) {
+                            $(".ratingForm table tbody").html("")
+                            studentObj.signList(num)
+                        }
+                    })
 				}
 
 
@@ -98,6 +109,7 @@ var studentObj={
             success:function (data) {
                 console.log(data)
                 $(".ratingForm table tbody").html("")
+				$("#page").hide()
 				for(var i=0;i<data.result.length;i++){
 					$(".ratingForm table tbody").append(studentObj.getSignList(data.result[i]))
 				}
@@ -112,4 +124,4 @@ var studentObj={
 		window.location.href=urlT+"/api/file/download.json?fileName="+word;
     }
 }
-studentObj.signList()
+studentObj.signList(1)
