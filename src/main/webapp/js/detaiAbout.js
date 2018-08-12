@@ -1,5 +1,5 @@
 
-console.log(window.location.href)
+//console.log(window.location.href)
 var myID=localStorage.getItem("myID")
 //类型
 var typeA=localStorage.getItem("typeA")
@@ -13,7 +13,7 @@ if(typeA=="notice"){
             id:myID
         },
         success:function (dataA) {
-            console.log(dataA)
+            //console.log(dataA)
             var result=dataA.data;
            // if(dataA.code==200){
                 $(".detailAboutContent h2").html(result.title+'<div class="back1" onclick="back()">返回</div>')
@@ -32,7 +32,7 @@ if(typeA=="notice"){
             id:myID
         },
         success:function (dataA) {
-            console.log(dataA)
+            //console.log(dataA)
             var result=dataA.data;
 
             //if(dataA.code==200){
@@ -64,11 +64,11 @@ function getB(){
             id:myID
         },
         success:function (dataA) {
-            console.log(dataA)
+            //console.log(dataA)
             var result=dataA.data;
             $(".detailAboutContent h2").html(result.resourceName+'<div class="back1" onclick="back()">返回</div>')
             $(".detailAboutContent .dP1").html(new Date(result.createTime).toLocaleString())
-            console.log(result.content)
+            //console.log(result.content)
             var a=result.content
             $(".detailAboutContent .dP2").html(a)
             //$(".detailAboutContent .tu").hide()
@@ -85,11 +85,11 @@ function getD(){
             id:myID
         },
         success:function (dataA) {
-            console.log(dataA)
+            //console.log(dataA)
             var result=dataA.data;
             $(".detailAboutContent h2").html(result.resourceName+'<div class="back1" onclick="back()">返回</div>')
             $(".detailAboutContent .dP1").html(new Date(result.createTime).toLocaleString())
-            console.log(result.content)
+            //console.log(result.content)
             var a=result.content
             $(".detailAboutContent .dP2").html(a)
             //$(".detailAboutContent .tu").hide()
@@ -107,11 +107,11 @@ function getC(){
         },
         success:function (dataA) {
             if(dataA.code==200){
-                console.log(dataA)
+                //console.log(dataA)
                 var result=dataA.data;
                 $(".detailAboutContent h2").html(result.resourceName+'<div class="back1" onclick="back()">返回</div>')
                 $(".detailAboutContent .dP1").html(new Date(result.createTime).toLocaleString())
-                console.log(result.content)
+                //console.log(result.content)
                 var a=result.content
                 $(".detailAboutContent .dP2").html(a)
                 $(".detailAboutContent .tu").hide()
