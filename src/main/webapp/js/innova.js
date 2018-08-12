@@ -63,7 +63,7 @@ var InnovationObject={
             },
             success:function (data) {
              //   if(data.code==200){
-                    console.log(data)
+                    //console.log(data)
                     var re=data.result;
                     for(var i=0;i<re.length;i++){
                         $(".ri3").find(".t").append(InnovationObject.getList(re[i]))
