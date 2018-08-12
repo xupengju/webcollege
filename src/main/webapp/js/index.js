@@ -20,7 +20,7 @@ var indexObj={
                 type:1
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 var result=data.result;
                 indexObj.showMessage(0,result)
 
@@ -37,7 +37,7 @@ var indexObj={
                 type:2
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 var result=data.result;
                 indexObj.showMessage(1,result)
             }
@@ -80,7 +80,7 @@ var indexObj={
                 type:3
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 var result=data.result;
                 for(var i=1;i<result.length;i++){
                     $(".footer1 ul").append('<li class="swiper-slide"> <img src="'

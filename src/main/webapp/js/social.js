@@ -70,7 +70,7 @@ var SocialObject={
             },
             success:function (dataA) {
               //  if(dataA.code==200){
-                    console.log(dataA)
+                    //console.log(dataA)
                     var da=dataA.data
                     $(".twoContent"+index1+" .rightBox").eq(index2).find("img").attr("src",da.image);
                     $(".twoContent"+index1+" .rightBox").eq(index2).find(".word").html(da.content);
@@ -92,7 +92,7 @@ var SocialObject={
             },
             success:function (dataA) {
               //  if(dataA.code==200){
-                    console.log(dataA)
+                    //console.log(dataA)
 
                     var da=dataA.data
                     $(".ri"+index).find("img").attr("src",da.image);
@@ -118,7 +118,7 @@ var SocialObject={
             },
             success:function (data) {
                // if(data.code==200){
-                    console.log(data)
+                    //console.log(data)
                     var re=data.result;
                     for(var i=0;i<re.length;i++){
                         $(".ri3 .schoolList").append(SocialObject.getList(re[i]))

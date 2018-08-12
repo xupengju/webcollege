@@ -65,7 +65,7 @@ var TeachingResourcesObject={
                 pagenum:pagenum
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                    // window.location.href="login.vm"
@@ -117,8 +117,8 @@ var TeachingResourcesObject={
                     // console.log(data)
                     var re=data.result;
                     for(var i=0;i<re.length;i++){
-                        console.log(index)
-                        console.log(re[i])
+                        //console.log(index)
+                        //console.log(re[i])
                         $(".twoContent1 .rightBox").eq(index).find(".t").append(TeachingResourcesObject.getVideoList(re[i]))
                     }
                     $(".twoContent1 .rightBox").eq(0).find(".t").find(".gain").click(function(){
@@ -171,8 +171,8 @@ var TeachingResourcesObject={
                     // console.log(data)
                     var re=data.result;
                     for(var i=0;i<re.length;i++){
-                        console.log(index)
-                        console.log(re[i])
+                        //console.log(index)
+                        //console.log(re[i])
                         $(".twoContent1 .rightBox").eq(index).find(".t").append(TeachingResourcesObject.getVideoListV(re[i]))
                     }
 

@@ -72,7 +72,7 @@ var AdminTeachingR={
 
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -101,7 +101,7 @@ var AdminTeachingR={
                 image:image
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -129,7 +129,7 @@ var AdminTeachingR={
                 image:image
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -147,7 +147,7 @@ var AdminTeachingR={
 
     //单图上传  待调试
     imgUpLoad:function (fileId, ImgId) {
-        console.log(fileId,ImgId)
+        //console.log(fileId,ImgId)
         $.ajaxFileUpload({
             url :  urlT+ "/api/file/upload.json",
             type : 'post',

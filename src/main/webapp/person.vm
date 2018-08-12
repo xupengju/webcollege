@@ -74,17 +74,17 @@
         </div>
     </a>
 </nav>
-<div class="personBox">
+<div style="display: none" class="personBox">
     <h3 class="tc mt30 mb20">个人信息</h3>
     <div class="btn" onclick="personObj.sign()">签到</div>
     <p>
         <span>姓名</span>
         <b>李未未</b>
     </p>
-    <p>
+    <!--<p>
         <span>身份证 </span>
         <b>136072739821######</b>
-    </p>
+    </p>-->
     <p>
         <span>性别</span>
         <b>女生</b>

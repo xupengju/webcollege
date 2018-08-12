@@ -50,7 +50,7 @@ var AdminSocialObject={
                 image:image
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -76,7 +76,7 @@ var AdminSocialObject={
                 image:image
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"

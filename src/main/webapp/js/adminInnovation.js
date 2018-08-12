@@ -54,7 +54,7 @@ var AdminInnovationObject={
     },
     //校企合作项目   报错。。。。。。。。。。。。。。。
     ajaxA:function(resourceName,createTime,content,image){
-        console.log(resourceName)
+        //console.log(resourceName)
         $.ajax({
             type:"post",
             url:urlT+"/api/resource/add.json",
@@ -68,7 +68,7 @@ var AdminInnovationObject={
 
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"
@@ -94,7 +94,7 @@ var AdminInnovationObject={
                 image:image
             },
             success:function (data) {
-                console.log(data)
+                //console.log(data)
                 if(data.code==10001){
                     alert("用户未登录")
                     window.location.href="login.vm"

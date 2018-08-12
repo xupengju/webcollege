@@ -85,26 +85,28 @@
 			</ul>
 			
 			
-			<div class="rightBox ri1 studentYe">
-				<h2 class="tc mt30 mb20">学生考勤管理</h2>
-				<div class="searchP">
-					<div>关键字</div>
-					<input class="realName" type="text" placeholder="请输入要搜索的姓名"/>
-					<input class="idCard" type="text"  placeholder="请输入要搜索的身份证号"/>
-					<input class="userID" type="text"  placeholder="请输入要搜索的用户ID"/>
-					<div onclick="studentObj.searchStudent()" class="searchBtn">搜索</div>
-				</div>
-				<div class="ratingForm">
-					<table width="700">
-						<thead>
-							<tr>
-								<th width="20%">姓名</th>
-								<th width="40%">身份证</th>
-								<th width="40%">考勤</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
+			<div class="rightBox ri1">
+				<div class="studentYe">
+					<h2 class="tc mt30 mb20">学生考勤管理</h2>
+					<div class="searchP">
+						<div>关键字</div>
+						<input class="realName" type="text" placeholder="请输入要搜索的姓名"/>
+						<input class="idCard" type="text"  placeholder="请输入要搜索的身份证号"/>
+						<input class="userID" type="text"  placeholder="请输入要搜索的用户ID"/>
+						<div onclick="studentObj.searchStudent()" class="searchBtn">搜索</div>
+					</div>
+					<div class="ratingForm">
+						<table width="700">
+							<thead>
+								<tr>
+									<th width="20%">姓名</th>
+									<th width="40%">身份证</th>
+									<th width="40%">考勤</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 			<div class="rightBox ri2">

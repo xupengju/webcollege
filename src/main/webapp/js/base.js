@@ -106,11 +106,24 @@ function a(t,index){
 
 if(localStorage.getItem("userName")!=null && localStorage.getItem("token")!=null){
 	$(".loginBtn").hide();
-	$(".box").append("<p>"+localStorage.getItem("userName")+"<button>退出</button></p>")
+	$(".box").append("<p><b style='cursor: pointer' class='personBtn'>"+localStorage.getItem("userName")+"</b><button>退出</button></p>")
 }
+$(".personBtn").click(function(){
+	window.location.href="person.vm"
+})
 $(".box button").click(function () {
 	localStorage.clear();
     $(".loginBtn").show();
     $(".box p").remove();
     window.location.href="../index.vm";
 })
+
+//半天之后清除
+var nowTime=new Date();
+nowTime=nowTime.getTime()
+if (localStorage.getItem("lastTime")!=null){
+	if(nowTime==localStorage.getItem("lastTime")){
+		localStorage.clear()
+	}
+}
+

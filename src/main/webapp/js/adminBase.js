@@ -1,4 +1,4 @@
-console.log(localStorage.getItem("rol"))
+//console.log(localStorage.getItem("rol"))
 if(localStorage.getItem("rol")==null){
     alert("用户未登录")
     window.location.href="login.vm"
