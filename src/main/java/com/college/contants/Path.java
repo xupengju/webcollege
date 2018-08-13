@@ -92,7 +92,7 @@ public class Path {
     public static final String SIGNIN_LIST = "/api/signin/list.json";
     public static final String SIGNIN_ALL = "/api/signin/all.json";
     public static final String CONDITIONAL_QUERY = "/api/signin/conditionalQuery.json";
-
+    public static final String SIGNIN_STATE = "/api/signin/state.json";
 
     //baseInfo 静态页面 基本信息
     public static final String BASEINFO_ADD = "/api/baseInfo/add.json";
@@ -101,4 +101,5 @@ public class Path {
     public static final String BASEINFO_LIST = "/api/baseInfo/list.json";
     public static final String BASEINFO_ALL = "/api/baseInfo/all.json";
     public static final String BASEINFO_SEARCHONE = "/api/baseInfo/searchOne.json";
+
 }

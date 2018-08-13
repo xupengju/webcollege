@@ -123,6 +123,17 @@ public class SigninController extends BaseController {
         return null != id ? Resp.success(id) : Resp.error(AppCode._10003);
     }
 
+    @RequestMapping(value = Path.SIGNIN_STATE)
+    @ResponseBody
+    public Resp state() {
+        Integer currentId = getCurrentId();
+        logger.info("currentId :{}", currentId);
+        if (signInToday(currentId)) {
+            return Resp.error(AppCode._10011);
+        }
+        return  Resp.success() ;
+    }
+
     //是否能够签到
     private boolean signInToday(Integer userId) {
         DateTime dateTime = new DateTime();
